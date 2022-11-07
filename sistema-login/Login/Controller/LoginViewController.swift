@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .red
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {

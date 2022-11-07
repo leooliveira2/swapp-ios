@@ -101,6 +101,16 @@ class LoginScreen: UIView {
         return view
     }()
     
+    private lazy var aindaNaoTemContaLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Ainda não tem uma conta?"
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textAlignment = .center
+        label.textColor = .white
+        return label
+    }()
+    
     // MARK: - Inicializadores
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -111,6 +121,7 @@ class LoginScreen: UIView {
         self.addSubview(self.recuperarSenhaButton)
         self.addSubview(self.entrarButton)
         self.addSubview(self.linhaDeSeparacaoView)
+        self.addSubview(self.aindaNaoTemContaLabel)
         self.configConstraints()
     }
     
@@ -152,8 +163,8 @@ class LoginScreen: UIView {
             self.linhaDeSeparacaoView.trailingAnchor.constraint(equalTo: self.entrarButton.trailingAnchor, constant: -30),
             self.linhaDeSeparacaoView.heightAnchor.constraint(equalToConstant: 1),
             
-            
-            
+            self.aindaNaoTemContaLabel.topAnchor.constraint(equalTo: self.linhaDeSeparacaoView.bottomAnchor, constant: 10),
+            self.aindaNaoTemContaLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             
             
         ])

@@ -89,7 +89,7 @@ class LoginScreen: UIView {
         button.backgroundColor = UIColor(red: 148/255, green: 0/255, blue: 211/255, alpha: 1.0)
         button.clipsToBounds = true
         button.layer.borderColor = UIColor.white.cgColor
-        button.layer.borderWidth = 3.0
+        button.layer.borderWidth = 2.0
         button.layer.cornerRadius = 10
         return button
     }()
@@ -111,6 +111,21 @@ class LoginScreen: UIView {
         return label
     }()
     
+    private lazy var cadastrarButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Clique aqui para cadastrar", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        button.titleLabel?.textAlignment = .center
+        button.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0), for: .normal)
+        button.backgroundColor = UIColor(red: 148/255, green: 0/255, blue: 211/255, alpha: 1.0)
+        button.clipsToBounds = true
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderWidth = 2.0
+        button.layer.cornerRadius = 10
+        return button
+    }()
+    
     // MARK: - Inicializadores
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -122,6 +137,7 @@ class LoginScreen: UIView {
         self.addSubview(self.entrarButton)
         self.addSubview(self.linhaDeSeparacaoView)
         self.addSubview(self.aindaNaoTemContaLabel)
+        self.addSubview(self.cadastrarButton)
         self.configConstraints()
     }
     
@@ -158,13 +174,18 @@ class LoginScreen: UIView {
             self.entrarButton.trailingAnchor.constraint(equalTo: self.senhaTextField.trailingAnchor),
             self.entrarButton.heightAnchor.constraint(equalToConstant: 45),
             
-            self.linhaDeSeparacaoView.topAnchor.constraint(equalTo: self.entrarButton.bottomAnchor, constant: 20),
+            self.linhaDeSeparacaoView.topAnchor.constraint(equalTo: self.entrarButton.bottomAnchor, constant: 40),
             self.linhaDeSeparacaoView.leadingAnchor.constraint(equalTo: self.entrarButton.leadingAnchor, constant: 30),
             self.linhaDeSeparacaoView.trailingAnchor.constraint(equalTo: self.entrarButton.trailingAnchor, constant: -30),
             self.linhaDeSeparacaoView.heightAnchor.constraint(equalToConstant: 1),
             
-            self.aindaNaoTemContaLabel.topAnchor.constraint(equalTo: self.linhaDeSeparacaoView.bottomAnchor, constant: 10),
+            self.aindaNaoTemContaLabel.topAnchor.constraint(equalTo: self.linhaDeSeparacaoView.bottomAnchor, constant: 40),
             self.aindaNaoTemContaLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            
+            self.cadastrarButton.topAnchor.constraint(equalTo: self.aindaNaoTemContaLabel.bottomAnchor, constant: 10),
+            self.cadastrarButton.leadingAnchor.constraint(equalTo: self.entrarButton.leadingAnchor),
+            self.cadastrarButton.trailingAnchor.constraint(equalTo: self.entrarButton.trailingAnchor),
+            self.cadastrarButton.heightAnchor.constraint(equalToConstant: 45)
             
             
         ])

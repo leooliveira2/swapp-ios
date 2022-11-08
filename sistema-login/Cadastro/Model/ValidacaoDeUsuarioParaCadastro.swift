@@ -70,6 +70,11 @@ class ValidacaoDeUsuarioParaCadastro: NSObject {
             self.controladorDeErros.adicionarErro(erro: .erro_nick_de_usuario_nao_e_um_alfanumerico)
         }
         
+        let nickNameDoUsuarioTemMaisDe32Caracteres = strlen(nickName) > 32
+        if nickNameDoUsuarioTemMaisDe32Caracteres {
+            self.controladorDeErros.adicionarErro(erro: .erro_nick_de_usuario_nao_pode_ter_mais_de_32_caracteres)
+        }
+        
         return isValid
     }
     

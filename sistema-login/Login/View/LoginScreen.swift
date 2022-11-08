@@ -126,8 +126,8 @@ class LoginScreen: UIView {
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1.5
         button.layer.cornerRadius = 10
-        button.addTarget(self.loginViewController, action: #selector(
-            self.loginViewController.redirecionarParaTelaDeCriacaoDeContato(_:)),
+        button.addTarget(self, action: #selector(
+            self.solicitarRedirecionamentoParaTelaDeCriacaoDeContato(_:)),
             for: .touchUpInside
         )
         return button
@@ -151,6 +151,11 @@ class LoginScreen: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Funcoes
+    @objc private func solicitarRedirecionamentoParaTelaDeCriacaoDeContato(_ sender: UIButton) -> Void {
+        self.loginViewController.redirecionarParaTelaDeCriacaoDeContato()
     }
 
     // MARK: - Config de constraints
@@ -198,3 +203,4 @@ class LoginScreen: UIView {
     }
 
 }
+

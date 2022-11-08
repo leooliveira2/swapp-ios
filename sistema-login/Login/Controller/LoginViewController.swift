@@ -28,7 +28,7 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Funcoes
-    @objc public func redirecionarParaTelaDeCriacaoDeContato(_ sender: UIButton) -> Void { // pq esse _ sender
+    public func redirecionarParaTelaDeCriacaoDeContato() -> Void { // pq esse _ sender
         guard let navigationController = self.navigationController else { return }
         
         let criacaoDeContatoViewController = CriacaoDeContatoViewController()

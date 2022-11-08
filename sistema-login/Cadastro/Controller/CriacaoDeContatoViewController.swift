@@ -28,8 +28,37 @@ class CriacaoDeContatoViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = .white
     }
     
-    @objc public func criarConta(_ sender: UIButton) -> Void {
+    public func criarConta(
+        nickNameDoUsuario: String?,
+        nomeCompletoDoUsuario: String?,
+        emailDoUsuario: String?,
+        senhaDoUsuario: String?,
+        repeticaoDeSenhaDoUsuario: String?
+    ) -> Void {
+        let controladorDeErros = ControladorDeErros()
+        let validadorUsuario = ValidacaoDeUsuarioParaCadastro(controladorDeErros: controladorDeErros)
         
+        let usuarioPodeSerCadastrado = validadorUsuario.usuarioPodeSerCadastrado(
+            nickNameDoUsuario: nickNameDoUsuario,
+            nomeCompletoDoUsuario: nomeCompletoDoUsuario,
+            emailDoUsuario: emailDoUsuario,
+            senhaDoUsuario: senhaDoUsuario,
+            repeticaoDeSenhaDoUsuario: repeticaoDeSenhaDoUsuario
+        )
+        
+        guard let navigationController = self.navigationController else { return }
+        
+        if usuarioPodeSerCadastrado {
+            navigationController.popViewController(animated: true)
+        }
+        
+        if controladorDeErros.getErros().count > 0 {
+            let controladorDeAlertas = Alerta(viewController: self)
+            
+            let mensagem = controladorDeErros.getErros()[0]
+            
+            controladorDeAlertas.criaAlerta(mensagem: mensagem)
+        }
     }
 
 }

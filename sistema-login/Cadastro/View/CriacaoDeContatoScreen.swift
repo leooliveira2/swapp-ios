@@ -30,7 +30,7 @@ class CriacaoDeContatoScreen: UIView {
         return label
     }()
     
-    private lazy var nickNameDeUsuarioLabel: UILabel = {
+    private lazy var nickNameDoUsuarioLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Apelido de usuário"
@@ -39,7 +39,7 @@ class CriacaoDeContatoScreen: UIView {
         return label
     }()
     
-    private lazy var nickNameDeUsuarioTextField: UITextField = {
+    private lazy var nickNameDoUsuarioTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.keyboardType = .default
@@ -194,8 +194,8 @@ class CriacaoDeContatoScreen: UIView {
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1.5
         button.layer.cornerRadius = 10
-        button.addTarget(self.criacaoDeContatoViewController, action: #selector(
-            self.criacaoDeContatoViewController.criarConta(_:)),
+        button.addTarget(self, action: #selector(
+            self.enviarDadosParaCriacaoDeConta(_:)),
             for: .touchUpInside
         )
         return button
@@ -207,8 +207,8 @@ class CriacaoDeContatoScreen: UIView {
         super.init(frame: frame)
         self.addSubview(self.backgroundImageView)
         self.addSubview(self.tituloCriarContaLabel)
-        self.addSubview(self.nickNameDeUsuarioLabel)
-        self.addSubview(self.nickNameDeUsuarioTextField)
+        self.addSubview(self.nickNameDoUsuarioLabel)
+        self.addSubview(self.nickNameDoUsuarioTextField)
         self.addSubview(self.nomeCompletoDoUsuarioLabel)
         self.addSubview(self.nomeCompletoDoUsuarioTextField)
         self.addSubview(self.emailDoUsuarioLabel)
@@ -225,6 +225,17 @@ class CriacaoDeContatoScreen: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Funcoes
+    @objc private func enviarDadosParaCriacaoDeConta(_ sender: UIButton) -> Void {
+        self.criacaoDeContatoViewController.criarConta(
+            nickNameDoUsuario: self.nickNameDoUsuarioTextField.text,
+            nomeCompletoDoUsuario: self.nomeCompletoDoUsuarioTextField.text,
+            emailDoUsuario: self.emailDoUsuarioTextField.text,
+            senhaDoUsuario: self.senhaDoUsuarioTextField.text,
+            repeticaoDeSenhaDoUsuario: self.repeticaoDeSenhaDoUsuarioTextField.text
+        )
+    }
+    
     // MARK: - Config de constraints
     private func configConstraints() -> Void {
         NSLayoutConstraint.activate([
@@ -236,49 +247,49 @@ class CriacaoDeContatoScreen: UIView {
             self.tituloCriarContaLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
             self.tituloCriarContaLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             
-            self.nickNameDeUsuarioLabel.topAnchor.constraint(equalTo: self.tituloCriarContaLabel.bottomAnchor, constant: 30),
-            self.nickNameDeUsuarioLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            self.nickNameDoUsuarioLabel.topAnchor.constraint(equalTo: self.tituloCriarContaLabel.bottomAnchor, constant: 30),
+            self.nickNameDoUsuarioLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             
-            self.nickNameDeUsuarioTextField.topAnchor.constraint(equalTo: self.nickNameDeUsuarioLabel.bottomAnchor, constant: 5),
-            self.nickNameDeUsuarioTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            self.nickNameDeUsuarioTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            self.nickNameDeUsuarioTextField.heightAnchor.constraint(equalToConstant: 45),
+            self.nickNameDoUsuarioTextField.topAnchor.constraint(equalTo: self.nickNameDoUsuarioLabel.bottomAnchor, constant: 5),
+            self.nickNameDoUsuarioTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            self.nickNameDoUsuarioTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            self.nickNameDoUsuarioTextField.heightAnchor.constraint(equalToConstant: 45),
             
-            self.nomeCompletoDoUsuarioLabel.topAnchor.constraint(equalTo: self.nickNameDeUsuarioTextField.bottomAnchor, constant: 10),
-            self.nomeCompletoDoUsuarioLabel.leadingAnchor.constraint(equalTo: self.nickNameDeUsuarioLabel.leadingAnchor),
+            self.nomeCompletoDoUsuarioLabel.topAnchor.constraint(equalTo: self.nickNameDoUsuarioTextField.bottomAnchor, constant: 10),
+            self.nomeCompletoDoUsuarioLabel.leadingAnchor.constraint(equalTo: self.nickNameDoUsuarioLabel.leadingAnchor),
             
             self.nomeCompletoDoUsuarioTextField.topAnchor.constraint(equalTo: self.nomeCompletoDoUsuarioLabel.bottomAnchor, constant: 5),
-            self.nomeCompletoDoUsuarioTextField.leadingAnchor.constraint(equalTo: self.nickNameDeUsuarioTextField.leadingAnchor),
-            self.nomeCompletoDoUsuarioTextField.trailingAnchor.constraint(equalTo: self.nickNameDeUsuarioTextField.trailingAnchor),
+            self.nomeCompletoDoUsuarioTextField.leadingAnchor.constraint(equalTo: self.nickNameDoUsuarioTextField.leadingAnchor),
+            self.nomeCompletoDoUsuarioTextField.trailingAnchor.constraint(equalTo: self.nickNameDoUsuarioTextField.trailingAnchor),
             self.nomeCompletoDoUsuarioTextField.heightAnchor.constraint(equalToConstant: 45),
             
             self.emailDoUsuarioLabel.topAnchor.constraint(equalTo: self.nomeCompletoDoUsuarioTextField.bottomAnchor, constant: 10),
-            self.emailDoUsuarioLabel.leadingAnchor.constraint(equalTo: self.nickNameDeUsuarioLabel.leadingAnchor),
+            self.emailDoUsuarioLabel.leadingAnchor.constraint(equalTo: self.nickNameDoUsuarioLabel.leadingAnchor),
             
             self.emailDoUsuarioTextField.topAnchor.constraint(equalTo: self.emailDoUsuarioLabel.bottomAnchor, constant: 5),
-            self.emailDoUsuarioTextField.leadingAnchor.constraint(equalTo: self.nickNameDeUsuarioTextField.leadingAnchor),
-            self.emailDoUsuarioTextField.trailingAnchor.constraint(equalTo: self.nickNameDeUsuarioTextField.trailingAnchor),
+            self.emailDoUsuarioTextField.leadingAnchor.constraint(equalTo: self.nickNameDoUsuarioTextField.leadingAnchor),
+            self.emailDoUsuarioTextField.trailingAnchor.constraint(equalTo: self.nickNameDoUsuarioTextField.trailingAnchor),
             self.emailDoUsuarioTextField.heightAnchor.constraint(equalToConstant: 45),
             
             self.senhaDoUsuarioLabel.topAnchor.constraint(equalTo: self.emailDoUsuarioTextField.bottomAnchor, constant: 10),
-            self.senhaDoUsuarioLabel.leadingAnchor.constraint(equalTo: self.nickNameDeUsuarioLabel.leadingAnchor),
+            self.senhaDoUsuarioLabel.leadingAnchor.constraint(equalTo: self.nickNameDoUsuarioLabel.leadingAnchor),
             
             self.senhaDoUsuarioTextField.topAnchor.constraint(equalTo: self.senhaDoUsuarioLabel.bottomAnchor, constant: 5),
-            self.senhaDoUsuarioTextField.leadingAnchor.constraint(equalTo: self.nickNameDeUsuarioTextField.leadingAnchor),
-            self.senhaDoUsuarioTextField.trailingAnchor.constraint(equalTo: self.nickNameDeUsuarioTextField.trailingAnchor),
+            self.senhaDoUsuarioTextField.leadingAnchor.constraint(equalTo: self.nickNameDoUsuarioTextField.leadingAnchor),
+            self.senhaDoUsuarioTextField.trailingAnchor.constraint(equalTo: self.nickNameDoUsuarioTextField.trailingAnchor),
             self.senhaDoUsuarioTextField.heightAnchor.constraint(equalToConstant: 45),
             
             self.repeticaoDeSenhaDoUsuarioLabel.topAnchor.constraint(equalTo: self.senhaDoUsuarioTextField.bottomAnchor, constant: 10),
-            self.repeticaoDeSenhaDoUsuarioLabel.leadingAnchor.constraint(equalTo: self.nickNameDeUsuarioLabel.leadingAnchor),
+            self.repeticaoDeSenhaDoUsuarioLabel.leadingAnchor.constraint(equalTo: self.nickNameDoUsuarioLabel.leadingAnchor),
             
             self.repeticaoDeSenhaDoUsuarioTextField.topAnchor.constraint(equalTo: self.repeticaoDeSenhaDoUsuarioLabel.bottomAnchor, constant: 5),
-            self.repeticaoDeSenhaDoUsuarioTextField.leadingAnchor.constraint(equalTo: self.nickNameDeUsuarioTextField.leadingAnchor),
-            self.repeticaoDeSenhaDoUsuarioTextField.trailingAnchor.constraint(equalTo: self.nickNameDeUsuarioTextField.trailingAnchor),
+            self.repeticaoDeSenhaDoUsuarioTextField.leadingAnchor.constraint(equalTo: self.nickNameDoUsuarioTextField.leadingAnchor),
+            self.repeticaoDeSenhaDoUsuarioTextField.trailingAnchor.constraint(equalTo: self.nickNameDoUsuarioTextField.trailingAnchor),
             self.repeticaoDeSenhaDoUsuarioTextField.heightAnchor.constraint(equalToConstant: 45),
             
             self.criacaoDeContaButton.topAnchor.constraint(equalTo: self.repeticaoDeSenhaDoUsuarioTextField.bottomAnchor, constant: 20),
-            self.criacaoDeContaButton.leadingAnchor.constraint(equalTo: self.nickNameDeUsuarioTextField.leadingAnchor),
-            self.criacaoDeContaButton.trailingAnchor.constraint(equalTo: self.nickNameDeUsuarioTextField.trailingAnchor),
+            self.criacaoDeContaButton.leadingAnchor.constraint(equalTo: self.nickNameDoUsuarioTextField.leadingAnchor),
+            self.criacaoDeContaButton.trailingAnchor.constraint(equalTo: self.nickNameDoUsuarioTextField.trailingAnchor),
             self.criacaoDeContaButton.heightAnchor.constraint(equalToConstant: 55)
         ])
     }

@@ -202,7 +202,7 @@ class CriacaoDeContatoScreen: UIView {
     }()
     
     // MARK: - Inicializadores
-    init(frame: CGRect, criacaoDeContatoViewController: CriacaoDeContatoViewController) {
+    init(frame: CGRect, criacaoDeContatoViewController: CriacaoDeContatoViewController) { // tirei o override init
         self.criacaoDeContatoViewController = criacaoDeContatoViewController
         super.init(frame: frame)
         self.addSubview(self.backgroundImageView)

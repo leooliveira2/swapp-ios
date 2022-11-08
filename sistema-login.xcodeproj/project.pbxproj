@@ -15,6 +15,7 @@
 		C550F87D2919650D00FC2EF2 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F87C2919650D00FC2EF2 /* LoginScreen.swift */; };
 		C550F8812919A0D400FC2EF2 /* CriacaoDeContatoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8802919A0D400FC2EF2 /* CriacaoDeContatoViewController.swift */; };
 		C55BFA68291AB6890049C539 /* CriacaoDeContatoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA67291AB6890049C539 /* CriacaoDeContatoScreen.swift */; };
+		C55BFA6B291ACABB0049C539 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA6A291ACABB0049C539 /* Usuario.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		C550F87C2919650D00FC2EF2 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		C550F8802919A0D400FC2EF2 /* CriacaoDeContatoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContatoViewController.swift; sourceTree = "<group>"; };
 		C55BFA67291AB6890049C539 /* CriacaoDeContatoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContatoScreen.swift; sourceTree = "<group>"; };
+		C55BFA6A291ACABB0049C539 /* Usuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		C550F8642919644D00FC2EF2 /* sistema-login */ = {
 			isa = PBXGroup;
 			children = (
+				C55BFA69291ACA7B0049C539 /* Model */,
 				C550F87E2919A0A200FC2EF2 /* Cadastro */,
 				C550F879291964EB00FC2EF2 /* Login */,
 				C550F8652919644D00FC2EF2 /* AppDelegate.swift */,
@@ -119,6 +122,14 @@
 				C55BFA67291AB6890049C539 /* CriacaoDeContatoScreen.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C55BFA69291ACA7B0049C539 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C55BFA6A291ACABB0049C539 /* Usuario.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +204,7 @@
 			files = (
 				C550F86A2919644D00FC2EF2 /* LoginViewController.swift in Sources */,
 				C550F87D2919650D00FC2EF2 /* LoginScreen.swift in Sources */,
+				C55BFA6B291ACABB0049C539 /* Usuario.swift in Sources */,
 				C550F8662919644D00FC2EF2 /* AppDelegate.swift in Sources */,
 				C550F8682919644D00FC2EF2 /* SceneDelegate.swift in Sources */,
 				C55BFA68291AB6890049C539 /* CriacaoDeContatoScreen.swift in Sources */,

@@ -134,7 +134,7 @@ class LoginScreen: UIView {
     }()
     
     // MARK: - Inicializadores
-    init(frame: CGRect, loginViewController: LoginViewController) {
+    init(frame: CGRect, loginViewController: LoginViewController) { // tirei o override init
         self.loginViewController = loginViewController
         super.init(frame: frame)
         self.addSubview(self.backgroundImageView)

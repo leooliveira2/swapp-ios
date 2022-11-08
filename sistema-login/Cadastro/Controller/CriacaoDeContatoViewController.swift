@@ -23,7 +23,7 @@ class CriacaoDeContatoViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
-        // self.navigationController?.navigationBar.backItem?.title = "Voltar" esse ou o de baixo
+        // self.navigationController?.navigationBar.backItem?.title = "Voltar" / esse ou o de baixo
         self.navigationController?.navigationBar.backItem?.backButtonTitle = "Voltar"
         self.navigationController?.navigationBar.tintColor = .white
     }
@@ -49,6 +49,20 @@ class CriacaoDeContatoViewController: UIViewController {
         guard let navigationController = self.navigationController else { return }
         
         if usuarioPodeSerCadastrado {
+            guard let usuario = self.criaUsuario(
+                nickNameDoUsuario,
+                nomeCompletoDoUsuario,
+                emailDoUsuario,
+                senhaDoUsuario,
+                repeticaoDeSenhaDoUsuario
+            ) else { return }
+            
+            print(usuario.getNickNameDeUsuario())
+            print(usuario.getNomeCompletoDoUsuario())
+            print(usuario.getEmailDoUsuario())
+            print(usuario.getSenhaDoUsuario())
+            print(usuario.getRepeteSenhaDoUsuario())
+                    
             navigationController.popViewController(animated: true)
         }
         
@@ -59,6 +73,30 @@ class CriacaoDeContatoViewController: UIViewController {
             
             controladorDeAlertas.criaAlerta(mensagem: mensagem)
         }
+    }
+    
+    private func criaUsuario(
+        _ nickNameDoUsuario: String?,
+        _ nomeCompletoDoUsuario: String?,
+        _ emailDoUsuario: String?,
+        _ senhaDoUsuario: String?,
+        _ repeticaoDeSenhaDoUsuario: String?
+    ) -> Usuario? {
+        guard let nickName = nickNameDoUsuario,
+              let nomeCompleto = nomeCompletoDoUsuario,
+              let email = emailDoUsuario,
+              let senha = senhaDoUsuario,
+              let repeticaoDeSenha = repeticaoDeSenhaDoUsuario else { return nil }
+        
+        let usuario = Usuario(
+            nickName: nickName,
+            nomeCompleto: nomeCompleto,
+            email: email,
+            senha: senha,
+            repeticaoDeSenha: repeticaoDeSenha
+        )
+        
+        return usuario
     }
 
 }

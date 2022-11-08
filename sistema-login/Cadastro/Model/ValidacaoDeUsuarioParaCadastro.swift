@@ -78,7 +78,21 @@ class ValidacaoDeUsuarioParaCadastro: NSObject {
         
         let nomeCompletoDoUsuarioEstaVazio = strlen(nomeCompleto) == 0
         if nomeCompletoDoUsuarioEstaVazio {
-            self.controladorDeErros.adicionarErro(erro: .erro_nome_vazio)
+            self.controladorDeErros.adicionarErro(erro: .erro_nome_completo_vazio)
+            
+            isValid = false
+        }
+        
+        let nomeCompletoDoUsuarioContemCaracteresInvalidos = !nomeCompleto.isAlphabetic
+        if nomeCompletoDoUsuarioContemCaracteresInvalidos {
+            self.controladorDeErros.adicionarErro(erro: .erro_nome_completo_contem_caracteres_invalidos)
+            
+            isValid = false
+        }
+        
+        let nomeCompletoDoUsuarioTemMaisDe130Caracteres = strlen(nomeCompleto) > 130
+        if nomeCompletoDoUsuarioTemMaisDe130Caracteres {
+            self.controladorDeErros.adicionarErro(erro: .erro_nome_completo_nao_pode_ter_mais_de_130_caracteres)
             
             isValid = false
         }
@@ -130,5 +144,9 @@ class ValidacaoDeUsuarioParaCadastro: NSObject {
 extension String {
     var isAlphanumeric: Bool {
         !isEmpty && range(of: "[^a-zA-Z0-9]", options: .regularExpression) == nil
+    }
+    
+    var isAlphabetic: Bool {
+        !isEmpty && range(of: "[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ' ]", options: .regularExpression) == nil
     }
 }

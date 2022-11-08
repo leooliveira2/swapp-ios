@@ -8,7 +8,10 @@
 import UIKit
 
 class LoginScreen: UIView {
-
+    
+    // MARK: Atributos
+    private let loginViewController: LoginViewController
+    
     // MARK: - Lazy vars
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
@@ -89,7 +92,7 @@ class LoginScreen: UIView {
         button.backgroundColor = UIColor(red: 148/255, green: 0/255, blue: 211/255, alpha: 1.0)
         button.clipsToBounds = true
         button.layer.borderColor = UIColor.white.cgColor
-        button.layer.borderWidth = 2.0
+        button.layer.borderWidth = 1.5
         button.layer.cornerRadius = 10
         return button
     }()
@@ -121,14 +124,18 @@ class LoginScreen: UIView {
         button.backgroundColor = UIColor(red: 148/255, green: 0/255, blue: 211/255, alpha: 1.0)
         button.clipsToBounds = true
         button.layer.borderColor = UIColor.white.cgColor
-        button.layer.borderWidth = 2.0
+        button.layer.borderWidth = 1.5
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(self.redirecionarParaTelaDeCriacaoDeContato), for: .touchUpInside)
+        button.addTarget(self.loginViewController, action: #selector(
+            self.loginViewController.redirecionarParaTelaDeCriacaoDeContato(_:)),
+            for: .touchUpInside
+        )
         return button
     }()
     
     // MARK: - Inicializadores
-    override init(frame: CGRect) {
+    init(frame: CGRect, loginViewController: LoginViewController) {
+        self.loginViewController = loginViewController
         super.init(frame: frame)
         self.addSubview(self.backgroundImageView)
         self.addSubview(self.tituloLoginLabel)
@@ -145,13 +152,7 @@ class LoginScreen: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    // MARK: - Funcoes
-    @objc private func redirecionarParaTelaDeCriacaoDeContato() -> Void {
-        
-    }
 
-    
     // MARK: - Config de constraints
     private func configConstraints() -> Void {
         NSLayoutConstraint.activate([

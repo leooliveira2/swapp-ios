@@ -8,11 +8,13 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
+    // MARK: - Atributos
     private var screen: LoginScreen?
     
+    // MARK: - Swift
     override func loadView() {
-        self.screen = LoginScreen()
+        self.screen = LoginScreen(frame: .zero, loginViewController: self)
         self.view = self.screen
     }
 
@@ -23,6 +25,15 @@ class LoginViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    // MARK: - Funcoes
+    @objc public func redirecionarParaTelaDeCriacaoDeContato(_ sender: UIButton) -> Void {
+        guard let navigationController = self.navigationController else { return }
+        
+        let criacaoDeContatoViewController = CriacaoDeContatoViewController()
+        
+        navigationController.pushViewController(criacaoDeContatoViewController, animated: true)
     }
     
 }

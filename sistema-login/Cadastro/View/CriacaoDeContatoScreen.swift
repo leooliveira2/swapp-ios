@@ -279,7 +279,7 @@ class CriacaoDeContatoScreen: UIView {
             self.criacaoDeContaButton.topAnchor.constraint(equalTo: self.repeticaoDeSenhaDoUsuarioTextField.bottomAnchor, constant: 20),
             self.criacaoDeContaButton.leadingAnchor.constraint(equalTo: self.nickNameDeUsuarioTextField.leadingAnchor),
             self.criacaoDeContaButton.trailingAnchor.constraint(equalTo: self.nickNameDeUsuarioTextField.trailingAnchor),
-            self.criacaoDeContaButton.heightAnchor.constraint(equalToConstant: 60)
+            self.criacaoDeContaButton.heightAnchor.constraint(equalToConstant: 55)
         ])
     }
     

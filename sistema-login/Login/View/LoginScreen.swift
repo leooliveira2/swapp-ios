@@ -180,7 +180,7 @@ class LoginScreen: UIView {
             self.entrarButton.topAnchor.constraint(equalTo: self.recuperarSenhaButton.bottomAnchor, constant: 10),
             self.entrarButton.leadingAnchor.constraint(equalTo: self.senhaTextField.leadingAnchor),
             self.entrarButton.trailingAnchor.constraint(equalTo: self.senhaTextField.trailingAnchor),
-            self.entrarButton.heightAnchor.constraint(equalToConstant: 60),
+            self.entrarButton.heightAnchor.constraint(equalToConstant: 55),
             
             self.linhaDeSeparacaoView.topAnchor.constraint(equalTo: self.entrarButton.bottomAnchor, constant: 40),
             self.linhaDeSeparacaoView.leadingAnchor.constraint(equalTo: self.entrarButton.leadingAnchor, constant: 30),
@@ -193,7 +193,7 @@ class LoginScreen: UIView {
             self.cadastrarButton.topAnchor.constraint(equalTo: self.aindaNaoTemContaLabel.bottomAnchor, constant: 10),
             self.cadastrarButton.leadingAnchor.constraint(equalTo: self.entrarButton.leadingAnchor),
             self.cadastrarButton.trailingAnchor.constraint(equalTo: self.entrarButton.trailingAnchor),
-            self.cadastrarButton.heightAnchor.constraint(equalToConstant: 60)
+            self.cadastrarButton.heightAnchor.constraint(equalToConstant: 55)
         ])
     }
 

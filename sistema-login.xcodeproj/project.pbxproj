@@ -102,6 +102,7 @@
 		C550F87E2919A0A200FC2EF2 /* Cadastro */ = {
 			isa = PBXGroup;
 			children = (
+				C55BFA6C291ACD1F0049C539 /* Model */,
 				C55BFA66291AB66D0049C539 /* View */,
 				C550F87F2919A0AC00FC2EF2 /* Controller */,
 			);
@@ -128,6 +129,13 @@
 			isa = PBXGroup;
 			children = (
 				C55BFA6A291ACABB0049C539 /* Usuario.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C55BFA6C291ACD1F0049C539 /* Model */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Model;
 			sourceTree = "<group>";

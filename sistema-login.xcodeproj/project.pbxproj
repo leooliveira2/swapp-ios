@@ -14,6 +14,7 @@
 		C550F8722919644E00FC2EF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C550F8702919644E00FC2EF2 /* LaunchScreen.storyboard */; };
 		C550F87D2919650D00FC2EF2 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F87C2919650D00FC2EF2 /* LoginScreen.swift */; };
 		C550F8812919A0D400FC2EF2 /* CriacaoDeContatoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8802919A0D400FC2EF2 /* CriacaoDeContatoViewController.swift */; };
+		C55BFA68291AB6890049C539 /* CriacaoDeContatoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA67291AB6890049C539 /* CriacaoDeContatoScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		C550F8732919644E00FC2EF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C550F87C2919650D00FC2EF2 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		C550F8802919A0D400FC2EF2 /* CriacaoDeContatoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContatoViewController.swift; sourceTree = "<group>"; };
+		C55BFA67291AB6890049C539 /* CriacaoDeContatoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContatoScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,8 +74,8 @@
 		C550F879291964EB00FC2EF2 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				C550F87B291964FA00FC2EF2 /* Controller */,
 				C550F87A291964F100FC2EF2 /* View */,
+				C550F87B291964FA00FC2EF2 /* Controller */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -97,6 +99,7 @@
 		C550F87E2919A0A200FC2EF2 /* Cadastro */ = {
 			isa = PBXGroup;
 			children = (
+				C55BFA66291AB66D0049C539 /* View */,
 				C550F87F2919A0AC00FC2EF2 /* Controller */,
 			);
 			path = Cadastro;
@@ -108,6 +111,14 @@
 				C550F8802919A0D400FC2EF2 /* CriacaoDeContatoViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		C55BFA66291AB66D0049C539 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C55BFA67291AB6890049C539 /* CriacaoDeContatoScreen.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,6 +195,7 @@
 				C550F87D2919650D00FC2EF2 /* LoginScreen.swift in Sources */,
 				C550F8662919644D00FC2EF2 /* AppDelegate.swift in Sources */,
 				C550F8682919644D00FC2EF2 /* SceneDelegate.swift in Sources */,
+				C55BFA68291AB6890049C539 /* CriacaoDeContatoScreen.swift in Sources */,
 				C550F8812919A0D400FC2EF2 /* CriacaoDeContatoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

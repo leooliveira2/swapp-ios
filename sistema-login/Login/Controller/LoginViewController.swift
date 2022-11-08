@@ -10,12 +10,12 @@ import UIKit
 class LoginViewController: UIViewController {
     
     // MARK: - Atributos
-    private var screen: LoginScreen?
+    private var loginScreen: LoginScreen?
     
     // MARK: - Swift
     override func loadView() {
-        self.screen = LoginScreen(frame: .zero, loginViewController: self)
-        self.view = self.screen
+        self.loginScreen = LoginScreen(frame: .zero, loginViewController: self)
+        self.view = self.loginScreen
     }
 
     override func viewDidLoad() {
@@ -28,7 +28,7 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Funcoes
-    @objc public func redirecionarParaTelaDeCriacaoDeContato(_ sender: UIButton) -> Void {
+    @objc public func redirecionarParaTelaDeCriacaoDeContato(_ sender: UIButton) -> Void { // pq esse _ sender
         guard let navigationController = self.navigationController else { return }
         
         let criacaoDeContatoViewController = CriacaoDeContatoViewController()

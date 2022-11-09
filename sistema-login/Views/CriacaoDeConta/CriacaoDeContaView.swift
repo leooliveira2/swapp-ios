@@ -1,5 +1,5 @@
 //
-//  CriacaoDeContatoScreen.swift
+//  CriacaoDeContaView.swift
 //  sistema-login
 //
 //  Created by Leonardo Leite on 08/11/22.
@@ -7,12 +7,9 @@
 
 import UIKit
 
-class CriacaoDeContatoScreen: UIView {
+class CriacaoDeContaView: UIView {
     
-    // MARK: - Atributos
-    private let criacaoDeContatoViewController: CriacaoDeContatoViewController
-
-    // Componentes
+    // MARK: - Componentes
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -194,17 +191,26 @@ class CriacaoDeContatoScreen: UIView {
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1.5
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(
-            self.enviarDadosParaCriacaoDeConta(_:)),
-            for: .touchUpInside
-        )
         return button
     }()
     
     // MARK: - Inicializadores
-    init(frame: CGRect, criacaoDeContatoViewController: CriacaoDeContatoViewController) { // tirei o override init
-        self.criacaoDeContatoViewController = criacaoDeContatoViewController
+    override init(frame: CGRect) {
         super.init(frame: frame)
+        self.configConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Funcoes
+    public func getBotaoCriarConta() -> UIButton {
+        return self.criacaoDeContaButton
+    }
+    
+    // MARK: - Config de constraints
+    private func configConstraints() -> Void {
         self.addSubview(self.backgroundImageView)
         self.addSubview(self.tituloCriarContaLabel)
         self.addSubview(self.nickNameDoUsuarioLabel)
@@ -218,26 +224,7 @@ class CriacaoDeContatoScreen: UIView {
         self.addSubview(self.repeticaoDeSenhaDoUsuarioLabel)
         self.addSubview(self.repeticaoDeSenhaDoUsuarioTextField)
         self.addSubview(self.criacaoDeContaButton)
-        self.configConstraints()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - Funcoes
-    @objc private func enviarDadosParaCriacaoDeConta(_ sender: UIButton) -> Void {
-        self.criacaoDeContatoViewController.criarConta(
-            nickNameDoUsuario: self.nickNameDoUsuarioTextField.text,
-            nomeCompletoDoUsuario: self.nomeCompletoDoUsuarioTextField.text,
-            emailDoUsuario: self.emailDoUsuarioTextField.text,
-            senhaDoUsuario: self.senhaDoUsuarioTextField.text,
-            repeticaoDeSenhaDoUsuario: self.repeticaoDeSenhaDoUsuarioTextField.text
-        )
-    }
-    
-    // MARK: - Config de constraints
-    private func configConstraints() -> Void {
+        
         NSLayoutConstraint.activate([
             self.backgroundImageView.topAnchor.constraint(equalTo: self.topAnchor),
             self.backgroundImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),

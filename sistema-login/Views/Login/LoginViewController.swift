@@ -31,9 +31,9 @@ class LoginViewController: UIViewController {
     @objc private func redirecionarParaTelaDeCriacaoDeContato(_ sender: UIButton) -> Void {
         guard let navigationController = self.navigationController else { return }
         
-        let criacaoDeContatoViewController = CriacaoDeContatoViewController()
+        let criacaoDeContaViewController = CriacaoDeContaViewController()
         
-        navigationController.pushViewController(criacaoDeContatoViewController, animated: true)
+        navigationController.pushViewController(criacaoDeContaViewController, animated: true)
     }
     
 }

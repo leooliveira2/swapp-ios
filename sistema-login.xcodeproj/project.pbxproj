@@ -13,8 +13,8 @@
 		C550F86F2919644E00FC2EF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C550F86E2919644E00FC2EF2 /* Assets.xcassets */; };
 		C550F8722919644E00FC2EF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C550F8702919644E00FC2EF2 /* LaunchScreen.storyboard */; };
 		C550F87D2919650D00FC2EF2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F87C2919650D00FC2EF2 /* LoginView.swift */; };
-		C550F8812919A0D400FC2EF2 /* CriacaoDeContatoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8802919A0D400FC2EF2 /* CriacaoDeContatoViewController.swift */; };
-		C55BFA68291AB6890049C539 /* CriacaoDeContatoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA67291AB6890049C539 /* CriacaoDeContatoScreen.swift */; };
+		C550F8812919A0D400FC2EF2 /* CriacaoDeContaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8802919A0D400FC2EF2 /* CriacaoDeContaViewController.swift */; };
+		C55BFA68291AB6890049C539 /* CriacaoDeContaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA67291AB6890049C539 /* CriacaoDeContaView.swift */; };
 		C55BFA6B291ACABB0049C539 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA6A291ACABB0049C539 /* Usuario.swift */; };
 		C55BFA6E291AD0330049C539 /* ValidacaoDeUsuarioParaCadastro.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA6D291AD0330049C539 /* ValidacaoDeUsuarioParaCadastro.swift */; };
 		C55BFA70291AD2000049C539 /* ControladorDeErros.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA6F291AD2000049C539 /* ControladorDeErros.swift */; };
@@ -31,8 +31,8 @@
 		C550F8712919644E00FC2EF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C550F8732919644E00FC2EF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C550F87C2919650D00FC2EF2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		C550F8802919A0D400FC2EF2 /* CriacaoDeContatoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContatoViewController.swift; sourceTree = "<group>"; };
-		C55BFA67291AB6890049C539 /* CriacaoDeContatoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContatoScreen.swift; sourceTree = "<group>"; };
+		C550F8802919A0D400FC2EF2 /* CriacaoDeContaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContaViewController.swift; sourceTree = "<group>"; };
+		C55BFA67291AB6890049C539 /* CriacaoDeContaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContaView.swift; sourceTree = "<group>"; };
 		C55BFA6A291ACABB0049C539 /* Usuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
 		C55BFA6D291AD0330049C539 /* ValidacaoDeUsuarioParaCadastro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidacaoDeUsuarioParaCadastro.swift; sourceTree = "<group>"; };
 		C55BFA6F291AD2000049C539 /* ControladorDeErros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControladorDeErros.swift; sourceTree = "<group>"; };
@@ -89,8 +89,8 @@
 		C5252559291C4548002508F5 /* CriacaoDeConta */ = {
 			isa = PBXGroup;
 			children = (
-				C55BFA67291AB6890049C539 /* CriacaoDeContatoScreen.swift */,
-				C550F8802919A0D400FC2EF2 /* CriacaoDeContatoViewController.swift */,
+				C55BFA67291AB6890049C539 /* CriacaoDeContaView.swift */,
+				C550F8802919A0D400FC2EF2 /* CriacaoDeContaViewController.swift */,
 			);
 			path = CriacaoDeConta;
 			sourceTree = "<group>";
@@ -221,9 +221,9 @@
 				C55BFA6B291ACABB0049C539 /* Usuario.swift in Sources */,
 				C550F8662919644D00FC2EF2 /* AppDelegate.swift in Sources */,
 				C550F8682919644D00FC2EF2 /* SceneDelegate.swift in Sources */,
-				C55BFA68291AB6890049C539 /* CriacaoDeContatoScreen.swift in Sources */,
+				C55BFA68291AB6890049C539 /* CriacaoDeContaView.swift in Sources */,
 				C55BFA78291AE4850049C539 /* Alerta.swift in Sources */,
-				C550F8812919A0D400FC2EF2 /* CriacaoDeContatoViewController.swift in Sources */,
+				C550F8812919A0D400FC2EF2 /* CriacaoDeContaViewController.swift in Sources */,
 				C55BFA76291AD51A0049C539 /* Erros.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -65,14 +65,16 @@ class ValidacaoDeUsuarioParaCadastro: NSObject {
             isValid = false
         }
         
-        let nickNameDoUsuarioNaoÉUmAlfaNumerico = !nickName.isAlphanumeric
-        if nickNameDoUsuarioNaoÉUmAlfaNumerico {
-            self.controladorDeErros.adicionarErro(erro: .erro_nick_de_usuario_nao_e_um_alfanumerico)
-        }
-        
         let nickNameDoUsuarioTemMaisDe32Caracteres = strlen(nickName) > 32
         if nickNameDoUsuarioTemMaisDe32Caracteres {
             self.controladorDeErros.adicionarErro(erro: .erro_nick_de_usuario_nao_pode_ter_mais_de_32_caracteres)
+        }
+        
+        let nickNameDoUsuarioNaoEUmAlfaNumerico = !nickName.isAlphanumeric
+        if nickNameDoUsuarioNaoEUmAlfaNumerico {
+            self.controladorDeErros.adicionarErro(erro: .erro_nick_de_usuario_nao_e_um_alfanumerico)
+            
+            isValid = false
         }
         
         return isValid
@@ -115,7 +117,28 @@ class ValidacaoDeUsuarioParaCadastro: NSObject {
             isValid = false
         }
         
+        let emailDoUsuarioNaoEValido = !self.emailEValido(email)
+        if emailDoUsuarioNaoEValido {
+            self.controladorDeErros.adicionarErro(erro: .erro_email_invalido)
+            
+            isValid = false
+        }
+        
+        let emailDoUsuarioTemMaisDe150caracteres = strlen(email) > 150
+        if emailDoUsuarioTemMaisDe150caracteres {
+            self.controladorDeErros.adicionarErro(erro: .erro_email_tem_mais_de_150_caracteres)
+            
+            isValid = false
+        }
+        
         return isValid
+    }
+    
+    private func emailEValido(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
     }
     
     private func validacoesDaSenhaDoUsuario(_ senha: String) -> Bool {
@@ -124,6 +147,20 @@ class ValidacaoDeUsuarioParaCadastro: NSObject {
         let senhaDoUsuarioEstaVazia = strlen(senha) == 0
         if senhaDoUsuarioEstaVazia {
             self.controladorDeErros.adicionarErro(erro: .erro_senha_vazia)
+            
+            isValid = false
+        }
+        
+        let senhaDoUsuarioTemMenosQue8Caracteres = strlen(senha) < 8
+        if senhaDoUsuarioTemMenosQue8Caracteres {
+            self.controladorDeErros.adicionarErro(erro: .erro_senha_tem_menos_de_8_caracteres)
+            
+            isValid = false
+        }
+        
+        let senhaDoUsuarioTemMaisQue32Caracteres = strlen(senha) > 32
+        if senhaDoUsuarioTemMaisQue32Caracteres {
+            self.controladorDeErros.adicionarErro(erro: .erro_senha_tem_mais_de_32_caracteres)
             
             isValid = false
         }

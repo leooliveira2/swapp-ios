@@ -35,6 +35,7 @@ class CriacaoDeContatoViewController: UIViewController {
         senhaDoUsuario: String?,
         repeticaoDeSenhaDoUsuario: String?
     ) -> Void {
+        
         let controladorDeErros = ControladorDeErros()
         let validadorUsuario = ValidacaoDeUsuarioParaCadastro(controladorDeErros: controladorDeErros)
         
@@ -46,8 +47,6 @@ class CriacaoDeContatoViewController: UIViewController {
             repeticaoDeSenhaDoUsuario: repeticaoDeSenhaDoUsuario
         )
         
-        guard let navigationController = self.navigationController else { return }
-        
         if usuarioPodeSerCadastrado {
             guard let usuario = self.criaUsuario(
                 nickNameDoUsuario,
@@ -57,12 +56,7 @@ class CriacaoDeContatoViewController: UIViewController {
                 repeticaoDeSenhaDoUsuario
             ) else { return }
             
-            print(usuario.getNickNameDeUsuario())
-            print(usuario.getNomeCompletoDoUsuario())
-            print(usuario.getEmailDoUsuario())
-            print(usuario.getSenhaDoUsuario())
-            print(usuario.getRepeteSenhaDoUsuario())
-            
+            guard let navigationController = self.navigationController else { return }
             navigationController.popViewController(animated: true)
         }
         

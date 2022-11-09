@@ -114,7 +114,7 @@ class LoginScreen: UIView {
         return label
     }()
     
-    private lazy var cadastrarButton: UIButton = {
+    public lazy var cadastrarButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Clique aqui para cadastrar", for: .normal)

@@ -63,11 +63,6 @@ class CriacaoDeContatoViewController: UIViewController {
             print(usuario.getSenhaDoUsuario())
             print(usuario.getRepeteSenhaDoUsuario())
             
-            let controladorDeAlertas = Alerta(viewController: self)
-            controladorDeAlertas.criaAlerta(mensagem: "Conta criada com sucesso! Bem-vindo \(usuario.getNickNameDeUsuario())")
-            
-            
-                    
             navigationController.popViewController(animated: true)
         }
         

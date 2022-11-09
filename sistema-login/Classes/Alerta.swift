@@ -24,6 +24,5 @@ class Alerta: NSObject {
         alerta.addAction(acaoContinuar)
         
         self.viewController.present(alerta, animated: true, completion: nil)
-        
     }
 }

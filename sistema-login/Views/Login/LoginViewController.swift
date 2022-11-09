@@ -10,23 +10,17 @@ import UIKit
 class LoginViewController: UIViewController {
     
     // MARK: - Atributos
-    private lazy var loginScreen: LoginScreen = {
-        let view = LoginScreen(frame: .zero, loginViewController: self)
+    private lazy var loginView: LoginView = {
+        let view = LoginView()
         return view
     }()
     
-    // MARK: - Swift
-    override func loadView() {
-        self.view.addSubview(self.loginScreen)
-        loginScreen.cadastrarButton.addTarget(
-            self, action: #selector(redirecionarParaTelaDeCriacaoDeContato),
-            for: .touchUpInside
-        )
-    }
-
+    // MARK: - View life cycle - pesquisar sobre
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view = self.loginView
+        self.loginView.getBotaoDeCadastro().addTarget(self, action: #selector(redirecionarParaTelaDeCriacaoDeContato(_:)), for: .touchUpInside)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -34,7 +28,7 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Funcoes
-    @objc func redirecionarParaTelaDeCriacaoDeContato() -> Void { // pq esse _ sender
+    @objc private func redirecionarParaTelaDeCriacaoDeContato(_ sender: UIButton) -> Void {
         guard let navigationController = self.navigationController else { return }
         
         let criacaoDeContatoViewController = CriacaoDeContatoViewController()

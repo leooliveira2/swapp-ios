@@ -1,5 +1,5 @@
 //
-//  LoginScreen.swift
+//  LoginView.swift
 //  sistema-login
 //
 //  Created by Leonardo Leite on 07/11/22.
@@ -7,10 +7,7 @@
 
 import UIKit
 
-class LoginScreen: UIView {
-    
-    // MARK: Atributos
-    private let loginViewController: LoginViewController
+class LoginView: UIView {
     
     // MARK: - Componentes
     private lazy var backgroundImageView: UIImageView = {
@@ -114,7 +111,7 @@ class LoginScreen: UIView {
         return label
     }()
     
-    public lazy var cadastrarButton: UIButton = {
+    private lazy var cadastrarButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Clique aqui para cadastrar", for: .normal)
@@ -126,17 +123,26 @@ class LoginScreen: UIView {
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1.5
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(
-            self.solicitarRedirecionamentoParaTelaDeCriacaoDeContato(_:)),
-            for: .touchUpInside
-        )
         return button
     }()
     
     // MARK: - Inicializadores
-    init(frame: CGRect, loginViewController: LoginViewController) { // tirei o override init
-        self.loginViewController = loginViewController
+    override init(frame: CGRect) { // tirei o override init
         super.init(frame: frame)
+        self.configConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Funcoes
+    public func getBotaoDeCadastro() -> UIButton {
+        return self.cadastrarButton
+    }
+    
+    // MARK: - Config de constraints
+    private func configConstraints() -> Void {
         self.addSubview(self.backgroundImageView)
         self.addSubview(self.tituloLoginLabel)
         self.addSubview(self.emailTextField)
@@ -146,20 +152,7 @@ class LoginScreen: UIView {
         self.addSubview(self.linhaDeSeparacaoView)
         self.addSubview(self.aindaNaoTemContaLabel)
         self.addSubview(self.cadastrarButton)
-        self.configConstraints()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - Funcoes
-    @objc private func solicitarRedirecionamentoParaTelaDeCriacaoDeContato(_ sender: UIButton) -> Void {
-        self.loginViewController.redirecionarParaTelaDeCriacaoDeContato()
-    }
-
-    // MARK: - Config de constraints
-    private func configConstraints() -> Void {
+        
         NSLayoutConstraint.activate([
             self.backgroundImageView.topAnchor.constraint(equalTo: self.topAnchor),
             self.backgroundImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),

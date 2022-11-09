@@ -26,6 +26,6 @@ enum Erros: String {
     case erro_senha_tem_mais_de_32_caracteres = "A senha pode conter no máximo 32 caracteres!"
     
     case erro_repeticao_de_senha_vazio = "O campo repetição da senha não pode ser vazio!"
-    
+    case erro_repeticao_de_senha_e_senha_sao_diferentes = "A repetição da senha e a senha devem ser iguais!"
     
 }

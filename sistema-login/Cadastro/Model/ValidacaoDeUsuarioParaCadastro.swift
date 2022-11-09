@@ -39,7 +39,7 @@ class ValidacaoDeUsuarioParaCadastro: NSObject {
             !self.validacoesDoNomeCompletoDoUsuario(nomeCompleto) ||
             !self.validacoesDoEmailDoUsuario(email) ||
             !self.validacoesDaSenhaDoUsuario(senha) ||
-            !self.validacoesDaRepeticaoDeSenhaDoUsuario(repeticaoDeSenha)
+            !self.validacoesDaRepeticaoDeSenhaDoUsuario(senha, repeticaoDeSenha)
         {
             usuarioPodeSerCadastrado = false
         }
@@ -168,7 +168,7 @@ class ValidacaoDeUsuarioParaCadastro: NSObject {
         return isValid
     }
     
-    private func validacoesDaRepeticaoDeSenhaDoUsuario(_ repeticaoDeSenha: String) -> Bool {
+    private func validacoesDaRepeticaoDeSenhaDoUsuario(_ senha: String, _ repeticaoDeSenha: String) -> Bool {
         var isValid = true
         
         let repeticaoDaSenhaDoUsuarioEstaVazia = strlen(repeticaoDeSenha) == 0
@@ -178,6 +178,13 @@ class ValidacaoDeUsuarioParaCadastro: NSObject {
             isValid = false
         }
         
+        let repeticaoDaSenhaDoUsuarioEDiferenteDaSenha = senha != repeticaoDeSenha
+        if repeticaoDaSenhaDoUsuarioEDiferenteDaSenha {
+            self.controladorDeErros.adicionarErro(erro: .erro_repeticao_de_senha_e_senha_sao_diferentes)
+            
+            isValid = false
+        }
+            
         return isValid
     }
 }

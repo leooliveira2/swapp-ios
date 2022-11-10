@@ -54,8 +54,8 @@
 		C5252555291C44F5002508F5 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				C5252556291C4502002508F5 /* Service */,
 				C55BFA69291ACA7B0049C539 /* Model */,
+				C5252556291C4502002508F5 /* Service */,
 			);
 			path = src;
 			sourceTree = "<group>";

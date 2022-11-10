@@ -209,6 +209,26 @@ class CriacaoDeContaView: UIView {
         return self.criacaoDeContaButton
     }
     
+    public func getNickNameDoUsuario() -> String {
+        return self.nickNameDoUsuarioTextField
+    }
+    
+    public func getNomeCompletoDoUsuario() -> String {
+        return self.nomeCompletoDoUsuarioTextField
+    }
+    
+    public func getEmailDoUsuario() -> String {
+        return self.emailDoUsuarioTextField
+    }
+    
+    public func getSenhaDoUsuario() -> String {
+        return self.senhaDoUsuarioTextField
+    }
+    
+    public func getRepeticaoDeSenhaDoUsuario() -> String {
+        return self.repeticaoDeSenhaDoUsuarioTextField
+    }
+    
     // MARK: - Config de constraints
     private func configConstraints() -> Void {
         self.addSubview(self.backgroundImageView)

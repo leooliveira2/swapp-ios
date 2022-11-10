@@ -52,6 +52,16 @@ class CriacaoDeContaViewController: UIViewController {
             }
         }
         
+        let usuariosSalvos = UsuarioSalvo.getUsuariosSalvos()
+        for i in usuariosSalvos {
+            print("Apelido: \(i.getNickNameDeUsuario())")
+            print("Nome: \(i.getNomeCompletoDoUsuario())")
+            print("E-mail: \(i.getEmailDoUsuario())")
+            print("Senha: \(i.getSenhaDoUsuario())")
+            print("Repetição da senha: \(i.getRepeteSenhaDoUsuario())")
+            print("------------------------------------------------")
+        }
+        
         guard let navigationController = self.navigationController else {
             alertas.criaAlerta(titulo: "Sucesso!", mensagem: "Usuário foi salvo com sucesso")
             return

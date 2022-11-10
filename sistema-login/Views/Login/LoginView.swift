@@ -145,6 +145,14 @@ class LoginView: UIView {
         return self.cadastrarButton
     }
     
+    public func getEmailDoUsuario() -> String? {
+        return self.emailTextField.text
+    }
+    
+    public func getSenhaDoUsuario() -> String? {
+        return self.senhaTextField.text
+    }
+    
     // MARK: - Config de constraints
     private func configConstraints() -> Void {
         self.addSubview(self.backgroundImageView)

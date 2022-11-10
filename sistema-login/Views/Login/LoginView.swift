@@ -137,6 +137,10 @@ class LoginView: UIView {
     }
     
     // MARK: - Funcoes
+    public func getBotaoDeEntrar() -> UIButton {
+        return self.entrarButton
+    }
+    
     public func getBotaoDeCadastro() -> UIButton {
         return self.cadastrarButton
     }

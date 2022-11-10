@@ -20,7 +20,17 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         self.view = self.loginView
-        self.loginView.getBotaoDeCadastro().addTarget(self, action: #selector(redirecionarParaTelaDeCriacaoDeContato(_:)), for: .touchUpInside)
+        
+        self.loginView.getBotaoDeEntrar().addTarget(
+            self, action: #selector(realizarLogin(_:)),
+            for: .touchUpInside
+        )
+        
+        self.loginView.getBotaoDeCadastro().addTarget(
+            self, action: #selector(redirecionarParaTelaDeCriacaoDeContato(_:)),
+            for: .touchUpInside
+        )
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -28,6 +38,10 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Funcoes
+    @objc private func realizarLogin(_ sender: UIButton) -> Void {
+        
+    }
+    
     @objc private func redirecionarParaTelaDeCriacaoDeContato(_ sender: UIButton) -> Void {
         guard let navigationController = self.navigationController else { return }
         
@@ -35,5 +49,6 @@ class LoginViewController: UIViewController {
         
         navigationController.pushViewController(criacaoDeContaViewController, animated: true)
     }
+    
     
 }

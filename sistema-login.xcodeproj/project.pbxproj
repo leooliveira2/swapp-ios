@@ -20,6 +20,7 @@
 		C55BFA70291AD2000049C539 /* ControladorDeErros.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA6F291AD2000049C539 /* ControladorDeErros.swift */; };
 		C55BFA76291AD51A0049C539 /* Erros.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA75291AD51A0049C539 /* Erros.swift */; };
 		C55BFA78291AE4850049C539 /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA77291AE4850049C539 /* Alerta.swift */; };
+		C5C3455A291D7F9B00E3097A /* CriacaoDeContaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C34559291D7F9B00E3097A /* CriacaoDeContaController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		C55BFA6F291AD2000049C539 /* ControladorDeErros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControladorDeErros.swift; sourceTree = "<group>"; };
 		C55BFA75291AD51A0049C539 /* Erros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Erros.swift; sourceTree = "<group>"; };
 		C55BFA77291AE4850049C539 /* Alerta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
+		C5C34559291D7F9B00E3097A /* CriacaoDeContaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContaController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 		C5252558291C4535002508F5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C5C34558291D7F8900E3097A /* CriacaoDeConta */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -142,6 +145,14 @@
 				C55BFA75291AD51A0049C539 /* Erros.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C5C34558291D7F8900E3097A /* CriacaoDeConta */ = {
+			isa = PBXGroup;
+			children = (
+				C5C34559291D7F9B00E3097A /* CriacaoDeContaController.swift */,
+			);
+			path = CriacaoDeConta;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C55BFA70291AD2000049C539 /* ControladorDeErros.swift in Sources */,
+				C5C3455A291D7F9B00E3097A /* CriacaoDeContaController.swift in Sources */,
 				C550F86A2919644D00FC2EF2 /* LoginViewController.swift in Sources */,
 				C55BFA6E291AD0330049C539 /* ValidacaoDeUsuarioParaCadastro.swift in Sources */,
 				C550F87D2919650D00FC2EF2 /* LoginView.swift in Sources */,

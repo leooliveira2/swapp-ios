@@ -20,7 +20,7 @@ class CriacaoDeContaViewController: UIViewController {
         super.viewDidLoad()
         
         self.view = self.criacaoDeContaView
-        self.criacaoDeContaView.getBotaoCriarConta().addTarget(self, action: #selector(criarConta(_:)), for: .touchUpInside)
+        self.criacaoDeContaView.getBotaoCriarConta().addTarget(self, action: #selector(criacaoDeConta(_:)), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,8 +30,34 @@ class CriacaoDeContaViewController: UIViewController {
     }
     
     // MARK: - Funcoes
-    @objc private func criarConta(_ sender: UIButton) -> Void {
-        self.navigationController?.popViewController(animated: true)
+    @objc private func criacaoDeConta(_ sender: UIButton) -> Void {
+        
+        let alertas = Alerta(viewController: self)
+        let controladorDeErros = ControladorDeErros()
+        let controlador = CriacaoDeContaController(controladorDeErros)
+        
+        let contaFoiCriada = controlador.criarConta(
+            nickName: self.criacaoDeContaView.getNickNameDoUsuario(),
+            nomeCompleto: self.criacaoDeContaView.getNomeCompletoDoUsuario(),
+            email: self.criacaoDeContaView.getEmailDoUsuario(),
+            senha: self.criacaoDeContaView.getSenhaDoUsuario(),
+            repeticaoDaSenha: self.criacaoDeContaView.getRepeticaoDeSenhaDoUsuario()
+        )
+        
+        if !contaFoiCriada {
+            let listaDeErros = controladorDeErros.getErros()
+            if listaDeErros.count > 0 {
+                alertas.criaAlerta(mensagem: listaDeErros[0])
+                return
+            }
+        }
+        
+        guard let navigationController = self.navigationController else {
+            alertas.criaAlerta(titulo: "Sucesso!", mensagem: "Usuário foi salvo com sucesso")
+            return
+        }
+        
+        navigationController.popViewController(animated: true)
     }
 
 }

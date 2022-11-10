@@ -32,11 +32,8 @@ class ValidacaoDeUsuarioParaCadastro: NSObject {
               let senha = senhaDoUsuario,
               let repeticaoDeSenha = repeticaoDeSenhaDoUsuario
         else {
-            
             self.controladorDeErros.adicionarErro(erro: .erro_algum_dado_do_usuario_esta_nulo)
-            
             return false
-            
         }
         
         var usuarioPodeSerCadastrado = true

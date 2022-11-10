@@ -13,7 +13,7 @@ class ValidacaoDeUsuarioParaCadastro: NSObject {
     private let controladorDeErros: ControladorDeErros
     
     // MARK: - Inicializador
-    init(controladorDeErros: ControladorDeErros) {
+    init(_ controladorDeErros: ControladorDeErros) {
         self.controladorDeErros = controladorDeErros
     }
     

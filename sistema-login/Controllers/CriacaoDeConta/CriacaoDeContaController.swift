@@ -24,7 +24,7 @@ class CriacaoDeContaController: NSObject {
     ) -> Bool {
         
         let validadorDeUsuario = ValidacaoDeUsuarioParaCadastro(
-            controladorDeErros: self.controladorDeErros
+            self.controladorDeErros
         )
         
         let usuarioEValido = validadorDeUsuario.usuarioPodeSerCadastrado(

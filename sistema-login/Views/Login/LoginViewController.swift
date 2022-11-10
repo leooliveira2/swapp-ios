@@ -39,7 +39,9 @@ class LoginViewController: UIViewController {
     
     // MARK: - Funcoes
     @objc private func realizarLogin(_ sender: UIButton) -> Void {
+        let controladorDeErros = ControladorDeErros()
         
+        let controlador = LoginController(controladorDeErros)
     }
     
     @objc private func redirecionarParaTelaDeCriacaoDeContato(_ sender: UIButton) -> Void {

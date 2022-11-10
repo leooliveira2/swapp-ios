@@ -42,6 +42,21 @@ class LoginViewController: UIViewController {
         let controladorDeErros = ControladorDeErros()
         
         let controlador = LoginController(controladorDeErros)
+        
+        let alertas = Alerta(viewController: self)
+        
+        let loginPodeSerRealizado = controlador.fazerLogin(
+            email: self.loginView.getEmailDoUsuario(),
+            senha: self.loginView.getSenhaDoUsuario()
+        )
+        
+        if !loginPodeSerRealizado {
+            let listaDeErros = controladorDeErros.getErros()
+            if listaDeErros.count > 0 {
+                alertas.criaAlerta(mensagem: listaDeErros[0])
+                return
+            }
+        }
     }
     
     @objc private func redirecionarParaTelaDeCriacaoDeContato(_ sender: UIButton) -> Void {

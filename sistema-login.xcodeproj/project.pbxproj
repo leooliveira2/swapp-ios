@@ -21,6 +21,7 @@
 		C55BFA76291AD51A0049C539 /* Erros.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA75291AD51A0049C539 /* Erros.swift */; };
 		C55BFA78291AE4850049C539 /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA77291AE4850049C539 /* Alerta.swift */; };
 		C5C3455A291D7F9B00E3097A /* CriacaoDeContaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C34559291D7F9B00E3097A /* CriacaoDeContaController.swift */; };
+		C5C3455C291D860300E3097A /* UsuarioSalvo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C3455B291D860300E3097A /* UsuarioSalvo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		C55BFA75291AD51A0049C539 /* Erros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Erros.swift; sourceTree = "<group>"; };
 		C55BFA77291AE4850049C539 /* Alerta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
 		C5C34559291D7F9B00E3097A /* CriacaoDeContaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContaController.swift; sourceTree = "<group>"; };
+		C5C3455B291D860300E3097A /* UsuarioSalvo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioSalvo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				C55BFA6D291AD0330049C539 /* ValidacaoDeUsuarioParaCadastro.swift */,
 				C55BFA6F291AD2000049C539 /* ControladorDeErros.swift */,
 				C55BFA77291AE4850049C539 /* Alerta.swift */,
+				C5C3455B291D860300E3097A /* UsuarioSalvo.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				C55BFA6E291AD0330049C539 /* ValidacaoDeUsuarioParaCadastro.swift in Sources */,
 				C550F87D2919650D00FC2EF2 /* LoginView.swift in Sources */,
 				C55BFA6B291ACABB0049C539 /* Usuario.swift in Sources */,
+				C5C3455C291D860300E3097A /* UsuarioSalvo.swift in Sources */,
 				C550F8662919644D00FC2EF2 /* AppDelegate.swift in Sources */,
 				C550F8682919644D00FC2EF2 /* SceneDelegate.swift in Sources */,
 				C55BFA68291AB6890049C539 /* CriacaoDeContaView.swift in Sources */,

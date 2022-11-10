@@ -39,6 +39,46 @@ class CriacaoDeContaController: NSObject {
             return false
         }
         
+        guard let usuario = criaUsuario(
+            nickName,
+            nomeCompleto,
+            email,
+            senha,
+            repeticaoDaSenha
+        ) else {
+            self.controladorDeErros.adicionarErro(erro: .erro_algum_dado_do_usuario_esta_nulo)
+            return false
+        }
+        
+        UsuarioSalvo.salvarUsuario(usuario)
+        
         return true
+    }
+    
+    private func criaUsuario(
+        _ nickName: String?,
+        _ nomeCompleto: String?,
+        _ email: String?,
+        _ senha: String?,
+        _ repeticaoDaSenha: String?
+    ) -> Usuario? {
+        guard let nickName = nickName,
+              let nomeCompleto = nomeCompleto,
+              let email = email,
+              let senha = senha,
+              let repeticaoDaSenha = repeticaoDaSenha
+        else {
+            return nil
+        }
+        
+        let usuario = Usuario(
+            nickName: nickName,
+            nomeCompleto: nomeCompleto,
+            email: email,
+            senha: senha,
+            repeticaoDeSenha: repeticaoDaSenha
+        )
+        
+        return usuario
     }
 }

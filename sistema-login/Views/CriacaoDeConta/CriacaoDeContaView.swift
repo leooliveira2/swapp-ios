@@ -209,24 +209,24 @@ class CriacaoDeContaView: UIView {
         return self.criacaoDeContaButton
     }
     
-    public func getNickNameDoUsuario() -> String {
-        return self.nickNameDoUsuarioTextField
+    public func getNickNameDoUsuario() -> String? {
+        return self.nickNameDoUsuarioTextField.text
     }
     
-    public func getNomeCompletoDoUsuario() -> String {
-        return self.nomeCompletoDoUsuarioTextField
+    public func getNomeCompletoDoUsuario() -> String? {
+        return self.nomeCompletoDoUsuarioTextField.text
     }
     
-    public func getEmailDoUsuario() -> String {
-        return self.emailDoUsuarioTextField
+    public func getEmailDoUsuario() -> String? {
+        return self.emailDoUsuarioTextField.text
     }
     
-    public func getSenhaDoUsuario() -> String {
-        return self.senhaDoUsuarioTextField
+    public func getSenhaDoUsuario() -> String? {
+        return self.senhaDoUsuarioTextField.text
     }
     
-    public func getRepeticaoDeSenhaDoUsuario() -> String {
-        return self.repeticaoDeSenhaDoUsuarioTextField
+    public func getRepeticaoDeSenhaDoUsuario() -> String? {
+        return self.repeticaoDeSenhaDoUsuarioTextField.text // pq n precisei usar optionals
     }
     
     // MARK: - Config de constraints

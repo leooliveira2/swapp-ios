@@ -26,6 +26,13 @@ class ValidacaoDeLogin: NSObject {
             return false
         }
         
+        let emailOuSenhaEstaoVazios = strlen(email) == 0 || strlen(senha) == 0
+        if emailOuSenhaEstaoVazios {
+            self.controladorDeErros.adicionarErro(erro: .erro_email_e_senha_devem_ser_ambos_preenchidos)
+            
+            return false
+        }
+        
         var emailESenhaEstaoCadastrados = false
         
         let listaDeUsuarios = UsuarioSalvo.getUsuariosSalvos()

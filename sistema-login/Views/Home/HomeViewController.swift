@@ -12,4 +12,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         self.view.backgroundColor = .lightGray
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+    }
 }

@@ -57,6 +57,14 @@ class LoginViewController: UIViewController {
                 return
             }
         }
+        
+        guard let navigationController = self.navigationController else {
+            alertas.criaAlerta(mensagem: "Tente novamente!")
+            return
+        }
+        
+        let homeViewController = HomeViewController()
+        navigationController.pushViewController(homeViewController, animated: true)
     }
     
     @objc private func redirecionarParaTelaDeCriacaoDeContato(_ sender: UIButton) -> Void {

@@ -18,5 +18,11 @@ class RecuperacaoDeSenhaViewController: UIViewController {
         super.viewDidLoad()
         self.view = self.recuperacaoDeSenhaView
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.navigationBar.backItem?.backButtonTitle = "Voltar"
+        self.navigationController?.navigationBar.tintColor = .white
+    }
 
 }

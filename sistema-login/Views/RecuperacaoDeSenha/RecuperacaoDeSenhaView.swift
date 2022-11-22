@@ -27,6 +27,15 @@ class RecuperacaoDeSenhaView: UIView {
         return label
     }()
     
+    private lazy var emailLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "E-mail"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 18)
+        return label
+    }()
+    
     // MARK: - Inicializadores
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,6 +50,7 @@ class RecuperacaoDeSenhaView: UIView {
     private func configsConstraints() -> Void {
         self.addSubview(self.backgroundImageView)
         self.addSubview(self.tituloRecuperaSenhaLabel)
+        self.addSubview(self.emailLabel)
         
         NSLayoutConstraint.activate([
             self.backgroundImageView.topAnchor.constraint(equalTo: self.topAnchor),
@@ -50,6 +60,10 @@ class RecuperacaoDeSenhaView: UIView {
             
             self.tituloRecuperaSenhaLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
             self.tituloRecuperaSenhaLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            
+            self.emailLabel.topAnchor.constraint(equalTo: self.tituloRecuperaSenhaLabel.bottomAnchor, constant: 30),
+            self.emailLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            
             
             
         

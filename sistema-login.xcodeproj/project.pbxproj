@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C50DC29E291EDE28001CC4F9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50DC29D291EDE28001CC4F9 /* HomeViewController.swift */; };
 		C50DC2A0291EDE3B001CC4F9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50DC29F291EDE3B001CC4F9 /* HomeView.swift */; };
+		C50E6427292D56E100D8047C /* RecuperacaoDeSenhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50E6426292D56E100D8047C /* RecuperacaoDeSenhaViewController.swift */; };
+		C50E6429292D572200D8047C /* RecuperacaoDeSenhaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50E6428292D572200D8047C /* RecuperacaoDeSenhaView.swift */; };
 		C550F8662919644D00FC2EF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8652919644D00FC2EF2 /* AppDelegate.swift */; };
 		C550F8682919644D00FC2EF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8672919644D00FC2EF2 /* SceneDelegate.swift */; };
 		C550F86A2919644D00FC2EF2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8692919644D00FC2EF2 /* LoginViewController.swift */; };
@@ -31,6 +33,8 @@
 /* Begin PBXFileReference section */
 		C50DC29D291EDE28001CC4F9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C50DC29F291EDE3B001CC4F9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		C50E6426292D56E100D8047C /* RecuperacaoDeSenhaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperacaoDeSenhaViewController.swift; sourceTree = "<group>"; };
+		C50E6428292D572200D8047C /* RecuperacaoDeSenhaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperacaoDeSenhaView.swift; sourceTree = "<group>"; };
 		C550F8622919644D00FC2EF2 /* sistema-login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sistema-login.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C550F8652919644D00FC2EF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C550F8672919644D00FC2EF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +76,15 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		C50E6425292D56C900D8047C /* RecuperacaoDeSenha */ = {
+			isa = PBXGroup;
+			children = (
+				C50E6426292D56E100D8047C /* RecuperacaoDeSenhaViewController.swift */,
+				C50E6428292D572200D8047C /* RecuperacaoDeSenhaView.swift */,
+			);
+			path = RecuperacaoDeSenha;
+			sourceTree = "<group>";
+		};
 		C5252555291C44F5002508F5 /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +109,7 @@
 		C5252557291C452B002508F5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C50E6425292D56C900D8047C /* RecuperacaoDeSenha */,
 				C50DC29C291EDE08001CC4F9 /* Home */,
 				C525255A291C4572002508F5 /* Login */,
 				C5252559291C4548002508F5 /* CriacaoDeConta */,
@@ -258,9 +272,11 @@
 			files = (
 				C55BFA70291AD2000049C539 /* ControladorDeErros.swift in Sources */,
 				C5C3455A291D7F9B00E3097A /* CriacaoDeContaController.swift in Sources */,
+				C50E6427292D56E100D8047C /* RecuperacaoDeSenhaViewController.swift in Sources */,
 				C550F86A2919644D00FC2EF2 /* LoginViewController.swift in Sources */,
 				C55BFA6E291AD0330049C539 /* ValidacaoDeUsuarioParaCadastro.swift in Sources */,
 				C550F87D2919650D00FC2EF2 /* LoginView.swift in Sources */,
+				C50E6429292D572200D8047C /* RecuperacaoDeSenhaView.swift in Sources */,
 				C50DC2A0291EDE3B001CC4F9 /* HomeView.swift in Sources */,
 				C55BFA6B291ACABB0049C539 /* Usuario.swift in Sources */,
 				C5C3455C291D860300E3097A /* UsuarioSalvo.swift in Sources */,

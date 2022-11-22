@@ -82,16 +82,39 @@ class RecuperacaoDeSenhaView: UIView {
     private lazy var novaSenhaLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Nova senha"
+        label.text = "Nova senha (mínimo 8 dígitos)"
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 18)
         return label
+    }()
+    
+    private lazy var novaSenhaTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.keyboardType = .default
+        textField.isSecureTextEntry = true
+        textField.autocorrectionType = .no
+        textField.textColor = .white
+        textField.borderStyle = .roundedRect
+        textField.backgroundColor = UIColor(red: 52/255, green: 52/255, blue: 52/255, alpha: 1.0)
+        textField.clipsToBounds = true
+        textField.attributedPlaceholder = NSAttributedString(
+            string: "Informe sua nova senha",
+            attributes: [
+                NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.4)
+            ]
+        )
+        textField.layer.cornerRadius = 10
+        textField.layer.borderWidth = 1.5
+        textField.layer.borderColor = UIColor.white.cgColor
+        return textField
     }()
     
     // MARK: - Inicializadores
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configsConstraints()
+        
         
         
     }
@@ -115,6 +138,7 @@ class RecuperacaoDeSenhaView: UIView {
     private func exibeComponentesNecessariosParaRedefinicaoDaSenha() -> Void {
         self.addSubview(self.linhaDeSeparacaoView)
         self.addSubview(self.novaSenhaLabel)
+        self.addSubview(self.novaSenhaTextField)
         
         NSLayoutConstraint.activate([
             self.linhaDeSeparacaoView.topAnchor.constraint(equalTo: self.emailTextField.bottomAnchor, constant: 30),
@@ -125,7 +149,11 @@ class RecuperacaoDeSenhaView: UIView {
             self.novaSenhaLabel.topAnchor.constraint(equalTo: self.linhaDeSeparacaoView.bottomAnchor, constant: 30),
             self.novaSenhaLabel.leadingAnchor.constraint(equalTo: self.emailLabel.leadingAnchor),
             
-            
+            self.novaSenhaTextField.topAnchor.constraint(equalTo: self.novaSenhaLabel.bottomAnchor, constant: 5),
+            self.novaSenhaTextField.leadingAnchor.constraint(equalTo: self.emailTextField.leadingAnchor),
+            self.novaSenhaTextField.trailingAnchor.constraint(equalTo: self.emailTextField.trailingAnchor),
+            self.novaSenhaTextField.heightAnchor.constraint(equalToConstant: 45),
+        
         ])
     }
     

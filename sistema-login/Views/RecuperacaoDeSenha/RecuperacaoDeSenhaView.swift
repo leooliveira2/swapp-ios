@@ -110,12 +110,20 @@ class RecuperacaoDeSenhaView: UIView {
         return textField
     }()
     
+    private lazy var repeticaoDaNovaSenhaLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Digite a senha novamente"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 18)
+        return label
+    }()
+    
     // MARK: - Inicializadores
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configsConstraints()
-        
-        
+
         
     }
     
@@ -139,6 +147,7 @@ class RecuperacaoDeSenhaView: UIView {
         self.addSubview(self.linhaDeSeparacaoView)
         self.addSubview(self.novaSenhaLabel)
         self.addSubview(self.novaSenhaTextField)
+        self.addSubview(self.repeticaoDaNovaSenhaLabel)
         
         NSLayoutConstraint.activate([
             self.linhaDeSeparacaoView.topAnchor.constraint(equalTo: self.emailTextField.bottomAnchor, constant: 30),
@@ -153,6 +162,11 @@ class RecuperacaoDeSenhaView: UIView {
             self.novaSenhaTextField.leadingAnchor.constraint(equalTo: self.emailTextField.leadingAnchor),
             self.novaSenhaTextField.trailingAnchor.constraint(equalTo: self.emailTextField.trailingAnchor),
             self.novaSenhaTextField.heightAnchor.constraint(equalToConstant: 45),
+            
+            self.repeticaoDaNovaSenhaLabel.topAnchor.constraint(equalTo: self.novaSenhaTextField.bottomAnchor, constant: 10),
+            self.repeticaoDaNovaSenhaLabel.leadingAnchor.constraint(equalTo: self.emailLabel.leadingAnchor),
+            
+            
         
         ])
     }

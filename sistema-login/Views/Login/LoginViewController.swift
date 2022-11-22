@@ -31,6 +31,8 @@ class LoginViewController: UIViewController {
             for: .touchUpInside
         )
         
+        self.loginView.getBotaoRecuperarSenha().addTarget(self, action: #selector(redirecionarParaRecuperacaoDeSenha(_:)), for: .touchUpInside)
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +40,14 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Funcoes
+    @objc private func redirecionarParaRecuperacaoDeSenha(_ sender: UIButton) -> Void {
+        guard let navigationController = self.navigationController else { return }
+        
+        let recuperacaoDeSenhaViewController = RecuperacaoDeSenhaViewController()
+        
+        navigationController.pushViewController(recuperacaoDeSenhaViewController, animated: true)
+    }
+    
     @objc private func realizarLogin(_ sender: UIButton) -> Void {
         let controladorDeErros = ControladorDeErros()
         

@@ -57,6 +57,21 @@ class RecuperacaoDeSenhaView: UIView {
         return textField
     }()
     
+    private lazy var usuarioNaoEncontradoLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .red
+        label.text = "Usuário não encontrado!"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.textAlignment = .center
+        label.clipsToBounds = true
+        label.layer.borderWidth = 1.5
+        label.layer.borderColor = UIColor.white.cgColor
+        label.layer.cornerRadius = 10
+        return label
+    }()
+    
     // MARK: - Inicializadores
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -73,6 +88,7 @@ class RecuperacaoDeSenhaView: UIView {
         self.addSubview(self.tituloRecuperaSenhaLabel)
         self.addSubview(self.emailLabel)
         self.addSubview(self.emailTextField)
+        
         
         NSLayoutConstraint.activate([
             self.backgroundImageView.topAnchor.constraint(equalTo: self.topAnchor),
@@ -91,7 +107,12 @@ class RecuperacaoDeSenhaView: UIView {
             self.emailTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             self.emailTextField.heightAnchor.constraint(equalToConstant: 45),
             
-        
+            self.usuarioNaoEncontradoLabel.topAnchor.constraint(equalTo: self.emailTextField.bottomAnchor, constant: 20),
+            self.usuarioNaoEncontradoLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 50),
+            self.usuarioNaoEncontradoLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -50),
+            self.usuarioNaoEncontradoLabel.heightAnchor.constraint(equalToConstant: 45),
+            
+            
         ])
     }
     

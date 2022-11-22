@@ -36,6 +36,27 @@ class RecuperacaoDeSenhaView: UIView {
         return label
     }()
     
+    private lazy var emailTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.keyboardType = .emailAddress
+        textField.autocorrectionType = .no
+        textField.textColor = .white
+        textField.borderStyle = .roundedRect
+        textField.backgroundColor = UIColor(red: 52/255, green: 52/255, blue: 52/255, alpha: 1.0)
+        textField.clipsToBounds = true
+        textField.attributedPlaceholder = NSAttributedString(
+            string: "Informe seu e-mail",
+            attributes: [
+                NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.4)
+            ]
+        )
+        textField.layer.cornerRadius = 10
+        textField.layer.borderWidth = 1.5
+        textField.layer.borderColor = UIColor.white.cgColor
+        return textField
+    }()
+    
     // MARK: - Inicializadores
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,6 +72,7 @@ class RecuperacaoDeSenhaView: UIView {
         self.addSubview(self.backgroundImageView)
         self.addSubview(self.tituloRecuperaSenhaLabel)
         self.addSubview(self.emailLabel)
+        self.addSubview(self.emailTextField)
         
         NSLayoutConstraint.activate([
             self.backgroundImageView.topAnchor.constraint(equalTo: self.topAnchor),
@@ -64,9 +86,11 @@ class RecuperacaoDeSenhaView: UIView {
             self.emailLabel.topAnchor.constraint(equalTo: self.tituloRecuperaSenhaLabel.bottomAnchor, constant: 30),
             self.emailLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             
+            self.emailTextField.topAnchor.constraint(equalTo: self.emailLabel.bottomAnchor, constant: 5),
+            self.emailTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            self.emailTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            self.emailTextField.heightAnchor.constraint(equalToConstant: 45),
             
-            
-        
         
         ])
     }

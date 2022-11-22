@@ -72,6 +72,13 @@ class RecuperacaoDeSenhaView: UIView {
         return label
     }()
     
+    private lazy var linhaDeSeparacaoView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        return view
+    }()
+    
     // MARK: - Inicializadores
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -82,13 +89,35 @@ class RecuperacaoDeSenhaView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Funcoes
+    private func exibeLabelCasoOUsuarioNaoExista() -> Void {
+        self.addSubview(self.usuarioNaoEncontradoLabel)
+        
+        NSLayoutConstraint.activate([
+            self.usuarioNaoEncontradoLabel.topAnchor.constraint(equalTo: self.emailTextField.bottomAnchor, constant: 20),
+            self.usuarioNaoEncontradoLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 50),
+            self.usuarioNaoEncontradoLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -50),
+            self.usuarioNaoEncontradoLabel.heightAnchor.constraint(equalToConstant: 45),
+        ])
+    }
+    
+    private func exibeComponentesNecessariosParaRedefinicaoDaSenha() -> Void {
+        self.addSubview(self.linhaDeSeparacaoView)
+        
+        NSLayoutConstraint.activate([
+            self.linhaDeSeparacaoView.topAnchor.constraint(equalTo: self.emailTextField.bottomAnchor, constant: 30),
+            self.linhaDeSeparacaoView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            self.linhaDeSeparacaoView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            self.linhaDeSeparacaoView.heightAnchor.constraint(equalToConstant: 1),
+        ])
+    }
+    
     // MARK: - Constraints
     private func configsConstraints() -> Void {
         self.addSubview(self.backgroundImageView)
         self.addSubview(self.tituloRecuperaSenhaLabel)
         self.addSubview(self.emailLabel)
         self.addSubview(self.emailTextField)
-        
         
         NSLayoutConstraint.activate([
             self.backgroundImageView.topAnchor.constraint(equalTo: self.topAnchor),
@@ -106,13 +135,7 @@ class RecuperacaoDeSenhaView: UIView {
             self.emailTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             self.emailTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             self.emailTextField.heightAnchor.constraint(equalToConstant: 45),
-            
-            self.usuarioNaoEncontradoLabel.topAnchor.constraint(equalTo: self.emailTextField.bottomAnchor, constant: 20),
-            self.usuarioNaoEncontradoLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 50),
-            self.usuarioNaoEncontradoLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -50),
-            self.usuarioNaoEncontradoLabel.heightAnchor.constraint(equalToConstant: 45),
-            
-            
+                        
         ])
     }
     

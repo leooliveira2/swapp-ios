@@ -79,10 +79,21 @@ class RecuperacaoDeSenhaView: UIView {
         return view
     }()
     
+    private lazy var novaSenhaLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Nova senha"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 18)
+        return label
+    }()
+    
     // MARK: - Inicializadores
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configsConstraints()
+        
+        
     }
     
     required init?(coder: NSCoder) {
@@ -103,12 +114,18 @@ class RecuperacaoDeSenhaView: UIView {
     
     private func exibeComponentesNecessariosParaRedefinicaoDaSenha() -> Void {
         self.addSubview(self.linhaDeSeparacaoView)
+        self.addSubview(self.novaSenhaLabel)
         
         NSLayoutConstraint.activate([
             self.linhaDeSeparacaoView.topAnchor.constraint(equalTo: self.emailTextField.bottomAnchor, constant: 30),
             self.linhaDeSeparacaoView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             self.linhaDeSeparacaoView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             self.linhaDeSeparacaoView.heightAnchor.constraint(equalToConstant: 1),
+            
+            self.novaSenhaLabel.topAnchor.constraint(equalTo: self.linhaDeSeparacaoView.bottomAnchor, constant: 30),
+            self.novaSenhaLabel.leadingAnchor.constraint(equalTo: self.emailLabel.leadingAnchor),
+            
+            
         ])
     }
     

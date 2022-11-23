@@ -9,7 +9,7 @@ import UIKit
 
 class UsuarioDao: NSObject {
     
-    static private var usuariosSalvos: [Usuario] = []
+    static private var usuariosSalvos: [Usuario] = [Usuario(nickName: "leo12", nomeCompleto: "Leonardo", email: "Email@email.com", senha: "123123123", repeticaoDeSenha: "123123123")]
     
     public static func salvarUsuario(_ usuario: Usuario) -> Void {
         usuariosSalvos.append(usuario)

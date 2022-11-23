@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C50DC29E291EDE28001CC4F9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50DC29D291EDE28001CC4F9 /* HomeViewController.swift */; };
+		C50DC29E291EDE28001CC4F9 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50DC29D291EDE28001CC4F9 /* HomeTabBarController.swift */; };
 		C50DC2A0291EDE3B001CC4F9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50DC29F291EDE3B001CC4F9 /* HomeView.swift */; };
 		C50E6427292D56E100D8047C /* RecuperacaoDeSenhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50E6426292D56E100D8047C /* RecuperacaoDeSenhaViewController.swift */; };
 		C50E6429292D572200D8047C /* RecuperacaoDeSenhaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50E6428292D572200D8047C /* RecuperacaoDeSenhaView.swift */; };
@@ -25,6 +25,9 @@
 		C55BFA76291AD51A0049C539 /* Erros.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA75291AD51A0049C539 /* Erros.swift */; };
 		C55BFA78291AE4850049C539 /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA77291AE4850049C539 /* Alerta.swift */; };
 		C58D4095292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D4094292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift */; };
+		C58D409B292EB46F00A1C6BC /* PersonagemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D409A292EB46F00A1C6BC /* PersonagemViewController.swift */; };
+		C58D409D292EB49700A1C6BC /* NaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D409C292EB49700A1C6BC /* NaveViewController.swift */; };
+		C58D409F292EB4B400A1C6BC /* PlanetaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D409E292EB4B400A1C6BC /* PlanetaViewController.swift */; };
 		C5C3455A291D7F9B00E3097A /* CriacaoDeContaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C34559291D7F9B00E3097A /* CriacaoDeContaController.swift */; };
 		C5C3455C291D860300E3097A /* UsuarioDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C3455B291D860300E3097A /* UsuarioDao.swift */; };
 		C5C3455F291D907A00E3097A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C3455E291D907A00E3097A /* LoginController.swift */; };
@@ -32,7 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C50DC29D291EDE28001CC4F9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C50DC29D291EDE28001CC4F9 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		C50DC29F291EDE3B001CC4F9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		C50E6426292D56E100D8047C /* RecuperacaoDeSenhaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperacaoDeSenhaViewController.swift; sourceTree = "<group>"; };
 		C50E6428292D572200D8047C /* RecuperacaoDeSenhaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperacaoDeSenhaView.swift; sourceTree = "<group>"; };
@@ -52,6 +55,9 @@
 		C55BFA75291AD51A0049C539 /* Erros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Erros.swift; sourceTree = "<group>"; };
 		C55BFA77291AE4850049C539 /* Alerta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
 		C58D4094292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperacaoDeSenhaController.swift; sourceTree = "<group>"; };
+		C58D409A292EB46F00A1C6BC /* PersonagemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonagemViewController.swift; sourceTree = "<group>"; };
+		C58D409C292EB49700A1C6BC /* NaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaveViewController.swift; sourceTree = "<group>"; };
+		C58D409E292EB4B400A1C6BC /* PlanetaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetaViewController.swift; sourceTree = "<group>"; };
 		C5C34559291D7F9B00E3097A /* CriacaoDeContaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContaController.swift; sourceTree = "<group>"; };
 		C5C3455B291D860300E3097A /* UsuarioDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioDao.swift; sourceTree = "<group>"; };
 		C5C3455E291D907A00E3097A /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -72,8 +78,9 @@
 		C50DC29C291EDE08001CC4F9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				C50DC29D291EDE28001CC4F9 /* HomeViewController.swift */,
+				C50DC29D291EDE28001CC4F9 /* HomeTabBarController.swift */,
 				C50DC29F291EDE3B001CC4F9 /* HomeView.swift */,
+				C58D4096292EB40200A1C6BC /* Telas */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -195,6 +202,40 @@
 			path = RecuperacaoDeSenhaController;
 			sourceTree = "<group>";
 		};
+		C58D4096292EB40200A1C6BC /* Telas */ = {
+			isa = PBXGroup;
+			children = (
+				C58D4097292EB41500A1C6BC /* Personagem */,
+				C58D4098292EB43000A1C6BC /* Planeta */,
+				C58D4099292EB43F00A1C6BC /* Nave */,
+			);
+			path = Telas;
+			sourceTree = "<group>";
+		};
+		C58D4097292EB41500A1C6BC /* Personagem */ = {
+			isa = PBXGroup;
+			children = (
+				C58D409A292EB46F00A1C6BC /* PersonagemViewController.swift */,
+			);
+			path = Personagem;
+			sourceTree = "<group>";
+		};
+		C58D4098292EB43000A1C6BC /* Planeta */ = {
+			isa = PBXGroup;
+			children = (
+				C58D409E292EB4B400A1C6BC /* PlanetaViewController.swift */,
+			);
+			path = Planeta;
+			sourceTree = "<group>";
+		};
+		C58D4099292EB43F00A1C6BC /* Nave */ = {
+			isa = PBXGroup;
+			children = (
+				C58D409C292EB49700A1C6BC /* NaveViewController.swift */,
+			);
+			path = Nave;
+			sourceTree = "<group>";
+		};
 		C5C34558291D7F8900E3097A /* CriacaoDeConta */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C58D409F292EB4B400A1C6BC /* PlanetaViewController.swift in Sources */,
 				C55BFA70291AD2000049C539 /* ControladorDeErros.swift in Sources */,
 				C5C3455A291D7F9B00E3097A /* CriacaoDeContaController.swift in Sources */,
 				C50E6427292D56E100D8047C /* RecuperacaoDeSenhaViewController.swift in Sources */,
@@ -291,13 +333,15 @@
 				C58D4095292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift in Sources */,
 				C50DC2A0291EDE3B001CC4F9 /* HomeView.swift in Sources */,
 				C55BFA6B291ACABB0049C539 /* Usuario.swift in Sources */,
+				C58D409D292EB49700A1C6BC /* NaveViewController.swift in Sources */,
 				C5C3455C291D860300E3097A /* UsuarioDao.swift in Sources */,
 				C550F8662919644D00FC2EF2 /* AppDelegate.swift in Sources */,
 				C550F8682919644D00FC2EF2 /* SceneDelegate.swift in Sources */,
 				C55BFA68291AB6890049C539 /* CriacaoDeContaView.swift in Sources */,
 				C55BFA78291AE4850049C539 /* Alerta.swift in Sources */,
-				C50DC29E291EDE28001CC4F9 /* HomeViewController.swift in Sources */,
+				C50DC29E291EDE28001CC4F9 /* HomeTabBarController.swift in Sources */,
 				C550F8812919A0D400FC2EF2 /* CriacaoDeContaViewController.swift in Sources */,
+				C58D409B292EB46F00A1C6BC /* PersonagemViewController.swift in Sources */,
 				C55BFA76291AD51A0049C539 /* Erros.swift in Sources */,
 				C5C3455F291D907A00E3097A /* LoginController.swift in Sources */,
 				C5C34561291D944C00E3097A /* ValidacaoDeLogin.swift in Sources */,

@@ -73,8 +73,8 @@ class LoginViewController: UIViewController {
             return
         }
         
-        let homeViewController = HomeViewController()
-        navigationController.pushViewController(homeViewController, animated: true)
+        let homeTabBarController = HomeTabBarController()
+        navigationController.pushViewController(homeTabBarController, animated: true)
     }
     
     @objc private func redirecionarParaTelaDeCriacaoDeContato(_ sender: UIButton) -> Void {

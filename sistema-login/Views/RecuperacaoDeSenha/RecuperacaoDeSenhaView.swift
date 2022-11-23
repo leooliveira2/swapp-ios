@@ -217,6 +217,14 @@ class RecuperacaoDeSenhaView: UIView {
         return self.emailTextField
     }
     
+    public func getNovaSenha() -> String? {
+        return self.novaSenhaTextField.text
+    }
+    
+    public func getAlterarSenhaButton() -> UIButton {
+        return self.alterarSenhaButton
+    }
+    
     private func ocultaComponentesQuandoUsuarioNaoExiste() -> Void {
         self.usuarioNaoEncontradoLabel.isHidden = true
     }

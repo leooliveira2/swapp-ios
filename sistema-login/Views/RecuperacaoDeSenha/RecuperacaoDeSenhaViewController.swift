@@ -25,6 +25,12 @@ class RecuperacaoDeSenhaViewController: UIViewController {
             action: #selector(exibeConteudoAposEmailSerDigitado(_:)),
             for: .editingChanged
         )
+        
+        self.recuperacaoDeSenhaView.getAlterarSenhaButton().addTarget(
+            self,
+            action: #selector(verificaSeSenhaPodeSerAlterada(_:)),
+            for: .touchUpInside
+        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,5 +54,7 @@ class RecuperacaoDeSenhaViewController: UIViewController {
         self.recuperacaoDeSenhaView.configuraComponentesCasoOUsuarioNaoExista()
     }
     
-
+    @objc private func verificaSeSenhaPodeSerAlterada(_ sender: UIButton) -> Void {
+        
+    }
 }

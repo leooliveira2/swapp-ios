@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C50DC29E291EDE28001CC4F9 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50DC29D291EDE28001CC4F9 /* HomeTabBarController.swift */; };
-		C50DC2A0291EDE3B001CC4F9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50DC29F291EDE3B001CC4F9 /* HomeView.swift */; };
 		C50E6427292D56E100D8047C /* RecuperacaoDeSenhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50E6426292D56E100D8047C /* RecuperacaoDeSenhaViewController.swift */; };
 		C50E6429292D572200D8047C /* RecuperacaoDeSenhaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50E6428292D572200D8047C /* RecuperacaoDeSenhaView.swift */; };
 		C550F8662919644D00FC2EF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8652919644D00FC2EF2 /* AppDelegate.swift */; };
@@ -36,7 +35,6 @@
 
 /* Begin PBXFileReference section */
 		C50DC29D291EDE28001CC4F9 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
-		C50DC29F291EDE3B001CC4F9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		C50E6426292D56E100D8047C /* RecuperacaoDeSenhaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperacaoDeSenhaViewController.swift; sourceTree = "<group>"; };
 		C50E6428292D572200D8047C /* RecuperacaoDeSenhaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperacaoDeSenhaView.swift; sourceTree = "<group>"; };
 		C550F8622919644D00FC2EF2 /* sistema-login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sistema-login.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,7 +77,6 @@
 			isa = PBXGroup;
 			children = (
 				C50DC29D291EDE28001CC4F9 /* HomeTabBarController.swift */,
-				C50DC29F291EDE3B001CC4F9 /* HomeView.swift */,
 				C58D4096292EB40200A1C6BC /* Telas */,
 			);
 			path = Home;
@@ -331,7 +328,6 @@
 				C550F87D2919650D00FC2EF2 /* LoginView.swift in Sources */,
 				C50E6429292D572200D8047C /* RecuperacaoDeSenhaView.swift in Sources */,
 				C58D4095292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift in Sources */,
-				C50DC2A0291EDE3B001CC4F9 /* HomeView.swift in Sources */,
 				C55BFA6B291ACABB0049C539 /* Usuario.swift in Sources */,
 				C58D409D292EB49700A1C6BC /* NaveViewController.swift in Sources */,
 				C5C3455C291D860300E3097A /* UsuarioDao.swift in Sources */,

@@ -32,5 +32,5 @@ class LoginController: NSObject {
         
         return cadastroFoiEncontrado
     }
-    
+
 }

@@ -51,7 +51,8 @@ class ValidacaoDeUsuarioParaCadastro: NSObject {
         return usuarioPodeSerCadastrado
     }
     
-    // MARK: - Funcoes secundarias
+    // Funcoes secundarias
+    // MARK: - Validacoes de NickName
     private func validacoesDoNickNameDoUsuario(_ nickName: String) -> Bool {
         var isValid = true
         
@@ -72,6 +73,8 @@ class ValidacaoDeUsuarioParaCadastro: NSObject {
         let nickNameDoUsuarioTemMaisDe32Caracteres = strlen(nickName) > 32
         if nickNameDoUsuarioTemMaisDe32Caracteres {
             self.controladorDeErros.adicionarErro(erro: .erro_nick_de_usuario_nao_pode_ter_mais_de_32_caracteres)
+            
+            isValid = false
         }
         
         let nickNameDoUsuarioNaoEUmAlfaNumerico = !nickName.isAlphanumeric
@@ -81,9 +84,17 @@ class ValidacaoDeUsuarioParaCadastro: NSObject {
             isValid = false
         }
         
+        let nickNameDeUsuarioJaEstaCadastrado = self.nickNameDeUsuarioJaEstaCadastrado(nickName: nickName)
+        if nickNameDeUsuarioJaEstaCadastrado {
+            self.controladorDeErros.adicionarErro(erro: .erro_nick_de_usuario_ja_esta_cadastrado)
+            
+            isValid = false
+        }
+        
         return isValid
     }
     
+    // MARK: - Validacoes de nome
     private func validacoesDoNomeCompletoDoUsuario(_ nomeCompleto: String) -> Bool {
         var isValid = true
         
@@ -111,6 +122,7 @@ class ValidacaoDeUsuarioParaCadastro: NSObject {
         return isValid
     }
     
+    // MARK: - Validacoes de email
     private func validacoesDoEmailDoUsuario(_ email: String) -> Bool {
         var isValid = true
         
@@ -135,6 +147,13 @@ class ValidacaoDeUsuarioParaCadastro: NSObject {
             isValid = false
         }
         
+        let emailDoUsuarioJaEstaCadastrado = self.emailJaEstaCadastrado(email: email)
+        if emailDoUsuarioJaEstaCadastrado {
+            self.controladorDeErros.adicionarErro(erro: .erro_email_ja_esta_cadastrado)
+            
+            isValid = false
+        }
+        
         return isValid
     }
     
@@ -145,6 +164,7 @@ class ValidacaoDeUsuarioParaCadastro: NSObject {
         return emailPred.evaluate(with: email)
     }
     
+    // MARK: - Validacoes de senha
     public func validacoesDaSenhaDoUsuario(_ senha: String) -> Bool {
         var isValid = true
         
@@ -190,6 +210,15 @@ class ValidacaoDeUsuarioParaCadastro: NSObject {
         }
             
         return isValid
+    }
+    
+    // MARK: - Validacoes com dados vindos de fora da classe
+    private func nickNameDeUsuarioJaEstaCadastrado(nickName: String) -> Bool {
+        return true
+    }
+    
+    private func emailJaEstaCadastrado(email: String) -> Bool {
+        return true
     }
 }
 

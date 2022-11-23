@@ -141,12 +141,25 @@ class RecuperacaoDeSenhaView: UIView {
         return textField
     }()
     
+    private lazy var alterarSenhaButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Alterar senha", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        button.titleLabel?.textAlignment = .center
+        button.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0), for: .normal)
+        button.backgroundColor = UIColor(red: 148/255, green: 0/255, blue: 211/255, alpha: 1.0)
+        button.clipsToBounds = true
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderWidth = 1.5
+        button.layer.cornerRadius = 10
+        return button
+    }()
+    
     // MARK: - Inicializadores
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configsConstraints()
-
-        
     }
     
     required init?(coder: NSCoder) {
@@ -171,6 +184,7 @@ class RecuperacaoDeSenhaView: UIView {
         self.addSubview(self.novaSenhaTextField)
         self.addSubview(self.repeticaoDaNovaSenhaLabel)
         self.addSubview(self.repeticaoDaNovaSenhaTextField)
+        self.addSubview(self.alterarSenhaButton)
         
         NSLayoutConstraint.activate([
             self.linhaDeSeparacaoView.topAnchor.constraint(equalTo: self.emailTextField.bottomAnchor, constant: 30),
@@ -194,6 +208,10 @@ class RecuperacaoDeSenhaView: UIView {
             self.repeticaoDaNovaSenhaTextField.trailingAnchor.constraint(equalTo: self.emailTextField.trailingAnchor),
             self.repeticaoDaNovaSenhaTextField.heightAnchor.constraint(equalToConstant: 45),
             
+            self.alterarSenhaButton.topAnchor.constraint(equalTo: self.repeticaoDaNovaSenhaTextField.bottomAnchor, constant: 20),
+            self.alterarSenhaButton.leadingAnchor.constraint(equalTo: self.emailTextField.leadingAnchor),
+            self.alterarSenhaButton.trailingAnchor.constraint(equalTo: self.emailTextField.trailingAnchor),
+            self.alterarSenhaButton.heightAnchor.constraint(equalToConstant: 55)
         ])
     }
     

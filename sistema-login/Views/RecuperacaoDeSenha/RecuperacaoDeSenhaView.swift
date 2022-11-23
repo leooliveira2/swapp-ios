@@ -119,6 +119,28 @@ class RecuperacaoDeSenhaView: UIView {
         return label
     }()
     
+    private lazy var repeticaoDaNovaSenhaTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.keyboardType = .default
+        textField.isSecureTextEntry = true
+        textField.autocorrectionType = .no
+        textField.textColor = .white
+        textField.borderStyle = .roundedRect
+        textField.backgroundColor = UIColor(red: 52/255, green: 52/255, blue: 52/255, alpha: 1.0)
+        textField.clipsToBounds = true
+        textField.attributedPlaceholder = NSAttributedString(
+            string: "Informe a senha novamente",
+            attributes: [
+                NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.4)
+            ]
+        )
+        textField.layer.cornerRadius = 10
+        textField.layer.borderWidth = 1.5
+        textField.layer.borderColor = UIColor.white.cgColor
+        return textField
+    }()
+    
     // MARK: - Inicializadores
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -148,6 +170,7 @@ class RecuperacaoDeSenhaView: UIView {
         self.addSubview(self.novaSenhaLabel)
         self.addSubview(self.novaSenhaTextField)
         self.addSubview(self.repeticaoDaNovaSenhaLabel)
+        self.addSubview(self.repeticaoDaNovaSenhaTextField)
         
         NSLayoutConstraint.activate([
             self.linhaDeSeparacaoView.topAnchor.constraint(equalTo: self.emailTextField.bottomAnchor, constant: 30),
@@ -166,8 +189,11 @@ class RecuperacaoDeSenhaView: UIView {
             self.repeticaoDaNovaSenhaLabel.topAnchor.constraint(equalTo: self.novaSenhaTextField.bottomAnchor, constant: 10),
             self.repeticaoDaNovaSenhaLabel.leadingAnchor.constraint(equalTo: self.emailLabel.leadingAnchor),
             
+            self.repeticaoDaNovaSenhaTextField.topAnchor.constraint(equalTo: self.repeticaoDaNovaSenhaLabel.bottomAnchor, constant: 5),
+            self.repeticaoDaNovaSenhaTextField.leadingAnchor.constraint(equalTo: self.emailTextField.leadingAnchor),
+            self.repeticaoDaNovaSenhaTextField.trailingAnchor.constraint(equalTo: self.emailTextField.trailingAnchor),
+            self.repeticaoDaNovaSenhaTextField.heightAnchor.constraint(equalToConstant: 45),
             
-        
         ])
     }
     

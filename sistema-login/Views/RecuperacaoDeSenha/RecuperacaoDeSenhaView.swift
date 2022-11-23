@@ -166,10 +166,11 @@ class RecuperacaoDeSenhaView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Funcoes
-    private func exibeLabelCasoOUsuarioNaoExista() -> Void {
-        self.addSubview(self.usuarioNaoEncontradoLabel)
-        
+    // MARK: - Gerar componentes
+    public func configuraComponentesCasoOUsuarioNaoExista() -> Void {
+        self.ocultaComponentesExibicaoRedefineSenha()
+        self.exibeComponentesQuandoUsuarioNaoExiste()
+                
         NSLayoutConstraint.activate([
             self.usuarioNaoEncontradoLabel.topAnchor.constraint(equalTo: self.emailTextField.bottomAnchor, constant: 20),
             self.usuarioNaoEncontradoLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 50),
@@ -178,13 +179,9 @@ class RecuperacaoDeSenhaView: UIView {
         ])
     }
     
-    private func exibeComponentesNecessariosParaRedefinicaoDaSenha() -> Void {
-        self.addSubview(self.linhaDeSeparacaoView)
-        self.addSubview(self.novaSenhaLabel)
-        self.addSubview(self.novaSenhaTextField)
-        self.addSubview(self.repeticaoDaNovaSenhaLabel)
-        self.addSubview(self.repeticaoDaNovaSenhaTextField)
-        self.addSubview(self.alterarSenhaButton)
+    public func configurarComponentesNecessariosParaRedefinicaoDaSenha() -> Void {
+        self.ocultaComponentesQuandoUsuarioNaoExiste()
+        self.exibeComponentesRedefineSenha()
         
         NSLayoutConstraint.activate([
             self.linhaDeSeparacaoView.topAnchor.constraint(equalTo: self.emailTextField.bottomAnchor, constant: 30),
@@ -215,12 +212,54 @@ class RecuperacaoDeSenhaView: UIView {
         ])
     }
     
+    // MARK: - Funcoes
+    public func getEmailTextField() -> UITextField {
+        return self.emailTextField
+    }
+    
+    private func ocultaComponentesQuandoUsuarioNaoExiste() -> Void {
+        self.usuarioNaoEncontradoLabel.isHidden = true
+    }
+    
+    private func ocultaComponentesExibicaoRedefineSenha() -> Void {
+        self.linhaDeSeparacaoView.isHidden = true
+        self.novaSenhaLabel.isHidden = true
+        self.novaSenhaTextField.isHidden = true
+        self.repeticaoDaNovaSenhaLabel.isHidden = true
+        self.repeticaoDaNovaSenhaTextField.isHidden = true
+        self.alterarSenhaButton.isHidden = true
+    }
+    
+    private func exibeComponentesQuandoUsuarioNaoExiste() -> Void {
+        self.usuarioNaoEncontradoLabel.isHidden = false
+    }
+    
+    private func exibeComponentesRedefineSenha() -> Void {
+        self.linhaDeSeparacaoView.isHidden = false
+        self.novaSenhaLabel.isHidden = false
+        self.novaSenhaTextField.isHidden = false
+        self.repeticaoDaNovaSenhaLabel.isHidden = false
+        self.repeticaoDaNovaSenhaTextField.isHidden = false
+        self.alterarSenhaButton.isHidden = false
+    }
+    
     // MARK: - Constraints
     private func configsConstraints() -> Void {
         self.addSubview(self.backgroundImageView)
         self.addSubview(self.tituloRecuperaSenhaLabel)
         self.addSubview(self.emailLabel)
         self.addSubview(self.emailTextField)
+        
+        self.addSubview(self.usuarioNaoEncontradoLabel)
+        self.ocultaComponentesQuandoUsuarioNaoExiste()
+        
+        self.addSubview(self.linhaDeSeparacaoView)
+        self.addSubview(self.novaSenhaLabel)
+        self.addSubview(self.novaSenhaTextField)
+        self.addSubview(self.repeticaoDaNovaSenhaLabel)
+        self.addSubview(self.repeticaoDaNovaSenhaTextField)
+        self.addSubview(self.alterarSenhaButton)
+        self.ocultaComponentesExibicaoRedefineSenha()
         
         NSLayoutConstraint.activate([
             self.backgroundImageView.topAnchor.constraint(equalTo: self.topAnchor),
@@ -238,7 +277,6 @@ class RecuperacaoDeSenhaView: UIView {
             self.emailTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             self.emailTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             self.emailTextField.heightAnchor.constraint(equalToConstant: 45),
-                        
         ])
     }
     

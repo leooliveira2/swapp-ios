@@ -50,7 +50,8 @@ class LoginViewController: UIViewController {
     @objc private func realizarLogin(_ sender: UIButton) -> Void {
         let controladorDeErros = ControladorDeErros()
         
-        let controlador = LoginController(controladorDeErros)
+        let validadorDeLogin = ValidacaoDeLogin(controladorDeErros)
+        let controlador = LoginController(controladorDeErros, validadorDeLogin)
         
         let alertas = Alerta(viewController: self)
         

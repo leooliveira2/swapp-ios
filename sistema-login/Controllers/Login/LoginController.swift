@@ -10,15 +10,22 @@ import UIKit
 class LoginController: NSObject {
     
     private let controladorDeErros: ControladorDeErros
+    private let validadorDeLogin: ValidacaoDeLogin
     
-    init(_ controladorDeErros: ControladorDeErros) {
+    init(_ controladorDeErros: ControladorDeErros, _ validadorDeLogin: ValidacaoDeLogin) {
         self.controladorDeErros = controladorDeErros
+        self.validadorDeLogin = validadorDeLogin
     }
     
     public func fazerLogin(email: String?, senha: String?) -> Bool {
-        let validadorLogin = ValidacaoDeLogin(self.controladorDeErros)
+        guard let email,
+              let senha else
+        {
+            self.controladorDeErros.adicionarErro(erro: .erro_algum_dado_do_usuario_esta_nulo)
+            return false
+        }
         
-        let cadastroFoiEncontrado = validadorLogin.loginPodeSerRealizado(
+        let cadastroFoiEncontrado = validadorDeLogin.loginPodeSerRealizado(
             emailDoUsuario: email,
             senhaDoUsuario: senha
         )

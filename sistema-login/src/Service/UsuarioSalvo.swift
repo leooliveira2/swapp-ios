@@ -18,4 +18,12 @@ class UsuarioSalvo: NSObject {
     public static func getUsuariosSalvos() -> [Usuario] {
         return self.usuariosSalvos
     }
+    
+    public static func editarSenha(email: String, senha: String) {
+        for usuario in usuariosSalvos {
+            if usuario.getEmailDoUsuario() == email {
+                usuario.alterarSenha(senha)
+            }
+        }
+    }
 }

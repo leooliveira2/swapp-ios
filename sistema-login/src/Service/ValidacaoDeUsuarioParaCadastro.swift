@@ -145,7 +145,7 @@ class ValidacaoDeUsuarioParaCadastro: NSObject {
         return emailPred.evaluate(with: email)
     }
     
-    private func validacoesDaSenhaDoUsuario(_ senha: String) -> Bool {
+    public func validacoesDaSenhaDoUsuario(_ senha: String) -> Bool {
         var isValid = true
         
         let senhaDoUsuarioEstaVazia = strlen(senha) == 0
@@ -172,7 +172,7 @@ class ValidacaoDeUsuarioParaCadastro: NSObject {
         return isValid
     }
     
-    private func validacoesDaRepeticaoDeSenhaDoUsuario(_ senha: String, _ repeticaoDeSenha: String) -> Bool {
+    public func validacoesDaRepeticaoDeSenhaDoUsuario(_ senha: String, _ repeticaoDeSenha: String) -> Bool {
         var isValid = true
         
         let repeticaoDaSenhaDoUsuarioEstaVazia = strlen(repeticaoDeSenha) == 0

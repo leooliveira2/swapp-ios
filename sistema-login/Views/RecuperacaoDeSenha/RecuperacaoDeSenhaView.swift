@@ -221,6 +221,10 @@ class RecuperacaoDeSenhaView: UIView {
         return self.novaSenhaTextField.text
     }
     
+    public func getRepeticaoNovaSenha() -> String? {
+        return self.repeticaoDaNovaSenhaTextField.text
+    }
+    
     public func getAlterarSenhaButton() -> UIButton {
         return self.alterarSenhaButton
     }

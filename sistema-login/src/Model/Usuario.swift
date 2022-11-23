@@ -13,7 +13,7 @@ class Usuario: NSObject {
     private let nickName: String
     private let nomeCompleto: String
     private let email: String
-    private let senha: String
+    private var senha: String
     private let repeticaoDeSenha: String
     
     init(nickName: String, nomeCompleto: String, email: String, senha: String, repeticaoDeSenha: String) {
@@ -42,6 +42,10 @@ class Usuario: NSObject {
     
     public func getRepeteSenhaDoUsuario() -> String {
         return self.repeticaoDeSenha
+    }
+    
+    public func alterarSenha(_ senha: String) -> Void {
+        self.senha = senha
     }
     
 }

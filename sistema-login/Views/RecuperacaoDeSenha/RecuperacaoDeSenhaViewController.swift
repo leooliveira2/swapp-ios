@@ -55,6 +55,30 @@ class RecuperacaoDeSenhaViewController: UIViewController {
     }
     
     @objc private func verificaSeSenhaPodeSerAlterada(_ sender: UIButton) -> Void {
+        let controladorDeErros = ControladorDeErros()
+        let validadorDeSenha = ValidacaoDeUsuarioParaCadastro(controladorDeErros)
+        let recuperacaoDeSenhaController = RecuperacaoDeSenhaController(controladorDeErros, validadorDeSenha)
+        let alerta = Alerta(viewController: self)
         
+        let novaSenhaFoiSalva = recuperacaoDeSenhaController.alterarSenha(
+            email: self.recuperacaoDeSenhaView.getEmailTextField().text,
+            senha: self.recuperacaoDeSenhaView.getNovaSenha(),
+            repeticaoSenha: self.recuperacaoDeSenhaView.getRepeticaoNovaSenha()
+        )
+        
+        if !novaSenhaFoiSalva {
+            let erros = controladorDeErros.getErros()
+            if erros.count > 0 {
+                alerta.criaAlerta(mensagem: erros[0])
+                return
+            }
+        }
+        
+        guard let navigationController = self.navigationController else {
+            alerta.criaAlerta(mensagem: "Senha Alterada com sucesso!")
+            return
+        }
+        
+        navigationController.popViewController(animated: true)
     }
 }

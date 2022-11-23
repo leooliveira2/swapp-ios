@@ -34,7 +34,8 @@ class CriacaoDeContaViewController: UIViewController {
         
         let alertas = Alerta(viewController: self)
         let controladorDeErros = ControladorDeErros()
-        let controlador = CriacaoDeContaController(controladorDeErros)
+        let validadorDeUsuario = ValidacaoDeUsuarioParaCadastro(controladorDeErros)
+        let controlador = CriacaoDeContaController(controladorDeErros, validadorDeUsuario)
         
         let contaFoiCriada = controlador.criarConta(
             nickName: self.criacaoDeContaView.getNickNameDoUsuario(),

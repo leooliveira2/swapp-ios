@@ -10,9 +10,11 @@ import UIKit
 class CriacaoDeContaController: NSObject {
     
     private let controladorDeErros: ControladorDeErros
+    private let validadorDeUsuario: ValidacaoDeUsuarioParaCadastro
     
-    init(_ controladorDeErros: ControladorDeErros) {
+    init(_ controladorDeErros: ControladorDeErros, _ validadorDeUsuario: ValidacaoDeUsuarioParaCadastro) {
         self.controladorDeErros = controladorDeErros
+        self.validadorDeUsuario = validadorDeUsuario
     }
     
     public func criarConta(

@@ -53,7 +53,7 @@ class CriacaoDeContaViewController: UIViewController {
             }
         }
         
-        let usuariosSalvos = UsuarioSalvo.getUsuariosSalvos()
+        let usuariosSalvos = UsuarioDao.getUsuariosSalvos()
         for i in usuariosSalvos {
             print("Apelido: \(i.getNickNameDeUsuario())")
             print("Nome: \(i.getNomeCompletoDoUsuario())")

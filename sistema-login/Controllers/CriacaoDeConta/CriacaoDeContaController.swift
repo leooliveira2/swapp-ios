@@ -52,7 +52,7 @@ class CriacaoDeContaController: NSObject {
             return false
         }
         
-        UsuarioSalvo.salvarUsuario(usuario)
+        UsuarioDao.salvarUsuario(usuario)
         
         return true
     }

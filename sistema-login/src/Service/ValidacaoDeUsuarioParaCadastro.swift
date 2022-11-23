@@ -208,17 +208,27 @@ class ValidacaoDeUsuarioParaCadastro: NSObject {
             
             isValid = false
         }
-            
+        
         return isValid
     }
     
     // MARK: - Validacoes com dados vindos de fora da classe
     private func nickNameDeUsuarioJaEstaCadastrado(nickName: String) -> Bool {
-        return true
+        let nickNameJaExiste = UsuarioDao.nickNameDeUsuarioJaEstaCadastrado(nicknameDeUsuario: nickName)
+        if nickNameJaExiste {
+            return true
+        }
+        
+        return false
     }
     
     private func emailJaEstaCadastrado(email: String) -> Bool {
-        return true
+        let emailJaExiste = UsuarioDao.emailJaEstaCadastrado(emailDeUsuario: email)
+        if emailJaExiste {
+            return true
+        }
+        
+        return false
     }
 }
 

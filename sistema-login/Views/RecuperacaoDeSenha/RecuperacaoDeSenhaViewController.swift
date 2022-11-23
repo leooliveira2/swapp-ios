@@ -41,7 +41,7 @@ class RecuperacaoDeSenhaViewController: UIViewController {
     
     // MARK: - Funcoes
     @objc private func exibeConteudoAposEmailSerDigitado(_ sender: UITextField) -> Void {
-        let usuarios = UsuarioSalvo.getUsuariosSalvos()
+        let usuarios = UsuarioDao.getUsuariosSalvos()
         
         for usuario in usuarios {
             if usuario.getEmailDoUsuario() == sender.text {

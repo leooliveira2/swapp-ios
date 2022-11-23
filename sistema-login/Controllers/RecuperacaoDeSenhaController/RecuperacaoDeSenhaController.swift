@@ -34,7 +34,7 @@ class RecuperacaoDeSenhaController: NSObject {
             return false
         }
         
-        UsuarioSalvo.editarSenha(email: email, senha: senha)
+        UsuarioDao.editarSenha(email: email, senha: senha)
         
         return true
     }

@@ -9,9 +9,15 @@ import UIKit
 
 class PersonagemViewController: UIViewController {
 
+    private lazy var personagemView: PersonagemView = {
+        let view = PersonagemView()
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .red
+        
+        self.view = self.personagemView
     }
 
 }

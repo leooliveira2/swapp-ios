@@ -14,8 +14,8 @@ class HomeTabBarController: UITabBarController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = true
-        // consigo apagar a view de login que esta antes dessa?
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationItem.hidesBackButton = true
     }
     
     private func setupTabBarController() -> Void {

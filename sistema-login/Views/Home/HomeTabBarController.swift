@@ -39,4 +39,9 @@ class HomeTabBarController: UITabBarController {
         items[2].title = "Naves"
         items[2].image = UIImage(systemName: "airplane")
     }
+                                                                                               
+    // MARK: - Funcoes
+    @objc private func deslogar(_ sender: UIButton) -> Void {
+          print("oi")
+    }
 }

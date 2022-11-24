@@ -9,10 +9,16 @@ import UIKit
 
 class NaveViewController: UIViewController {
 
+    private lazy var naveView: NaveView = {
+        let view = NaveView()
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.view.backgroundColor = .blue
+        
+        self.view = self.naveView
+            
     }
 
 }

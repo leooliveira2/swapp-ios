@@ -31,12 +31,11 @@ class PersonagemViewController: UIViewController {
     @objc private func acaoBotaoGerarPersonagem(_ sender: UIButton) -> Void {
         let personagemController = PersonagemController()
         
-        let requisicaoDeuCerto = personagemController.gerarPersonagem()
-        
-        if requisicaoDeuCerto {
-            print("Deu certo")
-        } else {
-            print("Nao deu certo")
-        }
+        personagemController.gerarPersonagem(sucesso: { (personagem) in
+            print(personagem.getNome())
+        },
+        fracasso: { (erro) in
+            print(erro)
+        })
     }
 }

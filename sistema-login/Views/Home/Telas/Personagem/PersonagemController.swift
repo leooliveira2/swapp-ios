@@ -9,16 +9,16 @@ import UIKit
 
 class PersonagemController: NSObject {
 
-    public func gerarPersonagem() -> Bool {
-        var requisicaoDeuCerto = true
+    public func gerarPersonagem(
+        sucesso: @escaping(_ personagemVindoDaRequisicao: Personagem) -> Void,
+        fracasso: @escaping(_ falhaNaRequisicao: Bool) -> Void) -> Void
+    {
         RequisicoesStarWarsAPI().fazRequisicaoPersonagem(id: gerarIdAleatorio(), sucesso: { (personagem) in
-            print(personagem.getNome())
+            sucesso(personagem)
         },
         falha: { (falha) in
-            requisicaoDeuCerto = falha
+            fracasso(falha)
         })
-        
-        return requisicaoDeuCerto
     }
     
     private func gerarIdAleatorio() -> Int {

@@ -42,6 +42,11 @@ class PersonagemView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Funcoes
+    public func getBotaoGerarPersonagem() -> UIButton {
+        return self.gerarPersonagemButton
+    }
+    
     // MARK: - Config Constraints
     private func configsContraints() -> Void {
         self.addSubview(self.backgroundImageView)

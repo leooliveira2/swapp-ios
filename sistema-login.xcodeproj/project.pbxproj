@@ -26,6 +26,7 @@
 		C55BFA70291AD2000049C539 /* ControladorDeErros.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA6F291AD2000049C539 /* ControladorDeErros.swift */; };
 		C55BFA76291AD51A0049C539 /* Erros.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA75291AD51A0049C539 /* Erros.swift */; };
 		C55BFA78291AE4850049C539 /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA77291AE4850049C539 /* Alerta.swift */; };
+		C581A7B529313FB30092DF05 /* PersonagemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C581A7B429313FB30092DF05 /* PersonagemController.swift */; };
 		C58D4095292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D4094292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift */; };
 		C58D409B292EB46F00A1C6BC /* PersonagemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D409A292EB46F00A1C6BC /* PersonagemViewController.swift */; };
 		C58D409D292EB49700A1C6BC /* NaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D409C292EB49700A1C6BC /* NaveViewController.swift */; };
@@ -60,6 +61,7 @@
 		C55BFA6F291AD2000049C539 /* ControladorDeErros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControladorDeErros.swift; sourceTree = "<group>"; };
 		C55BFA75291AD51A0049C539 /* Erros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Erros.swift; sourceTree = "<group>"; };
 		C55BFA77291AE4850049C539 /* Alerta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
+		C581A7B429313FB30092DF05 /* PersonagemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonagemController.swift; sourceTree = "<group>"; };
 		C58D4094292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperacaoDeSenhaController.swift; sourceTree = "<group>"; };
 		C58D409A292EB46F00A1C6BC /* PersonagemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonagemViewController.swift; sourceTree = "<group>"; };
 		C58D409C292EB49700A1C6BC /* NaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaveViewController.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			children = (
 				C58D409A292EB46F00A1C6BC /* PersonagemViewController.swift */,
 				C58D40A0292EBBDF00A1C6BC /* PersonagemView.swift */,
+				C581A7B429313FB30092DF05 /* PersonagemController.swift */,
 			);
 			path = Personagem;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				C550F8662919644D00FC2EF2 /* AppDelegate.swift in Sources */,
 				C550F8682919644D00FC2EF2 /* SceneDelegate.swift in Sources */,
 				C55BFA68291AB6890049C539 /* CriacaoDeContaView.swift in Sources */,
+				C581A7B529313FB30092DF05 /* PersonagemController.swift in Sources */,
 				C55BFA78291AE4850049C539 /* Alerta.swift in Sources */,
 				C50DC29E291EDE28001CC4F9 /* HomeTabBarController.swift in Sources */,
 				C550F8812919A0D400FC2EF2 /* CriacaoDeContaViewController.swift in Sources */,

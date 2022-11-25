@@ -6,25 +6,51 @@
 //
 
 import UIKit
+import ObjectMapper
 
-class Personagem: NSObject {
-
-    private let nome: String
-    private let altura: Double
-    private let peso: Double
-    private let corDosOlhos: String
-    private let dataNascimento: String
-    private let genero: String
+class Personagem: Mappable {
     
-    init(_ nome: String, _ altura: Double, _ peso: Double, _ corDosOlhos: String,
-         _ dataNascimento: String, _ genero: String
+    // MARK: - Atributos
+    private var nome: String = ""
+    private var altura: String = ""
+    private var peso: String = ""
+    private var corDosOlhos: String = ""
+    private var anoNascimento: String = ""
+    private var genero: String = ""
     
-    ) {
-        self.nome = nome
-        self.altura = altura
-        self.peso = peso
-        self.corDosOlhos = corDosOlhos
-        self.dataNascimento = dataNascimento
-        self.genero = genero
+    // MARK: - Inicializadores
+    required init?(map: ObjectMapper.Map) {}
+    
+    func mapping(map: ObjectMapper.Map) {
+        self.nome               <- map["name"]
+        self.altura             <- map["height"]
+        self.peso               <- map["mass"]
+        self.corDosOlhos        <- map["eye_color"]
+        self.anoNascimento      <- map["birth_year"]
+        self.genero             <- map["gender"]
+    }
+    
+    public func getNome() -> String {
+        return self.nome
+    }
+    
+    public func getAltura() -> String {
+        return self.altura
+    }
+    
+    public func getPeso() -> String {
+        return self.peso
+    }
+    
+    public func getCorDosOlhos() -> String {
+        return self.corDosOlhos
+    }
+    
+    public func getAnoNascimento() -> String {
+        return self.anoNascimento
+    }
+    
+    public func getGenero() -> String {
+        return self.genero
     }
 }

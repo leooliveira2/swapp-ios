@@ -8,4 +8,5 @@ target 'sistema-login' do
   # Pods for sistema-login
 
   pod 'Alamofire'
+  pod 'ObjectMapper'
 end

@@ -18,6 +18,13 @@ class PersonagemViewController: UIViewController {
         super.viewDidLoad()
         
         self.view = self.personagemView
+        
+        RequisicoesStarWarsAPI().fazRequisicaoPersonagem(id: 1, sucesso: { (personagem) in
+            print(personagem.getNome())
+        },
+        falha: { (falha) in
+            print("ERRO TCHE")
+        })
     }
 
 }

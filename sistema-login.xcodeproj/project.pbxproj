@@ -12,6 +12,7 @@
 		C50E6427292D56E100D8047C /* RecuperacaoDeSenhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50E6426292D56E100D8047C /* RecuperacaoDeSenhaViewController.swift */; };
 		C50E6429292D572200D8047C /* RecuperacaoDeSenhaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50E6428292D572200D8047C /* RecuperacaoDeSenhaView.swift */; };
 		C5143CE6292FE54800918975 /* Personagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5143CE5292FE54800918975 /* Personagem.swift */; };
+		C5143CE8292FE6A600918975 /* RequisicoesStarWarsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5143CE7292FE6A600918975 /* RequisicoesStarWarsAPI.swift */; };
 		C550F8662919644D00FC2EF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8652919644D00FC2EF2 /* AppDelegate.swift */; };
 		C550F8682919644D00FC2EF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8672919644D00FC2EF2 /* SceneDelegate.swift */; };
 		C550F86A2919644D00FC2EF2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8692919644D00FC2EF2 /* LoginViewController.swift */; };
@@ -43,6 +44,7 @@
 		C50E6426292D56E100D8047C /* RecuperacaoDeSenhaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperacaoDeSenhaViewController.swift; sourceTree = "<group>"; };
 		C50E6428292D572200D8047C /* RecuperacaoDeSenhaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperacaoDeSenhaView.swift; sourceTree = "<group>"; };
 		C5143CE5292FE54800918975 /* Personagem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Personagem.swift; sourceTree = "<group>"; };
+		C5143CE7292FE6A600918975 /* RequisicoesStarWarsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequisicoesStarWarsAPI.swift; sourceTree = "<group>"; };
 		C550F8622919644D00FC2EF2 /* sistema-login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sistema-login.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C550F8652919644D00FC2EF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C550F8672919644D00FC2EF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				C55BFA77291AE4850049C539 /* Alerta.swift */,
 				C5C3455B291D860300E3097A /* UsuarioDao.swift */,
 				C5C34560291D944C00E3097A /* ValidacaoDeLogin.swift */,
+				C5143CE7292FE6A600918975 /* RequisicoesStarWarsAPI.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				C55BFA70291AD2000049C539 /* ControladorDeErros.swift in Sources */,
 				C5C3455A291D7F9B00E3097A /* CriacaoDeContaController.swift in Sources */,
 				C50E6427292D56E100D8047C /* RecuperacaoDeSenhaViewController.swift in Sources */,
+				C5143CE8292FE6A600918975 /* RequisicoesStarWarsAPI.swift in Sources */,
 				C5143CE6292FE54800918975 /* Personagem.swift in Sources */,
 				C550F86A2919644D00FC2EF2 /* LoginViewController.swift in Sources */,
 				C55BFA6E291AD0330049C539 /* ValidacaoDeUsuarioParaCadastro.swift in Sources */,

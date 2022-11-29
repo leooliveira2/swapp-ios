@@ -99,7 +99,25 @@ class PersonagemView: UIView {
     }
     
     public func retornaComponentesDaViewPraEstadoInicial() -> Void {
-        self.atualizaConstraintDoBotaoGerarPersonagemPraPosicaoInicial()
+        self.removeConstraint(self.botaoTopAnchor)
+        self.labelPersonagem.removeFromSuperview()
+        self.dadosPersonagemTableView.removeFromSuperview()
+        
+        self.botaoTopAnchor = self.gerarPersonagemButton.topAnchor.constraint(equalTo: self.centerYAnchor)
+        
+        NSLayoutConstraint.activate([
+            self.botaoTopAnchor
+        ])
+    }
+    
+    private func atualizaConstraintDoBotaoGerarPersonagemPraBaixoDaTabelaDePersonagem() -> Void {
+        self.removeConstraint(self.botaoTopAnchor)
+        
+        self.botaoTopAnchor = self.gerarPersonagemButton.topAnchor.constraint(equalTo: self.dadosPersonagemTableView.bottomAnchor, constant: 30)
+        
+        NSLayoutConstraint.activate([
+            self.botaoTopAnchor
+        ])
     }
     
     // MARK: - Config Constraints
@@ -116,29 +134,8 @@ class PersonagemView: UIView {
             self.botaoTopAnchor,
             self.gerarPersonagemButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
             self.gerarPersonagemButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
+      
             self.gerarPersonagemButton.heightAnchor.constraint(equalToConstant: 50),
-        ])
-    }
-    
-    private func atualizaConstraintDoBotaoGerarPersonagemPraBaixoDaTabelaDePersonagem() -> Void {
-        self.removeConstraint(self.botaoTopAnchor)
-        
-        self.botaoTopAnchor = self.gerarPersonagemButton.topAnchor.constraint(equalTo: self.dadosPersonagemTableView.bottomAnchor, constant: 30)
-        
-        NSLayoutConstraint.activate([
-            self.botaoTopAnchor
-        ])
-    }
-    
-    private func atualizaConstraintDoBotaoGerarPersonagemPraPosicaoInicial() -> Void {
-        self.removeConstraint(self.botaoTopAnchor)
-        self.labelPersonagem.removeFromSuperview()
-        self.dadosPersonagemTableView.removeFromSuperview()
-        
-        self.botaoTopAnchor = self.gerarPersonagemButton.topAnchor.constraint(equalTo: self.centerYAnchor)
-        
-        NSLayoutConstraint.activate([
-            self.botaoTopAnchor
         ])
     }
     

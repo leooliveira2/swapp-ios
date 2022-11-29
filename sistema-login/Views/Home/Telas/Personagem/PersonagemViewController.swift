@@ -16,8 +16,6 @@ class PersonagemViewController: UIViewController {
     
     private var qntsVezesOBotaoFoiClicado: Int = 0
     
-    private var caracteristicasDoPersonagem: [String] = []
-    
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,22 +31,17 @@ class PersonagemViewController: UIViewController {
         self.personagemView.getDadosPersonagemTableView().dataSource = self
     }
     
-    // MARK: - Funcoes
+    // MARK: - Actions
     @objc private func acaoBotaoGerarPersonagem(_ sender: UIButton) -> Void {
         let personagemController = PersonagemController()
         
         personagemController.gerarPersonagem(sucesso: { (personagem) in
-            self.caracteristicasDoPersonagem = personagem.getListaComDadosDoPersonagem()
-            
-            for indice in 0...5 {
-                self.personagemView.getDadosPersonagemTableView().cellForRow(at: IndexPath(item: indice, section: 0))?.textLabel?.text = self.caracteristicasDoPersonagem[indice]
-            }
-            
+            let caracteristicasDoPersonagem: [String] = personagem.getListaComDadosDoPersonagem()
+            self.adicionaOsDadosDoPersonagemAsLinhasDaTableView(caracteristicasDoPersonagem)
         },
         fracasso: { (erro) in
-            Alerta(viewController: self).criaAlerta(mensagem: "Erro ao gerar personagem! Tenta novamente")
-            self.personagemView.retornaComponentesDaViewPraEstadoInicial()
-            self.qntsVezesOBotaoFoiClicado = 0
+            let controladorDeAlertas = Alerta(viewController: self)
+            self.retornaViewPraEstadoInicialEmCasoDeErroAoBuscarPersonagem(controladorDeAlertas)
             return
         })
         
@@ -56,13 +49,31 @@ class PersonagemViewController: UIViewController {
             return
         }
         
+        self.atualizaViewParaExibirTabela()
+    }
+    
+    // MARK: - Funcoes
+    private func adicionaOsDadosDoPersonagemAsLinhasDaTableView(_ caracteristicasDoPersonagem: [String]) -> Void {
+        for indice in 0...5 {
+            self.personagemView.getDadosPersonagemTableView().cellForRow(at: IndexPath(item: indice, section: 0))?.textLabel?.text = caracteristicasDoPersonagem[indice]
+        }
+    }
+    
+    private func atualizaViewParaExibirTabela() -> Void {
         self.personagemView.exibeComponentesCaracteristicasDoPersonagem()
         self.qntsVezesOBotaoFoiClicado += 1
+    }
+    
+    private func retornaViewPraEstadoInicialEmCasoDeErroAoBuscarPersonagem(_ controladorAlertas: Alerta) -> Void {
+        controladorAlertas.criaAlerta(mensagem: "Erro ao gerar personagem! Tenta novamente")
         
+        self.personagemView.retornaComponentesDaViewPraEstadoInicial()
+        self.qntsVezesOBotaoFoiClicado = 0
     }
     
 }
 
+// MARK: - Extensoes
 extension PersonagemViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6

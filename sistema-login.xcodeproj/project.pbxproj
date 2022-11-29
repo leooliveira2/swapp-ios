@@ -13,6 +13,7 @@
 		C50E6429292D572200D8047C /* RecuperacaoDeSenhaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50E6428292D572200D8047C /* RecuperacaoDeSenhaView.swift */; };
 		C5143CE6292FE54800918975 /* Personagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5143CE5292FE54800918975 /* Personagem.swift */; };
 		C5143CE8292FE6A600918975 /* RequisicoesStarWarsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5143CE7292FE6A600918975 /* RequisicoesStarWarsAPI.swift */; };
+		C5143CEA2930041600918975 /* PlanetaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5143CE92930041600918975 /* PlanetaView.swift */; };
 		C550F8662919644D00FC2EF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8652919644D00FC2EF2 /* AppDelegate.swift */; };
 		C550F8682919644D00FC2EF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8672919644D00FC2EF2 /* SceneDelegate.swift */; };
 		C550F86A2919644D00FC2EF2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8692919644D00FC2EF2 /* LoginViewController.swift */; };
@@ -47,6 +48,7 @@
 		C50E6428292D572200D8047C /* RecuperacaoDeSenhaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperacaoDeSenhaView.swift; sourceTree = "<group>"; };
 		C5143CE5292FE54800918975 /* Personagem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Personagem.swift; sourceTree = "<group>"; };
 		C5143CE7292FE6A600918975 /* RequisicoesStarWarsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequisicoesStarWarsAPI.swift; sourceTree = "<group>"; };
+		C5143CE92930041600918975 /* PlanetaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetaView.swift; sourceTree = "<group>"; };
 		C550F8622919644D00FC2EF2 /* sistema-login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sistema-login.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C550F8652919644D00FC2EF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C550F8672919644D00FC2EF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				C58D409E292EB4B400A1C6BC /* PlanetaViewController.swift */,
+				C5143CE92930041600918975 /* PlanetaView.swift */,
 			);
 			path = Planeta;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				C50E6427292D56E100D8047C /* RecuperacaoDeSenhaViewController.swift in Sources */,
 				C5143CE8292FE6A600918975 /* RequisicoesStarWarsAPI.swift in Sources */,
 				C5143CE6292FE54800918975 /* Personagem.swift in Sources */,
+				C5143CEA2930041600918975 /* PlanetaView.swift in Sources */,
 				C550F86A2919644D00FC2EF2 /* LoginViewController.swift in Sources */,
 				C55BFA6E291AD0330049C539 /* ValidacaoDeUsuarioParaCadastro.swift in Sources */,
 				C550F87D2919650D00FC2EF2 /* LoginView.swift in Sources */,

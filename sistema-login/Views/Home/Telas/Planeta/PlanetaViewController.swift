@@ -8,10 +8,15 @@
 import UIKit
 
 class PlanetaViewController: UIViewController {
+    
+    private lazy var planetaView: PlanetaView = {
+        let view = PlanetaView()
+        return view
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .green
+        self.view = self.planetaView
     }
 
 }

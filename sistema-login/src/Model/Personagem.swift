@@ -30,27 +30,17 @@ class Personagem: Mappable {
         self.genero             <- map["gender"]
     }
     
-    public func getNome() -> String {
-        return self.nome
+    public func getListaComDadosDoPersonagem() -> [String] {
+        let caracteristicasDoPersonagem: [String] = [
+            "Nome: \(self.nome)",
+            "Altura: \(self.altura)",
+            "Peso: \(self.peso)",
+            "Cor dos olhos: \(self.corDosOlhos)",
+            "Ano de nascimento: \(self.anoNascimento)",
+            "Gênero: \(self.genero)"
+        ]
+        
+        return caracteristicasDoPersonagem
     }
     
-    public func getAltura() -> String {
-        return self.altura
-    }
-    
-    public func getPeso() -> String {
-        return self.peso
-    }
-    
-    public func getCorDosOlhos() -> String {
-        return self.corDosOlhos
-    }
-    
-    public func getAnoNascimento() -> String {
-        return self.anoNascimento
-    }
-    
-    public func getGenero() -> String {
-        return self.genero
-    }
 }

@@ -9,6 +9,12 @@ import UIKit
 
 class PersonagemView: UIView {
 
+    // MARK: - Atributos
+    private lazy var botaoTopAnchor: NSLayoutConstraint = {
+        let topAnchor = self.gerarPersonagemButton.topAnchor.constraint(equalTo: self.centerYAnchor)
+        return topAnchor
+    }()
+
     // MARK: - Componentes
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
@@ -32,6 +38,28 @@ class PersonagemView: UIView {
         return button
     }()
     
+    private lazy var labelPersonagem: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Personagem"
+        label.font = UIFont.boldSystemFont(ofSize: 40)
+        label.textAlignment = .center
+        label.textColor = .white
+        return label
+    }()
+    
+    private lazy var dadosPersonagemTableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.isScrollEnabled = false
+        tableView.separatorStyle = .none
+        tableView.layer.cornerRadius = 10
+        tableView.layer.borderWidth = 2
+        tableView.layer.borderColor = UIColor.white.cgColor
+//        tableView.register(PersonagemTableViewCell.self, forCellReuseIdentifier: PersonagemTableViewCell.identificador)
+        return tableView
+    }()
+    
     // MARK: - Inicializadores
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -47,6 +75,33 @@ class PersonagemView: UIView {
         return self.gerarPersonagemButton
     }
     
+    public func getDadosPersonagemTableView() -> UITableView {
+        return self.dadosPersonagemTableView
+    }
+    
+    // MARK: - Execucoes quando algo acontecer na tela
+    public func exibeComponentesCaracteristicasDoPersonagem() -> Void {
+        self.addSubview(self.labelPersonagem)
+        self.addSubview(self.dadosPersonagemTableView)
+        
+        NSLayoutConstraint.activate([
+            self.labelPersonagem.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 100),
+            self.labelPersonagem.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
+            self.labelPersonagem.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
+            
+            self.dadosPersonagemTableView.topAnchor.constraint(equalTo: self.labelPersonagem.bottomAnchor, constant: 10),
+            self.dadosPersonagemTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
+            self.dadosPersonagemTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
+            self.dadosPersonagemTableView.heightAnchor.constraint(equalToConstant: self.dadosPersonagemTableView.contentSize.height),
+        ])
+        
+        self.atualizaConstraintDoBotaoGerarPersonagemPraBaixoDaTabelaDePersonagem()
+    }
+    
+    public func retornaComponentesDaViewPraEstadoInicial() -> Void {
+        self.atualizaConstraintDoBotaoGerarPersonagemPraPosicaoInicial()
+    }
+    
     // MARK: - Config Constraints
     private func configsContraints() -> Void {
         self.addSubview(self.backgroundImageView)
@@ -58,14 +113,33 @@ class PersonagemView: UIView {
             self.backgroundImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             self.backgroundImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             
-            self.gerarPersonagemButton.topAnchor.constraint(equalTo: self.centerYAnchor),
+            self.botaoTopAnchor,
             self.gerarPersonagemButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
             self.gerarPersonagemButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
             self.gerarPersonagemButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            
         ])
     }
     
-
+    private func atualizaConstraintDoBotaoGerarPersonagemPraBaixoDaTabelaDePersonagem() -> Void {
+        self.removeConstraint(self.botaoTopAnchor)
+        
+        self.botaoTopAnchor = self.gerarPersonagemButton.topAnchor.constraint(equalTo: self.dadosPersonagemTableView.bottomAnchor, constant: 30)
+        
+        NSLayoutConstraint.activate([
+            self.botaoTopAnchor
+        ])
+    }
+    
+    private func atualizaConstraintDoBotaoGerarPersonagemPraPosicaoInicial() -> Void {
+        self.removeConstraint(self.botaoTopAnchor)
+        self.labelPersonagem.removeFromSuperview()
+        self.dadosPersonagemTableView.removeFromSuperview()
+        
+        self.botaoTopAnchor = self.gerarPersonagemButton.topAnchor.constraint(equalTo: self.centerYAnchor)
+        
+        NSLayoutConstraint.activate([
+            self.botaoTopAnchor
+        ])
+    }
+    
 }

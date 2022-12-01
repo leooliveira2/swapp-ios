@@ -140,7 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				C55BFA6D291AD0330049C539 /* ValidacaoDeUsuarioParaCadastro.swift */,
-				C55BFA6F291AD2000049C539 /* ControladorDeErros.swift */,
 				C55BFA77291AE4850049C539 /* Alerta.swift */,
 				C5C3455B291D860300E3097A /* UsuarioDao.swift */,
 				C5C34560291D944C00E3097A /* ValidacaoDeLogin.swift */,
@@ -224,6 +223,7 @@
 		C55BFA69291ACA7B0049C539 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C55BFA6F291AD2000049C539 /* ControladorDeErros.swift */,
 				C55BFA6A291ACABB0049C539 /* Usuario.swift */,
 				C5143CE5292FE54800918975 /* Personagem.swift */,
 				C55BFA75291AD51A0049C539 /* Erros.swift */,

@@ -35,7 +35,7 @@ class ValidacaoDeLogin: NSObject {
         
         var emailESenhaEstaoCadastrados = false
         
-        let listaDeUsuarios = UsuarioDao.getUsuariosSalvos()
+        let listaDeUsuarios = BuscadorDeUsuariosSalvos().buscaUsuariosSalvos()
         for usuario in listaDeUsuarios {
             if email == usuario.getEmailDoUsuario() &&
                 senha == usuario.getSenhaDoUsuario() {

@@ -11,7 +11,7 @@ import UIKit
 
 class PersonagemView: UIView {
 
-    // MARK: - Atributos
+    // MARK: - Atributos constraints
     private lazy var botaoTopAnchor: NSLayoutConstraint = {
         let topAnchor = self.gerarPersonagemButton.topAnchor.constraint(equalTo: self.centerYAnchor)
         return topAnchor
@@ -58,7 +58,6 @@ class PersonagemView: UIView {
         tableView.layer.cornerRadius = 10
         tableView.layer.borderWidth = 2
         tableView.layer.borderColor = UIColor.white.cgColor
-//        tableView.register(PersonagemTableViewCell.self, forCellReuseIdentifier: PersonagemTableViewCell.identificador)
         return tableView
     }()
     

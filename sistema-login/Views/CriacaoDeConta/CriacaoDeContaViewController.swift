@@ -32,10 +32,10 @@ class CriacaoDeContaViewController: UIViewController {
     // MARK: - Funcoes
     @objc private func criacaoDeConta(_ sender: UIButton) -> Void {
         
-        let alertas = Alerta(viewController: self)
         let controladorDeErros = ControladorDeErros()
         let validadorDeUsuario = ValidacaoDeUsuarioParaCadastro(controladorDeErros)
-        let controlador = CriacaoDeContaController(controladorDeErros, validadorDeUsuario)
+        let salvarUsuario = SalvarUsuario()
+        let controlador = CriacaoDeContaController(controladorDeErros, validadorDeUsuario, salvarUsuario)
         
         let contaFoiCriada = controlador.criarConta(
             nickName: self.criacaoDeContaView.getNickNameDoUsuario(),
@@ -45,6 +45,8 @@ class CriacaoDeContaViewController: UIViewController {
             repeticaoDaSenha: self.criacaoDeContaView.getRepeticaoDeSenhaDoUsuario()
         )
         
+        let alertas = Alerta(viewController: self)
+        
         if !contaFoiCriada {
             let listaDeErros = controladorDeErros.getErros()
             if listaDeErros.count > 0 {
@@ -53,15 +55,15 @@ class CriacaoDeContaViewController: UIViewController {
             }
         }
         
-        let usuariosSalvos = UsuarioDao.getUsuariosSalvos()
-        for i in usuariosSalvos {
-            print("Apelido: \(i.getNickNameDeUsuario())")
-            print("Nome: \(i.getNomeCompletoDoUsuario())")
-            print("E-mail: \(i.getEmailDoUsuario())")
-            print("Senha: \(i.getSenhaDoUsuario())")
-            print("Repetição da senha: \(i.getRepeteSenhaDoUsuario())")
-            print("------------------------------------------------")
-        }
+//        let usuariosSalvos = UsuarioDao.getUsuariosSalvos()
+//        for i in usuariosSalvos {
+//            print("Apelido: \(i.getNickNameDeUsuario())")
+//            print("Nome: \(i.getNomeCompletoDoUsuario())")
+//            print("E-mail: \(i.getEmailDoUsuario())")
+//            print("Senha: \(i.getSenhaDoUsuario())")
+//            print("Repetição da senha: \(i.getRepeteSenhaDoUsuario())")
+//            print("------------------------------------------------")
+//        }
         
         guard let navigationController = self.navigationController else {
             alertas.criaAlerta(titulo: "Sucesso!", mensagem: "Usuário foi salvo com sucesso")

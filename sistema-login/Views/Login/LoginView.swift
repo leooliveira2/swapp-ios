@@ -127,7 +127,7 @@ class LoginView: UIView {
     }()
     
     // MARK: - Inicializadores
-    override init(frame: CGRect) { // tirei o override init
+    override init(frame: CGRect) {
         super.init(frame: frame)
         self.configConstraints()
     }

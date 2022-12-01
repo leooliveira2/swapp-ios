@@ -44,7 +44,7 @@ class CriacaoDeContaView: UIView {
         textField.textColor = .white
         textField.borderStyle = .roundedRect
         textField.backgroundColor = UIColor(red: 52/255, green: 52/255, blue: 52/255, alpha: 1.0)
-        textField.clipsToBounds = true // pra q serve
+        textField.clipsToBounds = true
         textField.attributedPlaceholder = NSAttributedString(
             string: "Digite seu apelido de usuário",
             attributes: [
@@ -74,7 +74,7 @@ class CriacaoDeContaView: UIView {
         textField.textColor = .white
         textField.borderStyle = .roundedRect
         textField.backgroundColor = UIColor(red: 52/255, green: 52/255, blue: 52/255, alpha: 1.0)
-        textField.clipsToBounds = true // pra q serve
+        textField.clipsToBounds = true
         textField.attributedPlaceholder = NSAttributedString(
             string: "Digite seu nome completo",
             attributes: [
@@ -104,7 +104,7 @@ class CriacaoDeContaView: UIView {
         textField.textColor = .white
         textField.borderStyle = .roundedRect
         textField.backgroundColor = UIColor(red: 52/255, green: 52/255, blue: 52/255, alpha: 1.0)
-        textField.clipsToBounds = true // pra q serve
+        textField.clipsToBounds = true
         textField.attributedPlaceholder = NSAttributedString(
             string: "Digite seu e-mail",
             attributes: [
@@ -135,7 +135,7 @@ class CriacaoDeContaView: UIView {
         textField.textColor = .white
         textField.borderStyle = .roundedRect
         textField.backgroundColor = UIColor(red: 52/255, green: 52/255, blue: 52/255, alpha: 1.0)
-        textField.clipsToBounds = true // pra q serve
+        textField.clipsToBounds = true
         textField.attributedPlaceholder = NSAttributedString(
             string: "Digite sua senha",
             attributes: [
@@ -166,7 +166,7 @@ class CriacaoDeContaView: UIView {
         textField.textColor = .white
         textField.borderStyle = .roundedRect
         textField.backgroundColor = UIColor(red: 52/255, green: 52/255, blue: 52/255, alpha: 1.0)
-        textField.clipsToBounds = true // pra q serve
+        textField.clipsToBounds = true
         textField.attributedPlaceholder = NSAttributedString(
             string: "Repita sua senha",
             attributes: [
@@ -226,7 +226,7 @@ class CriacaoDeContaView: UIView {
     }
     
     public func getRepeticaoDeSenhaDoUsuario() -> String? {
-        return self.repeticaoDeSenhaDoUsuarioTextField.text // pq n precisei usar optionals
+        return self.repeticaoDeSenhaDoUsuarioTextField.text
     }
     
     // MARK: - Config de constraints

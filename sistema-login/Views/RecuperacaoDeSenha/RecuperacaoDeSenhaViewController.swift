@@ -57,7 +57,8 @@ class RecuperacaoDeSenhaViewController: UIViewController {
     @objc private func verificaSeSenhaPodeSerAlterada(_ sender: UIButton) -> Void {
         let controladorDeErros = ControladorDeErros()
         let validadorDeSenha = ValidacaoDeUsuarioParaCadastro(controladorDeErros)
-        let recuperacaoDeSenhaController = RecuperacaoDeSenhaController(controladorDeErros, validadorDeSenha)
+        let redefinicaoDeSenha = RedefinicaoDeSenha()
+        let recuperacaoDeSenhaController = RecuperacaoDeSenhaController(controladorDeErros, validadorDeSenha, redefinicaoDeSenha)
         let alerta = Alerta(viewController: self)
         
         let novaSenhaFoiSalva = recuperacaoDeSenhaController.alterarSenha(

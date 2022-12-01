@@ -8,6 +8,7 @@
 import UIKit
 
 class PersonagemViewController: UIViewController {
+    
     // MARK: - Atributos
     private lazy var personagemView: PersonagemView = {
         let view = PersonagemView()
@@ -32,11 +33,6 @@ class PersonagemViewController: UIViewController {
         return view
     }()
     
-    private lazy var leadingAnchorBarraDeLoading: NSLayoutConstraint = {
-        let leadingAnchor = self.barraDeLoading.leadingAnchor.constraint(equalTo: self.fundoDoLoading.leadingAnchor, constant: 20)
-        return leadingAnchor
-    }()
-    
     private lazy var gerandoPersonagemLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -44,6 +40,11 @@ class PersonagemViewController: UIViewController {
         label.textColor = .blue
         label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
+    }()
+    
+    private lazy var leadingAnchorBarraDeLoading: NSLayoutConstraint = {
+        let leadingAnchor = self.barraDeLoading.leadingAnchor.constraint(equalTo: self.fundoDoLoading.leadingAnchor, constant: 20)
+        return leadingAnchor
     }()
     
     // MARK: - View life cycle
@@ -130,9 +131,7 @@ class PersonagemViewController: UIViewController {
     
     // MARK: - Config constraints
     private func configConstraints() -> Void {
-
         NSLayoutConstraint.activate([
-        
             self.fundoDoLoading.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 200),
             self.fundoDoLoading.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
             self.fundoDoLoading.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -60),
@@ -156,9 +155,6 @@ extension PersonagemViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = self.personagemView.getDadosPersonagemTableView().dequeueReusableCell(
-//            withIdentifier: PersonagemTableViewCell.identificador, for: indexPath
-//        ) as? PersonagemTableViewCell
         
         let cell = UITableViewCell()
         cell.backgroundColor = .lightGray

@@ -9,10 +9,10 @@ import UIKit
 
 class Alerta: NSObject {
     
-    private let viewController: UIViewController
+    private let vC: UIViewController
     
     init(viewController: UIViewController) {
-        self.viewController = viewController
+        self.vC = viewController
     }
     
     public func criaAlerta(titulo: String = "Erro", mensagem: String) -> Void {
@@ -23,6 +23,6 @@ class Alerta: NSObject {
         
         alerta.addAction(acaoContinuar)
         
-        self.viewController.present(alerta, animated: true, completion: nil)
+        self.vC.present(alerta, animated: true, completion: nil)
     }
 }

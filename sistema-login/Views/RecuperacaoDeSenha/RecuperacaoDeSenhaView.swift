@@ -61,7 +61,7 @@ class RecuperacaoDeSenhaView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .red
-        label.text = "Usuário não encontrado!"
+        label.text = "E-mail não encontrado!"
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 20)
         label.textAlignment = .center
@@ -166,7 +166,7 @@ class RecuperacaoDeSenhaView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Gerar componentes
+    // MARK: - Configurar componentes
     public func configuraComponentesCasoOUsuarioNaoExista() -> Void {
         self.ocultaComponentesExibicaoRedefineSenha()
         self.exibeComponentesQuandoUsuarioNaoExiste()
@@ -212,23 +212,6 @@ class RecuperacaoDeSenhaView: UIView {
         ])
     }
     
-    // MARK: - Funcoes
-    public func getEmailTextField() -> UITextField {
-        return self.emailTextField
-    }
-    
-    public func getNovaSenha() -> String? {
-        return self.novaSenhaTextField.text
-    }
-    
-    public func getRepeticaoNovaSenha() -> String? {
-        return self.repeticaoDaNovaSenhaTextField.text
-    }
-    
-    public func getAlterarSenhaButton() -> UIButton {
-        return self.alterarSenhaButton
-    }
-    
     private func ocultaComponentesQuandoUsuarioNaoExiste() -> Void {
         self.usuarioNaoEncontradoLabel.isHidden = true
     }
@@ -253,6 +236,23 @@ class RecuperacaoDeSenhaView: UIView {
         self.repeticaoDaNovaSenhaLabel.isHidden = false
         self.repeticaoDaNovaSenhaTextField.isHidden = false
         self.alterarSenhaButton.isHidden = false
+    }
+    
+    // MARK: - Funcoes
+    public func getEmailTextField() -> UITextField {
+        return self.emailTextField
+    }
+    
+    public func getNovaSenha() -> String? {
+        return self.novaSenhaTextField.text
+    }
+    
+    public func getRepeticaoNovaSenha() -> String? {
+        return self.repeticaoDaNovaSenhaTextField.text
+    }
+    
+    public func getAlterarSenhaButton() -> UIButton {
+        return self.alterarSenhaButton
     }
     
     // MARK: - Constraints

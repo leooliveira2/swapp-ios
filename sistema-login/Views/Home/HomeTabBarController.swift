@@ -14,8 +14,7 @@ class HomeTabBarController: UITabBarController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = false
-        self.navigationItem.hidesBackButton = true
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     private func setupTabBarController() -> Void {
@@ -40,8 +39,4 @@ class HomeTabBarController: UITabBarController {
         items[2].image = UIImage(systemName: "airplane")
     }
                                                                                                
-    // MARK: - Funcoes
-    @objc private func deslogar(_ sender: UIButton) -> Void {
-          print("oi")
-    }
 }

@@ -15,10 +15,9 @@ class LoginViewController: UIViewController {
         return view
     }()
     
-    // MARK: - View life cycle - pesquisar sobre
+    // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.view = self.loginView
         
         self.loginView.getBotaoDeEntrar().addTarget(
@@ -39,6 +38,14 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Funcoes
+    @objc private func redirecionarParaTelaDeCriacaoDeContato(_ sender: UIButton) -> Void {
+        guard let navigationController = self.navigationController else { return }
+        
+        let criacaoDeContaViewController = CriacaoDeContaViewController()
+        
+        navigationController.pushViewController(criacaoDeContaViewController, animated: true)
+    }
+    
     @objc private func redirecionarParaTelaDeRecuperacaoDeSenha(_ sender: UIButton) -> Void {
         guard let navigationController = self.navigationController else { return }
         
@@ -76,14 +83,5 @@ class LoginViewController: UIViewController {
         let homeTabBarController = HomeTabBarController()
         navigationController.pushViewController(homeTabBarController, animated: true)
     }
-    
-    @objc private func redirecionarParaTelaDeCriacaoDeContato(_ sender: UIButton) -> Void {
-        guard let navigationController = self.navigationController else { return }
-        
-        let criacaoDeContaViewController = CriacaoDeContaViewController()
-        
-        navigationController.pushViewController(criacaoDeContaViewController, animated: true)
-    }
-    
     
 }

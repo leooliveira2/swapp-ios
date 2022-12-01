@@ -11,10 +11,16 @@ class CriacaoDeContaController: NSObject {
     
     private let controladorDeErros: ControladorDeErros
     private let validadorDeUsuario: ValidacaoDeUsuarioParaCadastro
+    private let salvarUsuario: SalvarUsuario
     
-    init(_ controladorDeErros: ControladorDeErros, _ validadorDeUsuario: ValidacaoDeUsuarioParaCadastro) {
+    init(
+        _ controladorDeErros: ControladorDeErros,
+        _ validadorDeUsuario: ValidacaoDeUsuarioParaCadastro,
+        _ salvarUsuario: SalvarUsuario
+    ) {
         self.controladorDeErros = controladorDeErros
         self.validadorDeUsuario = validadorDeUsuario
+        self.salvarUsuario = salvarUsuario
     }
     
     public func criarConta(
@@ -25,11 +31,7 @@ class CriacaoDeContaController: NSObject {
         repeticaoDaSenha: String?
     ) -> Bool {
         
-        let validadorDeUsuario = ValidacaoDeUsuarioParaCadastro(
-            self.controladorDeErros
-        )
-        
-        let usuarioEValido = validadorDeUsuario.usuarioPodeSerCadastrado(
+        let usuarioEValido = self.validadorDeUsuario.usuarioPodeSerCadastrado(
             nickNameDoUsuario: nickName,
             nomeCompletoDoUsuario: nomeCompleto,
             emailDoUsuario: email,
@@ -52,7 +54,7 @@ class CriacaoDeContaController: NSObject {
             return false
         }
         
-        UsuarioDao.salvarUsuario(usuario)
+        self.salvarUsuario.salvar(usuario)
         
         return true
     }

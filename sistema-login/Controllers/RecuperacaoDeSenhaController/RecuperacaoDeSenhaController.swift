@@ -11,10 +11,16 @@ class RecuperacaoDeSenhaController: NSObject {
     
     private let controladorDeErros: ControladorDeErros
     private let validadorDeSenha: ValidacaoDeUsuarioParaCadastro
+    private let redefinicaoDeSenha: RedefinicaoDeSenha
     
-    init(_ controladorDeErros: ControladorDeErros, _ validadorDeSenha: ValidacaoDeUsuarioParaCadastro) {
+    init(
+        _ controladorDeErros: ControladorDeErros,
+        _ validadorDeSenha: ValidacaoDeUsuarioParaCadastro,
+        _ redefinicaoDeSenha: RedefinicaoDeSenha
+    ) {
         self.controladorDeErros = controladorDeErros
         self.validadorDeSenha = validadorDeSenha
+        self.redefinicaoDeSenha = redefinicaoDeSenha
     }
     
     public func alterarSenha(email: String?, senha: String?, repeticaoSenha: String?) -> Bool {
@@ -34,7 +40,7 @@ class RecuperacaoDeSenhaController: NSObject {
             return false
         }
         
-        UsuarioDao.editarSenha(email: email, senha: senha)
+        self.redefinicaoDeSenha.redefinirSenha(email: email, senha: senha)
         
         return true
     }

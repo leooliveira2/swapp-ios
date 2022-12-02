@@ -31,6 +31,8 @@
 		C572B05129392E9E00BE9D00 /* BuscadorDeUsuariosSalvos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572B05029392E9E00BE9D00 /* BuscadorDeUsuariosSalvos.swift */; };
 		C572B053293936BB00BE9D00 /* RedefinicaoDeSenha.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572B052293936BB00BE9D00 /* RedefinicaoDeSenha.swift */; };
 		C572B055293937D700BE9D00 /* SalvarUsuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572B054293937D700BE9D00 /* SalvarUsuario.swift */; };
+		C57BD85E293A712E00092FA9 /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57BD85D293A712E00092FA9 /* PerfilViewController.swift */; };
+		C57BD860293A733900092FA9 /* PerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57BD85F293A733900092FA9 /* PerfilView.swift */; };
 		C581A7B529313FB30092DF05 /* PersonagemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C581A7B429313FB30092DF05 /* PersonagemController.swift */; };
 		C58D4095292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D4094292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift */; };
 		C58D409B292EB46F00A1C6BC /* PersonagemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D409A292EB46F00A1C6BC /* PersonagemViewController.swift */; };
@@ -71,6 +73,8 @@
 		C572B05029392E9E00BE9D00 /* BuscadorDeUsuariosSalvos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscadorDeUsuariosSalvos.swift; sourceTree = "<group>"; };
 		C572B052293936BB00BE9D00 /* RedefinicaoDeSenha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedefinicaoDeSenha.swift; sourceTree = "<group>"; };
 		C572B054293937D700BE9D00 /* SalvarUsuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalvarUsuario.swift; sourceTree = "<group>"; };
+		C57BD85D293A712E00092FA9 /* PerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
+		C57BD85F293A733900092FA9 /* PerfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilView.swift; sourceTree = "<group>"; };
 		C581A7B429313FB30092DF05 /* PersonagemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonagemController.swift; sourceTree = "<group>"; };
 		C58D4094292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperacaoDeSenhaController.swift; sourceTree = "<group>"; };
 		C58D409A292EB46F00A1C6BC /* PersonagemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonagemViewController.swift; sourceTree = "<group>"; };
@@ -238,6 +242,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C57BD85C293A70C400092FA9 /* Perfil */ = {
+			isa = PBXGroup;
+			children = (
+				C57BD85D293A712E00092FA9 /* PerfilViewController.swift */,
+				C57BD85F293A733900092FA9 /* PerfilView.swift */,
+			);
+			path = Perfil;
+			sourceTree = "<group>";
+		};
 		C58D4093292E8D3F00A1C6BC /* RecuperacaoDeSenhaController */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +265,7 @@
 				C58D4097292EB41500A1C6BC /* Personagem */,
 				C58D4098292EB43000A1C6BC /* Planeta */,
 				C58D4099292EB43F00A1C6BC /* Nave */,
+				C57BD85C293A70C400092FA9 /* Perfil */,
 			);
 			path = Telas;
 			sourceTree = "<group>";
@@ -415,8 +429,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C572B05129392E9E00BE9D00 /* BuscadorDeUsuariosSalvos.swift in Sources */,
+				C57BD85E293A712E00092FA9 /* PerfilViewController.swift in Sources */,
 				C58D409F292EB4B400A1C6BC /* PlanetaViewController.swift in Sources */,
 				C55BFA70291AD2000049C539 /* ControladorDeErros.swift in Sources */,
+				C57BD860293A733900092FA9 /* PerfilView.swift in Sources */,
 				C5C3455A291D7F9B00E3097A /* CriacaoDeContaController.swift in Sources */,
 				C50E6427292D56E100D8047C /* RecuperacaoDeSenhaViewController.swift in Sources */,
 				C5143CE8292FE6A600918975 /* RequisicoesStarWarsAPI.swift in Sources */,

@@ -149,12 +149,12 @@ class LoginView: UIView {
         return self.cadastrarButton
     }
     
-    public func getEmailDoUsuario() -> String? {
-        return self.emailTextField.text
+    public func getEmailDoUsuarioTextField() -> UITextField {
+        return self.emailTextField
     }
     
-    public func getSenhaDoUsuario() -> String? {
-        return self.senhaTextField.text
+    public func getSenhaDoUsuarioTextField() -> UITextField {
+        return self.senhaTextField
     }
     
     // MARK: - Config de constraints

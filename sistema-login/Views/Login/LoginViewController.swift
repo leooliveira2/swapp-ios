@@ -37,7 +37,7 @@ class LoginViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
     }
     
-    // MARK: - Funcoes
+    // MARK: - Acoes
     @objc private func redirecionarParaTelaDeCriacaoDeContato(_ sender: UIButton) -> Void {
         guard let navigationController = self.navigationController else { return }
         
@@ -63,8 +63,8 @@ class LoginViewController: UIViewController {
         let alertas = Alerta(viewController: self)
         
         let loginPodeSerRealizado = controlador.fazerLogin(
-            email: self.loginView.getEmailDoUsuario(),
-            senha: self.loginView.getSenhaDoUsuario()
+            email: self.loginView.getEmailDoUsuarioTextField().text,
+            senha: self.loginView.getSenhaDoUsuarioTextField().text
         )
         
         if !loginPodeSerRealizado {
@@ -75,6 +75,8 @@ class LoginViewController: UIViewController {
             }
         }
         
+        self.limpaOsValoresDosTextFieldsQuandoOBotaoEClicado()
+        
         guard let navigationController = self.navigationController else {
             alertas.criaAlerta(mensagem: "Tente novamente!")
             return
@@ -84,4 +86,9 @@ class LoginViewController: UIViewController {
         navigationController.pushViewController(homeTabBarController, animated: true)
     }
     
+    // MARK: - Funcoes
+    private func limpaOsValoresDosTextFieldsQuandoOBotaoEClicado() -> Void {
+        self.loginView.getEmailDoUsuarioTextField().text = ""
+        self.loginView.getSenhaDoUsuarioTextField().text = ""
+    }
 }

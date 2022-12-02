@@ -32,6 +32,14 @@ class PerfilView: UIView {
         return imageView
     }()
     
+    private lazy var nickUsuarioLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 20)
+        return label
+    }()
+    
     // MARK: - Inicializadores
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -49,10 +57,15 @@ class PerfilView: UIView {
         return self.fotoDePerfilImageView
     }
     
+    public func getNickUsuarioLabel() -> UILabel {
+        return self.nickUsuarioLabel
+    }
+    
     // MARK: - Config constraints
     private func configsConstraints() -> Void {
-        self.addSubview(perfilLabel)
+        self.addSubview(self.perfilLabel)
         self.addSubview(self.fotoDePerfilImageView)
+        self.addSubview(self.nickUsuarioLabel)
         
         NSLayoutConstraint.activate([
             self.perfilLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -61,7 +74,10 @@ class PerfilView: UIView {
             self.fotoDePerfilImageView.topAnchor.constraint(equalTo: self.perfilLabel.bottomAnchor, constant: 10),
             self.fotoDePerfilImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.fotoDePerfilImageView.widthAnchor.constraint(equalToConstant: 100),
-            self.fotoDePerfilImageView.heightAnchor.constraint(equalToConstant: 100)
+            self.fotoDePerfilImageView.heightAnchor.constraint(equalToConstant: 100),
+            
+            self.nickUsuarioLabel.topAnchor.constraint(equalTo: self.fotoDePerfilImageView.bottomAnchor, constant: 5),
+            self.nickUsuarioLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         
         ])
     }

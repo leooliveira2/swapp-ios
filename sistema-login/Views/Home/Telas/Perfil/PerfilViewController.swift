@@ -19,6 +19,8 @@ class PerfilViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = self.perfilView
+        
+        self.perfilView.getNickUsuarioLabel().text = "leonardo"
 
     }
     

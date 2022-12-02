@@ -40,6 +40,15 @@ class PerfilView: UIView {
         return label
     }()
     
+    private lazy var botaoSairButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Sair do app", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        button.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0), for: .normal)
+        return button
+    }()
+    
     // MARK: - Inicializadores
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -61,11 +70,16 @@ class PerfilView: UIView {
         return self.nickUsuarioLabel
     }
     
+    public func getBotaoSairButton() -> UIButton {
+        return self.botaoSairButton
+    }
+    
     // MARK: - Config constraints
     private func configsConstraints() -> Void {
         self.addSubview(self.perfilLabel)
         self.addSubview(self.fotoDePerfilImageView)
         self.addSubview(self.nickUsuarioLabel)
+        self.addSubview(self.botaoSairButton)
         
         NSLayoutConstraint.activate([
             self.perfilLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -77,7 +91,10 @@ class PerfilView: UIView {
             self.fotoDePerfilImageView.heightAnchor.constraint(equalToConstant: 100),
             
             self.nickUsuarioLabel.topAnchor.constraint(equalTo: self.fotoDePerfilImageView.bottomAnchor, constant: 5),
-            self.nickUsuarioLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+            self.nickUsuarioLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            
+            self.botaoSairButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -50),
+            self.botaoSairButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         
         ])
     }

@@ -19,7 +19,18 @@ class PerfilView: UIView {
         return label
     }()
     
-    
+    private lazy var fotoDePerfilImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 50
+        imageView.layer.borderWidth = 10
+        imageView.layer.borderColor = UIColor.black.cgColor
+        imageView.clipsToBounds = true
+        imageView.backgroundColor = .white
+        imageView.image = UIImage(systemName: "person.circle.fill")
+        return imageView
+    }()
     
     // MARK: - Inicializadores
     override init(frame: CGRect) {
@@ -33,13 +44,24 @@ class PerfilView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // Config constraints
+    // MARK: - Funcoes
+    public func getFotoDePerfilImageView() -> UIImageView {
+        return self.fotoDePerfilImageView
+    }
+    
+    // MARK: - Config constraints
     private func configsConstraints() -> Void {
         self.addSubview(perfilLabel)
+        self.addSubview(self.fotoDePerfilImageView)
         
         NSLayoutConstraint.activate([
             self.perfilLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10),
-            self.perfilLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20)
+            self.perfilLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            
+            self.fotoDePerfilImageView.topAnchor.constraint(equalTo: self.perfilLabel.bottomAnchor, constant: 10),
+            self.fotoDePerfilImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.fotoDePerfilImageView.widthAnchor.constraint(equalToConstant: 100),
+            self.fotoDePerfilImageView.heightAnchor.constraint(equalToConstant: 100)
         
         ])
     }

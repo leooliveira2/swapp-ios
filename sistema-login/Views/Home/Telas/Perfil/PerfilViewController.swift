@@ -18,12 +18,11 @@ class PerfilViewController: UIViewController {
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.view = self.perfilView
 
     }
     
-    // MARK: Funcoes
+    // MARK: - Funcoes
     
 
 }

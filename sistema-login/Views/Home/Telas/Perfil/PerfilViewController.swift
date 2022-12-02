@@ -21,10 +21,15 @@ class PerfilViewController: UIViewController {
         self.view = self.perfilView
         
         self.perfilView.getNickUsuarioLabel().text = "leonardo"
+        
+        self.perfilView.getBotaoSairButton().addTarget(self, action: #selector(botaoSairFoiClicado(_: )), for: .touchUpInside)
 
     }
     
     // MARK: - Funcoes
-    
-
+    @objc private func botaoSairFoiClicado(_ sender: UIButton) -> Void {
+        guard let navigationController = self.navigationController else { return }
+        
+        navigationController.popViewController(animated: true)
+    }
 }

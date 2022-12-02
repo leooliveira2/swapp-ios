@@ -135,7 +135,6 @@ class PersonagemView: UIView {
             self.botaoTopAnchor,
             self.gerarPersonagemButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
             self.gerarPersonagemButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
-      
             self.gerarPersonagemButton.heightAnchor.constraint(equalToConstant: 50),
         ])
     }

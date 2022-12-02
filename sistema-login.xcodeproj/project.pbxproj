@@ -28,6 +28,8 @@
 		C55BFA70291AD2000049C539 /* ControladorDeErros.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA6F291AD2000049C539 /* ControladorDeErros.swift */; };
 		C55BFA76291AD51A0049C539 /* Erros.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA75291AD51A0049C539 /* Erros.swift */; };
 		C55BFA78291AE4850049C539 /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA77291AE4850049C539 /* Alerta.swift */; };
+		C56022E6293A97F9006D99E8 /* PlanetaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56022E5293A97F9006D99E8 /* PlanetaController.swift */; };
+		C56022E8293A9822006D99E8 /* Planeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56022E7293A9822006D99E8 /* Planeta.swift */; };
 		C572B05129392E9E00BE9D00 /* BuscadorDeUsuariosSalvos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572B05029392E9E00BE9D00 /* BuscadorDeUsuariosSalvos.swift */; };
 		C572B053293936BB00BE9D00 /* RedefinicaoDeSenha.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572B052293936BB00BE9D00 /* RedefinicaoDeSenha.swift */; };
 		C572B055293937D700BE9D00 /* SalvarUsuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572B054293937D700BE9D00 /* SalvarUsuario.swift */; };
@@ -70,6 +72,8 @@
 		C55BFA6F291AD2000049C539 /* ControladorDeErros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControladorDeErros.swift; sourceTree = "<group>"; };
 		C55BFA75291AD51A0049C539 /* Erros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Erros.swift; sourceTree = "<group>"; };
 		C55BFA77291AE4850049C539 /* Alerta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
+		C56022E5293A97F9006D99E8 /* PlanetaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetaController.swift; sourceTree = "<group>"; };
+		C56022E7293A9822006D99E8 /* Planeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planeta.swift; sourceTree = "<group>"; };
 		C572B05029392E9E00BE9D00 /* BuscadorDeUsuariosSalvos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscadorDeUsuariosSalvos.swift; sourceTree = "<group>"; };
 		C572B052293936BB00BE9D00 /* RedefinicaoDeSenha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedefinicaoDeSenha.swift; sourceTree = "<group>"; };
 		C572B054293937D700BE9D00 /* SalvarUsuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalvarUsuario.swift; sourceTree = "<group>"; };
@@ -238,6 +242,7 @@
 				C55BFA6A291ACABB0049C539 /* Usuario.swift */,
 				C5143CE5292FE54800918975 /* Personagem.swift */,
 				C55BFA75291AD51A0049C539 /* Erros.swift */,
+				C56022E7293A9822006D99E8 /* Planeta.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -285,6 +290,7 @@
 			children = (
 				C58D409E292EB4B400A1C6BC /* PlanetaViewController.swift */,
 				C5143CE92930041600918975 /* PlanetaView.swift */,
+				C56022E5293A97F9006D99E8 /* PlanetaController.swift */,
 			);
 			path = Planeta;
 			sourceTree = "<group>";
@@ -434,6 +440,7 @@
 				C55BFA70291AD2000049C539 /* ControladorDeErros.swift in Sources */,
 				C57BD860293A733900092FA9 /* PerfilView.swift in Sources */,
 				C5C3455A291D7F9B00E3097A /* CriacaoDeContaController.swift in Sources */,
+				C56022E8293A9822006D99E8 /* Planeta.swift in Sources */,
 				C50E6427292D56E100D8047C /* RecuperacaoDeSenhaViewController.swift in Sources */,
 				C5143CE8292FE6A600918975 /* RequisicoesStarWarsAPI.swift in Sources */,
 				C572B053293936BB00BE9D00 /* RedefinicaoDeSenha.swift in Sources */,
@@ -453,6 +460,7 @@
 				C550F8682919644D00FC2EF2 /* SceneDelegate.swift in Sources */,
 				C55BFA68291AB6890049C539 /* CriacaoDeContaView.swift in Sources */,
 				C581A7B529313FB30092DF05 /* PersonagemController.swift in Sources */,
+				C56022E6293A97F9006D99E8 /* PlanetaController.swift in Sources */,
 				C55BFA78291AE4850049C539 /* Alerta.swift in Sources */,
 				C50DC29E291EDE28001CC4F9 /* HomeTabBarController.swift in Sources */,
 				C550F8812919A0D400FC2EF2 /* CriacaoDeContaViewController.swift in Sources */,

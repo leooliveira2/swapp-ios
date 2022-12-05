@@ -16,10 +16,11 @@ class RequisicoesStarWarsAPI: NSObject {
         sucesso: @escaping(_ personagem: Personagem) -> Void,
         falha: @escaping(_ erro: Bool) -> Void)
     {
-        AF.request("https://swapi.py4e.com/api/people/\(id)/").responseJSON { (response) in
+        AF.request("https://swapi.dev/api/people/\(id)/").responseJSON { (response) in
             
             if response.response?.statusCode == 404 {
                 falha(false)
+                return
             }
             
             switch response.result {
@@ -48,7 +49,7 @@ class RequisicoesStarWarsAPI: NSObject {
         sucesso: @escaping(_ planeta: Planeta) -> Void,
         falha: @escaping(_ erro: Bool) -> Void)
     {
-        let requisicao = AF.request("https://swapi.py4e.com/api/planets/\(id)/")
+        let requisicao = AF.request("https://swapi.dev/api/planets/\(id)/")
         
         requisicao.responseDecodable(of: Planeta.self) { (response) in
             
@@ -67,6 +68,44 @@ class RequisicoesStarWarsAPI: NSObject {
                 do {
                     let planeta = try decoder.decode(Planeta.self, from: data)
                     sucesso(planeta)
+                } catch {
+                    print("Não foi possível decodificar o JSON")
+                }
+                
+                break
+                
+            case .failure:
+                falha(false)
+                break
+            }
+        }
+    }
+    
+    func fazRequisicaoNave(
+        id: Int,
+        sucesso: @escaping(_ nave: Nave) -> Void,
+        falha: @escaping(_ erro: Bool) -> Void)
+    {
+        let requisicao = AF.request("https://swapi.dev/api/starships/\(id)/")
+        
+        requisicao.responseDecodable(of: Nave.self) { (response) in
+            
+            if response.response?.statusCode == 404 {
+                falha(false)
+                return
+            }
+            
+            switch response.result {
+            case .success:
+                guard let data = response.data else {
+                    falha(false)
+                    return
+                }
+                
+                let decoder = JSONDecoder()
+                do {
+                    let nave = try decoder.decode(Nave.self, from: data)
+                    sucesso(nave)
                 } catch {
                     print("Não foi possível decodificar o JSON")
                 }

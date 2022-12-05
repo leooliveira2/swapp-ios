@@ -22,7 +22,7 @@ class PlanetaController: NSObject {
     }
     
     private func gerarIdAleatorio() -> Int {
-        let numero = Int(arc4random_uniform(61))
+        let numero = Int(arc4random_uniform(60))
         return numero
     }
 }

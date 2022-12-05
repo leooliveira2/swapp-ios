@@ -30,6 +30,8 @@
 		C55BFA78291AE4850049C539 /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA77291AE4850049C539 /* Alerta.swift */; };
 		C56022E6293A97F9006D99E8 /* PlanetaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56022E5293A97F9006D99E8 /* PlanetaController.swift */; };
 		C56022E8293A9822006D99E8 /* Planeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56022E7293A9822006D99E8 /* Planeta.swift */; };
+		C5646B60293E523B009FD074 /* NaveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5646B5F293E523B009FD074 /* NaveController.swift */; };
+		C5646B62293E5281009FD074 /* Nave.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5646B61293E5281009FD074 /* Nave.swift */; };
 		C572B05129392E9E00BE9D00 /* BuscadorDeUsuariosSalvos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572B05029392E9E00BE9D00 /* BuscadorDeUsuariosSalvos.swift */; };
 		C572B053293936BB00BE9D00 /* RedefinicaoDeSenha.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572B052293936BB00BE9D00 /* RedefinicaoDeSenha.swift */; };
 		C572B055293937D700BE9D00 /* SalvarUsuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572B054293937D700BE9D00 /* SalvarUsuario.swift */; };
@@ -74,6 +76,8 @@
 		C55BFA77291AE4850049C539 /* Alerta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
 		C56022E5293A97F9006D99E8 /* PlanetaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetaController.swift; sourceTree = "<group>"; };
 		C56022E7293A9822006D99E8 /* Planeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planeta.swift; sourceTree = "<group>"; };
+		C5646B5F293E523B009FD074 /* NaveController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaveController.swift; sourceTree = "<group>"; };
+		C5646B61293E5281009FD074 /* Nave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nave.swift; sourceTree = "<group>"; };
 		C572B05029392E9E00BE9D00 /* BuscadorDeUsuariosSalvos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscadorDeUsuariosSalvos.swift; sourceTree = "<group>"; };
 		C572B052293936BB00BE9D00 /* RedefinicaoDeSenha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedefinicaoDeSenha.swift; sourceTree = "<group>"; };
 		C572B054293937D700BE9D00 /* SalvarUsuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalvarUsuario.swift; sourceTree = "<group>"; };
@@ -243,6 +247,7 @@
 				C5143CE5292FE54800918975 /* Personagem.swift */,
 				C55BFA75291AD51A0049C539 /* Erros.swift */,
 				C56022E7293A9822006D99E8 /* Planeta.swift */,
+				C5646B61293E5281009FD074 /* Nave.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -300,6 +305,7 @@
 			children = (
 				C58D409C292EB49700A1C6BC /* NaveViewController.swift */,
 				C5143CEB2930078C00918975 /* NaveView.swift */,
+				C5646B5F293E523B009FD074 /* NaveController.swift */,
 			);
 			path = Nave;
 			sourceTree = "<group>";
@@ -448,6 +454,7 @@
 				C5143CEA2930041600918975 /* PlanetaView.swift in Sources */,
 				C550F86A2919644D00FC2EF2 /* LoginViewController.swift in Sources */,
 				C55BFA6E291AD0330049C539 /* ValidacaoDeUsuarioParaCadastro.swift in Sources */,
+				C5646B62293E5281009FD074 /* Nave.swift in Sources */,
 				C572B055293937D700BE9D00 /* SalvarUsuario.swift in Sources */,
 				C550F87D2919650D00FC2EF2 /* LoginView.swift in Sources */,
 				C50E6429292D572200D8047C /* RecuperacaoDeSenhaView.swift in Sources */,
@@ -459,6 +466,7 @@
 				C550F8662919644D00FC2EF2 /* AppDelegate.swift in Sources */,
 				C550F8682919644D00FC2EF2 /* SceneDelegate.swift in Sources */,
 				C55BFA68291AB6890049C539 /* CriacaoDeContaView.swift in Sources */,
+				C5646B60293E523B009FD074 /* NaveController.swift in Sources */,
 				C581A7B529313FB30092DF05 /* PersonagemController.swift in Sources */,
 				C56022E6293A97F9006D99E8 /* PlanetaController.swift in Sources */,
 				C55BFA78291AE4850049C539 /* Alerta.swift in Sources */,

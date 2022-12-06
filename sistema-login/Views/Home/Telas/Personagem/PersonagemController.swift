@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PersonagemController: NSObject {
+class PersonagemController {
 
     public func gerarPersonagem(
         sucesso: @escaping(_ personagemVindoDaRequisicao: Personagem) -> Void,

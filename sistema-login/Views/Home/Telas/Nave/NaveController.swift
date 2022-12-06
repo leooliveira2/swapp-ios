@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NaveController: NSObject {
+class NaveController {
     
     public func gerarNave(
         sucesso: @escaping(_ naveVindaDaRequisicao: Nave) -> Void,

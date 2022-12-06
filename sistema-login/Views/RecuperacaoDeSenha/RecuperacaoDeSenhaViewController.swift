@@ -41,7 +41,7 @@ class RecuperacaoDeSenhaViewController: UIViewController {
     
     // MARK: - Funcoes
     @objc private func exibeConteudoAposEmailSerDigitado(_ sender: UITextField) -> Void {
-        let usuarios = UsuarioDao.getUsuariosSalvos()
+        let usuarios = UsuariosDadosStatic.getUsuariosSalvos()
         
         for usuario in usuarios {
             if usuario.getEmailDoUsuario() == sender.text {
@@ -56,8 +56,8 @@ class RecuperacaoDeSenhaViewController: UIViewController {
     
     @objc private func verificaSeSenhaPodeSerAlterada(_ sender: UIButton) -> Void {
         let controladorDeErros = ControladorDeErros()
-        let validadorDeSenha = ValidacaoDeUsuarioParaCadastro(controladorDeErros)
-        let redefinicaoDeSenha = RedefinicaoDeSenha()
+        let validadorDeSenha = ValidacoesDeDadosDoUsuario(controladorDeErros)
+        let redefinicaoDeSenha = RedefinicaoDeSenhaRepository()
         let recuperacaoDeSenhaController = RecuperacaoDeSenhaController(controladorDeErros, validadorDeSenha, redefinicaoDeSenha)
         let alerta = Alerta(viewController: self)
         
@@ -76,7 +76,7 @@ class RecuperacaoDeSenhaViewController: UIViewController {
         }
         
         guard let navigationController = self.navigationController else {
-            alerta.criaAlerta(mensagem: "Senha Alterada com sucesso!")
+            alerta.criaAlerta(titulo: "Sucesso", mensagem: "Senha Alterada com sucesso!")
             return
         }
         

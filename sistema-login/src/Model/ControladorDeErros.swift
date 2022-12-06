@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ControladorDeErros: NSObject {
+class ControladorDeErros {
     
     private var erros: Array<String> = []
     

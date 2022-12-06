@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PlanetaController: NSObject {
+class PlanetaController {
 
     public func gerarPlaneta(
         sucesso: @escaping(_ planetaVindoDaRequisicao: Planeta) -> Void,

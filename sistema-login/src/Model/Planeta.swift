@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Planeta: NSObject, Codable {
+class Planeta: Codable {
     
     private var name: String = ""
     private var diameter: String = ""

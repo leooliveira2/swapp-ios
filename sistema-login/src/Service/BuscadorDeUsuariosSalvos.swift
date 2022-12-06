@@ -7,9 +7,9 @@
 
 import UIKit
 
-class BuscadorDeUsuariosSalvos: NSObject {
+class BuscadorDeUsuariosSalvos {
     
     public func buscaUsuariosSalvos() -> [Usuario] {
-        return UsuarioDao.getUsuariosSalvos()
+        return UsuariosDadosStatic.getUsuariosSalvos()
     }
 }

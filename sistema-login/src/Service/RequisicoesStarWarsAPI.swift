@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 import ObjectMapper
 
-class RequisicoesStarWarsAPI: NSObject {
+class RequisicoesStarWarsAPI {
     
     func fazRequisicaoPersonagem(
         id: Int,

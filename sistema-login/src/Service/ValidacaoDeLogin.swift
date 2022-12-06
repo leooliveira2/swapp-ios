@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ValidacaoDeLogin: NSObject {
+class ValidacaoDeLogin {
     
     private let controladorDeErros: ControladorDeErros
     

@@ -7,20 +7,26 @@
 
 import UIKit
 
-class CriacaoDeContaController: NSObject {
+class CriacaoDeContaController {
     
     private let controladorDeErros: ControladorDeErros
-    private let validadorDeUsuario: ValidacaoDeUsuarioParaCadastro
-    private let salvarUsuario: SalvarUsuario
+    private let validadorDeUsuario: ValidacoesDeDadosDoUsuario
+    private let salvarUsuario: SalvarUsuarioRepository
+    private let verificadorDeNickNamesJaCadastrados: VerificadorDeNickNamesJaCadastradosRepository
+    private let verificadorDeEmailsJaCadastrados: VerificadorDeEmailsJaCadastradosRepository
     
     init(
         _ controladorDeErros: ControladorDeErros,
-        _ validadorDeUsuario: ValidacaoDeUsuarioParaCadastro,
-        _ salvarUsuario: SalvarUsuario
+        _ validadorDeUsuario: ValidacoesDeDadosDoUsuario,
+        _ salvarUsuario: SalvarUsuarioRepository,
+        _ verificadorDeNickNamesJaCadastrados: VerificadorDeNickNamesJaCadastradosRepository,
+        _ verificadorDeEmailsJaCadastrados: VerificadorDeEmailsJaCadastradosRepository
     ) {
         self.controladorDeErros = controladorDeErros
         self.validadorDeUsuario = validadorDeUsuario
         self.salvarUsuario = salvarUsuario
+        self.verificadorDeNickNamesJaCadastrados = verificadorDeNickNamesJaCadastrados
+        self.verificadorDeEmailsJaCadastrados = verificadorDeEmailsJaCadastrados
     }
     
     public func criarConta(
@@ -28,51 +34,28 @@ class CriacaoDeContaController: NSObject {
         nomeCompleto: String?,
         email: String?,
         senha: String?,
-        repeticaoDaSenha: String?
+        repeticaoDeSenha: String?
     ) -> Bool {
-        
-        let usuarioEValido = self.validadorDeUsuario.usuarioPodeSerCadastrado(
-            nickNameDoUsuario: nickName,
-            nomeCompletoDoUsuario: nomeCompleto,
-            emailDoUsuario: email,
-            senhaDoUsuario: senha,
-            repeticaoDeSenhaDoUsuario: repeticaoDaSenha
-        )
-        
-        if !usuarioEValido {
-            return false
-        }
-        
-        guard let usuario = criaUsuario(
-            nickName,
-            nomeCompleto,
-            email,
-            senha,
-            repeticaoDaSenha
-        ) else {
-            self.controladorDeErros.adicionarErro(erro: .erro_algum_dado_do_usuario_esta_nulo)
-            return false
-        }
-        
-        self.salvarUsuario.salvar(usuario)
-        
-        return true
-    }
-    
-    private func criaUsuario(
-        _ nickName: String?,
-        _ nomeCompleto: String?,
-        _ email: String?,
-        _ senha: String?,
-        _ repeticaoDaSenha: String?
-    ) -> Usuario? {
         guard let nickName = nickName,
               let nomeCompleto = nomeCompleto,
               let email = email,
               let senha = senha,
-              let repeticaoDaSenha = repeticaoDaSenha
+              let repeticaoDeSenha = repeticaoDeSenha
         else {
-            return nil
+            self.controladorDeErros.adicionarErro(erro: .erro_algum_dado_do_usuario_esta_nulo)
+            return false
+        }
+        
+        let usuarioPodeSerCadastrado = self.verificaSeUsuarioPodeSerCadastrado(
+            nickName,
+            nomeCompleto,
+            email,
+            senha,
+            repeticaoDeSenha
+        )
+        
+        if !usuarioPodeSerCadastrado {
+            return false
         }
         
         let usuario = Usuario(
@@ -80,9 +63,69 @@ class CriacaoDeContaController: NSObject {
             nomeCompleto: nomeCompleto,
             email: email,
             senha: senha,
-            repeticaoDeSenha: repeticaoDaSenha
+            repeticaoDeSenha: repeticaoDeSenha
         )
         
-        return usuario
+        if !self.salvarUsuario.salvar(usuario) {
+            return false
+        }
+        
+        return true
+    }
+    
+    private func verificaSeUsuarioPodeSerCadastrado(
+        _ nickName: String,
+        _ nomeCompleto: String,
+        _ email: String,
+        _ senha: String,
+        _ repeticaoDeSenha: String
+    ) -> Bool {
+        
+        var usuarioPodeSerCadastrado = true
+        
+        let verificaSeNickNameEInvalido = (
+            self.validadorDeUsuario.verificaSeNickNameDoUsuarioEstaVazio(nickName) ||
+            self.validadorDeUsuario.verificaSeNickNameDoUsuarioTemMenosDe5Caracteres(nickName) ||
+            self.validadorDeUsuario.verificaSeNickNameDoUsuarioTemMaisDe32Caracteres(nickName) ||
+            self.validadorDeUsuario.verificaSeNickNameDoUsuarioNaoEUmAlfaNumerico(nickName) ||
+            self.validadorDeUsuario.verificaSeNickNameDoUsuarioJaEstaCadastrado(nickName, self.verificadorDeNickNamesJaCadastrados)
+        )
+        
+        let verificaSeNomeCompletoEInvalido = (
+            self.validadorDeUsuario.verificaSeNomeCompletoDoUsuarioEstaVazio(nomeCompleto) ||
+            self.validadorDeUsuario.verificaSeNomeCompletoDoUsuarioContemCaracteresInvalidos(nomeCompleto) ||
+            self.validadorDeUsuario.verificaSeNomeCompletoDoUsuarioTemMaisDe130Caracteres(nomeCompleto)
+        )
+        
+        let verificaSeEmailEInvalido = (
+            self.validadorDeUsuario.verificaSeEmailDoUsuarioEstaVazio(email) ||
+            self.validadorDeUsuario.verificaSeEmailDoUsuarioEValido(email) ||
+            self.validadorDeUsuario.verificaSeEmailDoUsuarioTemMaisDe150Caracteres(email) ||
+            self.validadorDeUsuario.verificaSeEmailDoUsuarioJaEstaCadastrado(email, self.verificadorDeEmailsJaCadastrados)
+        )
+        
+        let verificaSeSenhaEInvalida = (
+            self.validadorDeUsuario.verificaSeSenhaDoUsuarioEstaVazia(senha) ||
+            self.validadorDeUsuario.verificaSeSenhaDoUsuarioTemMenosQue8Caracteres(senha) ||
+            self.validadorDeUsuario.verificaSeSenhaDoUsuarioTemMaisQue32Caracteres(senha)
+        )
+        
+        let verificaSeRepeticaoDeSenhaEInvalida = (
+            self.validadorDeUsuario.verificaSeRepeticaoDaSenhaDoUsuarioEstaVazia(repeticaoDeSenha) ||
+            self.validadorDeUsuario.verificaSeRepeticaoDaSenhaDoUsuarioEDiferenteDaSenha(senha, repeticaoDeSenha)
+        )
+        
+        if (
+            verificaSeNickNameEInvalido ||
+            verificaSeNomeCompletoEInvalido ||
+            verificaSeEmailEInvalido ||
+            verificaSeSenhaEInvalida ||
+            verificaSeRepeticaoDeSenhaEInvalida
+        )
+        {
+            usuarioPodeSerCadastrado = false
+        }
+        
+        return usuarioPodeSerCadastrado
     }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Usuario: NSObject {
+class Usuario {
     
     // MARK: - Atributos
     private let nickName: String

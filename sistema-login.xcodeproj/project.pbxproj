@@ -32,8 +32,7 @@
 		C56022E8293A9822006D99E8 /* Planeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56022E7293A9822006D99E8 /* Planeta.swift */; };
 		C5646B60293E523B009FD074 /* NaveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5646B5F293E523B009FD074 /* NaveController.swift */; };
 		C5646B62293E5281009FD074 /* Nave.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5646B61293E5281009FD074 /* Nave.swift */; };
-		C569E5E4293FB9030040885A /* VerificadorDeNickNamesJaCadastradosRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569E5E3293FB9030040885A /* VerificadorDeNickNamesJaCadastradosRepository.swift */; };
-		C569E5E6293FBD240040885A /* VerificadorDeEmailsJaCadastradosRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569E5E5293FBD240040885A /* VerificadorDeEmailsJaCadastradosRepository.swift */; };
+		C569E5E4293FB9030040885A /* VerificadorDeDadosCadastradosRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569E5E3293FB9030040885A /* VerificadorDeDadosCadastradosRepository.swift */; };
 		C569E5EC293FDABD0040885A /* ValidadorDeLoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569E5EB293FDABD0040885A /* ValidadorDeLoginRepository.swift */; };
 		C572B053293936BB00BE9D00 /* RedefinicaoDeSenhaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572B052293936BB00BE9D00 /* RedefinicaoDeSenhaRepository.swift */; };
 		C572B055293937D700BE9D00 /* SalvarUsuarioRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572B054293937D700BE9D00 /* SalvarUsuarioRepository.swift */; };
@@ -80,8 +79,7 @@
 		C56022E7293A9822006D99E8 /* Planeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planeta.swift; sourceTree = "<group>"; };
 		C5646B5F293E523B009FD074 /* NaveController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaveController.swift; sourceTree = "<group>"; };
 		C5646B61293E5281009FD074 /* Nave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nave.swift; sourceTree = "<group>"; };
-		C569E5E3293FB9030040885A /* VerificadorDeNickNamesJaCadastradosRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificadorDeNickNamesJaCadastradosRepository.swift; sourceTree = "<group>"; };
-		C569E5E5293FBD240040885A /* VerificadorDeEmailsJaCadastradosRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificadorDeEmailsJaCadastradosRepository.swift; sourceTree = "<group>"; };
+		C569E5E3293FB9030040885A /* VerificadorDeDadosCadastradosRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificadorDeDadosCadastradosRepository.swift; sourceTree = "<group>"; };
 		C569E5EB293FDABD0040885A /* ValidadorDeLoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidadorDeLoginRepository.swift; sourceTree = "<group>"; };
 		C572B052293936BB00BE9D00 /* RedefinicaoDeSenhaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedefinicaoDeSenhaRepository.swift; sourceTree = "<group>"; };
 		C572B054293937D700BE9D00 /* SalvarUsuarioRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalvarUsuarioRepository.swift; sourceTree = "<group>"; };
@@ -258,8 +256,7 @@
 			children = (
 				C572B052293936BB00BE9D00 /* RedefinicaoDeSenhaRepository.swift */,
 				C572B054293937D700BE9D00 /* SalvarUsuarioRepository.swift */,
-				C569E5E3293FB9030040885A /* VerificadorDeNickNamesJaCadastradosRepository.swift */,
-				C569E5E5293FBD240040885A /* VerificadorDeEmailsJaCadastradosRepository.swift */,
+				C569E5E3293FB9030040885A /* VerificadorDeDadosCadastradosRepository.swift */,
 				C569E5EB293FDABD0040885A /* ValidadorDeLoginRepository.swift */,
 				C587194D2947A52A00F6EDC7 /* RecuperaDadosDoUsuarioRepository.swift */,
 			);
@@ -465,8 +462,7 @@
 				C57BD85E293A712E00092FA9 /* PerfilViewController.swift in Sources */,
 				C58D409F292EB4B400A1C6BC /* PlanetaViewController.swift in Sources */,
 				C55BFA70291AD2000049C539 /* ControladorDeErros.swift in Sources */,
-				C569E5E4293FB9030040885A /* VerificadorDeNickNamesJaCadastradosRepository.swift in Sources */,
-				C569E5E6293FBD240040885A /* VerificadorDeEmailsJaCadastradosRepository.swift in Sources */,
+				C569E5E4293FB9030040885A /* VerificadorDeDadosCadastradosRepository.swift in Sources */,
 				C57BD860293A733900092FA9 /* PerfilView.swift in Sources */,
 				C5C3455A291D7F9B00E3097A /* CriacaoDeContaController.swift in Sources */,
 				C56022E8293A9822006D99E8 /* Planeta.swift in Sources */,

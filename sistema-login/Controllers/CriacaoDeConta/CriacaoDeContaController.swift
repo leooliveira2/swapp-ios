@@ -12,21 +12,18 @@ class CriacaoDeContaController {
     private let controladorDeErros: ControladorDeErros
     private let validadorDeUsuario: ValidacoesDeDadosDoUsuario
     private let salvarUsuario: SalvarUsuarioRepository
-    private let verificadorDeNickNamesJaCadastrados: VerificadorDeNickNamesJaCadastradosRepository
-    private let verificadorDeEmailsJaCadastrados: VerificadorDeEmailsJaCadastradosRepository
+    private let verificadorDeDadosCadastrados: VerificadorDeDadosCadastradosRepository
     
     init(
         _ controladorDeErros: ControladorDeErros,
         _ validadorDeUsuario: ValidacoesDeDadosDoUsuario,
         _ salvarUsuario: SalvarUsuarioRepository,
-        _ verificadorDeNickNamesJaCadastrados: VerificadorDeNickNamesJaCadastradosRepository,
-        _ verificadorDeEmailsJaCadastrados: VerificadorDeEmailsJaCadastradosRepository
+        _ verificadorDeDadosCadastrados: VerificadorDeDadosCadastradosRepository
     ) {
         self.controladorDeErros = controladorDeErros
         self.validadorDeUsuario = validadorDeUsuario
         self.salvarUsuario = salvarUsuario
-        self.verificadorDeNickNamesJaCadastrados = verificadorDeNickNamesJaCadastrados
-        self.verificadorDeEmailsJaCadastrados = verificadorDeEmailsJaCadastrados
+        self.verificadorDeDadosCadastrados = verificadorDeDadosCadastrados
     }
     
     public func criarConta(
@@ -88,7 +85,7 @@ class CriacaoDeContaController {
             self.validadorDeUsuario.verificaSeNickNameDoUsuarioTemMenosDe5Caracteres(nickName) ||
             self.validadorDeUsuario.verificaSeNickNameDoUsuarioTemMaisDe32Caracteres(nickName) ||
             self.validadorDeUsuario.verificaSeNickNameDoUsuarioNaoEUmAlfaNumerico(nickName) ||
-            self.validadorDeUsuario.verificaSeNickNameDoUsuarioJaEstaCadastrado(nickName, self.verificadorDeNickNamesJaCadastrados)
+            self.validadorDeUsuario.verificaSeNickNameDoUsuarioJaEstaCadastrado(nickName, self.verificadorDeDadosCadastrados)
         )
         
         let verificaSeNomeCompletoEInvalido = (
@@ -101,7 +98,7 @@ class CriacaoDeContaController {
             self.validadorDeUsuario.verificaSeEmailDoUsuarioEstaVazio(email) ||
             self.validadorDeUsuario.verificaSeEmailDoUsuarioEValido(email) ||
             self.validadorDeUsuario.verificaSeEmailDoUsuarioTemMaisDe150Caracteres(email) ||
-            self.validadorDeUsuario.verificaSeEmailDoUsuarioJaEstaCadastrado(email, self.verificadorDeEmailsJaCadastrados)
+            self.validadorDeUsuario.verificaSeEmailDoUsuarioJaEstaCadastrado(email, self.verificadorDeDadosCadastrados)
         )
         
         let verificaSeSenhaEInvalida = (

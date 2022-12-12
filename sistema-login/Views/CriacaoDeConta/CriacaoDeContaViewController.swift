@@ -35,15 +35,13 @@ class CriacaoDeContaViewController: UIViewController {
         let controladorDeErros = ControladorDeErros()
         let validadorDeUsuario = ValidacoesDeDadosDoUsuario(controladorDeErros)
         let salvarUsuario = SalvarUsuarioStaticClass()
-        let verificadorDeNickNamesJaCadastrados = VerificadorDeNickNamesJaCadastradosStaticClass()
-        let verificadorDeEmailsJaCadastrados = VerificadorDeEmailsJaCadastradosStaticClass()
+        let verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosStaticClass()
         
         let controlador = CriacaoDeContaController(
             controladorDeErros,
             validadorDeUsuario,
             salvarUsuario,
-            verificadorDeNickNamesJaCadastrados,
-            verificadorDeEmailsJaCadastrados
+            verificadorDeDadosCadastrados
         )
         
         let contaFoiCriada = controlador.criarConta(

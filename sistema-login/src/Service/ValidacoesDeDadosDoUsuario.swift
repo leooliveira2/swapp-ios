@@ -64,9 +64,9 @@ class ValidacoesDeDadosDoUsuario {
     
     public func verificaSeNickNameDoUsuarioJaEstaCadastrado(
         _ nickName: String,
-        _ verificadorDeNickNamesJaCadastrados: VerificadorDeNickNamesJaCadastradosRepository
+        _ verificadorDeDadosCadastrados: VerificadorDeDadosCadastradosRepository
     ) -> Bool {
-        let nickNameDeUsuarioJaEstaCadastrado = verificadorDeNickNamesJaCadastrados.verificaSeNickNameJaEstaCadastrado(nickName)
+        let nickNameDeUsuarioJaEstaCadastrado = verificadorDeDadosCadastrados.verificaSeNickNameJaEstaCadastrado(nickName)
         
         if nickNameDeUsuarioJaEstaCadastrado {
             self.controladorDeErros.adicionarErro(erro: .erro_nick_de_usuario_ja_esta_cadastrado)
@@ -151,9 +151,9 @@ class ValidacoesDeDadosDoUsuario {
     
     public func verificaSeEmailDoUsuarioJaEstaCadastrado(
         _ email: String,
-        _ verificadorDeEmailsJaCadastrados: VerificadorDeEmailsJaCadastradosRepository
+        _ verificadorDeDadosCadastrados: VerificadorDeDadosCadastradosRepository
     ) -> Bool {
-        let emailDoUsuarioJaEstaCadastrado = verificadorDeEmailsJaCadastrados.verificaSeEmailJaEstaCadastrado(email)
+        let emailDoUsuarioJaEstaCadastrado = verificadorDeDadosCadastrados.verificaSeEmailJaEstaCadastrado(email)
         
         if emailDoUsuarioJaEstaCadastrado {
             self.controladorDeErros.adicionarErro(erro: .erro_email_ja_esta_cadastrado)

@@ -220,6 +220,26 @@ class ValidacoesDeDadosDoUsuario {
         
         return false
     }
+    
+    // MARK: - Validacoes de login
+    public func verificaSeLoginPodeSerRealizado(
+        _ email: String,
+        _ senha: String,
+        _ validadorDeLogin: ValidadorDeLoginRepository
+    ) -> Bool
+    {
+        let loginPodeSerRealizado = validadorDeLogin.validarLogin(email: email, senha: senha)
+        
+        if !loginPodeSerRealizado {
+            self.controladorDeErros.adicionarErro(erro: .erro_cadastro_nao_encontrado)
+            
+            return false
+        }
+        
+        return true
+        
+    }
+    
 }
 
 // MARK: - Extensoes

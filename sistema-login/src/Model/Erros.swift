@@ -30,7 +30,6 @@ enum Erros: String {
     case erro_repeticao_de_senha_vazio = "O campo repetição da senha não pode ser vazio!"
     case erro_repeticao_de_senha_e_senha_sao_diferentes = "A repetição da senha e a senha devem ser iguais!"
     
-    case erro_email_e_senha_devem_ser_ambos_preenchidos = "Os dois campos precisam ser preenchidos!"
     case erro_cadastro_nao_encontrado = "Usuário não encontrado! Verifique seus dados e tente novamente"
     
     case erro_algum_dado_do_usuario_esta_nulo = "Tente novamente!"

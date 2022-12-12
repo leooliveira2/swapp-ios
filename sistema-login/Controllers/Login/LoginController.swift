@@ -10,11 +10,18 @@ import UIKit
 class LoginController {
     
     private let controladorDeErros: ControladorDeErros
-    private let validadorDeLogin: ValidacaoDeLogin
+    private let validadorDeLogin: ValidadorDeLoginRepository
+    private let validadorDeUsuario: ValidacoesDeDadosDoUsuario
     
-    init(_ controladorDeErros: ControladorDeErros, _ validadorDeLogin: ValidacaoDeLogin) {
+    init(
+        _ controladorDeErros: ControladorDeErros,
+        _ validadorDeLogin: ValidadorDeLoginRepository,
+        _ validadorDeUsuario: ValidacoesDeDadosDoUsuario
+    )
+    {
         self.controladorDeErros = controladorDeErros
         self.validadorDeLogin = validadorDeLogin
+        self.validadorDeUsuario = validadorDeUsuario
     }
     
     public func fazerLogin(email: String?, senha: String?) -> Bool {
@@ -25,12 +32,25 @@ class LoginController {
             return false
         }
         
-        let cadastroFoiEncontrado = validadorDeLogin.loginPodeSerRealizado(
-            emailDoUsuario: email,
-            senhaDoUsuario: senha
+        let loginPodeSerRealizado = self.verificaSeLoginPodeSerRealizado(email, senha)
+        
+        return loginPodeSerRealizado
+    }
+    
+    private func verificaSeLoginPodeSerRealizado(_ email: String, _ senha: String) -> Bool {
+        let algumCampoDosFormulariosEstaVazio = (
+            self.validadorDeUsuario.verificaSeEmailDoUsuarioEstaVazio(email) ||
+            self.validadorDeUsuario.verificaSeSenhaDoUsuarioEstaVazia(senha)
         )
         
-        return cadastroFoiEncontrado
+        let loginNaoPodeSerRealizado = !self.validadorDeUsuario.verificaSeLoginPodeSerRealizado(email, senha, self.validadorDeLogin)
+        
+        if algumCampoDosFormulariosEstaVazio || loginNaoPodeSerRealizado {
+            return false
+        }
+        
+        return true
     }
 
 }
+

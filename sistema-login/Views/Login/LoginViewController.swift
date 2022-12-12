@@ -57,15 +57,17 @@ class LoginViewController: UIViewController {
     @objc private func realizarLogin(_ sender: UIButton) -> Void {
         let controladorDeErros = ControladorDeErros()
         
-        let validadorDeLogin = ValidacaoDeLogin(controladorDeErros)
-        let controlador = LoginController(controladorDeErros, validadorDeLogin)
+        let validadorDeLogin = ValidadorDeLoginStaticClass()
+        let validadorDeUsuario = ValidacoesDeDadosDoUsuario(controladorDeErros)
         
-        let alertas = Alerta(viewController: self)
+        let controlador = LoginController(controladorDeErros, validadorDeLogin, validadorDeUsuario)
         
         let loginPodeSerRealizado = controlador.fazerLogin(
             email: self.loginView.getEmailDoUsuarioTextField().text,
             senha: self.loginView.getSenhaDoUsuarioTextField().text
         )
+        
+        let alertas = Alerta(viewController: self)
         
         if !loginPodeSerRealizado {
             let listaDeErros = controladorDeErros.getErros()
@@ -73,6 +75,7 @@ class LoginViewController: UIViewController {
                 alertas.criaAlerta(mensagem: listaDeErros[0])
                 return
             }
+            
         }
         
         self.limpaOsValoresDosTextFieldsQuandoOBotaoEClicado()

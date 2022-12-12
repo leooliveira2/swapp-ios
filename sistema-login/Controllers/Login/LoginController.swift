@@ -34,7 +34,13 @@ class LoginController {
         
         let loginPodeSerRealizado = self.verificaSeLoginPodeSerRealizado(email, senha)
         
-        return loginPodeSerRealizado
+        if !loginPodeSerRealizado {
+            return false
+        }
+        
+        self.configuraLoginAutomaticoNasProximasSessoes(email: email)
+        
+        return true
     }
     
     private func verificaSeLoginPodeSerRealizado(_ email: String, _ senha: String) -> Bool {
@@ -50,6 +56,11 @@ class LoginController {
         }
         
         return true
+    }
+    
+    private func configuraLoginAutomaticoNasProximasSessoes(email: String) -> Void {
+        UserDefaults.standard.set(true, forKey: "esta_logado")
+        UserDefaults.standard.set(email, forKey: "user_id")
     }
 
 }

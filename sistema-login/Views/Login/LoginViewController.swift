@@ -18,6 +18,15 @@ class LoginViewController: UIViewController {
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let usuarioEstaLogado = UserDefaults.standard.bool(forKey: "esta_logado")
+        
+        if usuarioEstaLogado {
+            guard let navigationController = self.navigationController else { return }
+            navigationController.pushViewController(HomeTabBarController(), animated: true)
+            return
+        }
+        
         self.view = self.loginView
         
         self.loginView.getBotaoDeEntrar().addTarget(
@@ -77,9 +86,7 @@ class LoginViewController: UIViewController {
             }
             
         }
-        
-        self.limpaOsValoresDosTextFieldsQuandoOBotaoEClicado()
-        
+       
         guard let navigationController = self.navigationController else {
             alertas.criaAlerta(mensagem: "Tente novamente!")
             return
@@ -88,10 +95,5 @@ class LoginViewController: UIViewController {
         let homeTabBarController = HomeTabBarController()
         navigationController.pushViewController(homeTabBarController, animated: true)
     }
-    
-    // MARK: - Funcoes
-    private func limpaOsValoresDosTextFieldsQuandoOBotaoEClicado() -> Void {
-        self.loginView.getEmailDoUsuarioTextField().text = ""
-        self.loginView.getSenhaDoUsuarioTextField().text = ""
-    }
+
 }

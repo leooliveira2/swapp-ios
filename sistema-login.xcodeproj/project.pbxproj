@@ -40,6 +40,7 @@
 		C57BD85E293A712E00092FA9 /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57BD85D293A712E00092FA9 /* PerfilViewController.swift */; };
 		C57BD860293A733900092FA9 /* PerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57BD85F293A733900092FA9 /* PerfilView.swift */; };
 		C581A7B529313FB30092DF05 /* PersonagemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C581A7B429313FB30092DF05 /* PersonagemController.swift */; };
+		C587194E2947A52A00F6EDC7 /* RecuperaDadosDoUsuarioRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C587194D2947A52A00F6EDC7 /* RecuperaDadosDoUsuarioRepository.swift */; };
 		C58D4095292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D4094292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift */; };
 		C58D409B292EB46F00A1C6BC /* PersonagemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D409A292EB46F00A1C6BC /* PersonagemViewController.swift */; };
 		C58D409D292EB49700A1C6BC /* NaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D409C292EB49700A1C6BC /* NaveViewController.swift */; };
@@ -87,6 +88,7 @@
 		C57BD85D293A712E00092FA9 /* PerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
 		C57BD85F293A733900092FA9 /* PerfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilView.swift; sourceTree = "<group>"; };
 		C581A7B429313FB30092DF05 /* PersonagemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonagemController.swift; sourceTree = "<group>"; };
+		C587194D2947A52A00F6EDC7 /* RecuperaDadosDoUsuarioRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperaDadosDoUsuarioRepository.swift; sourceTree = "<group>"; };
 		C58D4094292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperacaoDeSenhaController.swift; sourceTree = "<group>"; };
 		C58D409A292EB46F00A1C6BC /* PersonagemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonagemViewController.swift; sourceTree = "<group>"; };
 		C58D409C292EB49700A1C6BC /* NaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaveViewController.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				C569E5E3293FB9030040885A /* VerificadorDeNickNamesJaCadastradosRepository.swift */,
 				C569E5E5293FBD240040885A /* VerificadorDeEmailsJaCadastradosRepository.swift */,
 				C569E5EB293FDABD0040885A /* ValidadorDeLoginRepository.swift */,
+				C587194D2947A52A00F6EDC7 /* RecuperaDadosDoUsuarioRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				C569E5EC293FDABD0040885A /* ValidadorDeLoginRepository.swift in Sources */,
 				C55BFA6B291ACABB0049C539 /* Usuario.swift in Sources */,
 				C58D409D292EB49700A1C6BC /* NaveViewController.swift in Sources */,
+				C587194E2947A52A00F6EDC7 /* RecuperaDadosDoUsuarioRepository.swift in Sources */,
 				C5C3455C291D860300E3097A /* UsuariosDadosStatic.swift in Sources */,
 				C550F8662919644D00FC2EF2 /* AppDelegate.swift in Sources */,
 				C550F8682919644D00FC2EF2 /* SceneDelegate.swift in Sources */,

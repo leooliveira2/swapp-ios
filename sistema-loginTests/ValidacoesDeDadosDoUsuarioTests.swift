@@ -330,5 +330,41 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         XCTAssertEqual(1, erros.count)
         XCTAssertEqual(.erro_repeticao_de_senha_e_senha_sao_diferentes, erros[0])
     }
+    
+    func testLoginNaoPodeSerRealizadoPoisCadastroNaoExisteStaticClass() {
+        let validadorDeLogin = ValidadorDeLoginStaticClass()
+        
+        let loginPodeSerRealizado = self.validadorDeDadosDoUsuario.verificaSeLoginPodeSerRealizado("email@em.com", "senhasenha", validadorDeLogin)
+        
+        let erros = self.controladorDeErros.getErros()
+        
+        XCTAssertFalse(loginPodeSerRealizado)
+        XCTAssertEqual(.erro_cadastro_nao_encontrado, erros[0])
+    }
+    
+    func testLoginPodeSerRealizadoStaticClass() {
+        let usuario = Usuario(
+            nickName: "usuario",
+            nomeCompleto: "Usuario",
+            email: "email@teste.com",
+            senha: "123123123",
+            repeticaoDeSenha: "123123123"
+        )
+        
+        UsuariosDadosStatic.salvarUsuario(usuario)
+        
+        let validadorDeLogin = ValidadorDeLoginStaticClass()
+        
+        let loginPodeSerRealizado = self.validadorDeDadosDoUsuario.verificaSeLoginPodeSerRealizado(
+            usuario.getEmailDoUsuario(),
+            usuario.getSenhaDoUsuario(),
+            validadorDeLogin
+        )
+        
+        let erros = self.controladorDeErros.getErros()
+        
+        XCTAssertTrue(loginPodeSerRealizado)
+        XCTAssertEqual(0, erros.count)
+    }
 
 }

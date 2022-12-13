@@ -15,7 +15,7 @@ enum Erros: String {
     case erro_nick_de_usuario_ja_esta_cadastrado = "Apelido escolhido já está em uso! Por favor, escolha outro!"
     
     case erro_nome_completo_vazio = "O campo nome não pode ser vazio!"
-    case erro_nome_completo_contem_caracteres_invalidos = "O nome só pode conter letras!"
+    case erro_nome_completo_so_pode_conter_letras_e_espacos = "O nome só pode conter letras e espaços!"
     case erro_nome_completo_nao_pode_ter_mais_de_130_caracteres = "O nome pode conter no máximo 130 caracteres!"
     
     case erro_email_vazio = "O campo e-mail não pode ser vazio!"

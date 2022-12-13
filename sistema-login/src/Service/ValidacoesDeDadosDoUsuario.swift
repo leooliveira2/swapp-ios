@@ -92,7 +92,7 @@ class ValidacoesDeDadosDoUsuario {
     public func nomeCompletoDoUsuarioContemCaracteresInvalidos(_ nomeCompleto: String) -> Bool {
         let nomeCompletoDoUsuarioContemCaracteresInvalidos = !nomeCompleto.isAlphabetic
         if nomeCompletoDoUsuarioContemCaracteresInvalidos {
-            self.controladorDeErros.adicionarErro(erro: .erro_nome_completo_contem_caracteres_invalidos)
+            self.controladorDeErros.adicionarErro(erro: .erro_nome_completo_so_pode_conter_letras_e_espacos)
             
             return true
         }

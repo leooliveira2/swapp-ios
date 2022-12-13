@@ -10,9 +10,11 @@ import XCTest
 
 final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
 
+    // MARK: - Atributos
     private var controladorDeErros: ControladorDeErros!
     private var validadorDeDadosDoUsuario: ValidacoesDeDadosDoUsuario!
     
+    // MARK: - Pre-sets
     override func setUpWithError() throws {
         self.controladorDeErros = ControladorDeErros()
         self.validadorDeDadosDoUsuario = ValidacoesDeDadosDoUsuario(self.controladorDeErros)
@@ -22,6 +24,7 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         
     }
     
+    // MARK: - Testes nickname
     func testVerificaSeNickNameDoUsuarioEstaPreenchidoCorretamente() {
         let nickName = "teste"
         
@@ -109,6 +112,65 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         
         XCTAssertFalse(nickNameDoUsuarioJaEstaSalvo)
         XCTAssertEqual(0, erros.count)
+    }
+    
+    // MARK: - Testes nome completo
+    func testVerificaSeNomeCompletoDoUsuarioEstaPreenchidoCorretamente() {
+        let nomeCompleto = "João Silva"
+        
+        let nomeCompletoEstaPreenchidoCorretamente = (
+            !self.validadorDeDadosDoUsuario.nomeCompletoDoUsuarioEstaVazio(nomeCompleto) &&
+            !self.validadorDeDadosDoUsuario.nomeCompletoDoUsuarioContemCaracteresInvalidos(nomeCompleto) &&
+            !self.validadorDeDadosDoUsuario.nomeCompletoDoUsuarioTemMaisDe130Caracteres(nomeCompleto)
+        )
+        
+        let erros = self.controladorDeErros.getErros()
+        
+        XCTAssertTrue(nomeCompletoEstaPreenchidoCorretamente)
+        XCTAssertEqual(0, erros.count)
+    }
+    
+    func testVerificaSeNomeCompletoDoUsuarioEstaVazio() {
+        let nomeCompletoDoUsuarioEstaVazio = self.validadorDeDadosDoUsuario.nomeCompletoDoUsuarioEstaVazio("")
+        
+        let erros = self.controladorDeErros.getErros()
+        
+        XCTAssertTrue(nomeCompletoDoUsuarioEstaVazio)
+        XCTAssertEqual(1, erros.count)
+        XCTAssertEqual(.erro_nome_completo_vazio, erros[0])
+    }
+    
+    func testVerificaSeNomeCompletoDoUsuarioContemCaracteresInvalidos() {
+        let nomeCompletoDoUsuarioContemCaracteresInvalidos = self.validadorDeDadosDoUsuario.nomeCompletoDoUsuarioContemCaracteresInvalidos("@#._123131asas ")
+        
+        let erros = self.controladorDeErros.getErros()
+        
+        XCTAssertTrue(nomeCompletoDoUsuarioContemCaracteresInvalidos)
+        XCTAssertEqual(1, erros.count)
+        XCTAssertEqual(.erro_nome_completo_so_pode_conter_letras_e_espacos, erros[0])
+    }
+    
+    func testVerificaSeNomeCompletoDoUsuarioTemMaisDe130Caracteres() {
+        let nome = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyza"
+        
+        let nomeCompletoTemMaisDe130Caracteres = self.validadorDeDadosDoUsuario.nomeCompletoDoUsuarioTemMaisDe130Caracteres(nome)
+        
+        let erros = self.controladorDeErros.getErros()
+        
+        XCTAssertTrue(nomeCompletoTemMaisDe130Caracteres)
+        XCTAssertEqual(1, erros.count)
+        XCTAssertEqual(.erro_nome_completo_nao_pode_ter_mais_de_130_caracteres, erros[0])
+    }
+    
+    // MARK: - Testes email
+    func testVerificaSeEmailDoUsuarioEstaVazio() {
+        let emailEstaVazio = self.validadorDeDadosDoUsuario.emailDoUsuarioEstaVazio("")
+        
+        let erros = self.controladorDeErros.getErros()
+        
+        XCTAssertTrue(emailEstaVazio)
+        XCTAssertEqual(1, erros.count)
+        XCTAssertEqual(.erro_email_vazio, erros[0])
     }
     
 

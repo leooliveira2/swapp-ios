@@ -81,35 +81,35 @@ class CriacaoDeContaController {
         var usuarioPodeSerCadastrado = true
         
         let verificaSeNickNameEInvalido = (
-            self.validadorDeUsuario.verificaSeNickNameDoUsuarioEstaVazio(nickName) ||
-            self.validadorDeUsuario.verificaSeNickNameDoUsuarioTemMenosDe5Caracteres(nickName) ||
-            self.validadorDeUsuario.verificaSeNickNameDoUsuarioTemMaisDe32Caracteres(nickName) ||
-            self.validadorDeUsuario.verificaSeNickNameDoUsuarioNaoEUmAlfaNumerico(nickName) ||
-            self.validadorDeUsuario.verificaSeNickNameDoUsuarioJaEstaCadastrado(nickName, self.verificadorDeDadosCadastrados)
+            self.validadorDeUsuario.nickNameDoUsuarioEstaVazio(nickName) ||
+            self.validadorDeUsuario.nickNameDoUsuarioTemMenosDe5Caracteres(nickName) ||
+            self.validadorDeUsuario.nickNameDoUsuarioTemMaisDe32Caracteres(nickName) ||
+            self.validadorDeUsuario.nickNameDoUsuarioNaoEUmAlfaNumerico(nickName) ||
+            self.validadorDeUsuario.nickNameDoUsuarioJaEstaCadastrado(nickName, self.verificadorDeDadosCadastrados)
         )
         
         let verificaSeNomeCompletoEInvalido = (
-            self.validadorDeUsuario.verificaSeNomeCompletoDoUsuarioEstaVazio(nomeCompleto) ||
-            self.validadorDeUsuario.verificaSeNomeCompletoDoUsuarioContemCaracteresInvalidos(nomeCompleto) ||
-            self.validadorDeUsuario.verificaSeNomeCompletoDoUsuarioTemMaisDe130Caracteres(nomeCompleto)
+            self.validadorDeUsuario.nomeCompletoDoUsuarioEstaVazio(nomeCompleto) ||
+            self.validadorDeUsuario.nomeCompletoDoUsuarioContemCaracteresInvalidos(nomeCompleto) ||
+            self.validadorDeUsuario.nomeCompletoDoUsuarioTemMaisDe130Caracteres(nomeCompleto)
         )
         
         let verificaSeEmailEInvalido = (
-            self.validadorDeUsuario.verificaSeEmailDoUsuarioEstaVazio(email) ||
-            self.validadorDeUsuario.verificaSeEmailDoUsuarioEValido(email) ||
-            self.validadorDeUsuario.verificaSeEmailDoUsuarioTemMaisDe150Caracteres(email) ||
-            self.validadorDeUsuario.verificaSeEmailDoUsuarioJaEstaCadastrado(email, self.verificadorDeDadosCadastrados)
+            self.validadorDeUsuario.emailDoUsuarioEstaVazio(email) ||
+            self.validadorDeUsuario.emailDoUsuarioEValido(email) ||
+            self.validadorDeUsuario.emailDoUsuarioTemMaisDe150Caracteres(email) ||
+            self.validadorDeUsuario.emailDoUsuarioJaEstaCadastrado(email, self.verificadorDeDadosCadastrados)
         )
         
         let verificaSeSenhaEInvalida = (
-            self.validadorDeUsuario.verificaSeSenhaDoUsuarioEstaVazia(senha) ||
-            self.validadorDeUsuario.verificaSeSenhaDoUsuarioTemMenosQue8Caracteres(senha) ||
-            self.validadorDeUsuario.verificaSeSenhaDoUsuarioTemMaisQue32Caracteres(senha)
+            self.validadorDeUsuario.senhaDoUsuarioEstaVazia(senha) ||
+            self.validadorDeUsuario.senhaDoUsuarioTemMenosQue8Caracteres(senha) ||
+            self.validadorDeUsuario.senhaDoUsuarioTemMaisQue32Caracteres(senha)
         )
         
         let verificaSeRepeticaoDeSenhaEInvalida = (
-            self.validadorDeUsuario.verificaSeRepeticaoDaSenhaDoUsuarioEstaVazia(repeticaoDeSenha) ||
-            self.validadorDeUsuario.verificaSeRepeticaoDaSenhaDoUsuarioEDiferenteDaSenha(senha, repeticaoDeSenha)
+            self.validadorDeUsuario.repeticaoDaSenhaDoUsuarioEstaVazia(repeticaoDeSenha) ||
+            self.validadorDeUsuario.repeticaoDaSenhaDoUsuarioEDiferenteDaSenha(senha, repeticaoDeSenha)
         )
         
         if (

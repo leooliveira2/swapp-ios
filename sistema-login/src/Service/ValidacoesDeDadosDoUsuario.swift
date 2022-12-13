@@ -18,7 +18,7 @@ class ValidacoesDeDadosDoUsuario {
     }
     
     // MARK: - Validacoes de NickName
-    public func verificaSeNickNameDoUsuarioEstaVazio(_ nickName: String) -> Bool {
+    public func nickNameDoUsuarioEstaVazio(_ nickName: String) -> Bool {
         let nickNameDoUsuarioEstaVazio = strlen(nickName) == 0
         if nickNameDoUsuarioEstaVazio {
             self.controladorDeErros.adicionarErro(erro: .erro_nick_de_usuario_vazio)
@@ -29,7 +29,7 @@ class ValidacoesDeDadosDoUsuario {
         return false
     }
     
-    public func verificaSeNickNameDoUsuarioTemMenosDe5Caracteres(_ nickName: String) -> Bool {
+    public func nickNameDoUsuarioTemMenosDe5Caracteres(_ nickName: String) -> Bool {
         let nickNameDoUsuarioTemMenosDe5Caracteres = strlen(nickName) < 5
         if nickNameDoUsuarioTemMenosDe5Caracteres {
             self.controladorDeErros.adicionarErro(erro: .erro_nick_de_usuario_tem_menos_de_5_caracteres)
@@ -40,7 +40,7 @@ class ValidacoesDeDadosDoUsuario {
         return false
     }
     
-    public func verificaSeNickNameDoUsuarioTemMaisDe32Caracteres(_ nickName: String) -> Bool {
+    public func nickNameDoUsuarioTemMaisDe32Caracteres(_ nickName: String) -> Bool {
         let nickNameDoUsuarioTemMaisDe32Caracteres = strlen(nickName) > 32
         if nickNameDoUsuarioTemMaisDe32Caracteres {
             self.controladorDeErros.adicionarErro(erro: .erro_nick_de_usuario_nao_pode_ter_mais_de_32_caracteres)
@@ -51,7 +51,7 @@ class ValidacoesDeDadosDoUsuario {
         return false
     }
     
-    public func verificaSeNickNameDoUsuarioNaoEUmAlfaNumerico(_ nickName: String) -> Bool {
+    public func nickNameDoUsuarioNaoEUmAlfaNumerico(_ nickName: String) -> Bool {
         let nickNameDoUsuarioNaoEUmAlfaNumerico = !nickName.isAlphanumeric
         if nickNameDoUsuarioNaoEUmAlfaNumerico {
             self.controladorDeErros.adicionarErro(erro: .erro_nick_de_usuario_nao_e_um_alfanumerico)
@@ -62,7 +62,7 @@ class ValidacoesDeDadosDoUsuario {
         return false
     }
     
-    public func verificaSeNickNameDoUsuarioJaEstaCadastrado(
+    public func nickNameDoUsuarioJaEstaCadastrado(
         _ nickName: String,
         _ verificadorDeDadosCadastrados: VerificadorDeDadosCadastradosRepository
     ) -> Bool {
@@ -78,7 +78,7 @@ class ValidacoesDeDadosDoUsuario {
     }
     
     // MARK: - Validacoes de nome
-    public func verificaSeNomeCompletoDoUsuarioEstaVazio(_ nomeCompleto: String) -> Bool {
+    public func nomeCompletoDoUsuarioEstaVazio(_ nomeCompleto: String) -> Bool {
         let nomeCompletoDoUsuarioEstaVazio = strlen(nomeCompleto) == 0
         if nomeCompletoDoUsuarioEstaVazio {
             self.controladorDeErros.adicionarErro(erro: .erro_nome_completo_vazio)
@@ -89,7 +89,7 @@ class ValidacoesDeDadosDoUsuario {
         return false
     }
     
-    public func verificaSeNomeCompletoDoUsuarioContemCaracteresInvalidos(_ nomeCompleto: String) -> Bool {
+    public func nomeCompletoDoUsuarioContemCaracteresInvalidos(_ nomeCompleto: String) -> Bool {
         let nomeCompletoDoUsuarioContemCaracteresInvalidos = !nomeCompleto.isAlphabetic
         if nomeCompletoDoUsuarioContemCaracteresInvalidos {
             self.controladorDeErros.adicionarErro(erro: .erro_nome_completo_contem_caracteres_invalidos)
@@ -100,7 +100,7 @@ class ValidacoesDeDadosDoUsuario {
         return false
     }
     
-    public func verificaSeNomeCompletoDoUsuarioTemMaisDe130Caracteres(_ nomeCompleto: String) -> Bool {
+    public func nomeCompletoDoUsuarioTemMaisDe130Caracteres(_ nomeCompleto: String) -> Bool {
         let nomeCompletoDoUsuarioTemMaisDe130Caracteres = strlen(nomeCompleto) > 130
         if nomeCompletoDoUsuarioTemMaisDe130Caracteres {
             self.controladorDeErros.adicionarErro(erro: .erro_nome_completo_nao_pode_ter_mais_de_130_caracteres)
@@ -112,7 +112,7 @@ class ValidacoesDeDadosDoUsuario {
     }
     
     // MARK: - Validacoes de email
-    public func verificaSeEmailDoUsuarioEstaVazio(_ email: String) -> Bool {
+    public func emailDoUsuarioEstaVazio(_ email: String) -> Bool {
         let emailDoUsuarioEstaVazio = strlen(email) == 0
         if emailDoUsuarioEstaVazio {
             self.controladorDeErros.adicionarErro(erro: .erro_email_vazio)
@@ -123,7 +123,7 @@ class ValidacoesDeDadosDoUsuario {
         return false
     }
     
-    public func verificaSeEmailDoUsuarioEValido(_ email: String) -> Bool {
+    public func emailDoUsuarioEValido(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         
@@ -138,7 +138,7 @@ class ValidacoesDeDadosDoUsuario {
         return false
     }
     
-    public func verificaSeEmailDoUsuarioTemMaisDe150Caracteres(_ email: String) -> Bool {
+    public func emailDoUsuarioTemMaisDe150Caracteres(_ email: String) -> Bool {
         let emailDoUsuarioTemMaisDe150caracteres = strlen(email) > 150
         if emailDoUsuarioTemMaisDe150caracteres {
             self.controladorDeErros.adicionarErro(erro: .erro_email_tem_mais_de_150_caracteres)
@@ -149,7 +149,7 @@ class ValidacoesDeDadosDoUsuario {
         return false
     }
     
-    public func verificaSeEmailDoUsuarioJaEstaCadastrado(
+    public func emailDoUsuarioJaEstaCadastrado(
         _ email: String,
         _ verificadorDeDadosCadastrados: VerificadorDeDadosCadastradosRepository
     ) -> Bool {
@@ -165,7 +165,7 @@ class ValidacoesDeDadosDoUsuario {
     }
     
     // MARK: - Validacoes de senha
-    public func verificaSeSenhaDoUsuarioEstaVazia(_ senha: String) -> Bool {
+    public func senhaDoUsuarioEstaVazia(_ senha: String) -> Bool {
         let senhaDoUsuarioEstaVazia = strlen(senha) == 0
         if senhaDoUsuarioEstaVazia {
             self.controladorDeErros.adicionarErro(erro: .erro_senha_vazia)
@@ -176,7 +176,7 @@ class ValidacoesDeDadosDoUsuario {
         return false
     }
     
-    public func verificaSeSenhaDoUsuarioTemMenosQue8Caracteres(_ senha: String) -> Bool {
+    public func senhaDoUsuarioTemMenosQue8Caracteres(_ senha: String) -> Bool {
         let senhaDoUsuarioTemMenosQue8Caracteres = strlen(senha) < 8
         if senhaDoUsuarioTemMenosQue8Caracteres {
             self.controladorDeErros.adicionarErro(erro: .erro_senha_tem_menos_de_8_caracteres)
@@ -187,7 +187,7 @@ class ValidacoesDeDadosDoUsuario {
         return false
     }
     
-    public func verificaSeSenhaDoUsuarioTemMaisQue32Caracteres(_ senha: String) -> Bool {
+    public func senhaDoUsuarioTemMaisQue32Caracteres(_ senha: String) -> Bool {
         let senhaDoUsuarioTemMaisQue32Caracteres = strlen(senha) > 32
         if senhaDoUsuarioTemMaisQue32Caracteres {
             self.controladorDeErros.adicionarErro(erro: .erro_senha_tem_mais_de_32_caracteres)
@@ -199,7 +199,7 @@ class ValidacoesDeDadosDoUsuario {
     }
     
     // MARK: - Validacoes da repeticao da senha
-    public func verificaSeRepeticaoDaSenhaDoUsuarioEstaVazia(_ repeticaoDeSenha: String) -> Bool {
+    public func repeticaoDaSenhaDoUsuarioEstaVazia(_ repeticaoDeSenha: String) -> Bool {
         let repeticaoDaSenhaDoUsuarioEstaVazia = strlen(repeticaoDeSenha) == 0
         if repeticaoDaSenhaDoUsuarioEstaVazia {
             self.controladorDeErros.adicionarErro(erro: .erro_repeticao_de_senha_vazio)
@@ -210,7 +210,7 @@ class ValidacoesDeDadosDoUsuario {
         return false
     }
     
-    public func verificaSeRepeticaoDaSenhaDoUsuarioEDiferenteDaSenha(_ senha: String, _ repeticaoDeSenha: String) -> Bool {
+    public func repeticaoDaSenhaDoUsuarioEDiferenteDaSenha(_ senha: String, _ repeticaoDeSenha: String) -> Bool {
         let repeticaoDaSenhaDoUsuarioEDiferenteDaSenha = senha != repeticaoDeSenha
         if repeticaoDaSenhaDoUsuarioEDiferenteDaSenha {
             self.controladorDeErros.adicionarErro(erro: .erro_repeticao_de_senha_e_senha_sao_diferentes)

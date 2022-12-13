@@ -81,7 +81,7 @@ class LoginViewController: UIViewController {
         if !loginPodeSerRealizado {
             let listaDeErros = controladorDeErros.getErros()
             if listaDeErros.count > 0 {
-                alertas.criaAlerta(mensagem: listaDeErros[0])
+                alertas.criaAlerta(mensagem: listaDeErros[0].rawValue)
                 return
             }
             

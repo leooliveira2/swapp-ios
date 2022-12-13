@@ -9,13 +9,13 @@ import UIKit
 
 class ControladorDeErros {
     
-    private var erros: Array<String> = []
+    private var erros: Array<Erros> = []
     
     public func adicionarErro(erro: Erros) -> Void {
-        self.erros.append(erro.rawValue)
+        self.erros.append(erro)
     }
     
-    public func getErros() -> Array<String> {
+    public func getErros() -> Array<Erros> {
         return self.erros
     }
 }

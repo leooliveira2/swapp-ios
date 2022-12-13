@@ -45,7 +45,7 @@
 		C58D409D292EB49700A1C6BC /* NaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D409C292EB49700A1C6BC /* NaveViewController.swift */; };
 		C58D409F292EB4B400A1C6BC /* PlanetaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D409E292EB4B400A1C6BC /* PlanetaViewController.swift */; };
 		C58D40A1292EBBDF00A1C6BC /* PersonagemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D40A0292EBBDF00A1C6BC /* PersonagemView.swift */; };
-		C5B5E7462948ED43001F87AE /* sistema_loginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B5E7452948ED43001F87AE /* sistema_loginTests.swift */; };
+		C5B5E74D2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B5E74C2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift */; };
 		C5C3455A291D7F9B00E3097A /* CriacaoDeContaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C34559291D7F9B00E3097A /* CriacaoDeContaController.swift */; };
 		C5C3455C291D860300E3097A /* UsuariosDadosStatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C3455B291D860300E3097A /* UsuariosDadosStatic.swift */; };
 		C5C3455F291D907A00E3097A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C3455E291D907A00E3097A /* LoginController.swift */; };
@@ -104,7 +104,7 @@
 		C58D409E292EB4B400A1C6BC /* PlanetaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetaViewController.swift; sourceTree = "<group>"; };
 		C58D40A0292EBBDF00A1C6BC /* PersonagemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonagemView.swift; sourceTree = "<group>"; };
 		C5B5E7432948ED42001F87AE /* sistema-loginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sistema-loginTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C5B5E7452948ED43001F87AE /* sistema_loginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sistema_loginTests.swift; sourceTree = "<group>"; };
+		C5B5E74C2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidacoesDeDadosDoUsuarioTests.swift; sourceTree = "<group>"; };
 		C5C34559291D7F9B00E3097A /* CriacaoDeContaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContaController.swift; sourceTree = "<group>"; };
 		C5C3455B291D860300E3097A /* UsuariosDadosStatic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuariosDadosStatic.swift; sourceTree = "<group>"; };
 		C5C3455E291D907A00E3097A /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -354,7 +354,7 @@
 		C5B5E7442948ED42001F87AE /* sistema-loginTests */ = {
 			isa = PBXGroup;
 			children = (
-				C5B5E7452948ED43001F87AE /* sistema_loginTests.swift */,
+				C5B5E74C2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift */,
 			);
 			path = "sistema-loginTests";
 			sourceTree = "<group>";
@@ -564,7 +564,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5B5E7462948ED43001F87AE /* sistema_loginTests.swift in Sources */,
+				C5B5E74D2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

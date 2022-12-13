@@ -45,8 +45,8 @@ class LoginController {
     
     private func verificaSeLoginPodeSerRealizado(_ email: String, _ senha: String) -> Bool {
         let algumCampoDosFormulariosEstaVazio = (
-            self.validadorDeUsuario.verificaSeEmailDoUsuarioEstaVazio(email) ||
-            self.validadorDeUsuario.verificaSeSenhaDoUsuarioEstaVazia(senha)
+            self.validadorDeUsuario.emailDoUsuarioEstaVazio(email) ||
+            self.validadorDeUsuario.senhaDoUsuarioEstaVazia(senha)
         )
         
         let loginNaoPodeSerRealizado = !self.validadorDeUsuario.verificaSeLoginPodeSerRealizado(email, senha, self.validadorDeLogin)

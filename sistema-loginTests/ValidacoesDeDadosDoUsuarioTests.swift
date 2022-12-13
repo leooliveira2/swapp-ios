@@ -248,7 +248,7 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
     }
     
     // MARK: - Testes da senha
-    func testSenhaEstaPreenchidaCorretamente() {
+    func testVerificaSeSenhaEstaPreenchidaCorretamente() {
         let senha = "123123123"
         
         let senhaPreenchidaEValida = (
@@ -293,6 +293,42 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         XCTAssertTrue(senhaTemMaisQue32Caracteres)
         XCTAssertEqual(1, erros.count)
         XCTAssertEqual(.erro_senha_tem_mais_de_32_caracteres, erros[0])
+    }
+    
+    // MARK: - Testes da repeticao de senha
+    func testVerificaSeRepeticaoDeSenhaDoUsuarioEstaCorreta() {
+        let senha = "123123123"
+        let repeticao = "123123123"
+        
+        let repeticaoDeSenhaEstaCorreta = (
+            !self.validadorDeDadosDoUsuario.repeticaoDaSenhaDoUsuarioEstaVazia(repeticao) &&
+            !self.validadorDeDadosDoUsuario.repeticaoDaSenhaDoUsuarioEDiferenteDaSenha(senha, repeticao)
+        )
+        
+        let erros = self.controladorDeErros.getErros()
+        
+        XCTAssertTrue(repeticaoDeSenhaEstaCorreta)
+        XCTAssertEqual(0, erros.count)
+    }
+    
+    func testVerificaSeRepeticaoDeSenhaDoUsuarioEstaVazia() {
+        let repeticaoDeSenhaEstaVazia = self.validadorDeDadosDoUsuario.repeticaoDaSenhaDoUsuarioEstaVazia("")
+        
+        let erros = self.controladorDeErros.getErros()
+        
+        XCTAssertTrue(repeticaoDeSenhaEstaVazia)
+        XCTAssertEqual(1, erros.count)
+        XCTAssertEqual(.erro_repeticao_de_senha_vazio, erros[0])
+    }
+    
+    func testVerificaSeRepeticaoDeSenhaDoUsuarioEDiferenteDaSenha() {
+        let repeticaoDaSenhaEDiferenteDaSenha = self.validadorDeDadosDoUsuario.repeticaoDaSenhaDoUsuarioEDiferenteDaSenha("123123123", "321321321")
+        
+        let erros = self.controladorDeErros.getErros()
+        
+        XCTAssertTrue(repeticaoDaSenhaEDiferenteDaSenha)
+        XCTAssertEqual(1, erros.count)
+        XCTAssertEqual(.erro_repeticao_de_senha_e_senha_sao_diferentes, erros[0])
     }
 
 }

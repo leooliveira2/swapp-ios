@@ -96,7 +96,7 @@ class CriacaoDeContaController {
         
         let verificaSeEmailEInvalido = (
             self.validadorDeUsuario.emailDoUsuarioEstaVazio(email) ||
-            self.validadorDeUsuario.emailDoUsuarioEValido(email) ||
+            self.validadorDeUsuario.emailDoUsuarioEInvalido(email) ||
             self.validadorDeUsuario.emailDoUsuarioTemMaisDe150Caracteres(email) ||
             self.validadorDeUsuario.emailDoUsuarioJaEstaCadastrado(email, self.verificadorDeDadosCadastrados)
         )

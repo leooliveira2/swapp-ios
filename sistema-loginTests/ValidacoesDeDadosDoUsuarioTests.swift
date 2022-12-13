@@ -151,7 +151,7 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
     }
     
     func testVerificaSeNomeCompletoDoUsuarioTemMaisDe130Caracteres() {
-        let nome = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyza"
+        let nome = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqr" + "stuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyza"
         
         let nomeCompletoTemMaisDe130Caracteres = self.validadorDeDadosDoUsuario.nomeCompletoDoUsuarioTemMaisDe130Caracteres(nome)
         
@@ -163,6 +163,22 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
     }
     
     // MARK: - Testes email
+    func testVerificaSeEmailEstaPreenchidoCorretamente() {
+        let email = "email@email.com"
+        
+        let emailEstaPreenchidoCorretamente = (
+            !self.validadorDeDadosDoUsuario.emailDoUsuarioEstaVazio(email) &&
+            !self.validadorDeDadosDoUsuario.emailDoUsuarioEInvalido(email) &&
+            !self.validadorDeDadosDoUsuario.emailDoUsuarioTemMaisDe150Caracteres(email)
+        )
+        
+        let erros = self.controladorDeErros.getErros()
+        
+        XCTAssertTrue(emailEstaPreenchidoCorretamente)
+        XCTAssertEqual(0, erros.count)
+        
+    }
+    
     func testVerificaSeEmailDoUsuarioEstaVazio() {
         let emailEstaVazio = self.validadorDeDadosDoUsuario.emailDoUsuarioEstaVazio("")
         
@@ -173,5 +189,60 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         XCTAssertEqual(.erro_email_vazio, erros[0])
     }
     
+    func testVerificaSeFormatoDoEmailDoUsuarioEInvalido() {
+        let emailEInvalido = self.validadorDeDadosDoUsuario.emailDoUsuarioEInvalido("xdemail")
+        
+        let erros = self.controladorDeErros.getErros()
+        
+        XCTAssertTrue(emailEInvalido)
+        XCTAssertEqual(1, erros.count)
+        XCTAssertEqual(.erro_email_invalido, erros[0])
+    }
+    
+    func testVerificaSeEmailDoUsuarioTemMaisDe150Caracteres() {
+        let email = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopq" +
+        "rstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstu"
+        
+        let emailTemMaisDe150Caracteres = self.validadorDeDadosDoUsuario.emailDoUsuarioTemMaisDe150Caracteres(email)
+        
+        let erros = self.controladorDeErros.getErros()
+        
+        XCTAssertTrue(emailTemMaisDe150Caracteres)
+        XCTAssertEqual(1, erros.count)
+        XCTAssertEqual(.erro_email_tem_mais_de_150_caracteres, erros[0])
+    }
+    
+    func testVerificaEmailDoUsuarioJaEstaSalvoStaticClass() {
+        let verificadorDeDadosJaCadastrados = VerificadorDeDadosCadastradosStaticClass()
+        
+        let usuario = Usuario(
+            nickName: "teste",
+            nomeCompleto: "teste",
+            email: "teste@teste.com",
+            senha: "123123123",
+            repeticaoDeSenha: "123123123"
+        )
+        
+        UsuariosDadosStatic.salvarUsuario(usuario)
+        
+        let emailDoUsuarioJaEstaSalvo = self.validadorDeDadosDoUsuario.emailDoUsuarioJaEstaCadastrado("teste@teste.com", verificadorDeDadosJaCadastrados)
+        
+        let erros = self.controladorDeErros.getErros()
+        
+        XCTAssertTrue(emailDoUsuarioJaEstaSalvo)
+        XCTAssertEqual(1, erros.count)
+        XCTAssertEqual(.erro_email_ja_esta_cadastrado, erros[0])
+    }
+    
+    func testVerificaSeEmailDoUsuarioNaoEstaSalvoStaticClass() {
+        let verificadorDeDadosJaCadastrados = VerificadorDeDadosCadastradosStaticClass()
+        
+        let emailDoUsuarioJaEstaSalvo = self.validadorDeDadosDoUsuario.emailDoUsuarioJaEstaCadastrado("testando@email.com", verificadorDeDadosJaCadastrados)
+        
+        let erros = self.controladorDeErros.getErros()
+        
+        XCTAssertFalse(emailDoUsuarioJaEstaSalvo)
+        XCTAssertEqual(0, erros.count)
+    }
 
 }

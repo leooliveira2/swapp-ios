@@ -62,7 +62,9 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
     }
     
     func testVerificaSeNickNameDoUsuarioTemMaisDe32Caracteres() {
-        let nickNameDoUsuarioTemMaisDe32Caracteres = self.validadorDeDadosDoUsuario.nickNameDoUsuarioTemMaisDe32Caracteres("abcdefghijklmnopqrstuvwxyzabcdefg")
+        let nickName = "abcdefghijklmnopqrstuvwxyzabcdefg"
+        
+        let nickNameDoUsuarioTemMaisDe32Caracteres = self.validadorDeDadosDoUsuario.nickNameDoUsuarioTemMaisDe32Caracteres(nickName)
         
         let erros = self.controladorDeErros.getErros()
         
@@ -243,6 +245,54 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         
         XCTAssertFalse(emailDoUsuarioJaEstaSalvo)
         XCTAssertEqual(0, erros.count)
+    }
+    
+    // MARK: - Testes da senha
+    func testSenhaEstaPreenchidaCorretamente() {
+        let senha = "123123123"
+        
+        let senhaPreenchidaEValida = (
+            !self.validadorDeDadosDoUsuario.senhaDoUsuarioEstaVazia(senha) &&
+            !self.validadorDeDadosDoUsuario.senhaDoUsuarioTemMenosQue8Caracteres(senha) &&
+            !self.validadorDeDadosDoUsuario.senhaDoUsuarioTemMaisQue32Caracteres(senha)
+        )
+        
+        let erros = self.controladorDeErros.getErros()
+        
+        XCTAssertTrue(senhaPreenchidaEValida)
+        XCTAssertEqual(0, erros.count)
+    }
+    
+    func testVerificaSeSenhaDoUsuarioEstaVazia() {
+        let senhaEstaVazia = self.validadorDeDadosDoUsuario.senhaDoUsuarioEstaVazia("")
+        
+        let erros = self.controladorDeErros.getErros()
+        
+        XCTAssertTrue(senhaEstaVazia)
+        XCTAssertEqual(1, erros.count)
+        XCTAssertEqual(.erro_senha_vazia, erros[0])
+    }
+    
+    func testVerificaSeSenhaDoUsuarioTemMenosQue8Caracteres() {
+        let senhaTemMenosQue8Caracteres = self.validadorDeDadosDoUsuario.senhaDoUsuarioTemMenosQue8Caracteres("1234567")
+        
+        let erros = self.controladorDeErros.getErros()
+        
+        XCTAssertTrue(senhaTemMenosQue8Caracteres)
+        XCTAssertEqual(1, erros.count)
+        XCTAssertEqual(.erro_senha_tem_menos_de_8_caracteres, erros[0])
+    }
+    
+    func testVerificaSeSenhaDoUsuarioTemMaisQue32Caracteres() {
+        let senha = "abcdefghijklmnopqrstuvwxyzabcdefg"
+        
+        let senhaTemMaisQue32Caracteres = self.validadorDeDadosDoUsuario.senhaDoUsuarioTemMaisQue32Caracteres(senha)
+        
+        let erros = self.controladorDeErros.getErros()
+        
+        XCTAssertTrue(senhaTemMaisQue32Caracteres)
+        XCTAssertEqual(1, erros.count)
+        XCTAssertEqual(.erro_senha_tem_mais_de_32_caracteres, erros[0])
     }
 
 }

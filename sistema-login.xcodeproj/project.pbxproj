@@ -45,10 +45,21 @@
 		C58D409D292EB49700A1C6BC /* NaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D409C292EB49700A1C6BC /* NaveViewController.swift */; };
 		C58D409F292EB4B400A1C6BC /* PlanetaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D409E292EB4B400A1C6BC /* PlanetaViewController.swift */; };
 		C58D40A1292EBBDF00A1C6BC /* PersonagemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D40A0292EBBDF00A1C6BC /* PersonagemView.swift */; };
+		C5B5E7462948ED43001F87AE /* sistema_loginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B5E7452948ED43001F87AE /* sistema_loginTests.swift */; };
 		C5C3455A291D7F9B00E3097A /* CriacaoDeContaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C34559291D7F9B00E3097A /* CriacaoDeContaController.swift */; };
 		C5C3455C291D860300E3097A /* UsuariosDadosStatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C3455B291D860300E3097A /* UsuariosDadosStatic.swift */; };
 		C5C3455F291D907A00E3097A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C3455E291D907A00E3097A /* LoginController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C5B5E7472948ED43001F87AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C550F85A2919644D00FC2EF2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C550F8612919644D00FC2EF2;
+			remoteInfo = "sistema-login";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2DB5774E8D305161E014DB5E /* Pods-sistema-login.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sistema-login.release.xcconfig"; path = "Target Support Files/Pods-sistema-login/Pods-sistema-login.release.xcconfig"; sourceTree = "<group>"; };
@@ -92,6 +103,8 @@
 		C58D409C292EB49700A1C6BC /* NaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaveViewController.swift; sourceTree = "<group>"; };
 		C58D409E292EB4B400A1C6BC /* PlanetaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetaViewController.swift; sourceTree = "<group>"; };
 		C58D40A0292EBBDF00A1C6BC /* PersonagemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonagemView.swift; sourceTree = "<group>"; };
+		C5B5E7432948ED42001F87AE /* sistema-loginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sistema-loginTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5B5E7452948ED43001F87AE /* sistema_loginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sistema_loginTests.swift; sourceTree = "<group>"; };
 		C5C34559291D7F9B00E3097A /* CriacaoDeContaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContaController.swift; sourceTree = "<group>"; };
 		C5C3455B291D860300E3097A /* UsuariosDadosStatic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuariosDadosStatic.swift; sourceTree = "<group>"; };
 		C5C3455E291D907A00E3097A /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -104,6 +117,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A21565CD457E107CB9720D4 /* Pods_sistema_login.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5B5E7402948ED42001F87AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				C550F8642919644D00FC2EF2 /* sistema-login */,
+				C5B5E7442948ED42001F87AE /* sistema-loginTests */,
 				C550F8632919644D00FC2EF2 /* Products */,
 				2BF2FFBE08BEF0F7685E9711 /* Pods */,
 				72F391FBD2A61EA2A617C0F9 /* Frameworks */,
@@ -219,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				C550F8622919644D00FC2EF2 /* sistema-login.app */,
+				C5B5E7432948ED42001F87AE /* sistema-loginTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -329,6 +351,14 @@
 			path = Nave;
 			sourceTree = "<group>";
 		};
+		C5B5E7442948ED42001F87AE /* sistema-loginTests */ = {
+			isa = PBXGroup;
+			children = (
+				C5B5E7452948ED43001F87AE /* sistema_loginTests.swift */,
+			);
+			path = "sistema-loginTests";
+			sourceTree = "<group>";
+		};
 		C5C34558291D7F8900E3097A /* CriacaoDeConta */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,6 +397,24 @@
 			productReference = C550F8622919644D00FC2EF2 /* sistema-login.app */;
 			productType = "com.apple.product-type.application";
 		};
+		C5B5E7422948ED42001F87AE /* sistema-loginTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C5B5E7492948ED43001F87AE /* Build configuration list for PBXNativeTarget "sistema-loginTests" */;
+			buildPhases = (
+				C5B5E73F2948ED42001F87AE /* Sources */,
+				C5B5E7402948ED42001F87AE /* Frameworks */,
+				C5B5E7412948ED42001F87AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C5B5E7482948ED43001F87AE /* PBXTargetDependency */,
+			);
+			name = "sistema-loginTests";
+			productName = "sistema-loginTests";
+			productReference = C5B5E7432948ED42001F87AE /* sistema-loginTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -379,6 +427,10 @@
 				TargetAttributes = {
 					C550F8612919644D00FC2EF2 = {
 						CreatedOnToolsVersion = 14.0.1;
+					};
+					C5B5E7422948ED42001F87AE = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = C550F8612919644D00FC2EF2;
 					};
 				};
 			};
@@ -396,6 +448,7 @@
 			projectRoot = "";
 			targets = (
 				C550F8612919644D00FC2EF2 /* sistema-login */,
+				C5B5E7422948ED42001F87AE /* sistema-loginTests */,
 			);
 		};
 /* End PBXProject section */
@@ -407,6 +460,13 @@
 			files = (
 				C550F8722919644E00FC2EF2 /* LaunchScreen.storyboard in Resources */,
 				C550F86F2919644E00FC2EF2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5B5E7412948ED42001F87AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,7 +560,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C5B5E73F2948ED42001F87AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5B5E7462948ED43001F87AE /* sistema_loginTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C5B5E7482948ED43001F87AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C550F8612919644D00FC2EF2 /* sistema-login */;
+			targetProxy = C5B5E7472948ED43001F87AE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C550F8702919644E00FC2EF2 /* LaunchScreen.storyboard */ = {
@@ -682,6 +758,48 @@
 			};
 			name = Release;
 		};
+		C5B5E74A2948ED43001F87AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "leonardo.sistema-loginTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sistema-login.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/sistema-login";
+			};
+			name = Debug;
+		};
+		C5B5E74B2948ED43001F87AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "leonardo.sistema-loginTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sistema-login.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/sistema-login";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -699,6 +817,15 @@
 			buildConfigurations = (
 				C550F8772919644E00FC2EF2 /* Debug */,
 				C550F8782919644E00FC2EF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C5B5E7492948ED43001F87AE /* Build configuration list for PBXNativeTarget "sistema-loginTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5B5E74A2948ED43001F87AE /* Debug */,
+				C5B5E74B2948ED43001F87AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

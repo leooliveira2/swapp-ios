@@ -53,6 +53,8 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         XCTAssertFalse(contaPodeSerCriada)
         XCTAssertEqual(1, erros.count)
         XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[0])
+        
+        XCTAssertEqual(0, self.salvaUsuario.quantasVezesAFuncaoSalvarFoiChamada)
     }
     
     func testPrimeiroDadoDoUsuarioEstaNulo() {
@@ -69,11 +71,13 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         XCTAssertFalse(contaPodeSerCriada)
         XCTAssertEqual(1, erros.count)
         XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[0])
+        
+        XCTAssertEqual(0, self.salvaUsuario.quantasVezesAFuncaoSalvarFoiChamada)
     }
     
     func testUltimoDadoDoUsuarioEstaNulo() {
         let contaPodeSerCriada = self.controladorCriacaoDeConta.criarConta(
-            nickName: "Usuario",
+            nickName: "teste0",
             nomeCompleto: "Nome",
             email: "email@email.com",
             senha: "123123123",
@@ -85,6 +89,8 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         XCTAssertFalse(contaPodeSerCriada)
         XCTAssertEqual(1, erros.count)
         XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[0])
+        
+        XCTAssertEqual(0, self.salvaUsuario.quantasVezesAFuncaoSalvarFoiChamada)
     }
     
     func testUsuarioContemDadosInvalidos() {
@@ -112,9 +118,9 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         self.salvaUsuario.retornoDaFuncaoSalvar = false
         
         let contaPodeSerCriada = self.controladorCriacaoDeConta.criarConta(
-            nickName: "usuario",
+            nickName: "teste1",
             nomeCompleto: "Usuario",
-            email: "email@email.com",
+            email: "teste1@email.com",
             senha: "12345678",
             repeticaoDeSenha: "12345678"
         )
@@ -131,9 +137,9 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         self.salvaUsuario.retornoDaFuncaoSalvar = true
         
         let contaPodeSerCriada = self.controladorCriacaoDeConta.criarConta(
-            nickName: "usuario",
+            nickName: "teste2",
             nomeCompleto: "Usuario",
-            email: "email@email.com",
+            email: "teste2@email.com",
             senha: "12345678",
             repeticaoDeSenha: "12345678"
         )

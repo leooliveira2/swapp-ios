@@ -87,7 +87,26 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[0])
     }
     
-    
+    func testUsuarioContemDadosInvalidos() {
+        let contaPodeSerCriada = self.controladorCriacaoDeConta.criarConta(
+            nickName: "",
+            nomeCompleto: "",
+            email: "email@.com",
+            senha: "1234567",
+            repeticaoDeSenha: "321321312"
+        )
+        
+        let erros = self.controladorDeErros.getErros()
+        
+        XCTAssertFalse(contaPodeSerCriada)
+        XCTAssertEqual(5, erros.count)
+        
+        XCTAssertEqual(.erro_nick_de_usuario_vazio, erros[0])
+        XCTAssertEqual(.erro_nome_completo_vazio, erros[1])
+        XCTAssertEqual(.erro_email_invalido, erros[2])
+        XCTAssertEqual(.erro_senha_tem_menos_de_8_caracteres, erros[3])
+        XCTAssertEqual(.erro_repeticao_de_senha_e_senha_sao_diferentes, erros[4])
+    }
 
     
 

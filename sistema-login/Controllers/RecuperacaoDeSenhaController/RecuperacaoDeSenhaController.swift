@@ -15,11 +15,11 @@ class RecuperacaoDeSenhaController {
     
     init(
         _ controladorDeErros: ControladorDeErros = ControladorDeErros(),
-        _ validadorDeSenha: ValidacoesDeDadosDoUsuario = ValidacoesDeDadosDoUsuario(ControladorDeErros()),
+        _ validadorDeDados: ValidacoesDeDadosDoUsuario = ValidacoesDeDadosDoUsuario(ControladorDeErros()),
         _ redefinicaoDeSenha: RedefinicaoDeSenhaRepository = RedefinicaoDeSenhaStaticClass()
     ) {
         self.controladorDeErros = controladorDeErros
-        self.validadorDeDados = validadorDeSenha
+        self.validadorDeDados = validadorDeDados
         self.redefinicaoDeSenha = redefinicaoDeSenha
     }
     
@@ -42,8 +42,8 @@ class RecuperacaoDeSenhaController {
         _ email: String,
         _ verificadorDeDadosCadastrados: VerificadorDeDadosCadastradosRepository
     ) -> Bool {
-        let emailEstaVazio = self.validadorDeDados.verificaSeEmailDoUsuarioEstaVazio(email)
-        let emailExiste = self.validadorDeDados.verificaSeEmailDoUsuarioJaEstaCadastrado(email, verificadorDeDadosCadastrados)
+        let emailEstaVazio = self.validadorDeDados.emailDoUsuarioEstaVazio(email)
+        let emailExiste = self.validadorDeDados.emailDoUsuarioJaEstaCadastrado(email, verificadorDeDadosCadastrados)
         
         if emailEstaVazio || !emailExiste {
             self.controladorDeErros.adicionarErro(erro: .erro_email_nao_encontrado)
@@ -84,14 +84,14 @@ class RecuperacaoDeSenhaController {
     {
         
         let verificaSeSenhaEInvalida = (
-            self.validadorDeDados.verificaSeSenhaDoUsuarioEstaVazia(senha) ||
-            self.validadorDeDados.verificaSeSenhaDoUsuarioTemMenosQue8Caracteres(senha) ||
-            self.validadorDeDados.verificaSeSenhaDoUsuarioTemMaisQue32Caracteres(senha)
+            self.validadorDeDados.senhaDoUsuarioEstaVazia(senha) ||
+            self.validadorDeDados.senhaDoUsuarioTemMenosQue8Caracteres(senha) ||
+            self.validadorDeDados.senhaDoUsuarioTemMaisQue32Caracteres(senha)
         )
         
         let verificaSeRepeticaoDeSenhaEInvalida = (
-            self.validadorDeDados.verificaSeRepeticaoDaSenhaDoUsuarioEstaVazia(repeticaoDeSenha) ||
-            self.validadorDeDados.verificaSeRepeticaoDaSenhaDoUsuarioEDiferenteDaSenha(senha, repeticaoDeSenha)
+            self.validadorDeDados.repeticaoDaSenhaDoUsuarioEstaVazia(repeticaoDeSenha) ||
+            self.validadorDeDados.repeticaoDaSenhaDoUsuarioEDiferenteDaSenha(senha, repeticaoDeSenha)
         )
         
         if (

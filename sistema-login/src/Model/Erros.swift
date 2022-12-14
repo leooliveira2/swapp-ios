@@ -35,5 +35,7 @@ enum Erros: String {
     case erro_algum_dado_do_usuario_esta_nulo = "Tente novamente!"
     
     case erro_email_nao_encontrado = "E-mail não encontrado!"
+    
+    case erro_ao_salvar_usuario = "Erro ao salvar seu usuário! Por favor, tente novamente"
 }
 

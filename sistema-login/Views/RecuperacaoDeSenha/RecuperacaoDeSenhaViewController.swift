@@ -60,7 +60,7 @@ class RecuperacaoDeSenhaViewController: UIViewController {
             let erros = controladorDeErros.getErros()
             
             if erros.count > 0 {
-                alertas.criaAlerta(mensagem: erros[0])
+                alertas.criaAlerta(mensagem: erros[0].rawValue)
             }
             
             return

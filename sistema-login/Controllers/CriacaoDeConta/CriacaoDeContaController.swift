@@ -64,6 +64,7 @@ class CriacaoDeContaController {
         )
         
         if !self.salvarUsuario.salvar(usuario) {
+            self.controladorDeErros.adicionarErro(erro: .erro_ao_salvar_usuario)
             return false
         }
         

@@ -13,7 +13,7 @@ final class CriacaoDeContaControllerTests: XCTestCase {
     // MARK: - Atributos
     private var controladorDeErros: ControladorDeErros!
     private var validadorDeDadosDoUsuario: ValidacoesDeDadosDoUsuario!
-    private var salvaUsuario: SalvarUsuarioStaticClass!
+    private var salvaUsuario: SalvarUsuarioStaticClassMock!
     private var verificadorDeDadosCadastrados: VerificadorDeDadosCadastradosStaticClass!
     
     private var controladorCriacaoDeConta: CriacaoDeContaController!
@@ -22,7 +22,7 @@ final class CriacaoDeContaControllerTests: XCTestCase {
     override func setUpWithError() throws {
         self.controladorDeErros = ControladorDeErros()
         self.validadorDeDadosDoUsuario = ValidacoesDeDadosDoUsuario(self.controladorDeErros)
-        self.salvaUsuario = SalvarUsuarioStaticClass()
+        self.salvaUsuario = SalvarUsuarioStaticClassMock()
         self.verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosStaticClass()
         
         self.controladorCriacaoDeConta = CriacaoDeContaController(
@@ -107,7 +107,42 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         XCTAssertEqual(.erro_senha_tem_menos_de_8_caracteres, erros[3])
         XCTAssertEqual(.erro_repeticao_de_senha_e_senha_sao_diferentes, erros[4])
     }
-
     
+    func testUsuarioTemDadosValidosMasUmaFalhaOcorreAoTentarSalvar() {
+        self.salvaUsuario.retornoDaFuncaoSalvar = false
+        
+        let contaPodeSerCriada = self.controladorCriacaoDeConta.criarConta(
+            nickName: "usuario",
+            nomeCompleto: "Usuario",
+            email: "email@email.com",
+            senha: "12345678",
+            repeticaoDeSenha: "12345678"
+        )
+        
+        let erros = self.controladorDeErros.getErros()
+        
+        XCTAssertFalse(contaPodeSerCriada)
+        XCTAssertEqual(1, erros.count)
+        XCTAssertEqual(.erro_ao_salvar_usuario, erros[0])
+        XCTAssertEqual(1, self.salvaUsuario.quantasVezesAFuncaoSalvarFoiChamada)
+    }
+    
+    func testUsuarioTemDadosValidosEFoiSalvoComSucesso() {
+        self.salvaUsuario.retornoDaFuncaoSalvar = true
+        
+        let contaPodeSerCriada = self.controladorCriacaoDeConta.criarConta(
+            nickName: "usuario",
+            nomeCompleto: "Usuario",
+            email: "email@email.com",
+            senha: "12345678",
+            repeticaoDeSenha: "12345678"
+        )
+        
+        let erros = self.controladorDeErros.getErros()
+        
+        XCTAssertTrue(contaPodeSerCriada)
+        XCTAssertEqual(0, erros.count)
+        XCTAssertEqual(1, self.salvaUsuario.quantasVezesAFuncaoSalvarFoiChamada)
+    }
 
 }

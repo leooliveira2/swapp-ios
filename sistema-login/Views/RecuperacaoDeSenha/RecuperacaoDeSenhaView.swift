@@ -57,19 +57,19 @@ class RecuperacaoDeSenhaView: UIView {
         return textField
     }()
     
-    private lazy var usuarioNaoEncontradoLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .red
-        label.text = "E-mail não encontrado!"
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.textAlignment = .center
-        label.clipsToBounds = true
-        label.layer.borderWidth = 1.5
-        label.layer.borderColor = UIColor.white.cgColor
-        label.layer.cornerRadius = 10
-        return label
+    private lazy var buscarUsuarioButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Buscar usuário", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        button.titleLabel?.textAlignment = .center
+        button.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0), for: .normal)
+        button.backgroundColor = UIColor(red: 148/255, green: 0/255, blue: 211/255, alpha: 1.0)
+        button.clipsToBounds = true
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderWidth = 1.5
+        button.layer.cornerRadius = 10
+        return button
     }()
     
     private lazy var linhaDeSeparacaoView: UIView = {
@@ -167,21 +167,11 @@ class RecuperacaoDeSenhaView: UIView {
     }
     
     // MARK: - Configurar componentes
-    public func configuraComponentesCasoOUsuarioNaoExista() -> Void {
-        self.ocultaComponentesExibicaoRedefineSenha()
-        self.exibeComponentesQuandoUsuarioNaoExiste()
-                
-        NSLayoutConstraint.activate([
-            self.usuarioNaoEncontradoLabel.topAnchor.constraint(equalTo: self.emailTextField.bottomAnchor, constant: 20),
-            self.usuarioNaoEncontradoLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 50),
-            self.usuarioNaoEncontradoLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -50),
-            self.usuarioNaoEncontradoLabel.heightAnchor.constraint(equalToConstant: 45),
-        ])
-    }
-    
     public func configurarComponentesNecessariosParaRedefinicaoDaSenha() -> Void {
-        self.ocultaComponentesQuandoUsuarioNaoExiste()
+        self.ocultaComponenteBuscarUsuarioButton()
         self.exibeComponentesRedefineSenha()
+        
+        self.emailTextField.isUserInteractionEnabled = false
         
         NSLayoutConstraint.activate([
             self.linhaDeSeparacaoView.topAnchor.constraint(equalTo: self.emailTextField.bottomAnchor, constant: 30),
@@ -208,12 +198,12 @@ class RecuperacaoDeSenhaView: UIView {
             self.alterarSenhaButton.topAnchor.constraint(equalTo: self.repeticaoDaNovaSenhaTextField.bottomAnchor, constant: 20),
             self.alterarSenhaButton.leadingAnchor.constraint(equalTo: self.emailTextField.leadingAnchor),
             self.alterarSenhaButton.trailingAnchor.constraint(equalTo: self.emailTextField.trailingAnchor),
-            self.alterarSenhaButton.heightAnchor.constraint(equalToConstant: 55)
+            self.alterarSenhaButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
-    private func ocultaComponentesQuandoUsuarioNaoExiste() -> Void {
-        self.usuarioNaoEncontradoLabel.isHidden = true
+    private func ocultaComponenteBuscarUsuarioButton() -> Void {
+        self.buscarUsuarioButton.isHidden = true
     }
     
     private func ocultaComponentesExibicaoRedefineSenha() -> Void {
@@ -223,10 +213,6 @@ class RecuperacaoDeSenhaView: UIView {
         self.repeticaoDaNovaSenhaLabel.isHidden = true
         self.repeticaoDaNovaSenhaTextField.isHidden = true
         self.alterarSenhaButton.isHidden = true
-    }
-    
-    private func exibeComponentesQuandoUsuarioNaoExiste() -> Void {
-        self.usuarioNaoEncontradoLabel.isHidden = false
     }
     
     private func exibeComponentesRedefineSenha() -> Void {
@@ -239,8 +225,12 @@ class RecuperacaoDeSenhaView: UIView {
     }
     
     // MARK: - Funcoes
-    public func getEmailTextField() -> UITextField {
-        return self.emailTextField
+    public func getEmailDoUsuario() -> String? {
+        return self.emailTextField.text
+    }
+    
+    public func getBuscarUsuarioButton() -> UIButton {
+        return self.buscarUsuarioButton
     }
     
     public func getNovaSenha() -> String? {
@@ -262,8 +252,7 @@ class RecuperacaoDeSenhaView: UIView {
         self.addSubview(self.emailLabel)
         self.addSubview(self.emailTextField)
         
-        self.addSubview(self.usuarioNaoEncontradoLabel)
-        self.ocultaComponentesQuandoUsuarioNaoExiste()
+        self.addSubview(self.buscarUsuarioButton)
         
         self.addSubview(self.linhaDeSeparacaoView)
         self.addSubview(self.novaSenhaLabel)
@@ -289,6 +278,11 @@ class RecuperacaoDeSenhaView: UIView {
             self.emailTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             self.emailTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             self.emailTextField.heightAnchor.constraint(equalToConstant: 45),
+            
+            self.buscarUsuarioButton.topAnchor.constraint(equalTo: self.emailTextField.bottomAnchor, constant: 20),
+            self.buscarUsuarioButton.leadingAnchor.constraint(equalTo: self.emailTextField.leadingAnchor),
+            self.buscarUsuarioButton.trailingAnchor.constraint(equalTo: self.emailTextField.trailingAnchor),
+            self.buscarUsuarioButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     

@@ -33,4 +33,6 @@ enum Erros: String {
     case erro_cadastro_nao_encontrado = "Usuário não encontrado! Verifique seus dados e tente novamente"
     
     case erro_algum_dado_do_usuario_esta_nulo = "Tente novamente!"
+    
+    case erro_email_nao_encontrado = "E-mail não encontrado!"
 }

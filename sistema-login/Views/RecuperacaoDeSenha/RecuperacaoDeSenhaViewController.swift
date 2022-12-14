@@ -9,21 +9,21 @@ import UIKit
 
 class RecuperacaoDeSenhaViewController: UIViewController {
     
-    // MARK: - Atributos
+    // MARK: - View
     private lazy var recuperacaoDeSenhaView: RecuperacaoDeSenhaView = {
         let view = RecuperacaoDeSenhaView()
         return view
     }()
-
+    
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = self.recuperacaoDeSenhaView
         
-        self.recuperacaoDeSenhaView.getEmailTextField().addTarget(
+        self.recuperacaoDeSenhaView.getBuscarUsuarioButton().addTarget(
             self,
-            action: #selector(exibeConteudoAposEmailSerDigitado(_:)),
-            for: .editingChanged
+            action: #selector(buscaUsuarioParaRedefinicaoDeSenha(_:)),
+            for: .touchUpInside
         )
         
         self.recuperacaoDeSenhaView.getAlterarSenhaButton().addTarget(
@@ -40,18 +40,35 @@ class RecuperacaoDeSenhaViewController: UIViewController {
     }
     
     // MARK: - Funcoes
-    @objc private func exibeConteudoAposEmailSerDigitado(_ sender: UITextField) -> Void {
-        let usuarios = UsuariosDadosStatic.getUsuariosSalvos()
+    @objc private func buscaUsuarioParaRedefinicaoDeSenha(_ sender: UIButton) -> Void {
+        let controladorDeErros = ControladorDeErros()
+        let validadorDeDadosDoUsuario = ValidacoesDeDadosDoUsuario(controladorDeErros)
+        let recuperarSenhaController = RecuperacaoDeSenhaController(
+            controladorDeErros,
+            validadorDeDadosDoUsuario
+        )
         
-        for usuario in usuarios {
-            if usuario.getEmailDoUsuario() == sender.text {
-                self.recuperacaoDeSenhaView.configurarComponentesNecessariosParaRedefinicaoDaSenha()
-                
-                return
+        let verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosStaticClass()
+        
+        let usuarioFoiEncontrado = recuperarSenhaController.buscaUsuarioParaRedefinicaoDeSenha(
+            email: self.recuperacaoDeSenhaView.getEmailDoUsuario(),
+            verificadorDeDadosCadastrados: verificadorDeDadosCadastrados
+        )
+        
+        if !usuarioFoiEncontrado {
+            let alertas = Alerta(viewController: self)
+            let erros = controladorDeErros.getErros()
+            
+            if erros.count > 0 {
+                alertas.criaAlerta(mensagem: erros[0])
             }
+            
+            return
         }
         
-        self.recuperacaoDeSenhaView.configuraComponentesCasoOUsuarioNaoExista()
+        self.recuperacaoDeSenhaView.configurarComponentesNecessariosParaRedefinicaoDaSenha()
+        return
+        
     }
     
     @objc private func verificaSeSenhaPodeSerAlterada(_ sender: UIButton) -> Void {
@@ -62,7 +79,7 @@ class RecuperacaoDeSenhaViewController: UIViewController {
         let alerta = Alerta(viewController: self)
         
         let novaSenhaFoiSalva = recuperacaoDeSenhaController.alterarSenha(
-            email: self.recuperacaoDeSenhaView.getEmailTextField().text,
+            email: self.recuperacaoDeSenhaView.getEmailDoUsuario(),
             senha: self.recuperacaoDeSenhaView.getNovaSenha(),
             repeticaoSenha: self.recuperacaoDeSenhaView.getRepeticaoNovaSenha()
         )

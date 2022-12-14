@@ -33,10 +33,6 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         )
     }
 
-    override func tearDownWithError() throws {
-       
-    }
-    
     // MARK: - Testes
     func testTodosOsDadosDoUsuarioEstaoNulos() {
     

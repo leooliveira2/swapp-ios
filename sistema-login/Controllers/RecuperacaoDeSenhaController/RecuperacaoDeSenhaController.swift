@@ -14,8 +14,8 @@ class RecuperacaoDeSenhaController {
     private let redefinicaoDeSenha: RedefinicaoDeSenhaRepository
     
     init(
-        _ controladorDeErros: ControladorDeErros = ControladorDeErros(),
-        _ validadorDeDados: ValidacoesDeDadosDoUsuario = ValidacoesDeDadosDoUsuario(ControladorDeErros()),
+        _ controladorDeErros: ControladorDeErros,
+        _ validadorDeDados: ValidacoesDeDadosDoUsuario,
         _ redefinicaoDeSenha: RedefinicaoDeSenhaRepository = RedefinicaoDeSenhaStaticClass()
     ) {
         self.controladorDeErros = controladorDeErros
@@ -43,9 +43,14 @@ class RecuperacaoDeSenhaController {
         _ verificadorDeDadosCadastrados: VerificadorDeDadosCadastradosRepository
     ) -> Bool {
         let emailEstaVazio = self.validadorDeDados.emailDoUsuarioEstaVazio(email)
-        let emailExiste = self.validadorDeDados.emailDoUsuarioJaEstaCadastrado(email, verificadorDeDadosCadastrados)
         
-        if emailEstaVazio || !emailExiste {
+        if emailEstaVazio {
+            return false
+        }
+        
+        let emailExiste = verificadorDeDadosCadastrados.verificaSeEmailJaEstaCadastrado(email)
+        
+        if !emailExiste {
             self.controladorDeErros.adicionarErro(erro: .erro_email_nao_encontrado)
             return false
         }
@@ -71,6 +76,7 @@ class RecuperacaoDeSenhaController {
         }
         
         if !self.redefinicaoDeSenha.redefinirSenha(email: email, senha: senha) {
+            self.controladorDeErros.adicionarErro(erro: .erro_ao_salvar_nova_senha)
             return false
         }
         

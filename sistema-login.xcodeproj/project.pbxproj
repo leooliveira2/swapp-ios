@@ -15,6 +15,8 @@
 		C5143CE8292FE6A600918975 /* RequisicoesStarWarsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5143CE7292FE6A600918975 /* RequisicoesStarWarsAPI.swift */; };
 		C5143CEA2930041600918975 /* PlanetaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5143CE92930041600918975 /* PlanetaView.swift */; };
 		C5143CEC2930078C00918975 /* NaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5143CEB2930078C00918975 /* NaveView.swift */; };
+		C516FA83294A5DE70034E7EF /* RecuperacaoDeSenhaControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C516FA82294A5DE70034E7EF /* RecuperacaoDeSenhaControllerTests.swift */; };
+		C516FA85294A66570034E7EF /* RedefinicaoDeSenhaStaticClassMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C516FA84294A66570034E7EF /* RedefinicaoDeSenhaStaticClassMock.swift */; };
 		C550F8662919644D00FC2EF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8652919644D00FC2EF2 /* AppDelegate.swift */; };
 		C550F8682919644D00FC2EF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8672919644D00FC2EF2 /* SceneDelegate.swift */; };
 		C550F86A2919644D00FC2EF2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8692919644D00FC2EF2 /* LoginViewController.swift */; };
@@ -74,6 +76,8 @@
 		C5143CE7292FE6A600918975 /* RequisicoesStarWarsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequisicoesStarWarsAPI.swift; sourceTree = "<group>"; };
 		C5143CE92930041600918975 /* PlanetaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetaView.swift; sourceTree = "<group>"; };
 		C5143CEB2930078C00918975 /* NaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaveView.swift; sourceTree = "<group>"; };
+		C516FA82294A5DE70034E7EF /* RecuperacaoDeSenhaControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperacaoDeSenhaControllerTests.swift; sourceTree = "<group>"; };
+		C516FA84294A66570034E7EF /* RedefinicaoDeSenhaStaticClassMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedefinicaoDeSenhaStaticClassMock.swift; sourceTree = "<group>"; };
 		C550F8622919644D00FC2EF2 /* sistema-login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sistema-login.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C550F8652919644D00FC2EF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C550F8672919644D00FC2EF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -364,6 +368,7 @@
 				C5B5E74C2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift */,
 				C5B5E74E294912D6001F87AE /* CriacaoDeContaControllerTests.swift */,
 				C5BDB915294A5208007DD78D /* LoginControllerTests.swift */,
+				C516FA82294A5DE70034E7EF /* RecuperacaoDeSenhaControllerTests.swift */,
 			);
 			path = "sistema-loginTests";
 			sourceTree = "<group>";
@@ -372,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				C5BDB913294A49AC007DD78D /* SalvarUsuarioStaticClassMock.swift */,
+				C516FA84294A66570034E7EF /* RedefinicaoDeSenhaStaticClassMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -563,6 +569,7 @@
 				C587194E2947A52A00F6EDC7 /* RecuperaDadosDoUsuarioRepository.swift in Sources */,
 				C5C3455C291D860300E3097A /* UsuariosDadosStatic.swift in Sources */,
 				C550F8662919644D00FC2EF2 /* AppDelegate.swift in Sources */,
+				C516FA85294A66570034E7EF /* RedefinicaoDeSenhaStaticClassMock.swift in Sources */,
 				C550F8682919644D00FC2EF2 /* SceneDelegate.swift in Sources */,
 				C55BFA68291AB6890049C539 /* CriacaoDeContaView.swift in Sources */,
 				C5646B60293E523B009FD074 /* NaveController.swift in Sources */,
@@ -585,6 +592,7 @@
 				C5B5E74D2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift in Sources */,
 				C5B5E74F294912D6001F87AE /* CriacaoDeContaControllerTests.swift in Sources */,
 				C5BDB916294A5208007DD78D /* LoginControllerTests.swift in Sources */,
+				C516FA83294A5DE70034E7EF /* RecuperacaoDeSenhaControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

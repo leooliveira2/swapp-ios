@@ -19,10 +19,6 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         self.controladorDeErros = ControladorDeErros()
         self.validadorDeDadosDoUsuario = ValidacoesDeDadosDoUsuario(self.controladorDeErros)
     }
-
-    override func tearDownWithError() throws {
-        
-    }
     
     // MARK: - Testes nickname
     func testVerificaSeNickNameDoUsuarioEstaPreenchidoCorretamente() {

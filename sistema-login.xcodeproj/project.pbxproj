@@ -49,6 +49,7 @@
 		C58D40A1292EBBDF00A1C6BC /* PersonagemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D40A0292EBBDF00A1C6BC /* PersonagemView.swift */; };
 		C5B5E74D2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B5E74C2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift */; };
 		C5B5E74F294912D6001F87AE /* CriacaoDeContaControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B5E74E294912D6001F87AE /* CriacaoDeContaControllerTests.swift */; };
+		C5BCB746294BA55F002B9C62 /* RedefinicaoDeSenhaStaticClassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BCB745294BA55F002B9C62 /* RedefinicaoDeSenhaStaticClassTests.swift */; };
 		C5BDB914294A49AC007DD78D /* SalvarUsuarioStaticClassMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BDB913294A49AC007DD78D /* SalvarUsuarioStaticClassMock.swift */; };
 		C5BDB916294A5208007DD78D /* LoginControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BDB915294A5208007DD78D /* LoginControllerTests.swift */; };
 		C5C3455A291D7F9B00E3097A /* CriacaoDeContaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C34559291D7F9B00E3097A /* CriacaoDeContaController.swift */; };
@@ -113,6 +114,7 @@
 		C5B5E7432948ED42001F87AE /* sistema-loginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sistema-loginTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B5E74C2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidacoesDeDadosDoUsuarioTests.swift; sourceTree = "<group>"; };
 		C5B5E74E294912D6001F87AE /* CriacaoDeContaControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContaControllerTests.swift; sourceTree = "<group>"; };
+		C5BCB745294BA55F002B9C62 /* RedefinicaoDeSenhaStaticClassTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedefinicaoDeSenhaStaticClassTests.swift; sourceTree = "<group>"; };
 		C5BDB913294A49AC007DD78D /* SalvarUsuarioStaticClassMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalvarUsuarioStaticClassMock.swift; sourceTree = "<group>"; };
 		C5BDB915294A5208007DD78D /* LoginControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginControllerTests.swift; sourceTree = "<group>"; };
 		C5C34559291D7F9B00E3097A /* CriacaoDeContaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContaController.swift; sourceTree = "<group>"; };
@@ -178,7 +180,7 @@
 		C5252555291C44F5002508F5 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				C569E5E8293FBDA10040885A /* Dao */,
+				C569E5E8293FBDA10040885A /* Dados */,
 				C569E5E7293FBD300040885A /* Repository */,
 				C55BFA69291ACA7B0049C539 /* Model */,
 				C5252556291C4502002508F5 /* Service */,
@@ -296,12 +298,12 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		C569E5E8293FBDA10040885A /* Dao */ = {
+		C569E5E8293FBDA10040885A /* Dados */ = {
 			isa = PBXGroup;
 			children = (
 				C5C3455B291D860300E3097A /* UsuariosDadosStatic.swift */,
 			);
-			path = Dao;
+			path = Dados;
 			sourceTree = "<group>";
 		};
 		C57BD85C293A70C400092FA9 /* Perfil */ = {
@@ -365,12 +367,37 @@
 		C5B5E7442948ED42001F87AE /* sistema-loginTests */ = {
 			isa = PBXGroup;
 			children = (
-				C5B5E74C2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift */,
-				C5B5E74E294912D6001F87AE /* CriacaoDeContaControllerTests.swift */,
-				C5BDB915294A5208007DD78D /* LoginControllerTests.swift */,
-				C516FA82294A5DE70034E7EF /* RecuperacaoDeSenhaControllerTests.swift */,
+				C5BCB744294BA532002B9C62 /* Repository */,
+				C5BCB743294BA51B002B9C62 /* Service */,
+				C5BCB742294BA504002B9C62 /* Controllers */,
 			);
 			path = "sistema-loginTests";
+			sourceTree = "<group>";
+		};
+		C5BCB742294BA504002B9C62 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C5BDB915294A5208007DD78D /* LoginControllerTests.swift */,
+				C5B5E74E294912D6001F87AE /* CriacaoDeContaControllerTests.swift */,
+				C516FA82294A5DE70034E7EF /* RecuperacaoDeSenhaControllerTests.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C5BCB743294BA51B002B9C62 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C5B5E74C2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		C5BCB744294BA532002B9C62 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				C5BCB745294BA55F002B9C62 /* RedefinicaoDeSenhaStaticClassTests.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		C5BDB912294A4974007DD78D /* Mocks */ = {
@@ -592,6 +619,7 @@
 				C5B5E74D2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift in Sources */,
 				C5B5E74F294912D6001F87AE /* CriacaoDeContaControllerTests.swift in Sources */,
 				C5BDB916294A5208007DD78D /* LoginControllerTests.swift in Sources */,
+				C5BCB746294BA55F002B9C62 /* RedefinicaoDeSenhaStaticClassTests.swift in Sources */,
 				C516FA83294A5DE70034E7EF /* RecuperacaoDeSenhaControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

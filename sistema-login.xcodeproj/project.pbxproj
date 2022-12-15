@@ -50,6 +50,7 @@
 		C5B5E74D2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B5E74C2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift */; };
 		C5B5E74F294912D6001F87AE /* CriacaoDeContaControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B5E74E294912D6001F87AE /* CriacaoDeContaControllerTests.swift */; };
 		C5BCB746294BA55F002B9C62 /* RedefinicaoDeSenhaStaticClassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BCB745294BA55F002B9C62 /* RedefinicaoDeSenhaStaticClassTests.swift */; };
+		C5BCB748294BB542002B9C62 /* SalvarUsuarioStaticClassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BCB747294BB542002B9C62 /* SalvarUsuarioStaticClassTests.swift */; };
 		C5BDB914294A49AC007DD78D /* SalvarUsuarioStaticClassMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BDB913294A49AC007DD78D /* SalvarUsuarioStaticClassMock.swift */; };
 		C5BDB916294A5208007DD78D /* LoginControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BDB915294A5208007DD78D /* LoginControllerTests.swift */; };
 		C5C3455A291D7F9B00E3097A /* CriacaoDeContaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C34559291D7F9B00E3097A /* CriacaoDeContaController.swift */; };
@@ -115,6 +116,7 @@
 		C5B5E74C2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidacoesDeDadosDoUsuarioTests.swift; sourceTree = "<group>"; };
 		C5B5E74E294912D6001F87AE /* CriacaoDeContaControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContaControllerTests.swift; sourceTree = "<group>"; };
 		C5BCB745294BA55F002B9C62 /* RedefinicaoDeSenhaStaticClassTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedefinicaoDeSenhaStaticClassTests.swift; sourceTree = "<group>"; };
+		C5BCB747294BB542002B9C62 /* SalvarUsuarioStaticClassTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalvarUsuarioStaticClassTests.swift; sourceTree = "<group>"; };
 		C5BDB913294A49AC007DD78D /* SalvarUsuarioStaticClassMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalvarUsuarioStaticClassMock.swift; sourceTree = "<group>"; };
 		C5BDB915294A5208007DD78D /* LoginControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginControllerTests.swift; sourceTree = "<group>"; };
 		C5C34559291D7F9B00E3097A /* CriacaoDeContaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContaController.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				C5BCB745294BA55F002B9C62 /* RedefinicaoDeSenhaStaticClassTests.swift */,
+				C5BCB747294BB542002B9C62 /* SalvarUsuarioStaticClassTests.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -618,6 +621,7 @@
 			files = (
 				C5B5E74D2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift in Sources */,
 				C5B5E74F294912D6001F87AE /* CriacaoDeContaControllerTests.swift in Sources */,
+				C5BCB748294BB542002B9C62 /* SalvarUsuarioStaticClassTests.swift in Sources */,
 				C5BDB916294A5208007DD78D /* LoginControllerTests.swift in Sources */,
 				C5BCB746294BA55F002B9C62 /* RedefinicaoDeSenhaStaticClassTests.swift in Sources */,
 				C516FA83294A5DE70034E7EF /* RecuperacaoDeSenhaControllerTests.swift in Sources */,

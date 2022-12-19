@@ -13,15 +13,21 @@ protocol RedefinicaoDeSenhaRepository {
        
 }
 
-class RedefinicaoDeSenhaStaticClass: RedefinicaoDeSenhaRepository {
+class RedefinicaoDeSenhaSystem: RedefinicaoDeSenhaRepository {
+    
+    private let usuariosArmazenamento: UsuariosDadosStatic
+    
+    init(usuariosArmazenamento: UsuariosDadosStatic? = nil) {
+        self.usuariosArmazenamento = usuariosArmazenamento ?? UsuariosDadosStatic()
+    }
     
     public func redefinirSenha(email: String, senha: String) -> Bool {
-        let usuariosSalvos = UsuariosDadosStatic.getUsuariosSalvos()
+        let usuariosSalvos = usuariosArmazenamento.getUsuariosSalvos()
         
         for usuario in usuariosSalvos {
             if usuario.getEmailDoUsuario() == email {
                 usuario.alterarSenha(senha)
-                
+
                 return true
             }
         }

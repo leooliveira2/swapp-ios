@@ -32,7 +32,7 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
     
     // MARK:: - Testes
     func testEmailParaBuscaDeCadastroEstaNulo() {
-        let verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosStaticClass()
+        let verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosSystem()
         
         let cadastroFoiEncontrado = self.recuperacaoDeSenhaController.buscaUsuarioParaRedefinicaoDeSenha(
             email: nil,
@@ -47,7 +47,7 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
     }
     
     func testEmailEstaVazio() {
-        let verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosStaticClass()
+        let verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosSystem()
         
         let cadastroFoiEncontrado = self.recuperacaoDeSenhaController.buscaUsuarioParaRedefinicaoDeSenha(
             email: "",
@@ -71,9 +71,11 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
             repeticaoDeSenha: "123123123"
         )
         
-        UsuariosDadosStatic.salvarUsuario(usuario)
+        let usuariosArmazenamento = UsuariosDadosStatic()
         
-        let verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosStaticClass()
+        usuariosArmazenamento.salvarUsuario(usuario)
+        
+        let verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosSystem(usuariosArmazenamento: usuariosArmazenamento)
         
         let cadastroFoiEncontrado = self.recuperacaoDeSenhaController.buscaUsuarioParaRedefinicaoDeSenha(
             email: "teste0@email.com",
@@ -87,7 +89,7 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
     }
     
     func testEmailEstaPreenchidoCorretamenteMasCadastroNaoFoiEncontrado() {
-        let verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosStaticClass()
+        let verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosSystem()
         
         let cadastroFoiEncontrado = self.recuperacaoDeSenhaController.buscaUsuarioParaRedefinicaoDeSenha(
             email: "teste1@email.com",
@@ -172,7 +174,6 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
         XCTAssertFalse(senhaPodeSerRedefinida)
         XCTAssertEqual(1, erros.count)
         XCTAssertEqual(.erro_ao_salvar_nova_senha, erros[0])
-        XCTAssertEqual(1, self.redefinicaoDeSenha.quantasVezesAFuncaoRedefinirSenhaFoIChamada)
     }
     
     func testSenhaERepeticaoDeSenhaSaoValidosENovaSenhaFoiSalvaComSucesso() {
@@ -188,7 +189,6 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
         
         XCTAssertTrue(senhaPodeSerRedefinida)
         XCTAssertEqual(0, erros.count)
-        XCTAssertEqual(1, self.redefinicaoDeSenha.quantasVezesAFuncaoRedefinirSenhaFoIChamada)
     }
 
 }

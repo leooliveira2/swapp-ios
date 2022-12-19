@@ -48,7 +48,7 @@ class RecuperacaoDeSenhaViewController: UIViewController {
             validadorDeDadosDoUsuario
         )
         
-        let verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosStaticClass()
+        let verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosSystem()
         
         let usuarioFoiEncontrado = recuperarSenhaController.buscaUsuarioParaRedefinicaoDeSenha(
             email: self.recuperacaoDeSenhaView.getEmailDoUsuario(),
@@ -74,7 +74,7 @@ class RecuperacaoDeSenhaViewController: UIViewController {
     @objc private func verificaSeSenhaPodeSerAlterada(_ sender: UIButton) -> Void {
         let controladorDeErros = ControladorDeErros()
         let validadorDeSenha = ValidacoesDeDadosDoUsuario(controladorDeErros)
-        let redefinicaoDeSenha = RedefinicaoDeSenhaStaticClass()
+        let redefinicaoDeSenha = RedefinicaoDeSenhaSystem()
         let recuperacaoDeSenhaController = RecuperacaoDeSenhaController(controladorDeErros, validadorDeSenha, redefinicaoDeSenha)
         let alerta = Alerta(viewController: self)
         

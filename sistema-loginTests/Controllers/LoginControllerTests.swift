@@ -12,7 +12,7 @@ final class LoginControllerTests: XCTestCase {
     
     // MARK: - Atributos
     private var controladorDeErros: ControladorDeErros!
-    private var validadorDeLogin: ValidadorDeLoginRepository!
+    private var validadorDeLogin: ValidadorDeLoginStaticClassMock!
     private var validadorDeDadosDoUsuario: ValidacoesDeDadosDoUsuario!
     
     private var loginController: LoginController!
@@ -20,7 +20,7 @@ final class LoginControllerTests: XCTestCase {
     // MARK: - Pre-sets
     override func setUpWithError() throws {
         self.controladorDeErros = ControladorDeErros()
-        self.validadorDeLogin = ValidadorDeLoginStaticClass()
+        self.validadorDeLogin = ValidadorDeLoginStaticClassMock()
         self.validadorDeDadosDoUsuario = ValidacoesDeDadosDoUsuario(self.controladorDeErros)
         
         self.loginController = LoginController(self.controladorDeErros, self.validadorDeLogin, self.validadorDeDadosDoUsuario)
@@ -90,15 +90,8 @@ final class LoginControllerTests: XCTestCase {
     }
     
     func testEmailESenhaEstaoPreenchidosCorretamenteECadastroFoiEncontradoStaticClass() {
-        let usuario = Usuario(
-            nickName: "teste",
-            nomeCompleto: "Testando da Silva",
-            email: "email@email.com",
-            senha: "123123123",
-            repeticaoDeSenha: "123123123"
-        )
         
-        UsuariosDadosStatic.salvarUsuario(usuario)
+        self.validadorDeLogin.retornoDaFuncaoValidarLogin = true
         
         let loginFoiRealizado = self.loginController.fazerLogin(email: "email@email.com", senha: "123123123")
         
@@ -114,6 +107,8 @@ final class LoginControllerTests: XCTestCase {
     }
     
     func testEmailESenhaEstaoPreenchidosCorretamenteMasCadastroNaoExiste() {
+        self.validadorDeLogin.retornoDaFuncaoValidarLogin = false
+        
         let loginFoiRealizado = self.loginController.fazerLogin(email: "teste@email.com", senha: "123123123")
         
         let erros = self.controladorDeErros.getErros()

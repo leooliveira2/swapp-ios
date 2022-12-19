@@ -16,7 +16,7 @@ class RecuperacaoDeSenhaController {
     init(
         _ controladorDeErros: ControladorDeErros,
         _ validadorDeDados: ValidacoesDeDadosDoUsuario,
-        _ redefinicaoDeSenha: RedefinicaoDeSenhaRepository = RedefinicaoDeSenhaStaticClass()
+        _ redefinicaoDeSenha: RedefinicaoDeSenhaRepository = RedefinicaoDeSenhaSystem()
     ) {
         self.controladorDeErros = controladorDeErros
         self.validadorDeDados = validadorDeDados

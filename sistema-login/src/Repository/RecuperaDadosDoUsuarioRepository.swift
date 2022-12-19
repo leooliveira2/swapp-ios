@@ -13,10 +13,16 @@ protocol RecuperaDadosDoUsuarioRepository {
     
 }
 
-class RecuperaDadosDoUsuarioStaticClass: RecuperaDadosDoUsuarioRepository {
+class RecuperaDadosDoUsuarioSystem: RecuperaDadosDoUsuarioRepository {
+    
+    private let usuariosArmazenamento: UsuariosDadosStatic
+    
+    init(usuariosArmazenamento: UsuariosDadosStatic? = nil) {
+        self.usuariosArmazenamento = usuariosArmazenamento ?? UsuariosDadosStatic()
+    }
     
     public func getNickNameDoUsuario(email: String) -> String? {
-        let listaDeUsuarios = UsuariosDadosStatic.getUsuariosSalvos()
+        let listaDeUsuarios = usuariosArmazenamento.getUsuariosSalvos()
         
         for usuario in listaDeUsuarios {
             if usuario.getEmailDoUsuario() == email {

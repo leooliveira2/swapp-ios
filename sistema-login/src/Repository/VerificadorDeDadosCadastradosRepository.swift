@@ -14,10 +14,16 @@ protocol VerificadorDeDadosCadastradosRepository {
     func verificaSeEmailJaEstaCadastrado(_ email: String) -> Bool
 }
 
-class VerificadorDeDadosCadastradosStaticClass: VerificadorDeDadosCadastradosRepository {
+class VerificadorDeDadosCadastradosSystem: VerificadorDeDadosCadastradosRepository {
+    
+    private let usuariosArmazenamento: UsuariosDadosStatic
+    
+    init(usuariosArmazenamento: UsuariosDadosStatic? = nil) {
+        self.usuariosArmazenamento = usuariosArmazenamento ?? UsuariosDadosStatic()
+    }
     
     public func verificaSeNickNameJaEstaCadastrado(_ nickName: String) -> Bool {
-        let usuariosSalvos = UsuariosDadosStatic.getUsuariosSalvos()
+        let usuariosSalvos = usuariosArmazenamento.getUsuariosSalvos()
         
         for usuario in usuariosSalvos {
             if usuario.getNickNameDeUsuario() == nickName {
@@ -29,7 +35,7 @@ class VerificadorDeDadosCadastradosStaticClass: VerificadorDeDadosCadastradosRep
     }
     
     public func verificaSeEmailJaEstaCadastrado(_ email: String) -> Bool {
-        let usuariosSalvos = UsuariosDadosStatic.getUsuariosSalvos()
+        let usuariosSalvos = usuariosArmazenamento.getUsuariosSalvos()
         
         for usuario in usuariosSalvos {
             if usuario.getEmailDoUsuario() == email {

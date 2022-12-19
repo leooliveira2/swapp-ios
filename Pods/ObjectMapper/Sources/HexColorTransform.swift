@@ -76,7 +76,7 @@ open class HexColorTransform: TransformType {
 		let r: Int
 		let g: Int
 		var b: Int
-		let a = Int(comps[compsCount - 1] * 255)
+		let usuariosArmazenamento = Int(comps[compsCount - 1] * 255)
 		if compsCount == 4 { // RGBA
 			r = Int(comps[0] * 255)
 			g = Int(comps[1] * 255)
@@ -93,7 +93,7 @@ open class HexColorTransform: TransformType {
 		hexString += String(format: "%02X%02X%02X", r, g, b)
 		
 		if alpha {
-			hexString += String(format: "%02X", a)
+			hexString += String(format: "%02X", usuariosArmazenamento)
 		}
 		return hexString
 	}

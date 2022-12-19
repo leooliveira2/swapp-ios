@@ -259,9 +259,9 @@ extension SCNetworkReachabilityFlags {
         let D = contains(.connectionOnDemand) ? "D" : "-"
         let l = contains(.isLocalAddress) ? "l" : "-"
         let d = contains(.isDirect) ? "d" : "-"
-        let a = contains(.connectionAutomatic) ? "a" : "-"
+        let usuariosArmazenamento = contains(.connectionAutomatic) ? "a" : "-"
 
-        return "\(W)\(R) \(c)\(t)\(i)\(C)\(D)\(l)\(d)\(a)"
+        return "\(W)\(R) \(c)\(t)\(i)\(C)\(D)\(l)\(d)\(usuariosArmazenamento)"
     }
 }
 #endif

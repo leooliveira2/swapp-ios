@@ -39,7 +39,7 @@ class PerfilViewController: UIViewController {
     private func getNickNameDoUsuario() -> String {
         guard let emailDoUsuario = UserDefaults.standard.string(forKey: "user_id") else { return "" }
         
-        let recuperadorDeDadosDoUsuario = RecuperaDadosDoUsuarioStaticClass()
+        let recuperadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSystem()
         
         guard let nickNameDoUsuario = recuperadorDeDadosDoUsuario.getNickNameDoUsuario(email: emailDoUsuario) else { return "" }
         

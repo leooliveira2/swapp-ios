@@ -66,7 +66,7 @@ class LoginViewController: UIViewController {
     @objc private func realizarLogin(_ sender: UIButton) -> Void {
         let controladorDeErros = ControladorDeErros()
         
-        let validadorDeLogin = ValidadorDeLoginStaticClass()
+        let validadorDeLogin = ValidadorDeLoginSystem()
         let validadorDeUsuario = ValidacoesDeDadosDoUsuario(controladorDeErros)
         
         let controlador = LoginController(controladorDeErros, validadorDeLogin, validadorDeUsuario)

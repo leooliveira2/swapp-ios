@@ -7,16 +7,18 @@
 
 import UIKit
 
+// Monostate
+
 class UsuariosDadosStatic {
     
-    static private var usuariosSalvos: [Usuario] = []
-    
-    public static func salvarUsuario(_ usuario: Usuario) -> Void {
-        usuariosSalvos.append(usuario)
-    }
-    
-    public static func getUsuariosSalvos() -> [Usuario] {
-        return self.usuariosSalvos
+    private static var usuariosSalvos: [Usuario] = []
+
+    public func salvarUsuario(_ usuario: Usuario) -> Void {
+        UsuariosDadosStatic.usuariosSalvos.append(usuario)
     }
 
+    public func getUsuariosSalvos() -> [Usuario] {
+        return UsuariosDadosStatic.usuariosSalvos
+    }
+    
 }

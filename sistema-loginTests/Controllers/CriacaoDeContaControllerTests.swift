@@ -14,7 +14,7 @@ final class CriacaoDeContaControllerTests: XCTestCase {
     private var controladorDeErros: ControladorDeErros!
     private var validadorDeDadosDoUsuario: ValidacoesDeDadosDoUsuario!
     private var salvaUsuario: SalvarUsuarioStaticClassMock!
-    private var verificadorDeDadosCadastrados: VerificadorDeDadosCadastradosStaticClass!
+    private var verificadorDeDadosCadastrados: VerificadorDeDadosCadastradosSystem!
     
     private var controladorCriacaoDeConta: CriacaoDeContaController!
     
@@ -23,7 +23,7 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         self.controladorDeErros = ControladorDeErros()
         self.validadorDeDadosDoUsuario = ValidacoesDeDadosDoUsuario(self.controladorDeErros)
         self.salvaUsuario = SalvarUsuarioStaticClassMock()
-        self.verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosStaticClass()
+        self.verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosSystem()
         
         self.controladorCriacaoDeConta = CriacaoDeContaController(
             controladorDeErros,
@@ -50,7 +50,6 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         XCTAssertEqual(1, erros.count)
         XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[0])
         
-        XCTAssertEqual(0, self.salvaUsuario.quantasVezesAFuncaoSalvarFoiChamada)
     }
     
     func testPrimeiroDadoDoUsuarioEstaNulo() {
@@ -67,8 +66,6 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         XCTAssertFalse(contaPodeSerCriada)
         XCTAssertEqual(1, erros.count)
         XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[0])
-        
-        XCTAssertEqual(0, self.salvaUsuario.quantasVezesAFuncaoSalvarFoiChamada)
     }
     
     func testUltimoDadoDoUsuarioEstaNulo() {
@@ -85,8 +82,6 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         XCTAssertFalse(contaPodeSerCriada)
         XCTAssertEqual(1, erros.count)
         XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[0])
-        
-        XCTAssertEqual(0, self.salvaUsuario.quantasVezesAFuncaoSalvarFoiChamada)
     }
     
     func testUsuarioContemDadosInvalidos() {
@@ -126,7 +121,6 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         XCTAssertFalse(contaPodeSerCriada)
         XCTAssertEqual(1, erros.count)
         XCTAssertEqual(.erro_ao_salvar_usuario, erros[0])
-        XCTAssertEqual(1, self.salvaUsuario.quantasVezesAFuncaoSalvarFoiChamada)
     }
     
     func testUsuarioTemDadosValidosEFoiSalvoComSucesso() {
@@ -144,7 +138,6 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         
         XCTAssertTrue(contaPodeSerCriada)
         XCTAssertEqual(0, erros.count)
-        XCTAssertEqual(1, self.salvaUsuario.quantasVezesAFuncaoSalvarFoiChamada)
     }
 
 }

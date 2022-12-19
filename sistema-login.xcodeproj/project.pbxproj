@@ -17,6 +17,8 @@
 		C5143CEC2930078C00918975 /* NaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5143CEB2930078C00918975 /* NaveView.swift */; };
 		C516FA83294A5DE70034E7EF /* RecuperacaoDeSenhaControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C516FA82294A5DE70034E7EF /* RecuperacaoDeSenhaControllerTests.swift */; };
 		C516FA85294A66570034E7EF /* RedefinicaoDeSenhaStaticClassMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C516FA84294A66570034E7EF /* RedefinicaoDeSenhaStaticClassMock.swift */; };
+		C523C6D4294CD1A90012077A /* VerificadorDeDadosCadastradosStaticClassMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C523C6D3294CD1A90012077A /* VerificadorDeDadosCadastradosStaticClassMock.swift */; };
+		C523C6D6294CD3930012077A /* ValidadorDeLoginStaticClassMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C523C6D5294CD3930012077A /* ValidadorDeLoginStaticClassMock.swift */; };
 		C550F8662919644D00FC2EF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8652919644D00FC2EF2 /* AppDelegate.swift */; };
 		C550F8682919644D00FC2EF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8672919644D00FC2EF2 /* SceneDelegate.swift */; };
 		C550F86A2919644D00FC2EF2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8692919644D00FC2EF2 /* LoginViewController.swift */; };
@@ -49,8 +51,9 @@
 		C58D40A1292EBBDF00A1C6BC /* PersonagemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D40A0292EBBDF00A1C6BC /* PersonagemView.swift */; };
 		C5B5E74D2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B5E74C2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift */; };
 		C5B5E74F294912D6001F87AE /* CriacaoDeContaControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B5E74E294912D6001F87AE /* CriacaoDeContaControllerTests.swift */; };
-		C5BCB746294BA55F002B9C62 /* RedefinicaoDeSenhaStaticClassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BCB745294BA55F002B9C62 /* RedefinicaoDeSenhaStaticClassTests.swift */; };
-		C5BCB748294BB542002B9C62 /* SalvarUsuarioStaticClassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BCB747294BB542002B9C62 /* SalvarUsuarioStaticClassTests.swift */; };
+		C5BCB746294BA55F002B9C62 /* RedefinicaoDeSenhaSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BCB745294BA55F002B9C62 /* RedefinicaoDeSenhaSystemTests.swift */; };
+		C5BCB748294BB542002B9C62 /* SalvarUsuarioSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BCB747294BB542002B9C62 /* SalvarUsuarioSystemTests.swift */; };
+		C5BCB74A294BB7F7002B9C62 /* VerificadorDeDadosCadastradosSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BCB749294BB7F7002B9C62 /* VerificadorDeDadosCadastradosSystemTests.swift */; };
 		C5BDB914294A49AC007DD78D /* SalvarUsuarioStaticClassMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BDB913294A49AC007DD78D /* SalvarUsuarioStaticClassMock.swift */; };
 		C5BDB916294A5208007DD78D /* LoginControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BDB915294A5208007DD78D /* LoginControllerTests.swift */; };
 		C5C3455A291D7F9B00E3097A /* CriacaoDeContaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C34559291D7F9B00E3097A /* CriacaoDeContaController.swift */; };
@@ -80,6 +83,8 @@
 		C5143CEB2930078C00918975 /* NaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaveView.swift; sourceTree = "<group>"; };
 		C516FA82294A5DE70034E7EF /* RecuperacaoDeSenhaControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperacaoDeSenhaControllerTests.swift; sourceTree = "<group>"; };
 		C516FA84294A66570034E7EF /* RedefinicaoDeSenhaStaticClassMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedefinicaoDeSenhaStaticClassMock.swift; sourceTree = "<group>"; };
+		C523C6D3294CD1A90012077A /* VerificadorDeDadosCadastradosStaticClassMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificadorDeDadosCadastradosStaticClassMock.swift; sourceTree = "<group>"; };
+		C523C6D5294CD3930012077A /* ValidadorDeLoginStaticClassMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidadorDeLoginStaticClassMock.swift; sourceTree = "<group>"; };
 		C550F8622919644D00FC2EF2 /* sistema-login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sistema-login.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C550F8652919644D00FC2EF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C550F8672919644D00FC2EF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,8 +120,9 @@
 		C5B5E7432948ED42001F87AE /* sistema-loginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sistema-loginTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B5E74C2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidacoesDeDadosDoUsuarioTests.swift; sourceTree = "<group>"; };
 		C5B5E74E294912D6001F87AE /* CriacaoDeContaControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContaControllerTests.swift; sourceTree = "<group>"; };
-		C5BCB745294BA55F002B9C62 /* RedefinicaoDeSenhaStaticClassTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedefinicaoDeSenhaStaticClassTests.swift; sourceTree = "<group>"; };
-		C5BCB747294BB542002B9C62 /* SalvarUsuarioStaticClassTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalvarUsuarioStaticClassTests.swift; sourceTree = "<group>"; };
+		C5BCB745294BA55F002B9C62 /* RedefinicaoDeSenhaSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedefinicaoDeSenhaSystemTests.swift; sourceTree = "<group>"; };
+		C5BCB747294BB542002B9C62 /* SalvarUsuarioSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalvarUsuarioSystemTests.swift; sourceTree = "<group>"; };
+		C5BCB749294BB7F7002B9C62 /* VerificadorDeDadosCadastradosSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificadorDeDadosCadastradosSystemTests.swift; sourceTree = "<group>"; };
 		C5BDB913294A49AC007DD78D /* SalvarUsuarioStaticClassMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalvarUsuarioStaticClassMock.swift; sourceTree = "<group>"; };
 		C5BDB915294A5208007DD78D /* LoginControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginControllerTests.swift; sourceTree = "<group>"; };
 		C5C34559291D7F9B00E3097A /* CriacaoDeContaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContaController.swift; sourceTree = "<group>"; };
@@ -397,8 +403,9 @@
 		C5BCB744294BA532002B9C62 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				C5BCB745294BA55F002B9C62 /* RedefinicaoDeSenhaStaticClassTests.swift */,
-				C5BCB747294BB542002B9C62 /* SalvarUsuarioStaticClassTests.swift */,
+				C5BCB745294BA55F002B9C62 /* RedefinicaoDeSenhaSystemTests.swift */,
+				C5BCB747294BB542002B9C62 /* SalvarUsuarioSystemTests.swift */,
+				C5BCB749294BB7F7002B9C62 /* VerificadorDeDadosCadastradosSystemTests.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -408,6 +415,8 @@
 			children = (
 				C5BDB913294A49AC007DD78D /* SalvarUsuarioStaticClassMock.swift */,
 				C516FA84294A66570034E7EF /* RedefinicaoDeSenhaStaticClassMock.swift */,
+				C523C6D3294CD1A90012077A /* VerificadorDeDadosCadastradosStaticClassMock.swift */,
+				C523C6D5294CD3930012077A /* ValidadorDeLoginStaticClassMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -604,9 +613,11 @@
 				C55BFA68291AB6890049C539 /* CriacaoDeContaView.swift in Sources */,
 				C5646B60293E523B009FD074 /* NaveController.swift in Sources */,
 				C581A7B529313FB30092DF05 /* PersonagemController.swift in Sources */,
+				C523C6D6294CD3930012077A /* ValidadorDeLoginStaticClassMock.swift in Sources */,
 				C56022E6293A97F9006D99E8 /* PlanetaController.swift in Sources */,
 				C55BFA78291AE4850049C539 /* Alerta.swift in Sources */,
 				C50DC29E291EDE28001CC4F9 /* HomeTabBarController.swift in Sources */,
+				C523C6D4294CD1A90012077A /* VerificadorDeDadosCadastradosStaticClassMock.swift in Sources */,
 				C550F8812919A0D400FC2EF2 /* CriacaoDeContaViewController.swift in Sources */,
 				C58D409B292EB46F00A1C6BC /* PersonagemViewController.swift in Sources */,
 				C55BFA76291AD51A0049C539 /* Erros.swift in Sources */,
@@ -621,9 +632,10 @@
 			files = (
 				C5B5E74D2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift in Sources */,
 				C5B5E74F294912D6001F87AE /* CriacaoDeContaControllerTests.swift in Sources */,
-				C5BCB748294BB542002B9C62 /* SalvarUsuarioStaticClassTests.swift in Sources */,
+				C5BCB748294BB542002B9C62 /* SalvarUsuarioSystemTests.swift in Sources */,
+				C5BCB74A294BB7F7002B9C62 /* VerificadorDeDadosCadastradosSystemTests.swift in Sources */,
 				C5BDB916294A5208007DD78D /* LoginControllerTests.swift in Sources */,
-				C5BCB746294BA55F002B9C62 /* RedefinicaoDeSenhaStaticClassTests.swift in Sources */,
+				C5BCB746294BA55F002B9C62 /* RedefinicaoDeSenhaSystemTests.swift in Sources */,
 				C516FA83294A5DE70034E7EF /* RecuperacaoDeSenhaControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

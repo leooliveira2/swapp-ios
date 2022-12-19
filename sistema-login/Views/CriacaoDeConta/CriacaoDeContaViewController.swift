@@ -34,8 +34,8 @@ class CriacaoDeContaViewController: UIViewController {
         
         let controladorDeErros = ControladorDeErros()
         let validadorDeUsuario = ValidacoesDeDadosDoUsuario(controladorDeErros)
-        let salvarUsuario = SalvarUsuarioStaticClass()
-        let verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosStaticClass()
+        let salvarUsuario = SalvarUsuarioSystem()
+        let verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosSystem()
         
         let controlador = CriacaoDeContaController(
             controladorDeErros,

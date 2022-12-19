@@ -13,10 +13,16 @@ protocol ValidadorDeLoginRepository {
     
 }
 
-class ValidadorDeLoginStaticClass: ValidadorDeLoginRepository {
+class ValidadorDeLoginSystem: ValidadorDeLoginRepository {
+    
+    private let usuariosArmazenamento: UsuariosDadosStatic
+    
+    init(usuariosArmazenamento: UsuariosDadosStatic? = nil) {
+        self.usuariosArmazenamento = usuariosArmazenamento ?? UsuariosDadosStatic()
+    }
     
     func validarLogin(email: String, senha: String) -> Bool {
-        let listaDeUsuarios = UsuariosDadosStatic.getUsuariosSalvos()
+        let listaDeUsuarios = usuariosArmazenamento.getUsuariosSalvos()
         
         for usuario in listaDeUsuarios {
             if email == usuario.getEmailDoUsuario() &&

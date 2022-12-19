@@ -80,17 +80,9 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
     }
     
     func testVerificaSeNickNameDoUsuarioJaEstaSalvoStaticClass() {
-        let verificadorDeDadosJaCadastrados = VerificadorDeDadosCadastradosStaticClass()
+        let verificadorDeDadosJaCadastrados = VerificadorDeDadosCadastradosStaticClassMock()
         
-        let usuario = Usuario(
-            nickName: "teste",
-            nomeCompleto: "teste",
-            email: "teste@teste.com",
-            senha: "123123123",
-            repeticaoDeSenha: "123123123"
-        )
-        
-        UsuariosDadosStatic.salvarUsuario(usuario)
+        verificadorDeDadosJaCadastrados.retornoDaFuncaoVerificaSeNickNameJaEstaCadastrado = true
         
         let nickNameDoUsuarioJaEstaSalvo = self.validadorDeDadosDoUsuario.nickNameDoUsuarioJaEstaCadastrado("teste", verificadorDeDadosJaCadastrados)
         
@@ -102,7 +94,9 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
     }
     
     func testVerificaSeNickNameDoUsuarioNaoEstaSalvoStaticClass() {
-        let verificadorDeDadosJaCadastrados = VerificadorDeDadosCadastradosStaticClass()
+        let verificadorDeDadosJaCadastrados = VerificadorDeDadosCadastradosStaticClassMock()
+        
+        verificadorDeDadosJaCadastrados.retornoDaFuncaoVerificaSeNickNameJaEstaCadastrado = false
         
         let nickNameDoUsuarioJaEstaSalvo = self.validadorDeDadosDoUsuario.nickNameDoUsuarioJaEstaCadastrado("testando", verificadorDeDadosJaCadastrados)
         
@@ -211,17 +205,9 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
     }
     
     func testVerificaEmailDoUsuarioJaEstaSalvoStaticClass() {
-        let verificadorDeDadosJaCadastrados = VerificadorDeDadosCadastradosStaticClass()
+        let verificadorDeDadosJaCadastrados = VerificadorDeDadosCadastradosStaticClassMock()
         
-        let usuario = Usuario(
-            nickName: "teste",
-            nomeCompleto: "teste",
-            email: "teste@teste.com",
-            senha: "123123123",
-            repeticaoDeSenha: "123123123"
-        )
-        
-        UsuariosDadosStatic.salvarUsuario(usuario)
+        verificadorDeDadosJaCadastrados.retornoDaFuncaoVerificaSeEmailJaEstaCadastrado = true
         
         let emailDoUsuarioJaEstaSalvo = self.validadorDeDadosDoUsuario.emailDoUsuarioJaEstaCadastrado("teste@teste.com", verificadorDeDadosJaCadastrados)
         
@@ -233,7 +219,9 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
     }
     
     func testVerificaSeEmailDoUsuarioNaoEstaSalvoStaticClass() {
-        let verificadorDeDadosJaCadastrados = VerificadorDeDadosCadastradosStaticClass()
+        let verificadorDeDadosJaCadastrados = VerificadorDeDadosCadastradosStaticClassMock()
+        
+        verificadorDeDadosJaCadastrados.retornoDaFuncaoVerificaSeEmailJaEstaCadastrado = false
         
         let emailDoUsuarioJaEstaSalvo = self.validadorDeDadosDoUsuario.emailDoUsuarioJaEstaCadastrado("testando@email.com", verificadorDeDadosJaCadastrados)
         
@@ -328,7 +316,9 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
     }
     
     func testLoginNaoPodeSerRealizadoPoisCadastroNaoExisteStaticClass() {
-        let validadorDeLogin = ValidadorDeLoginStaticClass()
+        let validadorDeLogin = ValidadorDeLoginStaticClassMock()
+        
+        validadorDeLogin.retornoDaFuncaoValidarLogin = false
         
         let loginPodeSerRealizado = self.validadorDeDadosDoUsuario.verificaSeLoginPodeSerRealizado("email@em.com", "senhasenha", validadorDeLogin)
         
@@ -339,21 +329,14 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
     }
     
     func testLoginPodeSerRealizadoStaticClass() {
-        let usuario = Usuario(
-            nickName: "usuario",
-            nomeCompleto: "Usuario",
-            email: "email@teste.com",
-            senha: "123123123",
-            repeticaoDeSenha: "123123123"
-        )
         
-        UsuariosDadosStatic.salvarUsuario(usuario)
+        let validadorDeLogin = ValidadorDeLoginStaticClassMock()
         
-        let validadorDeLogin = ValidadorDeLoginStaticClass()
+        validadorDeLogin.retornoDaFuncaoValidarLogin = true
         
         let loginPodeSerRealizado = self.validadorDeDadosDoUsuario.verificaSeLoginPodeSerRealizado(
-            usuario.getEmailDoUsuario(),
-            usuario.getSenhaDoUsuario(),
+            "",
+            "",
             validadorDeLogin
         )
         

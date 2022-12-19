@@ -13,10 +13,16 @@ protocol SalvarUsuarioRepository {
     
 }
 
-class SalvarUsuarioStaticClass: SalvarUsuarioRepository {
+class SalvarUsuarioSystem: SalvarUsuarioRepository {
+    
+    private let usuariosArmazenamento: UsuariosDadosStatic
+    
+    init(usuariosArmazenamento: UsuariosDadosStatic? = nil) {
+        self.usuariosArmazenamento = usuariosArmazenamento ?? UsuariosDadosStatic()
+    }
     
     public func salvar(_ usuario: Usuario) -> Bool {
-        UsuariosDadosStatic.salvarUsuario(usuario)
+        usuariosArmazenamento.salvarUsuario(usuario)
         
         return true
     }

@@ -18,7 +18,7 @@ class SalvarUsuarioSystem: SalvarUsuarioRepository {
     private let usuariosArmazenamento: UsuariosDadosStatic
     
     init(usuariosArmazenamento: UsuariosDadosStatic? = nil) {
-        self.usuariosArmazenamento = usuariosArmazenamento ?? UsuariosDadosStatic()
+        self.usuariosArmazenamento = usuariosArmazenamento ?? UsuariosDadosStatic().getInstance()
     }
     
     public func salvar(_ usuario: Usuario) -> Bool {

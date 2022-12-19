@@ -18,7 +18,7 @@ class RedefinicaoDeSenhaSystem: RedefinicaoDeSenhaRepository {
     private let usuariosArmazenamento: UsuariosDadosStatic
     
     init(usuariosArmazenamento: UsuariosDadosStatic? = nil) {
-        self.usuariosArmazenamento = usuariosArmazenamento ?? UsuariosDadosStatic()
+        self.usuariosArmazenamento = usuariosArmazenamento ?? UsuariosDadosStatic().getInstance()
     }
     
     public func redefinirSenha(email: String, senha: String) -> Bool {

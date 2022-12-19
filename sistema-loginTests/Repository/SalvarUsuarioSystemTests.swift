@@ -11,16 +11,23 @@ import XCTest
 final class SalvarUsuarioSystemTests: XCTestCase {
     
     func testUsuarioESalvo() {
-        let salvarUsuario = SalvarUsuarioStaticClassMock()
+        let salvarUsuario = SalvarUsuarioSystem()
         
-        salvarUsuario.retornoDaFuncaoSalvar = true
-        
-        let usuario = Usuario(nickName: "", nomeCompleto: "", email: "", senha: "", repeticaoDeSenha: "")
+        let usuario = Usuario(
+            nickName: "Usuario",
+            nomeCompleto: "Nome",
+            email: "email@email.com",
+            senha: "123123123",
+            repeticaoDeSenha: "123123123"
+        )
         
         let usuarioFoiSalvo = salvarUsuario.salvar(usuario)
         
         XCTAssertTrue(usuarioFoiSalvo)
-
+        
+        let verificadorDeDadosSalvos = VerificadorDeDadosCadastradosSystem()
+        
+        XCTAssertTrue(verificadorDeDadosSalvos.verificaSeNickNameJaEstaCadastrado("Usuario"))
     }
 
 }

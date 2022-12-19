@@ -11,14 +11,19 @@ import UIKit
 
 class UsuariosDadosStatic {
     
-    private static var usuariosSalvos: [Usuario] = []
+    private static let instance = UsuariosDadosStatic()
+    private var usuariosSalvos: [Usuario] = []
+    
+    public func getInstance() -> UsuariosDadosStatic {
+        return .instance
+    }
 
     public func salvarUsuario(_ usuario: Usuario) -> Void {
-        UsuariosDadosStatic.usuariosSalvos.append(usuario)
+        self.usuariosSalvos.append(usuario)
     }
 
     public func getUsuariosSalvos() -> [Usuario] {
-        return UsuariosDadosStatic.usuariosSalvos
+        self.usuariosSalvos
     }
     
 }

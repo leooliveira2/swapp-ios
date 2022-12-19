@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SalvarUsuarioStaticClassMock: SalvarUsuarioRepository {
+class SalvarUsuarioSystemMock: SalvarUsuarioRepository {
     
     var retornoDaFuncaoSalvar: Bool!
     

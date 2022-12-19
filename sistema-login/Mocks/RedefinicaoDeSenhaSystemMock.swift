@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RedefinicaoDeSenhaStaticClassMock: RedefinicaoDeSenhaRepository {
+class RedefinicaoDeSenhaSystemMock: RedefinicaoDeSenhaRepository {
     
     var retornoDaFuncaoRedefinirSenha: Bool!
     

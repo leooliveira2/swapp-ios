@@ -15,10 +15,9 @@
 		C5143CE8292FE6A600918975 /* RequisicoesStarWarsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5143CE7292FE6A600918975 /* RequisicoesStarWarsAPI.swift */; };
 		C5143CEA2930041600918975 /* PlanetaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5143CE92930041600918975 /* PlanetaView.swift */; };
 		C5143CEC2930078C00918975 /* NaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5143CEB2930078C00918975 /* NaveView.swift */; };
-		C516FA83294A5DE70034E7EF /* RecuperacaoDeSenhaControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C516FA82294A5DE70034E7EF /* RecuperacaoDeSenhaControllerTests.swift */; };
-		C516FA85294A66570034E7EF /* RedefinicaoDeSenhaStaticClassMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C516FA84294A66570034E7EF /* RedefinicaoDeSenhaStaticClassMock.swift */; };
-		C523C6D4294CD1A90012077A /* VerificadorDeDadosCadastradosStaticClassMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C523C6D3294CD1A90012077A /* VerificadorDeDadosCadastradosStaticClassMock.swift */; };
-		C523C6D6294CD3930012077A /* ValidadorDeLoginStaticClassMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C523C6D5294CD3930012077A /* ValidadorDeLoginStaticClassMock.swift */; };
+		C516FA85294A66570034E7EF /* RedefinicaoDeSenhaSystemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C516FA84294A66570034E7EF /* RedefinicaoDeSenhaSystemMock.swift */; };
+		C523C6D4294CD1A90012077A /* VerificadorDeDadosCadastradosSystemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C523C6D3294CD1A90012077A /* VerificadorDeDadosCadastradosSystemMock.swift */; };
+		C523C6D6294CD3930012077A /* ValidadorDeLoginSystemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C523C6D5294CD3930012077A /* ValidadorDeLoginSystemMock.swift */; };
 		C550F8662919644D00FC2EF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8652919644D00FC2EF2 /* AppDelegate.swift */; };
 		C550F8682919644D00FC2EF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8672919644D00FC2EF2 /* SceneDelegate.swift */; };
 		C550F86A2919644D00FC2EF2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8692919644D00FC2EF2 /* LoginViewController.swift */; };
@@ -49,13 +48,14 @@
 		C58D409D292EB49700A1C6BC /* NaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D409C292EB49700A1C6BC /* NaveViewController.swift */; };
 		C58D409F292EB4B400A1C6BC /* PlanetaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D409E292EB4B400A1C6BC /* PlanetaViewController.swift */; };
 		C58D40A1292EBBDF00A1C6BC /* PersonagemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D40A0292EBBDF00A1C6BC /* PersonagemView.swift */; };
+		C59A522B2950EA8C00D145DD /* RecuperacaoDeSenhaControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59A522A2950EA8C00D145DD /* RecuperacaoDeSenhaControllerTests.swift */; };
+		C59A522D2950EACD00D145DD /* CriacaoDeContaControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59A522C2950EACD00D145DD /* CriacaoDeContaControllerTests.swift */; };
+		C59A522F2950EAF400D145DD /* LoginControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59A522E2950EAF400D145DD /* LoginControllerTests.swift */; };
 		C5B5E74D2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B5E74C2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift */; };
-		C5B5E74F294912D6001F87AE /* CriacaoDeContaControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B5E74E294912D6001F87AE /* CriacaoDeContaControllerTests.swift */; };
 		C5BCB746294BA55F002B9C62 /* RedefinicaoDeSenhaSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BCB745294BA55F002B9C62 /* RedefinicaoDeSenhaSystemTests.swift */; };
 		C5BCB748294BB542002B9C62 /* SalvarUsuarioSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BCB747294BB542002B9C62 /* SalvarUsuarioSystemTests.swift */; };
 		C5BCB74A294BB7F7002B9C62 /* VerificadorDeDadosCadastradosSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BCB749294BB7F7002B9C62 /* VerificadorDeDadosCadastradosSystemTests.swift */; };
-		C5BDB914294A49AC007DD78D /* SalvarUsuarioStaticClassMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BDB913294A49AC007DD78D /* SalvarUsuarioStaticClassMock.swift */; };
-		C5BDB916294A5208007DD78D /* LoginControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BDB915294A5208007DD78D /* LoginControllerTests.swift */; };
+		C5BDB914294A49AC007DD78D /* SalvarUsuarioSystemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BDB913294A49AC007DD78D /* SalvarUsuarioSystemMock.swift */; };
 		C5C3455A291D7F9B00E3097A /* CriacaoDeContaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C34559291D7F9B00E3097A /* CriacaoDeContaController.swift */; };
 		C5C3455C291D860300E3097A /* UsuariosDadosStatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C3455B291D860300E3097A /* UsuariosDadosStatic.swift */; };
 		C5C3455F291D907A00E3097A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C3455E291D907A00E3097A /* LoginController.swift */; };
@@ -81,10 +81,9 @@
 		C5143CE7292FE6A600918975 /* RequisicoesStarWarsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequisicoesStarWarsAPI.swift; sourceTree = "<group>"; };
 		C5143CE92930041600918975 /* PlanetaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetaView.swift; sourceTree = "<group>"; };
 		C5143CEB2930078C00918975 /* NaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaveView.swift; sourceTree = "<group>"; };
-		C516FA82294A5DE70034E7EF /* RecuperacaoDeSenhaControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperacaoDeSenhaControllerTests.swift; sourceTree = "<group>"; };
-		C516FA84294A66570034E7EF /* RedefinicaoDeSenhaStaticClassMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedefinicaoDeSenhaStaticClassMock.swift; sourceTree = "<group>"; };
-		C523C6D3294CD1A90012077A /* VerificadorDeDadosCadastradosStaticClassMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificadorDeDadosCadastradosStaticClassMock.swift; sourceTree = "<group>"; };
-		C523C6D5294CD3930012077A /* ValidadorDeLoginStaticClassMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidadorDeLoginStaticClassMock.swift; sourceTree = "<group>"; };
+		C516FA84294A66570034E7EF /* RedefinicaoDeSenhaSystemMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedefinicaoDeSenhaSystemMock.swift; sourceTree = "<group>"; };
+		C523C6D3294CD1A90012077A /* VerificadorDeDadosCadastradosSystemMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificadorDeDadosCadastradosSystemMock.swift; sourceTree = "<group>"; };
+		C523C6D5294CD3930012077A /* ValidadorDeLoginSystemMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidadorDeLoginSystemMock.swift; sourceTree = "<group>"; };
 		C550F8622919644D00FC2EF2 /* sistema-login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sistema-login.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C550F8652919644D00FC2EF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C550F8672919644D00FC2EF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,14 +116,15 @@
 		C58D409C292EB49700A1C6BC /* NaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaveViewController.swift; sourceTree = "<group>"; };
 		C58D409E292EB4B400A1C6BC /* PlanetaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetaViewController.swift; sourceTree = "<group>"; };
 		C58D40A0292EBBDF00A1C6BC /* PersonagemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonagemView.swift; sourceTree = "<group>"; };
+		C59A522A2950EA8C00D145DD /* RecuperacaoDeSenhaControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperacaoDeSenhaControllerTests.swift; sourceTree = "<group>"; };
+		C59A522C2950EACD00D145DD /* CriacaoDeContaControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContaControllerTests.swift; sourceTree = "<group>"; };
+		C59A522E2950EAF400D145DD /* LoginControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginControllerTests.swift; sourceTree = "<group>"; };
 		C5B5E7432948ED42001F87AE /* sistema-loginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sistema-loginTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B5E74C2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidacoesDeDadosDoUsuarioTests.swift; sourceTree = "<group>"; };
-		C5B5E74E294912D6001F87AE /* CriacaoDeContaControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContaControllerTests.swift; sourceTree = "<group>"; };
 		C5BCB745294BA55F002B9C62 /* RedefinicaoDeSenhaSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedefinicaoDeSenhaSystemTests.swift; sourceTree = "<group>"; };
 		C5BCB747294BB542002B9C62 /* SalvarUsuarioSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalvarUsuarioSystemTests.swift; sourceTree = "<group>"; };
 		C5BCB749294BB7F7002B9C62 /* VerificadorDeDadosCadastradosSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificadorDeDadosCadastradosSystemTests.swift; sourceTree = "<group>"; };
-		C5BDB913294A49AC007DD78D /* SalvarUsuarioStaticClassMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalvarUsuarioStaticClassMock.swift; sourceTree = "<group>"; };
-		C5BDB915294A5208007DD78D /* LoginControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginControllerTests.swift; sourceTree = "<group>"; };
+		C5BDB913294A49AC007DD78D /* SalvarUsuarioSystemMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalvarUsuarioSystemMock.swift; sourceTree = "<group>"; };
 		C5C34559291D7F9B00E3097A /* CriacaoDeContaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContaController.swift; sourceTree = "<group>"; };
 		C5C3455B291D860300E3097A /* UsuariosDadosStatic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuariosDadosStatic.swift; sourceTree = "<group>"; };
 		C5C3455E291D907A00E3097A /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -179,6 +179,7 @@
 		C50E6425292D56C900D8047C /* RecuperacaoDeSenha */ = {
 			isa = PBXGroup;
 			children = (
+				C58D4094292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift */,
 				C50E6426292D56E100D8047C /* RecuperacaoDeSenhaViewController.swift */,
 				C50E6428292D572200D8047C /* RecuperacaoDeSenhaView.swift */,
 			);
@@ -217,19 +218,10 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		C5252558291C4535002508F5 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				C58D4093292E8D3F00A1C6BC /* RecuperacaoDeSenhaController */,
-				C5C3455D291D906300E3097A /* Login */,
-				C5C34558291D7F8900E3097A /* CriacaoDeConta */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
 		C5252559291C4548002508F5 /* CriacaoDeConta */ = {
 			isa = PBXGroup;
 			children = (
+				C5C34559291D7F9B00E3097A /* CriacaoDeContaController.swift */,
 				C550F8802919A0D400FC2EF2 /* CriacaoDeContaViewController.swift */,
 				C55BFA67291AB6890049C539 /* CriacaoDeContaView.swift */,
 			);
@@ -239,6 +231,7 @@
 		C525255A291C4572002508F5 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				C5C3455E291D907A00E3097A /* LoginController.swift */,
 				C550F8692919644D00FC2EF2 /* LoginViewController.swift */,
 				C550F87C2919650D00FC2EF2 /* LoginView.swift */,
 			);
@@ -271,7 +264,6 @@
 				C5BDB912294A4974007DD78D /* Mocks */,
 				C5252555291C44F5002508F5 /* src */,
 				C5252557291C452B002508F5 /* Views */,
-				C5252558291C4535002508F5 /* Controllers */,
 				C550F8652919644D00FC2EF2 /* AppDelegate.swift */,
 				C550F8672919644D00FC2EF2 /* SceneDelegate.swift */,
 				C550F86E2919644E00FC2EF2 /* Assets.xcassets */,
@@ -323,14 +315,6 @@
 			path = Perfil;
 			sourceTree = "<group>";
 		};
-		C58D4093292E8D3F00A1C6BC /* RecuperacaoDeSenhaController */ = {
-			isa = PBXGroup;
-			children = (
-				C58D4094292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift */,
-			);
-			path = RecuperacaoDeSenhaController;
-			sourceTree = "<group>";
-		};
 		C58D4096292EB40200A1C6BC /* Telas */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,24 +356,24 @@
 			path = Nave;
 			sourceTree = "<group>";
 		};
+		C59A52292950EA7D00D145DD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C59A522A2950EA8C00D145DD /* RecuperacaoDeSenhaControllerTests.swift */,
+				C59A522C2950EACD00D145DD /* CriacaoDeContaControllerTests.swift */,
+				C59A522E2950EAF400D145DD /* LoginControllerTests.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		C5B5E7442948ED42001F87AE /* sistema-loginTests */ = {
 			isa = PBXGroup;
 			children = (
+				C59A52292950EA7D00D145DD /* Controllers */,
 				C5BCB744294BA532002B9C62 /* Repository */,
 				C5BCB743294BA51B002B9C62 /* Service */,
-				C5BCB742294BA504002B9C62 /* Controllers */,
 			);
 			path = "sistema-loginTests";
-			sourceTree = "<group>";
-		};
-		C5BCB742294BA504002B9C62 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				C5BDB915294A5208007DD78D /* LoginControllerTests.swift */,
-				C5B5E74E294912D6001F87AE /* CriacaoDeContaControllerTests.swift */,
-				C516FA82294A5DE70034E7EF /* RecuperacaoDeSenhaControllerTests.swift */,
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		C5BCB743294BA51B002B9C62 /* Service */ = {
@@ -413,28 +397,12 @@
 		C5BDB912294A4974007DD78D /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				C5BDB913294A49AC007DD78D /* SalvarUsuarioStaticClassMock.swift */,
-				C516FA84294A66570034E7EF /* RedefinicaoDeSenhaStaticClassMock.swift */,
-				C523C6D3294CD1A90012077A /* VerificadorDeDadosCadastradosStaticClassMock.swift */,
-				C523C6D5294CD3930012077A /* ValidadorDeLoginStaticClassMock.swift */,
+				C5BDB913294A49AC007DD78D /* SalvarUsuarioSystemMock.swift */,
+				C516FA84294A66570034E7EF /* RedefinicaoDeSenhaSystemMock.swift */,
+				C523C6D3294CD1A90012077A /* VerificadorDeDadosCadastradosSystemMock.swift */,
+				C523C6D5294CD3930012077A /* ValidadorDeLoginSystemMock.swift */,
 			);
 			path = Mocks;
-			sourceTree = "<group>";
-		};
-		C5C34558291D7F8900E3097A /* CriacaoDeConta */ = {
-			isa = PBXGroup;
-			children = (
-				C5C34559291D7F9B00E3097A /* CriacaoDeContaController.swift */,
-			);
-			path = CriacaoDeConta;
-			sourceTree = "<group>";
-		};
-		C5C3455D291D906300E3097A /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				C5C3455E291D907A00E3097A /* LoginController.swift */,
-			);
-			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -588,7 +556,7 @@
 				C57BD860293A733900092FA9 /* PerfilView.swift in Sources */,
 				C5C3455A291D7F9B00E3097A /* CriacaoDeContaController.swift in Sources */,
 				C56022E8293A9822006D99E8 /* Planeta.swift in Sources */,
-				C5BDB914294A49AC007DD78D /* SalvarUsuarioStaticClassMock.swift in Sources */,
+				C5BDB914294A49AC007DD78D /* SalvarUsuarioSystemMock.swift in Sources */,
 				C50E6427292D56E100D8047C /* RecuperacaoDeSenhaViewController.swift in Sources */,
 				C5143CE8292FE6A600918975 /* RequisicoesStarWarsAPI.swift in Sources */,
 				C572B053293936BB00BE9D00 /* RedefinicaoDeSenhaRepository.swift in Sources */,
@@ -608,16 +576,16 @@
 				C587194E2947A52A00F6EDC7 /* RecuperaDadosDoUsuarioRepository.swift in Sources */,
 				C5C3455C291D860300E3097A /* UsuariosDadosStatic.swift in Sources */,
 				C550F8662919644D00FC2EF2 /* AppDelegate.swift in Sources */,
-				C516FA85294A66570034E7EF /* RedefinicaoDeSenhaStaticClassMock.swift in Sources */,
+				C516FA85294A66570034E7EF /* RedefinicaoDeSenhaSystemMock.swift in Sources */,
 				C550F8682919644D00FC2EF2 /* SceneDelegate.swift in Sources */,
 				C55BFA68291AB6890049C539 /* CriacaoDeContaView.swift in Sources */,
 				C5646B60293E523B009FD074 /* NaveController.swift in Sources */,
 				C581A7B529313FB30092DF05 /* PersonagemController.swift in Sources */,
-				C523C6D6294CD3930012077A /* ValidadorDeLoginStaticClassMock.swift in Sources */,
+				C523C6D6294CD3930012077A /* ValidadorDeLoginSystemMock.swift in Sources */,
 				C56022E6293A97F9006D99E8 /* PlanetaController.swift in Sources */,
 				C55BFA78291AE4850049C539 /* Alerta.swift in Sources */,
 				C50DC29E291EDE28001CC4F9 /* HomeTabBarController.swift in Sources */,
-				C523C6D4294CD1A90012077A /* VerificadorDeDadosCadastradosStaticClassMock.swift in Sources */,
+				C523C6D4294CD1A90012077A /* VerificadorDeDadosCadastradosSystemMock.swift in Sources */,
 				C550F8812919A0D400FC2EF2 /* CriacaoDeContaViewController.swift in Sources */,
 				C58D409B292EB46F00A1C6BC /* PersonagemViewController.swift in Sources */,
 				C55BFA76291AD51A0049C539 /* Erros.swift in Sources */,
@@ -631,12 +599,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5B5E74D2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift in Sources */,
-				C5B5E74F294912D6001F87AE /* CriacaoDeContaControllerTests.swift in Sources */,
 				C5BCB748294BB542002B9C62 /* SalvarUsuarioSystemTests.swift in Sources */,
+				C59A522F2950EAF400D145DD /* LoginControllerTests.swift in Sources */,
+				C59A522B2950EA8C00D145DD /* RecuperacaoDeSenhaControllerTests.swift in Sources */,
 				C5BCB74A294BB7F7002B9C62 /* VerificadorDeDadosCadastradosSystemTests.swift in Sources */,
-				C5BDB916294A5208007DD78D /* LoginControllerTests.swift in Sources */,
+				C59A522D2950EACD00D145DD /* CriacaoDeContaControllerTests.swift in Sources */,
 				C5BCB746294BA55F002B9C62 /* RedefinicaoDeSenhaSystemTests.swift in Sources */,
-				C516FA83294A5DE70034E7EF /* RecuperacaoDeSenhaControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

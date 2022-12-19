@@ -1,8 +1,8 @@
 //
-//  LoginControllerTests.swift
+//  tresTests.swift
 //  sistema-loginTests
 //
-//  Created by Leonardo Leite on 14/12/22.
+//  Created by Leonardo Leite on 19/12/22.
 //
 
 import XCTest
@@ -12,7 +12,7 @@ final class LoginControllerTests: XCTestCase {
     
     // MARK: - Atributos
     private var controladorDeErros: ControladorDeErros!
-    private var validadorDeLogin: ValidadorDeLoginStaticClassMock!
+    private var validadorDeLogin: ValidadorDeLoginSystemMock!
     private var validadorDeDadosDoUsuario: ValidacoesDeDadosDoUsuario!
     
     private var loginController: LoginController!
@@ -20,7 +20,7 @@ final class LoginControllerTests: XCTestCase {
     // MARK: - Pre-sets
     override func setUpWithError() throws {
         self.controladorDeErros = ControladorDeErros()
-        self.validadorDeLogin = ValidadorDeLoginStaticClassMock()
+        self.validadorDeLogin = ValidadorDeLoginSystemMock()
         self.validadorDeDadosDoUsuario = ValidacoesDeDadosDoUsuario(self.controladorDeErros)
         
         self.loginController = LoginController(self.controladorDeErros, self.validadorDeLogin, self.validadorDeDadosDoUsuario)
@@ -90,7 +90,6 @@ final class LoginControllerTests: XCTestCase {
     }
     
     func testEmailESenhaEstaoPreenchidosCorretamenteECadastroFoiEncontradoStaticClass() {
-        
         self.validadorDeLogin.retornoDaFuncaoValidarLogin = true
         
         let loginFoiRealizado = self.loginController.fazerLogin(email: "email@email.com", senha: "123123123")

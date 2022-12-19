@@ -1,8 +1,8 @@
 //
-//  CriacaoDeContaControllerTests.swift
+//  doisTests.swift
 //  sistema-loginTests
 //
-//  Created by Leonardo Leite on 13/12/22.
+//  Created by Leonardo Leite on 19/12/22.
 //
 
 import XCTest
@@ -13,8 +13,8 @@ final class CriacaoDeContaControllerTests: XCTestCase {
     // MARK: - Atributos
     private var controladorDeErros: ControladorDeErros!
     private var validadorDeDadosDoUsuario: ValidacoesDeDadosDoUsuario!
-    private var salvaUsuario: SalvarUsuarioStaticClassMock!
-    private var verificadorDeDadosCadastrados: VerificadorDeDadosCadastradosSystem!
+    private var salvaUsuario: SalvarUsuarioSystemMock!
+    private var verificadorDeDadosCadastrados: VerificadorDeDadosCadastradosSystemMock!
     
     private var controladorCriacaoDeConta: CriacaoDeContaController!
     
@@ -22,8 +22,8 @@ final class CriacaoDeContaControllerTests: XCTestCase {
     override func setUpWithError() throws {
         self.controladorDeErros = ControladorDeErros()
         self.validadorDeDadosDoUsuario = ValidacoesDeDadosDoUsuario(self.controladorDeErros)
-        self.salvaUsuario = SalvarUsuarioStaticClassMock()
-        self.verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosSystem()
+        self.salvaUsuario = SalvarUsuarioSystemMock()
+        self.verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosSystemMock()
         
         self.controladorCriacaoDeConta = CriacaoDeContaController(
             controladorDeErros,
@@ -35,7 +35,6 @@ final class CriacaoDeContaControllerTests: XCTestCase {
 
     // MARK: - Testes
     func testTodosOsDadosDoUsuarioEstaoNulos() {
-    
         let contaPodeSerCriada = self.controladorCriacaoDeConta.criarConta(
             nickName: nil,
             nomeCompleto: nil,
@@ -49,11 +48,10 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         XCTAssertFalse(contaPodeSerCriada)
         XCTAssertEqual(1, erros.count)
         XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[0])
-        
     }
     
-    func testPrimeiroDadoDoUsuarioEstaNulo() {
-        let contaPodeSerCriada = self.controladorCriacaoDeConta.criarConta(
+    func testAlgumDadoDoUsuarioEstaNulo() {
+        let nickNameEstaNulo = self.controladorCriacaoDeConta.criarConta(
             nickName: nil,
             nomeCompleto: "Nome",
             email: "email@email.com",
@@ -61,16 +59,32 @@ final class CriacaoDeContaControllerTests: XCTestCase {
             repeticaoDeSenha: "123123123"
         )
         
-        let erros = self.controladorDeErros.getErros()
+        let nomeCompletoEstaNulo = self.controladorCriacaoDeConta.criarConta(
+            nickName: "Apelido",
+            nomeCompleto: nil,
+            email: "email@email.com",
+            senha: "123123123",
+            repeticaoDeSenha: "123123123"
+        )
         
-        XCTAssertFalse(contaPodeSerCriada)
-        XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[0])
-    }
-    
-    func testUltimoDadoDoUsuarioEstaNulo() {
-        let contaPodeSerCriada = self.controladorCriacaoDeConta.criarConta(
-            nickName: "teste0",
+        let emailEstaNulo = self.controladorCriacaoDeConta.criarConta(
+            nickName: "Apelido",
+            nomeCompleto: "Nome",
+            email: nil,
+            senha: "123123123",
+            repeticaoDeSenha: "123123123"
+        )
+        
+        let senhaEstaNula = self.controladorCriacaoDeConta.criarConta(
+            nickName: "Apelido",
+            nomeCompleto: "Nome",
+            email: "email@email.com",
+            senha: nil,
+            repeticaoDeSenha: "123123123"
+        )
+        
+        let repeticaoDeSenhaEstaNula = self.controladorCriacaoDeConta.criarConta(
+            nickName: "Apelido",
             nomeCompleto: "Nome",
             email: "email@email.com",
             senha: "123123123",
@@ -79,33 +93,128 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         
         let erros = self.controladorDeErros.getErros()
         
-        XCTAssertFalse(contaPodeSerCriada)
-        XCTAssertEqual(1, erros.count)
+        XCTAssertFalse(nickNameEstaNulo)
+        XCTAssertFalse(nomeCompletoEstaNulo)
+        XCTAssertFalse(emailEstaNulo)
+        XCTAssertFalse(senhaEstaNula)
+        XCTAssertFalse(repeticaoDeSenhaEstaNula)
+        
+        XCTAssertEqual(5, erros.count)
         XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[0])
+        XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[1])
+        XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[2])
+        XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[3])
+        XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[4])
     }
     
-    func testUsuarioContemDadosInvalidos() {
-        let contaPodeSerCriada = self.controladorCriacaoDeConta.criarConta(
+    func testCenariosEmQueONickNameEInvalido() {
+        self.verificadorDeDadosCadastrados.retornoDaFuncaoVerificaSeEmailJaEstaCadastrado = false
+        
+        let contaPodeSerCriadaComNickNameDoUsuarioVazio = self.controladorCriacaoDeConta.criarConta(
             nickName: "",
-            nomeCompleto: "",
-            email: "email@.com",
-            senha: "1234567",
-            repeticaoDeSenha: "321321312"
+            nomeCompleto: "Nome",
+            email: "email@email.com",
+            senha: "123123123",
+            repeticaoDeSenha: "123123123"
+        )
+        
+        let contaPodeSerCriadaComNickNameDoUsuarioTendoMenosDe5Caracteres = self.controladorCriacaoDeConta.criarConta(
+            nickName: "cont",
+            nomeCompleto: "Nome",
+            email: "email@email.com",
+            senha: "123123123",
+            repeticaoDeSenha: "123123123"
+        )
+        
+        let contaPodeSerCriadaComNickNameDoUsuarioTendoMaisDe32Caracteres = self.controladorCriacaoDeConta.criarConta(
+            nickName: "abcdefghijklmnopqrstuvwxyzabcdefg",
+            nomeCompleto: "Nome",
+            email: "email@email.com",
+            senha: "123123123",
+            repeticaoDeSenha: "123123123"
+        )
+        
+        let contaPodeSerCriadaComNickNameDoUsuarioNaoSendoUmAlfaNumerico = self.controladorCriacaoDeConta.criarConta(
+            nickName: "@_ #$%",
+            nomeCompleto: "Nome",
+            email: "email@email.com",
+            senha: "123123123",
+            repeticaoDeSenha: "123123123"
+        )
+        
+        self.verificadorDeDadosCadastrados.retornoDaFuncaoVerificaSeNickNameJaEstaCadastrado = true
+        
+        let contaPodeSerCriadaComNickNameDoUsuarioJaCadastrado = self.controladorCriacaoDeConta.criarConta(
+            nickName: "Teste",
+            nomeCompleto: "Nome",
+            email: "email@email.com",
+            senha: "123123123",
+            repeticaoDeSenha: "123123123"
         )
         
         let erros = self.controladorDeErros.getErros()
         
-        XCTAssertFalse(contaPodeSerCriada)
+        XCTAssertFalse(contaPodeSerCriadaComNickNameDoUsuarioVazio)
+        XCTAssertFalse(contaPodeSerCriadaComNickNameDoUsuarioTendoMenosDe5Caracteres)
+        XCTAssertFalse(contaPodeSerCriadaComNickNameDoUsuarioTendoMaisDe32Caracteres)
+        XCTAssertFalse(contaPodeSerCriadaComNickNameDoUsuarioNaoSendoUmAlfaNumerico)
+        XCTAssertFalse(contaPodeSerCriadaComNickNameDoUsuarioJaCadastrado)
+        
         XCTAssertEqual(5, erros.count)
         
         XCTAssertEqual(.erro_nick_de_usuario_vazio, erros[0])
-        XCTAssertEqual(.erro_nome_completo_vazio, erros[1])
-        XCTAssertEqual(.erro_email_invalido, erros[2])
-        XCTAssertEqual(.erro_senha_tem_menos_de_8_caracteres, erros[3])
-        XCTAssertEqual(.erro_repeticao_de_senha_e_senha_sao_diferentes, erros[4])
+        XCTAssertEqual(.erro_nick_de_usuario_tem_menos_de_5_caracteres, erros[1])
+        XCTAssertEqual(.erro_nick_de_usuario_nao_pode_ter_mais_de_32_caracteres, erros[2])
+        XCTAssertEqual(.erro_nick_de_usuario_nao_e_um_alfanumerico, erros[3])
+        XCTAssertEqual(.erro_nick_de_usuario_ja_esta_cadastrado, erros[4])
+    }
+    
+    func testCenariosEmQueONomeCompletoEInvalido() {
+        self.verificadorDeDadosCadastrados.retornoDaFuncaoVerificaSeNickNameJaEstaCadastrado = false
+        self.verificadorDeDadosCadastrados.retornoDaFuncaoVerificaSeEmailJaEstaCadastrado = false
+        
+        let contaPodeSerCriadaComNomeCompletoDoUsuarioVazio = self.controladorCriacaoDeConta.criarConta(
+            nickName: "Apelido",
+            nomeCompleto: "",
+            email: "email@email.com",
+            senha: "123123123",
+            repeticaoDeSenha: "123123123"
+        )
+        
+        let contaPodeSerCriadaComNomeCompletoDoUsuarioContendoCaracteresInvalidos = self.controladorCriacaoDeConta.criarConta(
+            nickName: "Apelido",
+            nomeCompleto: "122$#%_",
+            email: "email@email.com",
+            senha: "123123123",
+            repeticaoDeSenha: "123123123"
+        )
+        
+        let nomeCompleto = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefgabcdefghijklmnopqrstuvwxyz" + "abcdefgabcdefghijklmnopqrstuvwxyzabcdefgabcdef"
+        
+        let contaPodeSerCriadaComNomeCompletoDoUsuarioContendoMaisDe130Caracteres = self.controladorCriacaoDeConta.criarConta(
+            nickName: "Apelido",
+            nomeCompleto: nomeCompleto,
+            email: "email@email.com",
+            senha: "123123123",
+            repeticaoDeSenha: "123123123"
+        )
+        
+        let erros = self.controladorDeErros.getErros()
+        
+        XCTAssertFalse(contaPodeSerCriadaComNomeCompletoDoUsuarioVazio)
+        XCTAssertFalse(contaPodeSerCriadaComNomeCompletoDoUsuarioContendoCaracteresInvalidos)
+        XCTAssertFalse(contaPodeSerCriadaComNomeCompletoDoUsuarioContendoMaisDe130Caracteres)
+        
+        XCTAssertEqual(3, erros.count)
+        
+        XCTAssertEqual(.erro_nome_completo_vazio, erros[0])
+        XCTAssertEqual(.erro_nome_completo_so_pode_conter_letras_e_espacos, erros[1])
+        XCTAssertEqual(.erro_nome_completo_nao_pode_ter_mais_de_130_caracteres, erros[2])
     }
     
     func testUsuarioTemDadosValidosMasUmaFalhaOcorreAoTentarSalvar() {
+        self.verificadorDeDadosCadastrados.retornoDaFuncaoVerificaSeNickNameJaEstaCadastrado = false
+        self.verificadorDeDadosCadastrados.retornoDaFuncaoVerificaSeEmailJaEstaCadastrado = false
         self.salvaUsuario.retornoDaFuncaoSalvar = false
         
         let contaPodeSerCriada = self.controladorCriacaoDeConta.criarConta(
@@ -124,6 +233,8 @@ final class CriacaoDeContaControllerTests: XCTestCase {
     }
     
     func testUsuarioTemDadosValidosEFoiSalvoComSucesso() {
+        self.verificadorDeDadosCadastrados.retornoDaFuncaoVerificaSeNickNameJaEstaCadastrado = false
+        self.verificadorDeDadosCadastrados.retornoDaFuncaoVerificaSeEmailJaEstaCadastrado = false
         self.salvaUsuario.retornoDaFuncaoSalvar = true
         
         let contaPodeSerCriada = self.controladorCriacaoDeConta.criarConta(

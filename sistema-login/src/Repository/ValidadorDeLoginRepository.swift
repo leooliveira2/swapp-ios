@@ -18,7 +18,7 @@ class ValidadorDeLoginSystem: ValidadorDeLoginRepository {
     private let usuariosArmazenamento: UsuariosDadosStatic
     
     init(usuariosArmazenamento: UsuariosDadosStatic? = nil) {
-        self.usuariosArmazenamento = usuariosArmazenamento ?? UsuariosDadosStatic()
+        self.usuariosArmazenamento = usuariosArmazenamento ?? UsuariosDadosStatic().getInstance()
     }
     
     func validarLogin(email: String, senha: String) -> Bool {

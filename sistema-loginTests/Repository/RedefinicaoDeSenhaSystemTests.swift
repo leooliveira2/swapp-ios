@@ -10,36 +10,44 @@ import XCTest
 
 final class RedefinicaoDeSenhaSystemTests: XCTestCase {
     
+    // MARK: - Testes
     func testEmailEEncontradoESenhaEAlterada() {
-        
         let usuariosArmazenamento = UsuariosDadosStatic()
         
-        let usuario = Usuario(nickName: "nome", nomeCompleto: "nome", email: "nome", senha: "nome", repeticaoDeSenha: "nome")
-        
-        usuariosArmazenamento.salvarUsuario(usuario)
+        self.salvarUsuario(usuariosArmazenamento)
         
         let redefinicaoDeSenha = RedefinicaoDeSenhaSystem(usuariosArmazenamento: usuariosArmazenamento)
         
-        XCTAssertEqual("nome", usuariosArmazenamento.getUsuariosSalvos()[0].getSenhaDoUsuario())
+        XCTAssertEqual("senha", usuariosArmazenamento.getUsuariosSalvos()[0].getSenhaDoUsuario())
         
-        let senhaFoiRedefinida = redefinicaoDeSenha.redefinirSenha(email: "nome", senha: "sobrenome")
+        let senhaFoiRedefinida = redefinicaoDeSenha.redefinirSenha(email: "Email", senha: "novasenha")
         
         XCTAssertTrue(senhaFoiRedefinida)
         
-        XCTAssertEqual("sobrenome", usuariosArmazenamento.getUsuariosSalvos()[0].getSenhaDoUsuario())
-        
+        XCTAssertEqual("novasenha", usuariosArmazenamento.getUsuariosSalvos()[0].getSenhaDoUsuario())
         
     }
     
     func testEmailNaoEEncontradoESenhaNaoEAlterada() {
-        let usuariosArmazenamento = UsuariosDadosStatic()
+        let redefinicaoDeSenha = RedefinicaoDeSenhaSystem()
         
-        let redefinicaoDeSenha = RedefinicaoDeSenhaSystem(usuariosArmazenamento: usuariosArmazenamento)
-        
-        let senhaFoiRedefinida = redefinicaoDeSenha.redefinirSenha(email: "nome", senha: "sobrenome")
+        let senhaFoiRedefinida = redefinicaoDeSenha.redefinirSenha(email: "Email", senha: "senha")
         
         XCTAssertFalse(senhaFoiRedefinida)
         
+    }
+    
+    // MARK: - Funcoes
+    private func salvarUsuario(_ usuariosArmazenamento: UsuariosDadosStatic) -> Void {
+        let usuario = Usuario(
+            nickName: "Apelido",
+            nomeCompleto: "Nome completo",
+            email: "Email",
+            senha: "senha",
+            repeticaoDeSenha: "repeticao de senha"
+        )
+        
+        usuariosArmazenamento.salvarUsuario(usuario)
     }
 
 }

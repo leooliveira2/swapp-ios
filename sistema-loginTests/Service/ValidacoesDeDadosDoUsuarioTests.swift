@@ -79,12 +79,12 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         XCTAssertEqual(.erro_nick_de_usuario_nao_e_um_alfanumerico, erros[0])
     }
     
-    func testVerificaSeNickNameDoUsuarioJaEstaSalvoStaticClass() {
-        let verificadorDeDadosJaCadastrados = VerificadorDeDadosCadastradosStaticClassMock()
+    func testVerificaSeNickNameDoUsuarioJaEstaSalvoSystem() {
+        self.salvarUsuario(nickName: "Teste validacoes de dados")
         
-        verificadorDeDadosJaCadastrados.retornoDaFuncaoVerificaSeNickNameJaEstaCadastrado = true
+        let verificadorDeDadosJaCadastrados = VerificadorDeDadosCadastradosSystem()
         
-        let nickNameDoUsuarioJaEstaSalvo = self.validadorDeDadosDoUsuario.nickNameDoUsuarioJaEstaCadastrado("teste", verificadorDeDadosJaCadastrados)
+        let nickNameDoUsuarioJaEstaSalvo = self.validadorDeDadosDoUsuario.nickNameDoUsuarioJaEstaCadastrado("Teste validacoes de dados", verificadorDeDadosJaCadastrados)
         
         let erros = self.controladorDeErros.getErros()
         
@@ -93,10 +93,8 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         XCTAssertEqual(.erro_nick_de_usuario_ja_esta_cadastrado, erros[0])
     }
     
-    func testVerificaSeNickNameDoUsuarioNaoEstaSalvoStaticClass() {
-        let verificadorDeDadosJaCadastrados = VerificadorDeDadosCadastradosStaticClassMock()
-        
-        verificadorDeDadosJaCadastrados.retornoDaFuncaoVerificaSeNickNameJaEstaCadastrado = false
+    func testVerificaSeNickNameDoUsuarioNaoEstaSalvoSystem() {
+        let verificadorDeDadosJaCadastrados = VerificadorDeDadosCadastradosSystem()
         
         let nickNameDoUsuarioJaEstaSalvo = self.validadorDeDadosDoUsuario.nickNameDoUsuarioJaEstaCadastrado("testando", verificadorDeDadosJaCadastrados)
         
@@ -204,12 +202,12 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         XCTAssertEqual(.erro_email_tem_mais_de_150_caracteres, erros[0])
     }
     
-    func testVerificaEmailDoUsuarioJaEstaSalvoStaticClass() {
-        let verificadorDeDadosJaCadastrados = VerificadorDeDadosCadastradosStaticClassMock()
+    func testVerificaEmailDoUsuarioJaEstaSalvoSystem() {
+        self.salvarUsuario(email: "testevalidacoes@email.com")
         
-        verificadorDeDadosJaCadastrados.retornoDaFuncaoVerificaSeEmailJaEstaCadastrado = true
+        let verificadorDeDadosJaCadastrados = VerificadorDeDadosCadastradosSystem()
         
-        let emailDoUsuarioJaEstaSalvo = self.validadorDeDadosDoUsuario.emailDoUsuarioJaEstaCadastrado("teste@teste.com", verificadorDeDadosJaCadastrados)
+        let emailDoUsuarioJaEstaSalvo = self.validadorDeDadosDoUsuario.emailDoUsuarioJaEstaCadastrado("testevalidacoes@email.com", verificadorDeDadosJaCadastrados)
         
         let erros = self.controladorDeErros.getErros()
         
@@ -218,10 +216,8 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         XCTAssertEqual(.erro_email_ja_esta_cadastrado, erros[0])
     }
     
-    func testVerificaSeEmailDoUsuarioNaoEstaSalvoStaticClass() {
-        let verificadorDeDadosJaCadastrados = VerificadorDeDadosCadastradosStaticClassMock()
-        
-        verificadorDeDadosJaCadastrados.retornoDaFuncaoVerificaSeEmailJaEstaCadastrado = false
+    func testVerificaSeEmailDoUsuarioNaoEstaSalvoSystem() {
+        let verificadorDeDadosJaCadastrados = VerificadorDeDadosCadastradosSystem()
         
         let emailDoUsuarioJaEstaSalvo = self.validadorDeDadosDoUsuario.emailDoUsuarioJaEstaCadastrado("testando@email.com", verificadorDeDadosJaCadastrados)
         
@@ -316,11 +312,9 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
     }
     
     func testLoginNaoPodeSerRealizadoPoisCadastroNaoExisteStaticClass() {
-        let validadorDeLogin = ValidadorDeLoginStaticClassMock()
+        let validadorDeLogin = ValidadorDeLoginSystem()
         
-        validadorDeLogin.retornoDaFuncaoValidarLogin = false
-        
-        let loginPodeSerRealizado = self.validadorDeDadosDoUsuario.verificaSeLoginPodeSerRealizado("email@em.com", "senhasenha", validadorDeLogin)
+        let loginPodeSerRealizado = self.validadorDeDadosDoUsuario.verificaSeLoginPodeSerRealizado("email@email.com", "senhasenha", validadorDeLogin)
         
         let erros = self.controladorDeErros.getErros()
         
@@ -329,14 +323,13 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
     }
     
     func testLoginPodeSerRealizadoStaticClass() {
+        self.salvarUsuario(email: "testelogin@email.com")
         
-        let validadorDeLogin = ValidadorDeLoginStaticClassMock()
-        
-        validadorDeLogin.retornoDaFuncaoValidarLogin = true
+        let validadorDeLogin = ValidadorDeLoginSystem()
         
         let loginPodeSerRealizado = self.validadorDeDadosDoUsuario.verificaSeLoginPodeSerRealizado(
-            "",
-            "",
+            "testelogin@email.com",
+            "123123123",
             validadorDeLogin
         )
         
@@ -345,5 +338,20 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         XCTAssertTrue(loginPodeSerRealizado)
         XCTAssertEqual(0, erros.count)
     }
-
+    
+    // MARK: - Funcoes
+    private func salvarUsuario(nickName: String = "Teste", email: String = "teste@email.com") -> Void {
+        let salvarUsuario = SalvarUsuarioSystem()
+        
+        let usuario = Usuario(
+            nickName: nickName,
+            nomeCompleto: "Nome",
+            email: email,
+            senha: "123123123",
+            repeticaoDeSenha: "123123123"
+        )
+        
+        _ = salvarUsuario.salvar(usuario)
+    }
+    
 }

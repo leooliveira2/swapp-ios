@@ -1,19 +1,19 @@
 //
-//  RecuperacaoDeSenhaControllerTests.swift
+//  umTests.swift
 //  sistema-loginTests
 //
-//  Created by Leonardo Leite on 14/12/22.
+//  Created by Leonardo Leite on 19/12/22.
 //
 
 import XCTest
 @testable import sistema_login
 
 final class RecuperacaoDeSenhaControllerTests: XCTestCase {
-
+    
     // MARK: - Atributos
     private var controladorDeErros: ControladorDeErros!
     private var validadorDeDados: ValidacoesDeDadosDoUsuario!
-    private var redefinicaoDeSenha: RedefinicaoDeSenhaStaticClassMock!
+    private var redefinicaoDeSenha: RedefinicaoDeSenhaSystemMock!
     
     private var recuperacaoDeSenhaController: RecuperacaoDeSenhaController!
     
@@ -21,7 +21,7 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
     override func setUpWithError() throws {
         self.controladorDeErros = ControladorDeErros()
         self.validadorDeDados = ValidacoesDeDadosDoUsuario(self.controladorDeErros)
-        self.redefinicaoDeSenha = RedefinicaoDeSenhaStaticClassMock()
+        self.redefinicaoDeSenha = RedefinicaoDeSenhaSystemMock()
         
         self.recuperacaoDeSenhaController = RecuperacaoDeSenhaController(
             self.controladorDeErros,
@@ -190,5 +190,5 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
         XCTAssertTrue(senhaPodeSerRedefinida)
         XCTAssertEqual(0, erros.count)
     }
-
+    
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ValidadorDeLoginStaticClassMock: ValidadorDeLoginRepository {
+class ValidadorDeLoginSystemMock: ValidadorDeLoginRepository {
     
     var retornoDaFuncaoValidarLogin: Bool!
     

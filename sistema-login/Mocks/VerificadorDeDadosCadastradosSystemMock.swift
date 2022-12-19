@@ -7,7 +7,7 @@
 
 import UIKit
 
-class VerificadorDeDadosCadastradosStaticClassMock: VerificadorDeDadosCadastradosRepository {
+class VerificadorDeDadosCadastradosSystemMock: VerificadorDeDadosCadastradosRepository {
     
     var retornoDaFuncaoVerificaSeNickNameJaEstaCadastrado: Bool!
     var retornoDaFuncaoVerificaSeEmailJaEstaCadastrado: Bool!

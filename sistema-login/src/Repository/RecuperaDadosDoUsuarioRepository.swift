@@ -18,7 +18,7 @@ class RecuperaDadosDoUsuarioSystem: RecuperaDadosDoUsuarioRepository {
     private let usuariosArmazenamento: UsuariosDadosStatic
     
     init(usuariosArmazenamento: UsuariosDadosStatic? = nil) {
-        self.usuariosArmazenamento = usuariosArmazenamento ?? UsuariosDadosStatic()
+        self.usuariosArmazenamento = usuariosArmazenamento ?? UsuariosDadosStatic().getInstance()
     }
     
     public func getNickNameDoUsuario(email: String) -> String? {

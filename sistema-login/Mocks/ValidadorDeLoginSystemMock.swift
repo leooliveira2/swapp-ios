@@ -15,5 +15,4 @@ class ValidadorDeLoginSystemMock: ValidadorDeLoginRepository {
         return retornoDaFuncaoValidarLogin
     }
     
-
 }

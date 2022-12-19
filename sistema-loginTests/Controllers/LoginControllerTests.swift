@@ -38,24 +38,19 @@ final class LoginControllerTests: XCTestCase {
         
     }
     
-    func testSomenteEmailEstaNulo() {
-        let loginFoiRealizado = self.loginController.fazerLogin(email: nil, senha: "123123123")
+    func testAlgumDadoDoUsuarioEstaNulo() {
+        let loginPodeSerRealizadoComEmailNulo = self.loginController.fazerLogin(email: nil, senha: "")
+        
+        let loginPodeSerRealizadoComSenhaNula = self.loginController.fazerLogin(email: "", senha: nil)
         
         let erros = self.controladorDeErros.getErros()
         
-        XCTAssertFalse(loginFoiRealizado)
-        XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[0])
-    }
-    
-    func testSomenteSenhaEstaNula() {
-        let loginFoiRealizado = self.loginController.fazerLogin(email: "email@email.com", senha: nil)
+        XCTAssertFalse(loginPodeSerRealizadoComEmailNulo)
+        XCTAssertFalse(loginPodeSerRealizadoComSenhaNula)
         
-        let erros = self.controladorDeErros.getErros()
-        
-        XCTAssertFalse(loginFoiRealizado)
-        XCTAssertEqual(1, erros.count)
+        XCTAssertEqual(2, erros.count)
         XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[0])
+        XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[1])
     }
     
     func testEmailESenhaEstaoVazios() {
@@ -89,7 +84,7 @@ final class LoginControllerTests: XCTestCase {
         XCTAssertEqual(.erro_senha_vazia, erros[0])
     }
     
-    func testEmailESenhaEstaoPreenchidosCorretamenteECadastroFoiEncontradoStaticClass() {
+    func testEmailESenhaEstaoPreenchidosCorretamenteECadastroFoiEncontrado() {
         self.validadorDeLogin.retornoDaFuncaoValidarLogin = true
         
         let loginFoiRealizado = self.loginController.fazerLogin(email: "email@email.com", senha: "123123123")

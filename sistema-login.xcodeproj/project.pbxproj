@@ -31,6 +31,8 @@
 		C55BFA70291AD2000049C539 /* ControladorDeErros.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA6F291AD2000049C539 /* ControladorDeErros.swift */; };
 		C55BFA76291AD51A0049C539 /* Erros.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA75291AD51A0049C539 /* Erros.swift */; };
 		C55BFA78291AE4850049C539 /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA77291AE4850049C539 /* Alerta.swift */; };
+		C55FF6A9295218C200103434 /* ValidadorDeLoginSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55FF6A8295218C200103434 /* ValidadorDeLoginSystemTests.swift */; };
+		C55FF6AB29521B0E00103434 /* RecuperaDadosDoUsuarioSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55FF6AA29521B0E00103434 /* RecuperaDadosDoUsuarioSystemTests.swift */; };
 		C56022E6293A97F9006D99E8 /* PlanetaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56022E5293A97F9006D99E8 /* PlanetaController.swift */; };
 		C56022E8293A9822006D99E8 /* Planeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56022E7293A9822006D99E8 /* Planeta.swift */; };
 		C5646B60293E523B009FD074 /* NaveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5646B5F293E523B009FD074 /* NaveController.swift */; };
@@ -99,6 +101,8 @@
 		C55BFA6F291AD2000049C539 /* ControladorDeErros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControladorDeErros.swift; sourceTree = "<group>"; };
 		C55BFA75291AD51A0049C539 /* Erros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Erros.swift; sourceTree = "<group>"; };
 		C55BFA77291AE4850049C539 /* Alerta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
+		C55FF6A8295218C200103434 /* ValidadorDeLoginSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidadorDeLoginSystemTests.swift; sourceTree = "<group>"; };
+		C55FF6AA29521B0E00103434 /* RecuperaDadosDoUsuarioSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperaDadosDoUsuarioSystemTests.swift; sourceTree = "<group>"; };
 		C56022E5293A97F9006D99E8 /* PlanetaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetaController.swift; sourceTree = "<group>"; };
 		C56022E7293A9822006D99E8 /* Planeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planeta.swift; sourceTree = "<group>"; };
 		C5646B5F293E523B009FD074 /* NaveController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaveController.swift; sourceTree = "<group>"; };
@@ -390,6 +394,8 @@
 				C5BCB745294BA55F002B9C62 /* RedefinicaoDeSenhaSystemTests.swift */,
 				C5BCB747294BB542002B9C62 /* SalvarUsuarioSystemTests.swift */,
 				C5BCB749294BB7F7002B9C62 /* VerificadorDeDadosCadastradosSystemTests.swift */,
+				C55FF6A8295218C200103434 /* ValidadorDeLoginSystemTests.swift */,
+				C55FF6AA29521B0E00103434 /* RecuperaDadosDoUsuarioSystemTests.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -602,6 +608,8 @@
 				C5BCB748294BB542002B9C62 /* SalvarUsuarioSystemTests.swift in Sources */,
 				C59A522F2950EAF400D145DD /* LoginControllerTests.swift in Sources */,
 				C59A522B2950EA8C00D145DD /* RecuperacaoDeSenhaControllerTests.swift in Sources */,
+				C55FF6A9295218C200103434 /* ValidadorDeLoginSystemTests.swift in Sources */,
+				C55FF6AB29521B0E00103434 /* RecuperaDadosDoUsuarioSystemTests.swift in Sources */,
 				C5BCB74A294BB7F7002B9C62 /* VerificadorDeDadosCadastradosSystemTests.swift in Sources */,
 				C59A522D2950EACD00D145DD /* CriacaoDeContaControllerTests.swift in Sources */,
 				C5BCB746294BA55F002B9C62 /* RedefinicaoDeSenhaSystemTests.swift in Sources */,

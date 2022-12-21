@@ -173,24 +173,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C5252555291C44F5002508F5 /* src */ = {
+		C5252555291C44F5002508F5 /* o q fazer */ = {
 			isa = PBXGroup;
 			children = (
-				C569E5E8293FBDA10040885A /* Dados */,
 				C569E5E7293FBD300040885A /* Repository */,
 				C55BFA69291ACA7B0049C539 /* Model */,
 				C5252556291C4502002508F5 /* Service */,
 			);
-			path = src;
+			path = "o q fazer";
 			sourceTree = "<group>";
 		};
 		C5252556291C4502002508F5 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				C55FF6AC2952394400103434 /* Animacao.swift */,
 				C55BFA6D291AD0330049C539 /* ValidacoesDeDadosDoUsuario.swift */,
 				C55BFA77291AE4850049C539 /* Alerta.swift */,
-				C5143CE7292FE6A600918975 /* RequisicoesStarWarsAPI.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -460,6 +457,55 @@
 			path = Modulos;
 			sourceTree = "<group>";
 		};
+		C5493F6B2953A0A500BD0399 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C5493F702953A2E000BD0399 /* System */,
+				C5493F6C2953A0AA00BD0399 /* Networking */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		C5493F6C2953A0AA00BD0399 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				C5493F6D2953A0E500BD0399 /* API */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		C5493F6D2953A0E500BD0399 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				C5143CE7292FE6A600918975 /* RequisicoesStarWarsAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		C5493F6E2953A12D00BD0399 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C5493F6F2953A13100BD0399 /* View */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		C5493F6F2953A13100BD0399 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C55FF6AC2952394400103434 /* Animacao.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C5493F702953A2E000BD0399 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				C5C3455B291D860300E3097A /* UsuariosDadosStatic.swift */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
 		C550F8592919644D00FC2EF2 = {
 			isa = PBXGroup;
 			children = (
@@ -483,8 +529,10 @@
 		C550F8642919644D00FC2EF2 /* sistema-login */ = {
 			isa = PBXGroup;
 			children = (
+				C5493F6E2953A12D00BD0399 /* UI */,
+				C5493F6B2953A0A500BD0399 /* Core */,
 				C5493F4D29539A7D00BD0399 /* Modulos */,
-				C5252555291C44F5002508F5 /* src */,
+				C5252555291C44F5002508F5 /* o q fazer */,
 				C550F8652919644D00FC2EF2 /* AppDelegate.swift */,
 				C550F8672919644D00FC2EF2 /* SceneDelegate.swift */,
 				C550F86E2919644E00FC2EF2 /* Assets.xcassets */,
@@ -514,14 +562,6 @@
 				C587194D2947A52A00F6EDC7 /* RecuperaDadosDoUsuarioRepository.swift */,
 			);
 			path = Repository;
-			sourceTree = "<group>";
-		};
-		C569E5E8293FBDA10040885A /* Dados */ = {
-			isa = PBXGroup;
-			children = (
-				C5C3455B291D860300E3097A /* UsuariosDadosStatic.swift */,
-			);
-			path = Dados;
 			sourceTree = "<group>";
 		};
 		C59A52292950EA7D00D145DD /* Controllers */ = {

@@ -10,26 +10,36 @@ import XCTest
 
 final class RedefinicaoDeSenhaSystemTests: XCTestCase {
     
+    // MARK: - Atributos
+    private var usuariosArmazenamento: UsuariosDadosStatic!
+    
+    // MARK: Pre-sets
+    override func setUpWithError() throws {
+        self.usuariosArmazenamento = UsuariosDadosStatic()
+    }
+    
     // MARK: - Testes
     func testEmailEEncontradoESenhaEAlterada() {
-        let usuariosArmazenamento = UsuariosDadosStatic()
         
-        self.salvarUsuario(usuariosArmazenamento)
+        self.salvarUsuario(self.usuariosArmazenamento)
         
-        let redefinicaoDeSenha = RedefinicaoDeSenhaSystem(usuariosArmazenamento: usuariosArmazenamento)
+        let redefinicaoDeSenha = RedefinicaoDeSenhaSystem(
+            usuariosArmazenamento: self.usuariosArmazenamento
+        )
         
-        XCTAssertEqual("senha", usuariosArmazenamento.getUsuariosSalvos()[0].getSenhaDoUsuario())
+        XCTAssertEqual("senha", self.usuariosArmazenamento.getUsuariosSalvos()[0].getSenhaDoUsuario())
         
         let senhaFoiRedefinida = redefinicaoDeSenha.redefinirSenha(email: "Email", senha: "novasenha")
         
         XCTAssertTrue(senhaFoiRedefinida)
         
-        XCTAssertEqual("novasenha", usuariosArmazenamento.getUsuariosSalvos()[0].getSenhaDoUsuario())
-        
+        XCTAssertEqual("novasenha", self.usuariosArmazenamento.getUsuariosSalvos()[0].getSenhaDoUsuario())
     }
     
     func testEmailNaoEEncontradoESenhaNaoEAlterada() {
-        let redefinicaoDeSenha = RedefinicaoDeSenhaSystem()
+        let redefinicaoDeSenha = RedefinicaoDeSenhaSystem(
+            usuariosArmazenamento: self.usuariosArmazenamento
+        )
         
         let senhaFoiRedefinida = redefinicaoDeSenha.redefinirSenha(email: "Email", senha: "senha")
         

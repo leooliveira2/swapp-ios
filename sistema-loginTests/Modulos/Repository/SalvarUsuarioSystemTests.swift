@@ -11,7 +11,9 @@ import XCTest
 final class SalvarUsuarioSystemTests: XCTestCase {
     
     func testUsuarioESalvo() {
-        let salvarUsuario = SalvarUsuarioSystem()
+        let usuariosArmazenamento = UsuariosDadosStatic()
+        
+        let salvarUsuario = SalvarUsuarioSystem(usuariosArmazenamento: usuariosArmazenamento)
         
         let usuario = Usuario(
             nickName: "Usuario",
@@ -25,7 +27,9 @@ final class SalvarUsuarioSystemTests: XCTestCase {
         
         XCTAssertTrue(usuarioFoiSalvo)
         
-        let verificadorDeDadosSalvos = VerificadorDeDadosCadastradosSystem()
+        let verificadorDeDadosSalvos = VerificadorDeDadosCadastradosSystem(
+            usuariosArmazenamento: usuariosArmazenamento
+        )
         
         XCTAssertTrue(verificadorDeDadosSalvos.verificaSeNickNameJaEstaCadastrado("Usuario"))
     }

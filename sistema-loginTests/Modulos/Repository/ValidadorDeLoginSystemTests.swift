@@ -10,13 +10,20 @@ import XCTest
 
 final class ValidadorDeLoginSystemTests: XCTestCase {
     
+    // MARK: - Atributos
+    private var usuariosArmazenamento: UsuariosDadosStatic!
+    
+    // MARK: Pre-sets
+    override func setUpWithError() throws {
+        self.usuariosArmazenamento = UsuariosDadosStatic()
+    }
+    
     // MARK: - Testes
     func testCadastroFoiEncontrado() {
-        let usuariosArmazenamento = UsuariosDadosStatic()
         
-        self.salvarUsuario(usuariosArmazenamento)
+        self.salvarUsuario(self.usuariosArmazenamento)
         
-        let validadorDeLogin = ValidadorDeLoginSystem(usuariosArmazenamento: usuariosArmazenamento)
+        let validadorDeLogin = ValidadorDeLoginSystem(usuariosArmazenamento: self.usuariosArmazenamento)
         
         let cadastroFoiEncontrado = validadorDeLogin.validarLogin(email: "email@email.com", senha: "123123123")
         
@@ -24,7 +31,7 @@ final class ValidadorDeLoginSystemTests: XCTestCase {
     }
     
     func testCadastroNaoFoiEncontrado() {
-        let validadorDeLogin = ValidadorDeLoginSystem()
+        let validadorDeLogin = ValidadorDeLoginSystem(usuariosArmazenamento: self.usuariosArmazenamento)
         
         let cadastroFoiEncontrado = validadorDeLogin.validarLogin(email: "email2@email.com", senha: "123123123")
         

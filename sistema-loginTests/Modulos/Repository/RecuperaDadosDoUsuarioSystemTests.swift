@@ -9,20 +9,23 @@ import XCTest
 @testable import sistema_login
 
 final class RecuperaDadosDoUsuarioSystemTests: XCTestCase {
-
-    // MARK: - Pre-sets
+    
+    // MARK: - Atributos
+    private var usuariosArmazenamento: UsuariosDadosStatic!
+    
+    // MARK: Pre-sets
     override func setUpWithError() throws {
-        
+        self.usuariosArmazenamento = UsuariosDadosStatic()
     }
+
     
     // MARK: - Testes
     func testUsuarioFoiEncontradoENickNameRetornou() {
-        let usuariosArmazenamento = UsuariosDadosStatic()
         
-        self.salvarUsuario(usuariosArmazenamento)
+        self.salvarUsuario(self.usuariosArmazenamento)
         
         let recuperaDadosDoUsuario = RecuperaDadosDoUsuarioSystem(
-            usuariosArmazenamento: usuariosArmazenamento
+            usuariosArmazenamento: self.usuariosArmazenamento
         )
         
         let nickName = recuperaDadosDoUsuario.getNickNameDoUsuario(
@@ -33,12 +36,14 @@ final class RecuperaDadosDoUsuarioSystemTests: XCTestCase {
     }
     
     func testUsuarioNaoFoiEncontradoERetornoFoiNulo() {
-        let recuperaDadosDoUsuario = RecuperaDadosDoUsuarioSystem()
+        
+        let recuperaDadosDoUsuario = RecuperaDadosDoUsuarioSystem(
+            usuariosArmazenamento: self.usuariosArmazenamento
+        )
         
         let nickName = recuperaDadosDoUsuario.getNickNameDoUsuario(email: "email@email.com")
         
         XCTAssertNil(nickName)
-        XCTAssertTrue(false) // arrumar isso aqui oh
     }
     
     // MARK: - Funcoes

@@ -46,7 +46,6 @@ class RequisicoesStarWarsAPI {
                 self.animacao.pararAnimacao()
                 return
             } catch {
-                print("Não foi possível decodificar o JSON")
                 self.animacao.pararAnimacao()
                 return
             }
@@ -82,7 +81,6 @@ class RequisicoesStarWarsAPI {
                 self.animacao.pararAnimacao()
                 return
             } catch {
-                print("Não foi possível decodificar o JSON")
                 self.animacao.pararAnimacao()
                 return
             }
@@ -118,7 +116,6 @@ class RequisicoesStarWarsAPI {
                 self.animacao.pararAnimacao()
                 return
             } catch {
-                print("Não foi possível decodificar o JSON")
                 self.animacao.pararAnimacao()
                 return
             }

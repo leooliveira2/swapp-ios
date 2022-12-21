@@ -173,14 +173,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C50DC29C291EDE08001CC4F9 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				C58D4096292EB40200A1C6BC /* Telas */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
 		C5252555291C44F5002508F5 /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,17 +195,12 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		C5252557291C452B002508F5 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				C50DC29C291EDE08001CC4F9 /* Home */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		C5493F4D29539A7D00BD0399 /* Modulos */ = {
 			isa = PBXGroup;
 			children = (
+				C5493F6829539D6B00BD0399 /* Perfil */,
+				C5493F6429539D3500BD0399 /* Nave */,
+				C5493F6029539CE400BD0399 /* Planeta */,
 				C5493F5C29539C3B00BD0399 /* Personagem */,
 				C5493F5A29539BFA00BD0399 /* Home */,
 				C5493F5629539B0E00BD0399 /* RecuperacaoDeSenha */,
@@ -375,6 +362,91 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		C5493F6029539CE400BD0399 /* Planeta */ = {
+			isa = PBXGroup;
+			children = (
+				C5493F6329539CF700BD0399 /* Controller */,
+				C5493F6229539CF300BD0399 /* View */,
+				C5493F6129539CEE00BD0399 /* Model */,
+			);
+			path = Planeta;
+			sourceTree = "<group>";
+		};
+		C5493F6129539CEE00BD0399 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C5493F6229539CF300BD0399 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C5143CE92930041600918975 /* PlanetaView.swift */,
+				C58D409E292EB4B400A1C6BC /* PlanetaViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C5493F6329539CF700BD0399 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C56022E5293A97F9006D99E8 /* PlanetaController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C5493F6429539D3500BD0399 /* Nave */ = {
+			isa = PBXGroup;
+			children = (
+				C5493F6729539D4400BD0399 /* Controller */,
+				C5493F6629539D3F00BD0399 /* View */,
+				C5493F6529539D3A00BD0399 /* Model */,
+			);
+			path = Nave;
+			sourceTree = "<group>";
+		};
+		C5493F6529539D3A00BD0399 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C5493F6629539D3F00BD0399 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C5143CEB2930078C00918975 /* NaveView.swift */,
+				C58D409C292EB49700A1C6BC /* NaveViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C5493F6729539D4400BD0399 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C5646B5F293E523B009FD074 /* NaveController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C5493F6829539D6B00BD0399 /* Perfil */ = {
+			isa = PBXGroup;
+			children = (
+				C5493F6929539D7400BD0399 /* View */,
+			);
+			path = Perfil;
+			sourceTree = "<group>";
+		};
+		C5493F6929539D7400BD0399 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C57BD85F293A733900092FA9 /* PerfilView.swift */,
+				C57BD85D293A712E00092FA9 /* PerfilViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C550F8592919644D00FC2EF2 = {
 			isa = PBXGroup;
 			children = (
@@ -401,7 +473,6 @@
 				C5493F4D29539A7D00BD0399 /* Modulos */,
 				C5BDB912294A4974007DD78D /* Mocks */,
 				C5252555291C44F5002508F5 /* src */,
-				C5252557291C452B002508F5 /* Views */,
 				C550F8652919644D00FC2EF2 /* AppDelegate.swift */,
 				C550F8672919644D00FC2EF2 /* SceneDelegate.swift */,
 				C550F86E2919644E00FC2EF2 /* Assets.xcassets */,
@@ -442,45 +513,6 @@
 				C5C3455B291D860300E3097A /* UsuariosDadosStatic.swift */,
 			);
 			path = Dados;
-			sourceTree = "<group>";
-		};
-		C57BD85C293A70C400092FA9 /* Perfil */ = {
-			isa = PBXGroup;
-			children = (
-				C57BD85D293A712E00092FA9 /* PerfilViewController.swift */,
-				C57BD85F293A733900092FA9 /* PerfilView.swift */,
-			);
-			path = Perfil;
-			sourceTree = "<group>";
-		};
-		C58D4096292EB40200A1C6BC /* Telas */ = {
-			isa = PBXGroup;
-			children = (
-				C58D4098292EB43000A1C6BC /* Planeta */,
-				C58D4099292EB43F00A1C6BC /* Nave */,
-				C57BD85C293A70C400092FA9 /* Perfil */,
-			);
-			path = Telas;
-			sourceTree = "<group>";
-		};
-		C58D4098292EB43000A1C6BC /* Planeta */ = {
-			isa = PBXGroup;
-			children = (
-				C58D409E292EB4B400A1C6BC /* PlanetaViewController.swift */,
-				C5143CE92930041600918975 /* PlanetaView.swift */,
-				C56022E5293A97F9006D99E8 /* PlanetaController.swift */,
-			);
-			path = Planeta;
-			sourceTree = "<group>";
-		};
-		C58D4099292EB43F00A1C6BC /* Nave */ = {
-			isa = PBXGroup;
-			children = (
-				C58D409C292EB49700A1C6BC /* NaveViewController.swift */,
-				C5143CEB2930078C00918975 /* NaveView.swift */,
-				C5646B5F293E523B009FD074 /* NaveController.swift */,
-			);
-			path = Nave;
 			sourceTree = "<group>";
 		};
 		C59A52292950EA7D00D145DD /* Controllers */ = {

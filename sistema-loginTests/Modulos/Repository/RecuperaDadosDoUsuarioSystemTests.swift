@@ -38,6 +38,7 @@ final class RecuperaDadosDoUsuarioSystemTests: XCTestCase {
         let nickName = recuperaDadosDoUsuario.getNickNameDoUsuario(email: "email@email.com")
         
         XCTAssertNil(nickName)
+        XCTAssertTrue(false) // arrumar isso aqui oh
     }
     
     // MARK: - Funcoes

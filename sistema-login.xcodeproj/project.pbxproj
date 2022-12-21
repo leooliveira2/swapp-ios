@@ -341,6 +341,7 @@
 		C5493F5D29539C4300BD0399 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C5143CE5292FE54800918975 /* Personagem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -375,6 +376,7 @@
 		C5493F6129539CEE00BD0399 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C56022E7293A9822006D99E8 /* Planeta.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -409,6 +411,7 @@
 		C5493F6529539D3A00BD0399 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C5646B61293E5281009FD074 /* Nave.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -447,6 +450,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		C5493F6A29539DAF00BD0399 /* Modulos */ = {
+			isa = PBXGroup;
+			children = (
+				C5BCB743294BA51B002B9C62 /* Service */,
+				C5BCB744294BA532002B9C62 /* Repository */,
+				C59A52292950EA7D00D145DD /* Controllers */,
+			);
+			path = Modulos;
+			sourceTree = "<group>";
+		};
 		C550F8592919644D00FC2EF2 = {
 			isa = PBXGroup;
 			children = (
@@ -471,7 +484,6 @@
 			isa = PBXGroup;
 			children = (
 				C5493F4D29539A7D00BD0399 /* Modulos */,
-				C5BDB912294A4974007DD78D /* Mocks */,
 				C5252555291C44F5002508F5 /* src */,
 				C550F8652919644D00FC2EF2 /* AppDelegate.swift */,
 				C550F8672919644D00FC2EF2 /* SceneDelegate.swift */,
@@ -487,10 +499,7 @@
 			children = (
 				C55BFA6F291AD2000049C539 /* ControladorDeErros.swift */,
 				C55BFA6A291ACABB0049C539 /* Usuario.swift */,
-				C5143CE5292FE54800918975 /* Personagem.swift */,
 				C55BFA75291AD51A0049C539 /* Erros.swift */,
-				C56022E7293A9822006D99E8 /* Planeta.swift */,
-				C5646B61293E5281009FD074 /* Nave.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -528,9 +537,8 @@
 		C5B5E7442948ED42001F87AE /* sistema-loginTests */ = {
 			isa = PBXGroup;
 			children = (
-				C59A52292950EA7D00D145DD /* Controllers */,
-				C5BCB744294BA532002B9C62 /* Repository */,
-				C5BCB743294BA51B002B9C62 /* Service */,
+				C5BDB912294A4974007DD78D /* Mocks */,
+				C5493F6A29539DAF00BD0399 /* Modulos */,
 			);
 			path = "sistema-loginTests";
 			sourceTree = "<group>";

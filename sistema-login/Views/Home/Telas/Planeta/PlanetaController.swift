@@ -9,24 +9,23 @@ import UIKit
 
 class PlanetaController {
     
-    let animacao: Animacao
-    let vC: ExibeTableViewDelegate
+    private var requisicoesSWAPI: RequisicoesStarWarsAPI
     
-    init(animacao: Animacao, vC: ExibeTableViewDelegate) {
-        self.animacao = animacao
-        self.vC = vC
+    init(requisicoesSWAPI: RequisicoesStarWarsAPI) {
+        self.requisicoesSWAPI = requisicoesSWAPI
     }
-
+    
     public func gerarPlaneta(
-        sucesso: @escaping(_ planetaVindoDaRequisicao: Planeta) -> Void,
-        fracasso: @escaping(_ falhaNaRequisicao: Bool) -> Void) -> Void
+        sucesso: @escaping(_ planeta: Planeta) -> Void,
+        fracasso: @escaping() -> Void
+    ) -> Void
     {
-        RequisicoesStarWarsAPI(animacao: self.animacao).fazRequisicaoPlaneta(id: gerarIdAleatorio(), sucesso: { (planeta) in
-            sucesso(planeta)
-        },
-        falha: { (falha) in
-            fracasso(falha)
-        })
+        requisicoesSWAPI.fazRequisicaoPlaneta(id: gerarIdAleatorio()) { planeta in
+            guard let planetaVindoDaRequisicao = planeta else { fracasso(); return }
+            
+            sucesso(planetaVindoDaRequisicao)
+            return
+        }
     }
     
     private func gerarIdAleatorio() -> Int {

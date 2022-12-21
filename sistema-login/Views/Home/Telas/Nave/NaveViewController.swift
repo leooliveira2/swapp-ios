@@ -7,52 +7,16 @@
 
 import UIKit
 
-class NaveViewController: UIViewController, ExibeTableViewDelegate {
+class NaveViewController: UIViewController {
     
-    public func exibeTableView(caracteristicas: [String]) {
-        
-    }
-    
-    
-    // MARK: - Atributos
+    // MARK: - View
     private lazy var naveView: NaveView = {
         let view = NaveView()
         return view
     }()
-    
-    private var qntsVezesOBotaoFoiClicado: Int = 0
-    
-    @Published private var tableViewPodeSerExibida: Bool = false
-    
-    // MARK: - Componentes da animacao
-    private lazy var fundoDoLoading: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 30
-        view.backgroundColor = .white
-        return view
-    }()
-    
-    private lazy var barraDeLoading: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .blue
-        return view
-    }()
-    
-    private lazy var gerandoNaveLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Gerando Nave...."
-        label.textColor = .blue
-        label.font = UIFont.boldSystemFont(ofSize: 16)
-        return label
-    }()
-    
-    private lazy var leadingAnchorBarraDeLoading: NSLayoutConstraint = {
-        let leadingAnchor = self.barraDeLoading.leadingAnchor.constraint(equalTo: self.fundoDoLoading.leadingAnchor, constant: 20)
-        return leadingAnchor
-    }()
+
+    // MARK: - Atributos
+    private var animacao: Animacao?
     
     // MARK: - View life cycle
     override func viewDidLoad() {
@@ -68,42 +32,32 @@ class NaveViewController: UIViewController, ExibeTableViewDelegate {
         self.naveView.getDadosNaveTableView().delegate = self
         self.naveView.getDadosNaveTableView().dataSource = self
         
-        self.fundoDoLoading.addSubview(self.barraDeLoading)
-        self.fundoDoLoading.addSubview(self.gerandoNaveLabel)
-        self.view.addSubview(self.fundoDoLoading)
-        self.configConstraints()
+        self.animacao = Animacao(view: self.naveView)
         
-        self.fundoDoLoading.isHidden = true
     }
     
     // MARK: - Actions
     @objc private func acaoBotaoGerarNave(_ sender: UIButton) -> Void {
-//        let animacao = Animacao(myView: self.view)
-//        
-//        let naveController = NaveController(animacao: animacao, vC: self)
-//        
-//        naveController.gerarNave(sucesso: { (nave) in
-//            let caracteristicasDaNave: [String] = nave.getListaComDadosDaNave()
-//            self.adicionaOsDadosDaNaveAsLinhasDaTableView(caracteristicasDaNave)
-//        },
-//        fracasso: { (erro) in
-//            let controladorDeAlertas = Alerta(viewController: self)
-//            self.retornaViewPraEstadoInicialEmCasoDeErroAoBuscarNave(controladorDeAlertas)
-//            return
-//        })
-//        
-//        if self.qntsVezesOBotaoFoiClicado != 0 {
-//            return
-//        }
-//        
-//        self.fundoDoLoading.isHidden = false
-//        self.animacaoQuandoOBotaoGerarNaveEClicado()
-//       
-//        let seconds = 1.0
-//        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-//            self.atualizaViewParaExibirTabela()
-//        }
-                
+        guard let animacao = self.animacao else { return }
+        
+        self.naveView.exibeComponentesCaracteristicasDaNave()
+        
+        animacao.iniciarAnimacao()
+        
+        let requisicoesSWAPI = RequisicoesStarWarsAPI(animacao: animacao)
+    
+        let naveController = NaveController(requisicoesSWAPI: requisicoesSWAPI)
+        
+        naveController.gerarNave { nave in
+            let dadosNave = nave.getListaComDadosDaNave()
+            self.adicionaOsDadosDaNaveAsLinhasDaTableView(dadosNave)
+            print(dadosNave)
+        } fracasso: {
+            let alerta = Alerta(viewController: self)
+            self.retornaViewPraEstadoInicialEmCasoDeErroAoBuscarNave(alerta)
+            print("Hello men hehe")
+        }
+
     }
     
     // MARK: - Funcoes
@@ -113,48 +67,12 @@ class NaveViewController: UIViewController, ExibeTableViewDelegate {
         }
     }
     
-    private func atualizaViewParaExibirTabela() -> Void {
-        self.naveView.exibeComponentesCaracteristicasDaNave()
-        self.qntsVezesOBotaoFoiClicado += 1
-    }
-    
     private func retornaViewPraEstadoInicialEmCasoDeErroAoBuscarNave(_ controladorAlertas: Alerta) -> Void {
         controladorAlertas.criaAlerta(mensagem: "Erro ao gerar nave! Tenta novamente")
         
         self.naveView.retornaComponentesDaViewPraEstadoInicial()
-        self.qntsVezesOBotaoFoiClicado = 0
     }
-    
-    // MARK: - Animacoes
-    private func animacaoQuandoOBotaoGerarNaveEClicado() -> Void {
-        let posicaoInicialBarraDeLoading = self.leadingAnchorBarraDeLoading.constant
-        
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: [.autoreverse], animations: {
-            self.leadingAnchorBarraDeLoading.constant = self.fundoDoLoading.frame.midX
-            self.view.layoutIfNeeded()
-        }) { (_ ) in
-            self.leadingAnchorBarraDeLoading.constant = posicaoInicialBarraDeLoading
-            self.fundoDoLoading.isHidden = true
-        }
-    }
-    
-    // MARK: - Config constraints
-    private func configConstraints() -> Void {
-        NSLayoutConstraint.activate([
-            self.fundoDoLoading.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 200),
-            self.fundoDoLoading.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
-            self.fundoDoLoading.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -60),
-            self.fundoDoLoading.heightAnchor.constraint(equalToConstant: 80),
-            
-            self.barraDeLoading.topAnchor.constraint(equalTo: self.fundoDoLoading.topAnchor, constant: 20),
-            self.leadingAnchorBarraDeLoading,
-            self.barraDeLoading.heightAnchor.constraint(equalToConstant: 5),
-            self.barraDeLoading.widthAnchor.constraint(equalToConstant: 50),
-            
-            self.gerandoNaveLabel.topAnchor.constraint(equalTo: self.barraDeLoading.bottomAnchor, constant: 10),
-            self.gerandoNaveLabel.centerXAnchor.constraint(equalTo: self.fundoDoLoading.centerXAnchor)
-        ])
-    }
+
 }
 
 // MARK: - Extensoes

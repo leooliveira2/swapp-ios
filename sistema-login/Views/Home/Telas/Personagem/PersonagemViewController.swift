@@ -7,11 +7,7 @@
 
 import UIKit
 
-protocol ExibeTableViewDelegate {
-    func exibeTableView(caracteristicas: [String]) -> Void
-}
-
-class PersonagemViewController: UIViewController, ExibeTableViewDelegate {
+class PersonagemViewController: UIViewController {
     
     // MARK: - View
     private lazy var personagemView: PersonagemView = {
@@ -20,14 +16,8 @@ class PersonagemViewController: UIViewController, ExibeTableViewDelegate {
     }()
     
     // MARK: - Atributos
-    private var qntsVezesOBotaoFoiClicado: Int = 0
     private var animacao: Animacao?
     
-    // MARK: - Pimba pimba
-    public func exibeTableView(caracteristicas: [String]) {
-        
-    }
-
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +69,6 @@ class PersonagemViewController: UIViewController, ExibeTableViewDelegate {
         controladorAlertas.criaAlerta(mensagem: "Erro ao gerar personagem! Tenta novamente")
         
         self.personagemView.retornaComponentesDaViewPraEstadoInicial()
-        self.qntsVezesOBotaoFoiClicado = 0
     }
 
 }

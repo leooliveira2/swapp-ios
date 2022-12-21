@@ -9,24 +9,23 @@ import UIKit
 
 class NaveController {
     
-    let animacao: Animacao
-    let vC: ExibeTableViewDelegate
+    private var requisicoesSWAPI: RequisicoesStarWarsAPI
     
-    init(animacao: Animacao, vC: ExibeTableViewDelegate) {
-        self.animacao = animacao
-        self.vC = vC
+    init(requisicoesSWAPI: RequisicoesStarWarsAPI) {
+        self.requisicoesSWAPI = requisicoesSWAPI
     }
     
     public func gerarNave(
-        sucesso: @escaping(_ naveVindaDaRequisicao: Nave) -> Void,
-        fracasso: @escaping(_ falhaNaRequisicao: Bool) -> Void) -> Void
+        sucesso: @escaping(_ nave: Nave) -> Void,
+        fracasso: @escaping() -> Void
+    ) -> Void
     {
-        RequisicoesStarWarsAPI(animacao: self.animacao).fazRequisicaoNave(id: gerarIdAleatorio(), sucesso: { (nave) in
-            sucesso(nave)
-        },
-        falha: { (falha) in
-            fracasso(falha)
-        })
+        requisicoesSWAPI.fazRequisicaoNave(id: gerarIdAleatorio()) { nave in
+            guard let naveVindaDaRequisicao = nave else { fracasso(); return }
+            
+            sucesso(naveVindaDaRequisicao)
+            return
+        }
     }
     
     private func gerarIdAleatorio() -> Int {

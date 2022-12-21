@@ -54,7 +54,6 @@ class PlanetaViewController: UIViewController {
         } fracasso: {
             let alerta = Alerta(viewController: self)
             self.retornaViewPraEstadoInicialEmCasoDeErroAoBuscarPlaneta(alerta)
-            print("Hello men hehe")
         }
     }
     

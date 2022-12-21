@@ -22,7 +22,7 @@ class PersonagemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = self.personagemView
-    
+        
         self.personagemView.getBotaoGerarPersonagem().addTarget(
             self,
             action: #selector(acaoBotaoGerarPersonagem(_:)),
@@ -54,7 +54,6 @@ class PersonagemViewController: UIViewController {
         } fracasso: {
             let alerta = Alerta(viewController: self)
             self.retornaViewPraEstadoInicialEmCasoDeErroAoBuscarPersonagem(alerta)
-            print("Hello men hehe")
         }
     }
     
@@ -70,7 +69,6 @@ class PersonagemViewController: UIViewController {
         
         self.personagemView.retornaComponentesDaViewPraEstadoInicial()
     }
-
 }
 
 // MARK: - Extensoes

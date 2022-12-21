@@ -44,7 +44,7 @@ class NaveViewController: UIViewController {
         
         animacao.iniciarAnimacao()
         
-        let requisicoesSWAPI = RequisicoesStarWarsAPI(animacao: animacao)
+        let requisicoesSWAPI = RequisicoesStarWarsAPI()
     
         let naveController = NaveController(requisicoesSWAPI: requisicoesSWAPI)
         
@@ -52,10 +52,11 @@ class NaveViewController: UIViewController {
             let dadosNave = nave.getListaComDadosDaNave()
             self.adicionaOsDadosDaNaveAsLinhasDaTableView(dadosNave)
             print(dadosNave)
+            animacao.pararAnimacao()
         } fracasso: {
             let alerta = Alerta(viewController: self)
             self.retornaViewPraEstadoInicialEmCasoDeErroAoBuscarNave(alerta)
-            print("Hello men hehe")
+            animacao.pararAnimacao()
         }
 
     }

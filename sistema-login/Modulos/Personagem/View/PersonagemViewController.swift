@@ -43,7 +43,7 @@ class PersonagemViewController: UIViewController {
         
         animacao.iniciarAnimacao()
         
-        let requisicoesSWAPI = RequisicoesStarWarsAPI(animacao: animacao)
+        let requisicoesSWAPI = RequisicoesStarWarsAPI()
     
         let personagemController = PersonagemController(requisicoesSWAPI: requisicoesSWAPI)
         
@@ -51,9 +51,11 @@ class PersonagemViewController: UIViewController {
             let dadosPersonagem = personagem.getListaComDadosDoPersonagem()
             self.adicionaOsDadosDoPersonagemAsLinhasDaTableView(dadosPersonagem)
             print(dadosPersonagem)
+            animacao.pararAnimacao()
         } fracasso: {
             let alerta = Alerta(viewController: self)
             self.retornaViewPraEstadoInicialEmCasoDeErroAoBuscarPersonagem(alerta)
+            animacao.pararAnimacao()
         }
     }
     

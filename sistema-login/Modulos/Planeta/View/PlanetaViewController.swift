@@ -43,7 +43,7 @@ class PlanetaViewController: UIViewController {
         
         animacao.iniciarAnimacao()
         
-        let requisicoesSWAPI = RequisicoesStarWarsAPI(animacao: animacao)
+        let requisicoesSWAPI = RequisicoesStarWarsAPI()
     
         let planetaController = PlanetaController(requisicoesSWAPI: requisicoesSWAPI)
         
@@ -51,9 +51,11 @@ class PlanetaViewController: UIViewController {
             let dadosPlaneta = planeta.getListaComDadosDoPlaneta()
             self.adicionaOsDadosDoPlanetaAsLinhasDaTableView(dadosPlaneta)
             print(dadosPlaneta)
+            animacao.pararAnimacao()
         } fracasso: {
             let alerta = Alerta(viewController: self)
             self.retornaViewPraEstadoInicialEmCasoDeErroAoBuscarPlaneta(alerta)
+            animacao.pararAnimacao()
         }
     }
     

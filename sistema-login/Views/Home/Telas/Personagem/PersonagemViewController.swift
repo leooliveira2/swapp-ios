@@ -7,94 +7,65 @@
 
 import UIKit
 
-class PersonagemViewController: UIViewController {
+protocol ExibeTableViewDelegate {
+    func exibeTableView(caracteristicas: [String]) -> Void
+}
+
+class PersonagemViewController: UIViewController, ExibeTableViewDelegate {
     
-    // MARK: - Atributos
+    // MARK: - View
     private lazy var personagemView: PersonagemView = {
         let view = PersonagemView()
         return view
     }()
     
+    // MARK: - Atributos
     private var qntsVezesOBotaoFoiClicado: Int = 0
+    private var animacao: Animacao?
     
-    // MARK: - Componentes da animacao
-    private lazy var fundoDoLoading: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 30
-        view.backgroundColor = .white
-        return view
-    }()
-    
-    private lazy var barraDeLoading: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .blue
-        return view
-    }()
-    
-    private lazy var gerandoPersonagemLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Gerando Personagem...."
-        label.textColor = .blue
-        label.font = UIFont.boldSystemFont(ofSize: 16)
-        return label
-    }()
-    
-    private lazy var leadingAnchorBarraDeLoading: NSLayoutConstraint = {
-        let leadingAnchor = self.barraDeLoading.leadingAnchor.constraint(equalTo: self.fundoDoLoading.leadingAnchor, constant: 20)
-        return leadingAnchor
-    }()
-    
+    // MARK: - Pimba pimba
+    public func exibeTableView(caracteristicas: [String]) {
+        
+    }
+
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = self.personagemView
-        
+    
         self.personagemView.getBotaoGerarPersonagem().addTarget(
             self,
             action: #selector(acaoBotaoGerarPersonagem(_:)),
             for: .touchUpInside
         )
-    
+        
         self.personagemView.getDadosPersonagemTableView().delegate = self
         self.personagemView.getDadosPersonagemTableView().dataSource = self
         
-        self.fundoDoLoading.addSubview(self.barraDeLoading)
-        self.fundoDoLoading.addSubview(self.gerandoPersonagemLabel)
-        self.view.addSubview(self.fundoDoLoading)
-        self.configConstraints()
-        
-        self.fundoDoLoading.isHidden = true
+        self.animacao = Animacao(view: self.personagemView)
     }
     
     // MARK: - Actions
     @objc private func acaoBotaoGerarPersonagem(_ sender: UIButton) -> Void {
-        let personagemController = PersonagemController()
+        guard let animacao = self.animacao else { return }
         
-        personagemController.gerarPersonagem(sucesso: { (personagem) in
-            let caracteristicasDoPersonagem: [String] = personagem.getListaComDadosDoPersonagem()
-            self.adicionaOsDadosDoPersonagemAsLinhasDaTableView(caracteristicasDoPersonagem)
-        },
-        fracasso: { (erro) in
-            let controladorDeAlertas = Alerta(viewController: self)
-            self.retornaViewPraEstadoInicialEmCasoDeErroAoBuscarPersonagem(controladorDeAlertas)
-            return
-        })
+        self.personagemView.exibeComponentesCaracteristicasDoPersonagem()
         
-        if self.qntsVezesOBotaoFoiClicado != 0 {
-            return
+        animacao.iniciarAnimacao()
+        
+        let requisicoesSWAPI = RequisicoesStarWarsAPI(animacao: animacao)
+    
+        let personagemController = PersonagemController(requisicoesSWAPI: requisicoesSWAPI)
+        
+        personagemController.gerarPersonagem { personagem in
+            let dadosPersonagem = personagem.getListaComDadosDoPersonagem()
+            self.adicionaOsDadosDoPersonagemAsLinhasDaTableView(dadosPersonagem)
+            print(dadosPersonagem)
+        } fracasso: {
+            let alerta = Alerta(viewController: self)
+            self.retornaViewPraEstadoInicialEmCasoDeErroAoBuscarPersonagem(alerta)
+            print("Hello men hehe")
         }
-        
-        self.fundoDoLoading.isHidden = false
-        self.animacaoQuandoOBotaoGerarPersonagemEClicado()
-       
-        let seconds = 1.0
-        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-            self.atualizaViewParaExibirTabela()
-        }
-                
     }
     
     // MARK: - Funcoes
@@ -104,48 +75,13 @@ class PersonagemViewController: UIViewController {
         }
     }
     
-    private func atualizaViewParaExibirTabela() -> Void {
-        self.personagemView.exibeComponentesCaracteristicasDoPersonagem()
-        self.qntsVezesOBotaoFoiClicado += 1
-    }
-    
     private func retornaViewPraEstadoInicialEmCasoDeErroAoBuscarPersonagem(_ controladorAlertas: Alerta) -> Void {
         controladorAlertas.criaAlerta(mensagem: "Erro ao gerar personagem! Tenta novamente")
         
         self.personagemView.retornaComponentesDaViewPraEstadoInicial()
         self.qntsVezesOBotaoFoiClicado = 0
     }
-    
-    // MARK: - Animacoes
-    private func animacaoQuandoOBotaoGerarPersonagemEClicado() -> Void {
-        let posicaoInicialBarraDeLoading = self.leadingAnchorBarraDeLoading.constant
-        
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: [.autoreverse], animations: {
-            self.leadingAnchorBarraDeLoading.constant = self.fundoDoLoading.frame.midX
-            self.view.layoutIfNeeded()
-        }) { (_ ) in
-            self.leadingAnchorBarraDeLoading.constant = posicaoInicialBarraDeLoading
-            self.fundoDoLoading.isHidden = true
-        }
-    }
-    
-    // MARK: - Config constraints
-    private func configConstraints() -> Void {
-        NSLayoutConstraint.activate([
-            self.fundoDoLoading.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 200),
-            self.fundoDoLoading.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
-            self.fundoDoLoading.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -60),
-            self.fundoDoLoading.heightAnchor.constraint(equalToConstant: 80),
-            
-            self.barraDeLoading.topAnchor.constraint(equalTo: self.fundoDoLoading.topAnchor, constant: 20),
-            self.leadingAnchorBarraDeLoading,
-            self.barraDeLoading.heightAnchor.constraint(equalToConstant: 5),
-            self.barraDeLoading.widthAnchor.constraint(equalToConstant: 50),
-            
-            self.gerandoPersonagemLabel.topAnchor.constraint(equalTo: self.barraDeLoading.bottomAnchor, constant: 10),
-            self.gerandoPersonagemLabel.centerXAnchor.constraint(equalTo: self.fundoDoLoading.centerXAnchor)
-        ])
-    }
+
 }
 
 // MARK: - Extensoes

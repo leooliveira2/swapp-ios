@@ -7,39 +7,48 @@
 
 import UIKit
 import Alamofire
-import ObjectMapper
 
 class RequisicoesStarWarsAPI {
     
+    let animacao: Animacao
+    
+    init(animacao: Animacao) {
+        self.animacao = animacao
+    }
+    
+    
     func fazRequisicaoPersonagem(
         id: Int,
-        sucesso: @escaping(_ personagem: Personagem) -> Void,
-        falha: @escaping(_ erro: Bool) -> Void)
+        resultado: @escaping(_ personagem: Personagem?) -> Void)
     {
-        AF.request("https://swapi.dev/api/people/\(id)/").responseJSON { (response) in
-            
+        let requisicao = AF.request("https://swapi.dev/api/people/\(id)/")
+
+        requisicao.responseDecodable(of: Personagem.self) { (response) in
+
             if response.response?.statusCode == 404 {
-                falha(false)
+                print("1")
+                self.animacao.pararAnimacao()
+                resultado(nil)
                 return
             }
-            
-            switch response.result {
-            case .success:
-                guard let data = response.value else {
-                    falha(false)
-                    return
-                }
-                
-                guard let personagem = Mapper<Personagem>().map(JSONObject: data) else {
-                    falha(false)
-                    return
-                }
-                sucesso(personagem)
-                break
-                
-            case .failure:
-                falha(false)
-                break
+
+            guard let data = response.data else {
+                print("2")
+                self.animacao.pararAnimacao()
+                resultado(nil)
+                return
+            }
+
+            let decoder = JSONDecoder()
+            do {
+                let personagem = try decoder.decode(Personagem.self, from: data)
+                resultado(personagem)
+                self.animacao.pararAnimacao()
+                return
+            } catch {
+                print("Não foi possível decodificar o JSON")
+                self.animacao.pararAnimacao()
+                return
             }
         }
     }

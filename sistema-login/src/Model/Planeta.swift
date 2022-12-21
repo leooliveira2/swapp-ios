@@ -16,10 +16,6 @@ class Planeta: Codable {
     private var terrain: String = ""
     private var population: String = ""
     
-    public func getName() -> String {
-        return self.name
-    }
-    
     public func getListaComDadosDoPlaneta() -> [String] {
         let caracteristicasDoPlaneta: [String] = [
             "Nome: \(self.name)",

@@ -7,7 +7,13 @@
 
 import UIKit
 
-class PlanetaViewController: UIViewController {
+class PlanetaViewController: UIViewController, ExibeTableViewDelegate {
+    
+    public func exibeTableView(caracteristicas: [String]) {
+        self.tableViewPodeSerExibida = true
+    }
+    
+    @Published private var tableViewPodeSerExibida: Bool = false
     
     // MARK: - Atributos
     private lazy var planetaView: PlanetaView = {
@@ -73,29 +79,31 @@ class PlanetaViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func acaoBotaoGerarPlaneta(_ sender: UIButton) -> Void {
-        let planetaController = PlanetaController()
-        
-        planetaController.gerarPlaneta(sucesso: { (planeta) in
-            let caracteristicasDoPlaneta: [String] = planeta.getListaComDadosDoPlaneta()
-            self.adicionaOsDadosDoPlanetaAsLinhasDaTableView(caracteristicasDoPlaneta)
-        },
-        fracasso: { (erro) in
-            let controladorDeAlertas = Alerta(viewController: self)
-            self.retornaViewPraEstadoInicialEmCasoDeErroAoBuscarPlaneta(controladorDeAlertas)
-            return
-        })
-        
-        if self.qntsVezesOBotaoFoiClicado != 0 {
-            return
-        }
-        
-        self.fundoDoLoading.isHidden = false
-        self.animacaoQuandoOBotaoGerarPlanetaEClicado()
-       
-        let seconds = 1.0
-        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-            self.atualizaViewParaExibirTabela()
-        }
+//        let animacao = Animacao(myView: self.view)
+//        
+//        let planetaController = PlanetaController(animacao: animacao, vC: self)
+//        
+//        planetaController.gerarPlaneta(sucesso: { (planeta) in
+//            let caracteristicasDoPlaneta: [String] = planeta.getListaComDadosDoPlaneta()
+//            self.adicionaOsDadosDoPlanetaAsLinhasDaTableView(caracteristicasDoPlaneta)
+//        },
+//        fracasso: { (erro) in
+//            let controladorDeAlertas = Alerta(viewController: self)
+//            self.retornaViewPraEstadoInicialEmCasoDeErroAoBuscarPlaneta(controladorDeAlertas)
+//            return
+//        })
+//        
+//        if self.qntsVezesOBotaoFoiClicado != 0 {
+//            return
+//        }
+//        
+//        self.fundoDoLoading.isHidden = false
+//        self.animacaoQuandoOBotaoGerarPlanetaEClicado()
+//       
+//        let seconds = 1.0
+//        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+//            self.atualizaViewParaExibirTabela()
+//        }
                 
     }
     

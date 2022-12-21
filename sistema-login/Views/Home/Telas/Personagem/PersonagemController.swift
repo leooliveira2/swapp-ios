@@ -8,17 +8,24 @@
 import UIKit
 
 class PersonagemController {
-
+    
+    private var requisicoesSWAPI: RequisicoesStarWarsAPI
+    
+    init(requisicoesSWAPI: RequisicoesStarWarsAPI) {
+        self.requisicoesSWAPI = requisicoesSWAPI
+    }
+    
     public func gerarPersonagem(
-        sucesso: @escaping(_ personagemVindoDaRequisicao: Personagem) -> Void,
-        fracasso: @escaping(_ falhaNaRequisicao: Bool) -> Void) -> Void
+        sucesso: @escaping(_ personagem: Personagem) -> Void,
+        fracasso: @escaping() -> Void
+    ) -> Void
     {
-        RequisicoesStarWarsAPI().fazRequisicaoPersonagem(id: gerarIdAleatorio(), sucesso: { (personagem) in
-            sucesso(personagem)
-        },
-        falha: { (falha) in
-            fracasso(falha)
-        })
+        requisicoesSWAPI.fazRequisicaoPersonagem(id: gerarIdAleatorio()) { personagem in
+            guard let personagemVindoDaRequisicao = personagem else { fracasso(); return }
+            
+            sucesso(personagemVindoDaRequisicao)
+            return
+        }
     }
     
     private func gerarIdAleatorio() -> Int {

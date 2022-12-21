@@ -33,6 +33,7 @@
 		C55BFA78291AE4850049C539 /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BFA77291AE4850049C539 /* Alerta.swift */; };
 		C55FF6A9295218C200103434 /* ValidadorDeLoginSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55FF6A8295218C200103434 /* ValidadorDeLoginSystemTests.swift */; };
 		C55FF6AB29521B0E00103434 /* RecuperaDadosDoUsuarioSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55FF6AA29521B0E00103434 /* RecuperaDadosDoUsuarioSystemTests.swift */; };
+		C55FF6AD2952394400103434 /* Animacao.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55FF6AC2952394400103434 /* Animacao.swift */; };
 		C56022E6293A97F9006D99E8 /* PlanetaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56022E5293A97F9006D99E8 /* PlanetaController.swift */; };
 		C56022E8293A9822006D99E8 /* Planeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56022E7293A9822006D99E8 /* Planeta.swift */; };
 		C5646B60293E523B009FD074 /* NaveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5646B5F293E523B009FD074 /* NaveController.swift */; };
@@ -103,6 +104,7 @@
 		C55BFA77291AE4850049C539 /* Alerta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
 		C55FF6A8295218C200103434 /* ValidadorDeLoginSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidadorDeLoginSystemTests.swift; sourceTree = "<group>"; };
 		C55FF6AA29521B0E00103434 /* RecuperaDadosDoUsuarioSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperaDadosDoUsuarioSystemTests.swift; sourceTree = "<group>"; };
+		C55FF6AC2952394400103434 /* Animacao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animacao.swift; sourceTree = "<group>"; };
 		C56022E5293A97F9006D99E8 /* PlanetaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetaController.swift; sourceTree = "<group>"; };
 		C56022E7293A9822006D99E8 /* Planeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planeta.swift; sourceTree = "<group>"; };
 		C5646B5F293E523B009FD074 /* NaveController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaveController.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 		C5252556291C4502002508F5 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				C55FF6AC2952394400103434 /* Animacao.swift */,
 				C55BFA6D291AD0330049C539 /* ValidacoesDeDadosDoUsuario.swift */,
 				C55BFA77291AE4850049C539 /* Alerta.swift */,
 				C5143CE7292FE6A600918975 /* RequisicoesStarWarsAPI.swift */,
@@ -586,6 +589,7 @@
 				C550F8682919644D00FC2EF2 /* SceneDelegate.swift in Sources */,
 				C55BFA68291AB6890049C539 /* CriacaoDeContaView.swift in Sources */,
 				C5646B60293E523B009FD074 /* NaveController.swift in Sources */,
+				C55FF6AD2952394400103434 /* Animacao.swift in Sources */,
 				C581A7B529313FB30092DF05 /* PersonagemController.swift in Sources */,
 				C523C6D6294CD3930012077A /* ValidadorDeLoginSystemMock.swift in Sources */,
 				C56022E6293A97F9006D99E8 /* PlanetaController.swift in Sources */,

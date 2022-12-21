@@ -6,38 +6,26 @@
 //
 
 import UIKit
-import ObjectMapper
 
-class Personagem: Mappable {
+class Personagem: Codable {
     
     // MARK: - Atributos
-    private var nome: String = ""
-    private var altura: String = ""
-    private var peso: String = ""
-    private var corDosOlhos: String = ""
-    private var anoNascimento: String = ""
-    private var genero: String = ""
+    private var name: String = ""
+    private var height: String = ""
+    private var mass: String = ""
+    private var eye_color: String = ""
+    private var birth_year: String = ""
+    private var gender: String = ""
     
-    // MARK: - Inicializadores
-    required init?(map: ObjectMapper.Map) {}
-    
-    func mapping(map: ObjectMapper.Map) {
-        self.nome               <- map["name"]
-        self.altura             <- map["height"]
-        self.peso               <- map["mass"]
-        self.corDosOlhos        <- map["eye_color"]
-        self.anoNascimento      <- map["birth_year"]
-        self.genero             <- map["gender"]
-    }
-    
+    // MARK: - Funcoes
     public func getListaComDadosDoPersonagem() -> [String] {
         let caracteristicasDoPersonagem: [String] = [
-            "Nome: \(self.nome)",
-            "Altura: \(self.altura)",
-            "Peso: \(self.peso)",
-            "Cor dos olhos: \(self.corDosOlhos)",
-            "Ano de nascimento: \(self.anoNascimento)",
-            "Gênero: \(self.genero)"
+            "Nome: \(self.name)",
+            "Altura: \(self.height)",
+            "Peso: \(self.mass)",
+            "Cor dos olhos: \(self.eye_color)",
+            "Ano de nascimento: \(self.birth_year)",
+            "Gênero: \(self.gender)"
         ]
         
         return caracteristicasDoPersonagem

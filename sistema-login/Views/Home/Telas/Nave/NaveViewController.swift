@@ -7,7 +7,12 @@
 
 import UIKit
 
-class NaveViewController: UIViewController {
+class NaveViewController: UIViewController, ExibeTableViewDelegate {
+    
+    public func exibeTableView(caracteristicas: [String]) {
+        
+    }
+    
     
     // MARK: - Atributos
     private lazy var naveView: NaveView = {
@@ -16,6 +21,8 @@ class NaveViewController: UIViewController {
     }()
     
     private var qntsVezesOBotaoFoiClicado: Int = 0
+    
+    @Published private var tableViewPodeSerExibida: Bool = false
     
     // MARK: - Componentes da animacao
     private lazy var fundoDoLoading: UIView = {
@@ -57,7 +64,7 @@ class NaveViewController: UIViewController {
             action: #selector(acaoBotaoGerarNave(_:)),
             for: .touchUpInside
         )
-    
+        
         self.naveView.getDadosNaveTableView().delegate = self
         self.naveView.getDadosNaveTableView().dataSource = self
         
@@ -71,29 +78,31 @@ class NaveViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func acaoBotaoGerarNave(_ sender: UIButton) -> Void {
-        let naveController = NaveController()
-        
-        naveController.gerarNave(sucesso: { (nave) in
-            let caracteristicasDaNave: [String] = nave.getListaComDadosDaNave()
-            self.adicionaOsDadosDaNaveAsLinhasDaTableView(caracteristicasDaNave)
-        },
-        fracasso: { (erro) in
-            let controladorDeAlertas = Alerta(viewController: self)
-            self.retornaViewPraEstadoInicialEmCasoDeErroAoBuscarNave(controladorDeAlertas)
-            return
-        })
-        
-        if self.qntsVezesOBotaoFoiClicado != 0 {
-            return
-        }
-        
-        self.fundoDoLoading.isHidden = false
-        self.animacaoQuandoOBotaoGerarNaveEClicado()
-       
-        let seconds = 1.0
-        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-            self.atualizaViewParaExibirTabela()
-        }
+//        let animacao = Animacao(myView: self.view)
+//        
+//        let naveController = NaveController(animacao: animacao, vC: self)
+//        
+//        naveController.gerarNave(sucesso: { (nave) in
+//            let caracteristicasDaNave: [String] = nave.getListaComDadosDaNave()
+//            self.adicionaOsDadosDaNaveAsLinhasDaTableView(caracteristicasDaNave)
+//        },
+//        fracasso: { (erro) in
+//            let controladorDeAlertas = Alerta(viewController: self)
+//            self.retornaViewPraEstadoInicialEmCasoDeErroAoBuscarNave(controladorDeAlertas)
+//            return
+//        })
+//        
+//        if self.qntsVezesOBotaoFoiClicado != 0 {
+//            return
+//        }
+//        
+//        self.fundoDoLoading.isHidden = false
+//        self.animacaoQuandoOBotaoGerarNaveEClicado()
+//       
+//        let seconds = 1.0
+//        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+//            self.atualizaViewParaExibirTabela()
+//        }
                 
     }
     

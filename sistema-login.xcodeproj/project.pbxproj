@@ -38,6 +38,7 @@
 		C56022E8293A9822006D99E8 /* Planeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56022E7293A9822006D99E8 /* Planeta.swift */; };
 		C5646B60293E523B009FD074 /* NaveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5646B5F293E523B009FD074 /* NaveController.swift */; };
 		C5646B62293E5281009FD074 /* Nave.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5646B61293E5281009FD074 /* Nave.swift */; };
+		C569C11F2954B7640033ED19 /* PerfilController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569C11E2954B7640033ED19 /* PerfilController.swift */; };
 		C569E5E4293FB9030040885A /* VerificadorDeDadosCadastradosRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569E5E3293FB9030040885A /* VerificadorDeDadosCadastradosRepository.swift */; };
 		C569E5EC293FDABD0040885A /* ValidadorDeLoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569E5EB293FDABD0040885A /* ValidadorDeLoginRepository.swift */; };
 		C572B053293936BB00BE9D00 /* RedefinicaoDeSenhaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572B052293936BB00BE9D00 /* RedefinicaoDeSenhaRepository.swift */; };
@@ -109,6 +110,7 @@
 		C56022E7293A9822006D99E8 /* Planeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planeta.swift; sourceTree = "<group>"; };
 		C5646B5F293E523B009FD074 /* NaveController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaveController.swift; sourceTree = "<group>"; };
 		C5646B61293E5281009FD074 /* Nave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nave.swift; sourceTree = "<group>"; };
+		C569C11E2954B7640033ED19 /* PerfilController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilController.swift; sourceTree = "<group>"; };
 		C569E5E3293FB9030040885A /* VerificadorDeDadosCadastradosRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificadorDeDadosCadastradosRepository.swift; sourceTree = "<group>"; };
 		C569E5EB293FDABD0040885A /* ValidadorDeLoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidadorDeLoginRepository.swift; sourceTree = "<group>"; };
 		C572B052293936BB00BE9D00 /* RedefinicaoDeSenhaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedefinicaoDeSenhaRepository.swift; sourceTree = "<group>"; };
@@ -433,6 +435,7 @@
 		C5493F6829539D6B00BD0399 /* Perfil */ = {
 			isa = PBXGroup;
 			children = (
+				C569C11D2954B7530033ED19 /* Controller */,
 				C5493F6929539D7400BD0399 /* View */,
 			);
 			path = Perfil;
@@ -550,6 +553,14 @@
 				C55BFA75291AD51A0049C539 /* Erros.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C569C11D2954B7530033ED19 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C569C11E2954B7640033ED19 /* PerfilController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		C569E5E7293FBD300040885A /* Repository */ = {
@@ -797,6 +808,7 @@
 				C50DC29E291EDE28001CC4F9 /* HomeTabBarController.swift in Sources */,
 				C523C6D4294CD1A90012077A /* VerificadorDeDadosCadastradosSystemMock.swift in Sources */,
 				C550F8812919A0D400FC2EF2 /* CriacaoDeContaViewController.swift in Sources */,
+				C569C11F2954B7640033ED19 /* PerfilController.swift in Sources */,
 				C58D409B292EB46F00A1C6BC /* PersonagemViewController.swift in Sources */,
 				C55BFA76291AD51A0049C539 /* Erros.swift in Sources */,
 				C5C3455F291D907A00E3097A /* LoginController.swift in Sources */,

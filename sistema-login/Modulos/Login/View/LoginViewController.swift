@@ -68,8 +68,14 @@ class LoginViewController: UIViewController {
         
         let validadorDeLogin = ValidadorDeLoginSystem()
         let validadorDeUsuario = ValidacoesDeDadosDoUsuario(controladorDeErros)
+        let recuperaDadosDoUsuario = RecuperaDadosDoUsuarioSystem()
         
-        let controlador = LoginController(controladorDeErros, validadorDeLogin, validadorDeUsuario)
+        let controlador = LoginController(
+            controladorDeErros,
+            validadorDeLogin,
+            validadorDeUsuario,
+            recuperaDadosDoUsuario
+        )
         
         let loginPodeSerRealizado = controlador.fazerLogin(
             email: self.loginView.getEmailDoUsuarioTextField().text,

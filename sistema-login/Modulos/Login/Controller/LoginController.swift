@@ -12,16 +12,19 @@ class LoginController {
     private let controladorDeErros: ControladorDeErros
     private let validadorDeLogin: ValidadorDeLoginRepository
     private let validadorDeUsuario: ValidacoesDeDadosDoUsuario
+    private let recuperaDadosDoUsuario: RecuperaDadosDoUsuarioRepository
     
     init(
         _ controladorDeErros: ControladorDeErros,
         _ validadorDeLogin: ValidadorDeLoginRepository,
-        _ validadorDeUsuario: ValidacoesDeDadosDoUsuario
+        _ validadorDeUsuario: ValidacoesDeDadosDoUsuario,
+        _ recuperaDadosDoUsuario: RecuperaDadosDoUsuarioRepository
     )
     {
         self.controladorDeErros = controladorDeErros
         self.validadorDeLogin = validadorDeLogin
         self.validadorDeUsuario = validadorDeUsuario
+        self.recuperaDadosDoUsuario = recuperaDadosDoUsuario
     }
     
     public func fazerLogin(email: String?, senha: String?) -> Bool {
@@ -61,8 +64,12 @@ class LoginController {
     }
     
     private func configuraLoginAutomaticoNasProximasSessoes(email: String) -> Void {
+        guard let nickName = self.recuperaDadosDoUsuario.getNickNameDoUsuario(email: email) else { return }
+        
+        print(nickName)
+        
         UserDefaults.standard.set(true, forKey: "esta_logado")
-        UserDefaults.standard.set(email, forKey: "user_id")
+        UserDefaults.standard.set(nickName, forKey: "user_id")
     }
 
 }

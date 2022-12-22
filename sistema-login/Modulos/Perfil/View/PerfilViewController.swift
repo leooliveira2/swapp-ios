@@ -29,7 +29,9 @@ class PerfilViewController: UIViewController {
     // MARK: - Funcoes
     @objc private func botaoSairFoiClicado(_ sender: UIButton) -> Void {
         
-        self.removeOsDadosDeLogin()
+        let perfilController = PerfilController()
+        
+        perfilController.removeOsDadosDeLoginDoUsuario()
         
         guard let navigationController = self.navigationController else { return }
         
@@ -37,17 +39,9 @@ class PerfilViewController: UIViewController {
     }
     
     private func getNickNameDoUsuario() -> String {
-        guard let emailDoUsuario = UserDefaults.standard.string(forKey: "user_id") else { return "" }
-        
-        let recuperadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSystem()
-        
-        guard let nickNameDoUsuario = recuperadorDeDadosDoUsuario.getNickNameDoUsuario(email: emailDoUsuario) else { return "" }
+        guard let nickNameDoUsuario = UserDefaults.standard.string(forKey: "user_id") else { return "" }
         
         return nickNameDoUsuario
     }
-    
-    private func removeOsDadosDeLogin() -> Void {
-        UserDefaults.standard.set(false, forKey: "esta_logado")
-        UserDefaults.standard.removeObject(forKey: "user_id")
-    }
+
 }

@@ -34,5 +34,42 @@ class RedefinicaoDeSenhaSystem: RedefinicaoDeSenhaRepository {
         
         return false
     }
+}
+
+import SQLite3
+
+class RedefinicaoDeSenhaSQLite: RedefinicaoDeSenhaRepository {
+    
+    // MARK: - Atributos
+    let instanciaDoBanco: OpaquePointer
+    
+    // MARK: - Inicializador
+    init(instanciaDoBanco: OpaquePointer) {
+        self.instanciaDoBanco = instanciaDoBanco
+    }
+    
+    // MARK: - Funcoes
+    func redefinirSenha(email: String, senha: String) -> Bool {
+        let updateStatementString = "UPDATE Usuarios SET senha = ? WHERE email = ?;"
+        var updateStatement: OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(self.instanciaDoBanco, updateStatementString, -1, &updateStatement, nil) != SQLITE_OK {
+            print("Erro ao ler dados do banco!")
+            return false
+        }
+        
+        sqlite3_bind_text(updateStatement, 1, (senha as NSString).utf8String, -1, nil)
+        sqlite3_bind_text(updateStatement, 2, (email as NSString).utf8String, -1, nil)
+    
+        if sqlite3_step(updateStatement) == SQLITE_DONE {
+
+            sqlite3_finalize(updateStatement)
+            return true
+        }
+        
+        sqlite3_finalize(updateStatement)
+        return false
+    }
+    
     
 }

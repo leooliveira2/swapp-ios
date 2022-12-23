@@ -41,6 +41,8 @@ class RecuperacaoDeSenhaViewController: UIViewController {
     
     // MARK: - Funcoes
     @objc private func buscaUsuarioParaRedefinicaoDeSenha(_ sender: UIButton) -> Void {
+        let alertas = Alerta(viewController: self)
+        
         let controladorDeErros = ControladorDeErros()
         let validadorDeDadosDoUsuario = ValidacoesDeDadosDoUsuario(controladorDeErros)
         let recuperarSenhaController = RecuperacaoDeSenhaController(
@@ -48,7 +50,12 @@ class RecuperacaoDeSenhaViewController: UIViewController {
             validadorDeDadosDoUsuario
         )
         
-        let verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosSystem()
+        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "UsuariosCadastrados.sqlite") else {
+            alertas.criaAlerta(mensagem: "Erro de conexão! Favor tentar novamente")
+            return
+        }
+        
+        let verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosSQLite(instanciaDoBanco: instanciaDoBanco)
         
         let usuarioFoiEncontrado = recuperarSenhaController.buscaUsuarioParaRedefinicaoDeSenha(
             email: self.recuperacaoDeSenhaView.getEmailDoUsuario(),
@@ -56,7 +63,6 @@ class RecuperacaoDeSenhaViewController: UIViewController {
         )
         
         if !usuarioFoiEncontrado {
-            let alertas = Alerta(viewController: self)
             let erros = controladorDeErros.getErros()
             
             if erros.count > 0 {
@@ -72,11 +78,18 @@ class RecuperacaoDeSenhaViewController: UIViewController {
     }
     
     @objc private func verificaSeSenhaPodeSerAlterada(_ sender: UIButton) -> Void {
+        let alertas = Alerta(viewController: self)
+        
         let controladorDeErros = ControladorDeErros()
         let validadorDeSenha = ValidacoesDeDadosDoUsuario(controladorDeErros)
-        let redefinicaoDeSenha = RedefinicaoDeSenhaSystem()
+        
+        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "UsuariosCadastrados.sqlite") else {
+            alertas.criaAlerta(mensagem: "Erro de conexão! Favor tentar novamente")
+            return
+        }
+        
+        let redefinicaoDeSenha = RedefinicaoDeSenhaSQLite(instanciaDoBanco: instanciaDoBanco)
         let recuperacaoDeSenhaController = RecuperacaoDeSenhaController(controladorDeErros, validadorDeSenha, redefinicaoDeSenha)
-        let alerta = Alerta(viewController: self)
         
         let novaSenhaFoiSalva = recuperacaoDeSenhaController.alterarSenha(
             email: self.recuperacaoDeSenhaView.getEmailDoUsuario(),
@@ -87,13 +100,13 @@ class RecuperacaoDeSenhaViewController: UIViewController {
         if !novaSenhaFoiSalva {
             let erros = controladorDeErros.getErros()
             if erros.count > 0 {
-                alerta.criaAlerta(mensagem: erros[0].rawValue)
+                alertas.criaAlerta(mensagem: erros[0].rawValue)
                 return
             }
         }
         
         guard let navigationController = self.navigationController else {
-            alerta.criaAlerta(titulo: "Sucesso", mensagem: "Senha Alterada com sucesso!")
+            alertas.criaAlerta(titulo: "Sucesso", mensagem: "Senha Alterada com sucesso!")
             return
         }
         

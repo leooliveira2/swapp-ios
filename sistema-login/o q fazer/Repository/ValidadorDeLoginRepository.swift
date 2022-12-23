@@ -73,6 +73,5 @@ class ValidadorDeLoginSQLite: ValidadorDeLoginRepository {
         
         sqlite3_finalize(selectStatement)
         return false
-        
     }
 }

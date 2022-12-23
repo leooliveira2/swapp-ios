@@ -43,7 +43,9 @@ class CriacaoDeContaViewController: UIViewController {
         
         let salvarUsuario = SalvarUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
         
-        let verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosSystem()
+        let verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosSQLite(
+            instanciaDoBanco: instanciaDoBanco
+        )
         
         let controlador = CriacaoDeContaController(
             controladorDeErros,

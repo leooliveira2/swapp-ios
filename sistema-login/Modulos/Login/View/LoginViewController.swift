@@ -41,6 +41,7 @@ class LoginViewController: UIViewController {
         
         self.loginView.getBotaoRecuperarSenha().addTarget(self, action: #selector(redirecionarParaTelaDeRecuperacaoDeSenha(_:)), for: .touchUpInside)
         
+        // Só pra exibir os users no terminal qnd o app iniciar a tela de login
         guard let db = DBManager().openDatabase(DBPath: "UsuariosCadastrados.sqlite") else { return }
         
         Crud().exibeTodosOsUsuariosSalvos(instanciaDoBanco: db)

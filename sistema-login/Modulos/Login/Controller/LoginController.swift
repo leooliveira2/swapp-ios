@@ -37,13 +37,9 @@ class LoginController {
         
         let loginPodeSerRealizado = self.verificaSeLoginPodeSerRealizado(email, senha)
         
-        print("1")
-        
         if !loginPodeSerRealizado {
             return false
         }
-        
-        print("2")
         
         self.configuraLoginAutomaticoNasProximasSessoes(email: email)
         

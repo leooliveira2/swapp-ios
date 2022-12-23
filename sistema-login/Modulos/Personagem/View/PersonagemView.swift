@@ -56,6 +56,7 @@ class PersonagemView: UIView {
         tableView.layer.cornerRadius = 10
         tableView.layer.borderWidth = 2
         tableView.layer.borderColor = UIColor.white.cgColor
+        tableView.isUserInteractionEnabled = false
         return tableView
     }()
     

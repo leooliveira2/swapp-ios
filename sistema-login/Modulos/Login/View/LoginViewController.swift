@@ -82,7 +82,8 @@ class LoginViewController: UIViewController {
         let validadorDeLogin = ValidadorDeLoginSQLite(instanciaDoBanco: instanciaDoBanco)
         
         let validadorDeUsuario = ValidacoesDeDadosDoUsuario(controladorDeErros)
-        let recuperaDadosDoUsuario = RecuperaDadosDoUsuarioSystem()
+        
+        let recuperaDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
         
         let controlador = LoginController(
             controladorDeErros,

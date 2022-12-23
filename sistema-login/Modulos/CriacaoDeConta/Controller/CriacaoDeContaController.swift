@@ -63,10 +63,14 @@ class CriacaoDeContaController {
             repeticaoDeSenha: repeticaoDeSenha
         )
         
+        print("1")
+        
         if !self.salvarUsuario.salvar(usuario) {
             self.controladorDeErros.adicionarErro(erro: .erro_ao_salvar_usuario)
             return false
         }
+        
+        print("2")
         
         return true
     }

@@ -31,10 +31,18 @@ class CriacaoDeContaViewController: UIViewController {
     
     // MARK: - Funcoes
     @objc private func criacaoDeConta(_ sender: UIButton) -> Void {
+        let alertas = Alerta(viewController: self)
         
         let controladorDeErros = ControladorDeErros()
         let validadorDeUsuario = ValidacoesDeDadosDoUsuario(controladorDeErros)
-        let salvarUsuario = SalvarUsuarioSystem()
+        
+        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "UsuariosCadastrados.sqlite") else {
+            alertas.criaAlerta(mensagem: "Erro de conexão! Favor tentar novamente")
+            return
+        }
+        
+        let salvarUsuario = SalvarUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
+        
         let verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosSystem()
         
         let controlador = CriacaoDeContaController(
@@ -51,8 +59,6 @@ class CriacaoDeContaViewController: UIViewController {
             senha: self.criacaoDeContaView.getSenhaDoUsuario(),
             repeticaoDeSenha: self.criacaoDeContaView.getRepeticaoDeSenhaDoUsuario()
         )
-        
-        let alertas = Alerta(viewController: self)
         
         if !contaFoiCriada {
             let listaDeErros = controladorDeErros.getErros()

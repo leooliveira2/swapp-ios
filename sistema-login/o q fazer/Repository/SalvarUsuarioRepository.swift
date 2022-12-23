@@ -28,3 +28,43 @@ class SalvarUsuarioSystem: SalvarUsuarioRepository {
     }
     
 }
+
+import SQLite3
+
+class SalvarUsuarioSQLite: SalvarUsuarioRepository {
+    
+    // MARK: - Atributos
+    let instanciaDoBanco: OpaquePointer
+    
+    // MARK: - Inicializador
+    init(instanciaDoBanco: OpaquePointer) {
+        self.instanciaDoBanco = instanciaDoBanco
+    }
+    
+    // MARK: - Funcoes
+    func salvar(_ usuario: Usuario) -> Bool {
+        let insertStatementString = "INSERT INTO Usuarios(nickName, nomeCompleto, email, senha) VALUES (?, ?, ?, ?);"
+        var insertStatement: OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(self.instanciaDoBanco, insertStatementString, -1, &insertStatement, nil) != SQLITE_OK {
+            print("Erro ao preparar o insert")
+            return false
+        }
+        
+        sqlite3_bind_text(insertStatement, 1, (usuario.getNickNameDeUsuario() as NSString).utf8String, -1, nil)
+        sqlite3_bind_text(insertStatement, 2, (usuario.getNomeCompletoDoUsuario() as NSString).utf8String, -1, nil)
+        sqlite3_bind_text(insertStatement, 3, (usuario.getEmailDoUsuario() as NSString).utf8String, -1, nil)
+        sqlite3_bind_text(insertStatement, 4, (usuario.getSenhaDoUsuario() as NSString).utf8String, -1, nil)
+        
+        if sqlite3_step(insertStatement) != SQLITE_DONE {
+            print("Erro ao fazer insercao!")
+            sqlite3_finalize(insertStatement)
+            return false
+        }
+        
+        print("Insercao feita com sucesso!")
+        sqlite3_finalize(insertStatement)
+        return true
+    }
+    
+}

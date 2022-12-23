@@ -40,6 +40,11 @@ class LoginViewController: UIViewController {
         )
         
         self.loginView.getBotaoRecuperarSenha().addTarget(self, action: #selector(redirecionarParaTelaDeRecuperacaoDeSenha(_:)), for: .touchUpInside)
+        
+        guard let db = DBManager().openDatabase(DBPath: "UsuariosCadastrados.sqlite") else { return }
+        
+        Crud().exibeTodosOsUsuariosSalvos(instanciaDoBanco: db)
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -64,9 +69,17 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func realizarLogin(_ sender: UIButton) -> Void {
+        let alertas = Alerta(viewController: self)
+        
         let controladorDeErros = ControladorDeErros()
         
-        let validadorDeLogin = ValidadorDeLoginSystem()
+        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "UsuariosCadastrados.sqlite") else {
+            alertas.criaAlerta(mensagem: "Erro de conexão! Favor tentar novamente")
+            return
+        }
+        
+        let validadorDeLogin = ValidadorDeLoginSQLite(instanciaDoBanco: instanciaDoBanco)
+        
         let validadorDeUsuario = ValidacoesDeDadosDoUsuario(controladorDeErros)
         let recuperaDadosDoUsuario = RecuperaDadosDoUsuarioSystem()
         
@@ -81,8 +94,6 @@ class LoginViewController: UIViewController {
             email: self.loginView.getEmailDoUsuarioTextField().text,
             senha: self.loginView.getSenhaDoUsuarioTextField().text
         )
-        
-        let alertas = Alerta(viewController: self)
         
         if !loginPodeSerRealizado {
             let listaDeErros = controladorDeErros.getErros()

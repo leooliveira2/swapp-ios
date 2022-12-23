@@ -37,9 +37,13 @@ class LoginController {
         
         let loginPodeSerRealizado = self.verificaSeLoginPodeSerRealizado(email, senha)
         
+        print("1")
+        
         if !loginPodeSerRealizado {
             return false
         }
+        
+        print("2")
         
         self.configuraLoginAutomaticoNasProximasSessoes(email: email)
         
@@ -65,8 +69,6 @@ class LoginController {
     
     private func configuraLoginAutomaticoNasProximasSessoes(email: String) -> Void {
         guard let nickName = self.recuperaDadosDoUsuario.getNickNameDoUsuario(email: email) else { return }
-        
-        print(nickName)
         
         UserDefaults.standard.set(true, forKey: "esta_logado")
         UserDefaults.standard.set(nickName, forKey: "user_id")

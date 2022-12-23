@@ -16,6 +16,7 @@
 		C5143CEA2930041600918975 /* PlanetaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5143CE92930041600918975 /* PlanetaView.swift */; };
 		C5143CEC2930078C00918975 /* NaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5143CEB2930078C00918975 /* NaveView.swift */; };
 		C516FA85294A66570034E7EF /* RedefinicaoDeSenhaSystemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C516FA84294A66570034E7EF /* RedefinicaoDeSenhaSystemMock.swift */; };
+		C51992B9295644F1000F874A /* Crud.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51992B8295644F1000F874A /* Crud.swift */; };
 		C523C6D4294CD1A90012077A /* VerificadorDeDadosCadastradosSystemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C523C6D3294CD1A90012077A /* VerificadorDeDadosCadastradosSystemMock.swift */; };
 		C523C6D6294CD3930012077A /* ValidadorDeLoginSystemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C523C6D5294CD3930012077A /* ValidadorDeLoginSystemMock.swift */; };
 		C550F8662919644D00FC2EF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8652919644D00FC2EF2 /* AppDelegate.swift */; };
@@ -45,6 +46,7 @@
 		C572B055293937D700BE9D00 /* SalvarUsuarioRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572B054293937D700BE9D00 /* SalvarUsuarioRepository.swift */; };
 		C57BD85E293A712E00092FA9 /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57BD85D293A712E00092FA9 /* PerfilViewController.swift */; };
 		C57BD860293A733900092FA9 /* PerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57BD85F293A733900092FA9 /* PerfilView.swift */; };
+		C580E2F42956135800DF9B8D /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C580E2F32956135800DF9B8D /* DBManager.swift */; };
 		C581A7B529313FB30092DF05 /* PersonagemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C581A7B429313FB30092DF05 /* PersonagemController.swift */; };
 		C587194E2947A52A00F6EDC7 /* RecuperaDadosDoUsuarioRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C587194D2947A52A00F6EDC7 /* RecuperaDadosDoUsuarioRepository.swift */; };
 		C58D4095292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D4094292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift */; };
@@ -86,6 +88,7 @@
 		C5143CE92930041600918975 /* PlanetaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetaView.swift; sourceTree = "<group>"; };
 		C5143CEB2930078C00918975 /* NaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaveView.swift; sourceTree = "<group>"; };
 		C516FA84294A66570034E7EF /* RedefinicaoDeSenhaSystemMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedefinicaoDeSenhaSystemMock.swift; sourceTree = "<group>"; };
+		C51992B8295644F1000F874A /* Crud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crud.swift; sourceTree = "<group>"; };
 		C523C6D3294CD1A90012077A /* VerificadorDeDadosCadastradosSystemMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificadorDeDadosCadastradosSystemMock.swift; sourceTree = "<group>"; };
 		C523C6D5294CD3930012077A /* ValidadorDeLoginSystemMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidadorDeLoginSystemMock.swift; sourceTree = "<group>"; };
 		C550F8622919644D00FC2EF2 /* sistema-login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sistema-login.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +120,7 @@
 		C572B054293937D700BE9D00 /* SalvarUsuarioRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalvarUsuarioRepository.swift; sourceTree = "<group>"; };
 		C57BD85D293A712E00092FA9 /* PerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
 		C57BD85F293A733900092FA9 /* PerfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilView.swift; sourceTree = "<group>"; };
+		C580E2F32956135800DF9B8D /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		C581A7B429313FB30092DF05 /* PersonagemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonagemController.swift; sourceTree = "<group>"; };
 		C587194D2947A52A00F6EDC7 /* RecuperaDadosDoUsuarioRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperaDadosDoUsuarioRepository.swift; sourceTree = "<group>"; };
 		C58D4094292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperacaoDeSenhaController.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 		C59A522A2950EA8C00D145DD /* RecuperacaoDeSenhaControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperacaoDeSenhaControllerTests.swift; sourceTree = "<group>"; };
 		C59A522C2950EACD00D145DD /* CriacaoDeContaControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContaControllerTests.swift; sourceTree = "<group>"; };
 		C59A522E2950EAF400D145DD /* LoginControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginControllerTests.swift; sourceTree = "<group>"; };
+		C5AABD5E2956303200AFEE5E /* DB.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = DB.txt; sourceTree = "<group>"; };
 		C5B5E7432948ED42001F87AE /* sistema-loginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sistema-loginTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B5E74C2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidacoesDeDadosDoUsuarioTests.swift; sourceTree = "<group>"; };
 		C5BCB745294BA55F002B9C62 /* RedefinicaoDeSenhaSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedefinicaoDeSenhaSystemTests.swift; sourceTree = "<group>"; };
@@ -175,9 +180,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C51992B729563CF6000F874A /* MeuBanco */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MeuBanco;
+			sourceTree = "<group>";
+		};
 		C5252555291C44F5002508F5 /* o q fazer */ = {
 			isa = PBXGroup;
 			children = (
+				C580E2F22956133D00DF9B8D /* Sqlite */,
 				C569E5E7293FBD300040885A /* Repository */,
 				C55BFA69291ACA7B0049C539 /* Model */,
 				C5252556291C4502002508F5 /* Service */,
@@ -512,6 +525,8 @@
 		C550F8592919644D00FC2EF2 = {
 			isa = PBXGroup;
 			children = (
+				C51992B729563CF6000F874A /* MeuBanco */,
+				C5AABD5D2956301300AFEE5E /* estudo */,
 				C550F8642919644D00FC2EF2 /* sistema-login */,
 				C5B5E7442948ED42001F87AE /* sistema-loginTests */,
 				C550F8632919644D00FC2EF2 /* Products */,
@@ -575,6 +590,15 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		C580E2F22956133D00DF9B8D /* Sqlite */ = {
+			isa = PBXGroup;
+			children = (
+				C580E2F32956135800DF9B8D /* DBManager.swift */,
+				C51992B8295644F1000F874A /* Crud.swift */,
+			);
+			path = Sqlite;
+			sourceTree = "<group>";
+		};
 		C59A52292950EA7D00D145DD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -583,6 +607,14 @@
 				C59A522E2950EAF400D145DD /* LoginControllerTests.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C5AABD5D2956301300AFEE5E /* estudo */ = {
+			isa = PBXGroup;
+			children = (
+				C5AABD5E2956303200AFEE5E /* DB.txt */,
+			);
+			path = estudo;
 			sourceTree = "<group>";
 		};
 		C5B5E7442948ED42001F87AE /* sistema-loginTests */ = {
@@ -812,7 +844,9 @@
 				C58D409B292EB46F00A1C6BC /* PersonagemViewController.swift in Sources */,
 				C55BFA76291AD51A0049C539 /* Erros.swift in Sources */,
 				C5C3455F291D907A00E3097A /* LoginController.swift in Sources */,
+				C51992B9295644F1000F874A /* Crud.swift in Sources */,
 				C5143CEC2930078C00918975 /* NaveView.swift in Sources */,
+				C580E2F42956135800DF9B8D /* DBManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

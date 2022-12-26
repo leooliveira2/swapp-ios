@@ -190,7 +190,6 @@
 		C5252555291C44F5002508F5 /* o q fazer */ = {
 			isa = PBXGroup;
 			children = (
-				C580E2F22956133D00DF9B8D /* Sqlite */,
 				C569E5E7293FBD300040885A /* Repository */,
 				C55BFA69291ACA7B0049C539 /* Model */,
 				C5252556291C4502002508F5 /* Service */,
@@ -517,6 +516,8 @@
 		C5493F702953A2E000BD0399 /* System */ = {
 			isa = PBXGroup;
 			children = (
+				C51992B8295644F1000F874A /* Crud.swift */,
+				C580E2F32956135800DF9B8D /* DBManager.swift */,
 				C5C3455B291D860300E3097A /* UsuariosDadosStatic.swift */,
 			);
 			path = System;
@@ -588,15 +589,6 @@
 				C587194D2947A52A00F6EDC7 /* RecuperaDadosDoUsuarioRepository.swift */,
 			);
 			path = Repository;
-			sourceTree = "<group>";
-		};
-		C580E2F22956133D00DF9B8D /* Sqlite */ = {
-			isa = PBXGroup;
-			children = (
-				C580E2F32956135800DF9B8D /* DBManager.swift */,
-				C51992B8295644F1000F874A /* Crud.swift */,
-			);
-			path = Sqlite;
 			sourceTree = "<group>";
 		};
 		C59A52292950EA7D00D145DD /* Controllers */ = {

@@ -18,6 +18,7 @@ class Crud {
 
         if sqlite3_prepare_v2(instanciaDoBanco, queryStatementString, -1, &queryStatement, nil) != SQLITE_OK {
             print("Erro ao ler dados do banco!")
+            return
         } else {
             while sqlite3_step(queryStatement) == SQLITE_ROW {
                 let id = sqlite3_column_int(queryStatement, 0)
@@ -42,6 +43,27 @@ class Crud {
         for usuario in usuarios {
             print(usuario)
         }
+    }
+    
+    public func deletaUsuarioPorID(id: Int, instanciaDoBanco: OpaquePointer) -> Void {
+        let deleteStatementString = "DELETE FROM Usuarios WHERE id = ?;"
+        var deleteStatement: OpaquePointer? = nil
+
+        if sqlite3_prepare_v2(instanciaDoBanco, deleteStatementString, -1, &deleteStatement, nil) != SQLITE_OK {
+            print("Erro ao ler dados do banco!")
+            return
+        }
+        
+        sqlite3_bind_int(deleteStatement, 1, Int32(id))
+        
+        if sqlite3_step(deleteStatement) != SQLITE_DONE {
+            print("Não foi possivel deletar a pessoa de id \(id)")
+            sqlite3_finalize(deleteStatement)
+            return
+        }
+        
+        print("Sucesso ao deletar pessoa com id \(id)")
+        sqlite3_finalize(deleteStatement)
         
     }
 }

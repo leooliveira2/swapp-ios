@@ -180,13 +180,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C51992B729563CF6000F874A /* MeuBanco */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MeuBanco;
-			sourceTree = "<group>";
-		};
 		C5252555291C44F5002508F5 /* o q fazer */ = {
 			isa = PBXGroup;
 			children = (
@@ -526,7 +519,6 @@
 		C550F8592919644D00FC2EF2 = {
 			isa = PBXGroup;
 			children = (
-				C51992B729563CF6000F874A /* MeuBanco */,
 				C5AABD5D2956301300AFEE5E /* estudo */,
 				C550F8642919644D00FC2EF2 /* sistema-login */,
 				C5B5E7442948ED42001F87AE /* sistema-loginTests */,

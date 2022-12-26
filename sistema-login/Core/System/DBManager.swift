@@ -11,11 +11,18 @@ import SQLite3
 class DBManager {
     
     public func openDatabase(DBPath: String) -> OpaquePointer? {
-        let filePath = "/Users/leonardoleite/Desktop/Projetos/login-IOS/MeuBanco/\(DBPath)"
+//        let filePath = "/Users/leonardoleite/Desktop/Projetos/login-IOS/MeuBanco/\(DBPath)"
+
+        let filePath = try! FileManager.default.url(
+            for: .documentDirectory,
+            in: .userDomainMask,
+            appropriateFor: nil,
+            create: false
+        ).appendingPathExtension(DBPath)
         
         var db: OpaquePointer?
         
-        if sqlite3_open(filePath, &db) != SQLITE_OK {
+        if sqlite3_open(filePath.path, &db) != SQLITE_OK {
             print("Não foi possível abrir o banco de dados")
             return nil
         }

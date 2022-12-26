@@ -17,6 +17,7 @@ class PersonagemViewController: UIViewController {
     
     // MARK: - Atributos
     private var animacao: Animacao?
+    private var dadosPersonagem: [String] = []
     
     // MARK: - View life cycle
     override func viewDidLoad() {
@@ -26,6 +27,12 @@ class PersonagemViewController: UIViewController {
         self.personagemView.getBotaoGerarPersonagem().addTarget(
             self,
             action: #selector(acaoBotaoGerarPersonagem(_:)),
+            for: .touchUpInside
+        )
+        
+        self.personagemView.getAdicionarAosFavoritosButton().addTarget(
+            self,
+            action: #selector(acaoBotaoAdicionarAosFavoritos(_:)),
             for: .touchUpInside
         )
         
@@ -48,15 +55,21 @@ class PersonagemViewController: UIViewController {
         let personagemController = PersonagemController(requisicoesSWAPI: requisicoesSWAPI)
         
         personagemController.gerarPersonagem { personagem in
-            let dadosPersonagem = personagem.getListaComDadosDoPersonagem()
-            self.adicionaOsDadosDoPersonagemAsLinhasDaTableView(dadosPersonagem)
-            print(dadosPersonagem)
+            self.dadosPersonagem = personagem.getListaComDadosDoPersonagem()
+            self.adicionaOsDadosDoPersonagemAsLinhasDaTableView(self.dadosPersonagem)
+            print(self.dadosPersonagem)
             animacao.pararAnimacao()
         } fracasso: {
             let alerta = Alerta(viewController: self)
             self.retornaViewPraEstadoInicialEmCasoDeErroAoBuscarPersonagem(alerta)
             animacao.pararAnimacao()
         }
+    }
+    
+    @objc private func acaoBotaoAdicionarAosFavoritos(_ sender: UIButton) -> Void {
+        let alerta = Alerta(viewController: self)
+        
+        alerta.criaAlerta(titulo: "Sucesso", mensagem: "Personagem adicionado aos favoritos")
     }
     
     // MARK: - Funcoes

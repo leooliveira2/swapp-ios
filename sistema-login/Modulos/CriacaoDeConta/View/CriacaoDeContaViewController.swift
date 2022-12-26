@@ -36,7 +36,7 @@ class CriacaoDeContaViewController: UIViewController {
         let controladorDeErros = ControladorDeErros()
         let validadorDeUsuario = ValidacoesDeDadosDoUsuario(controladorDeErros)
         
-        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "UsuariosCadastrados.sqlite") else {
+        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else {
             alertas.criaAlerta(mensagem: "Erro de conexão! Favor tentar novamente")
             return
         }

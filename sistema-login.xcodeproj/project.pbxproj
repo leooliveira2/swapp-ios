@@ -19,6 +19,7 @@
 		C51992B9295644F1000F874A /* Crud.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51992B8295644F1000F874A /* Crud.swift */; };
 		C523C6D4294CD1A90012077A /* VerificadorDeDadosCadastradosSystemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C523C6D3294CD1A90012077A /* VerificadorDeDadosCadastradosSystemMock.swift */; };
 		C523C6D6294CD3930012077A /* ValidadorDeLoginSystemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C523C6D5294CD3930012077A /* ValidadorDeLoginSystemMock.swift */; };
+		C54E698C295A11070089F936 /* SalvarPersonagemFavoritoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54E698B295A11070089F936 /* SalvarPersonagemFavoritoRepository.swift */; };
 		C550F8662919644D00FC2EF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8652919644D00FC2EF2 /* AppDelegate.swift */; };
 		C550F8682919644D00FC2EF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8672919644D00FC2EF2 /* SceneDelegate.swift */; };
 		C550F86A2919644D00FC2EF2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8692919644D00FC2EF2 /* LoginViewController.swift */; };
@@ -91,6 +92,7 @@
 		C51992B8295644F1000F874A /* Crud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crud.swift; sourceTree = "<group>"; };
 		C523C6D3294CD1A90012077A /* VerificadorDeDadosCadastradosSystemMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificadorDeDadosCadastradosSystemMock.swift; sourceTree = "<group>"; };
 		C523C6D5294CD3930012077A /* ValidadorDeLoginSystemMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidadorDeLoginSystemMock.swift; sourceTree = "<group>"; };
+		C54E698B295A11070089F936 /* SalvarPersonagemFavoritoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalvarPersonagemFavoritoRepository.swift; sourceTree = "<group>"; };
 		C550F8622919644D00FC2EF2 /* sistema-login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sistema-login.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C550F8652919644D00FC2EF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C550F8672919644D00FC2EF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -579,6 +581,7 @@
 				C569E5E3293FB9030040885A /* VerificadorDeDadosCadastradosRepository.swift */,
 				C569E5EB293FDABD0040885A /* ValidadorDeLoginRepository.swift */,
 				C587194D2947A52A00F6EDC7 /* RecuperaDadosDoUsuarioRepository.swift */,
+				C54E698B295A11070089F936 /* SalvarPersonagemFavoritoRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -822,6 +825,7 @@
 				C56022E6293A97F9006D99E8 /* PlanetaController.swift in Sources */,
 				C55BFA78291AE4850049C539 /* Alerta.swift in Sources */,
 				C50DC29E291EDE28001CC4F9 /* HomeTabBarController.swift in Sources */,
+				C54E698C295A11070089F936 /* SalvarPersonagemFavoritoRepository.swift in Sources */,
 				C523C6D4294CD1A90012077A /* VerificadorDeDadosCadastradosSystemMock.swift in Sources */,
 				C550F8812919A0D400FC2EF2 /* CriacaoDeContaViewController.swift in Sources */,
 				C569C11F2954B7640033ED19 /* PerfilController.swift in Sources */,

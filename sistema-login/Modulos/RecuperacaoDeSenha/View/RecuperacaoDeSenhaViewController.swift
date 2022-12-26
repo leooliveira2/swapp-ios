@@ -50,7 +50,7 @@ class RecuperacaoDeSenhaViewController: UIViewController {
             validadorDeDadosDoUsuario
         )
         
-        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "UsuariosCadastrados.sqlite") else {
+        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else {
             alertas.criaAlerta(mensagem: "Erro de conexão! Favor tentar novamente")
             return
         }
@@ -83,7 +83,7 @@ class RecuperacaoDeSenhaViewController: UIViewController {
         let controladorDeErros = ControladorDeErros()
         let validadorDeSenha = ValidacoesDeDadosDoUsuario(controladorDeErros)
         
-        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "UsuariosCadastrados.sqlite") else {
+        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else {
             alertas.criaAlerta(mensagem: "Erro de conexão! Favor tentar novamente")
             return
         }

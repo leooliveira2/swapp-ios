@@ -20,6 +20,8 @@ class DBManager {
             create: false
         ).appendingPathExtension(DBPath)
         
+//        print(filePath.relativePath)
+        
         var db: OpaquePointer?
         
         if sqlite3_open(filePath.path, &db) != SQLITE_OK {
@@ -27,7 +29,16 @@ class DBManager {
             return nil
         }
         
-        print("Banco de dados criado com sucesso!")
+        print("Banco de dados foi acessado com sucesso!")
+        
+        var statement: OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, "PRAGMA foreign_keys = ON;", -1, &statement, nil) != SQLITE_OK {
+            print("erro ao preparar chave estrangeira para uso!")
+        }
+        
+        sqlite3_finalize(statement)
+        
         return db
     }
     
@@ -40,23 +51,36 @@ class DBManager {
         }
         
         if sqlite3_step(createTableStatement) != SQLITE_DONE {
-            print("Erro na criacao da tabela pessoa")
+            print("Erro na criacao da tabela")
             sqlite3_finalize(createTableStatement)
             return false
         }
         
-        print("Sucesso na criacao da tabela pessoa!")
+        print("Sucesso na criacao da tabela!")
         sqlite3_finalize(createTableStatement)
         return true
     }
     
 }
 
-//let DB = DBManager()
+//guard let novoDb = DBManager().openDatabase(DBPath: "teste9.sqlite") else { return }
 //
-//guard let instanciaDoBanco = DB.openDatabase(DBPath: "UsuariosCadastrados.sqlite") else { return }
+//DBManager().createTable(criarTabelaString: "CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT, nickName TEXT UNIQUE NOT NULL, nomeCompleto TEXT NOT NULL, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL);"
+//                        , instanciaDoBanco: novoDb)
 //
-//let tabelaFoiCriada = DB.createTable(
-//    criarTabelaString: "CREATE TABLE IF NOT EXISTS Usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, nickName TEXT UNIQUE, nomeCompleto TEXT, email UNIQUE, senha TEXT);",
-//    instanciaDoBanco: instanciaDoBanco
-//)
+//DBManager().createTable(criarTabelaString: "CREATE TABLE IF NOT EXISTS personagens_favoritos (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, altura TEXT NOT NULL, peso TEXT NOT NULL, corDosOlhos TEXT NOT NULL, anoNascimento TEXT NOT NULL, genero TEXT NOT NULL, id_usuario INTEGER NOT NULL, CONSTRAINT fk_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE);", instanciaDoBanco: novoDb)
+//
+//let salvaUsuario = SalvarUsuarioSQLite(instanciaDoBanco: novoDb)
+//salvaUsuario.salvar(Usuario(nickName: "Leonardo", nomeCompleto: "Leonardo", email: "Email@email.com", senha: "senha", repeticaoDeSenha: "senha"))
+//
+//let salvaPersonagemComoFavorito = SalvarPersonagemFavoritoSQLite(instanciaDoBanco: novoDb)
+//
+//let personagem = Personagem()
+//personagem.name = "Luke Skywalker"
+//personagem.height = "171"
+//personagem.mass = "77"
+//personagem.eye_color = "blue"
+//personagem.birth_year = "19BBY"
+//personagem.gender = "male"
+//
+//salvaPersonagemComoFavorito.salvarComoFavorito(personagem, idUsuario: 1)

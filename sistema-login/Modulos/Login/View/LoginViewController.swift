@@ -42,8 +42,8 @@ class LoginViewController: UIViewController {
         self.loginView.getBotaoRecuperarSenha().addTarget(self, action: #selector(redirecionarParaTelaDeRecuperacaoDeSenha(_:)), for: .touchUpInside)
         
         // Só pra exibir os users no terminal qnd o app iniciar a tela de login
-        guard let db = DBManager().openDatabase(DBPath: "UsuariosCadastrados.sqlite") else { return }
-        
+        guard let db = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else { return }
+
         Crud().exibeTodosOsUsuariosSalvos(instanciaDoBanco: db)
 
     }
@@ -74,7 +74,7 @@ class LoginViewController: UIViewController {
         
         let controladorDeErros = ControladorDeErros()
         
-        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "UsuariosCadastrados.sqlite") else {
+        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else {
             alertas.criaAlerta(mensagem: "Erro de conexão! Favor tentar novamente")
             return
         }

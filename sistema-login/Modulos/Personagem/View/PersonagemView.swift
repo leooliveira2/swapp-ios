@@ -60,6 +60,22 @@ class PersonagemView: UIView {
         return tableView
     }()
     
+    private lazy var adicionarAosFavoritosButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 10
+        return button
+    }()
+    
+    private lazy var estrelaDoBotaoAdicionarAosFavoritosImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        let image = UIImage(systemName: "star")
+        imageView.image = image
+        return imageView
+    }()
+    
     // MARK: - Inicializadores
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -79,20 +95,35 @@ class PersonagemView: UIView {
         return self.dadosPersonagemTableView
     }
     
+    public func getAdicionarAosFavoritosButton() -> UIButton {
+        return self.adicionarAosFavoritosButton
+    }
+    
     // MARK: - Execucoes quando algo acontecer na tela
     public func exibeComponentesCaracteristicasDoPersonagem() -> Void {
         self.addSubview(self.labelPersonagem)
         self.addSubview(self.dadosPersonagemTableView)
-        
+        self.adicionarAosFavoritosButton.addSubview(self.estrelaDoBotaoAdicionarAosFavoritosImageView)
+        self.addSubview(self.adicionarAosFavoritosButton)
+    
         NSLayoutConstraint.activate([
             self.labelPersonagem.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 100),
-            self.labelPersonagem.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
-            self.labelPersonagem.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
+            self.labelPersonagem.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             
             self.dadosPersonagemTableView.topAnchor.constraint(equalTo: self.labelPersonagem.bottomAnchor, constant: 10),
             self.dadosPersonagemTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
             self.dadosPersonagemTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
             self.dadosPersonagemTableView.heightAnchor.constraint(equalToConstant: self.dadosPersonagemTableView.contentSize.height),
+            
+            self.estrelaDoBotaoAdicionarAosFavoritosImageView.centerYAnchor.constraint(equalTo: self.adicionarAosFavoritosButton.centerYAnchor),
+            self.estrelaDoBotaoAdicionarAosFavoritosImageView.centerXAnchor.constraint(equalTo: self.adicionarAosFavoritosButton.centerXAnchor),
+            self.estrelaDoBotaoAdicionarAosFavoritosImageView.heightAnchor.constraint(equalToConstant: 30),
+            self.estrelaDoBotaoAdicionarAosFavoritosImageView.widthAnchor.constraint(equalToConstant: 35),
+        
+            self.adicionarAosFavoritosButton.centerYAnchor.constraint(equalTo: self.labelPersonagem.centerYAnchor),
+            self.adicionarAosFavoritosButton.leadingAnchor.constraint(equalTo: self.labelPersonagem.trailingAnchor, constant: 10),
+            self.adicionarAosFavoritosButton.heightAnchor.constraint(equalToConstant: 40),
+            self.adicionarAosFavoritosButton.widthAnchor.constraint(equalToConstant: 40)
         ])
         
         self.atualizaConstraintDoBotaoGerarPersonagemPraBaixoDaTabelaDePersonagem()
@@ -102,6 +133,7 @@ class PersonagemView: UIView {
         self.removeConstraint(self.botaoTopAnchor)
         self.labelPersonagem.removeFromSuperview()
         self.dadosPersonagemTableView.removeFromSuperview()
+        self.adicionarAosFavoritosButton.removeFromSuperview()
         
         self.botaoTopAnchor = self.gerarPersonagemButton.topAnchor.constraint(equalTo: self.centerYAnchor)
         
@@ -119,7 +151,6 @@ class PersonagemView: UIView {
             self.botaoTopAnchor
         ])
     }
-    
     
     // MARK: - Configs constraints
     private func configsConstraints() -> Void {

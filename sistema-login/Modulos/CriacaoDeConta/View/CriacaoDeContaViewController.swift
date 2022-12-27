@@ -33,16 +33,14 @@ class CriacaoDeContaViewController: UIViewController {
     @objc private func criacaoDeConta(_ sender: UIButton) -> Void {
         let alertas = Alerta(viewController: self)
         
-        let controladorDeErros = ControladorDeErros()
-        let validadorDeUsuario = ValidacoesDeDadosDoUsuario(controladorDeErros)
-        
         guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else {
-            alertas.criaAlerta(mensagem: "Erro de conexão! Favor tentar novamente")
+            alertas.criaAlerta(mensagem: "Erro interno! Favor tentar novamente")
             return
         }
         
+        let controladorDeErros = ControladorDeErros()
+        let validadorDeUsuario = ValidacoesDeDadosDoUsuario(controladorDeErros)
         let salvarUsuario = SalvarUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
-        
         let verificadorDeDadosCadastrados = VerificadorDeDadosCadastradosSQLite(
             instanciaDoBanco: instanciaDoBanco
         )

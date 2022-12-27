@@ -191,18 +191,8 @@
 			children = (
 				C569E5E7293FBD300040885A /* Repository */,
 				C55BFA69291ACA7B0049C539 /* Model */,
-				C5252556291C4502002508F5 /* Service */,
 			);
 			path = "o q fazer";
-			sourceTree = "<group>";
-		};
-		C5252556291C4502002508F5 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				C55BFA6D291AD0330049C539 /* ValidacoesDeDadosDoUsuario.swift */,
-				C55BFA77291AE4850049C539 /* Alerta.swift */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		C5493F4D29539A7D00BD0399 /* Modulos */ = {
@@ -268,6 +258,10 @@
 		C5493F5329539ACB00BD0399 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C55BFA6A291ACABB0049C539 /* Usuario.swift */,
+				C55BFA6D291AD0330049C539 /* ValidacoesDeDadosDoUsuario.swift */,
+				C569E5E3293FB9030040885A /* VerificadorDeDadosCadastradosRepository.swift */,
+				C572B054293937D700BE9D00 /* SalvarUsuarioRepository.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -302,6 +296,7 @@
 		C5493F5729539B1600BD0399 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C572B052293936BB00BE9D00 /* RedefinicaoDeSenhaRepository.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -509,6 +504,7 @@
 			isa = PBXGroup;
 			children = (
 				C55FF6AC2952394400103434 /* Animacao.swift */,
+				C55BFA77291AE4850049C539 /* Alerta.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -563,7 +559,6 @@
 			isa = PBXGroup;
 			children = (
 				C55BFA6F291AD2000049C539 /* ControladorDeErros.swift */,
-				C55BFA6A291ACABB0049C539 /* Usuario.swift */,
 				C55BFA75291AD51A0049C539 /* Erros.swift */,
 			);
 			path = Model;
@@ -580,9 +575,6 @@
 		C569E5E7293FBD300040885A /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				C572B052293936BB00BE9D00 /* RedefinicaoDeSenhaRepository.swift */,
-				C572B054293937D700BE9D00 /* SalvarUsuarioRepository.swift */,
-				C569E5E3293FB9030040885A /* VerificadorDeDadosCadastradosRepository.swift */,
 				C587194D2947A52A00F6EDC7 /* RecuperaDadosDoUsuarioRepository.swift */,
 				C54E698B295A11070089F936 /* SalvarPersonagemFavoritoRepository.swift */,
 				C5BF833D295B553900F0A9D3 /* VerificadorDePersonagensJaAdicionadosAUmUsuarioRepository.swift */,

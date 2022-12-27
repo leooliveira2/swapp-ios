@@ -11,16 +11,10 @@ class RecuperacaoDeSenhaController {
     
     private let controladorDeErros: ControladorDeErros
     private let validadorDeDados: ValidacoesDeDadosDoUsuario
-    private let redefinicaoDeSenha: RedefinicaoDeSenhaRepository
     
-    init(
-        _ controladorDeErros: ControladorDeErros,
-        _ validadorDeDados: ValidacoesDeDadosDoUsuario,
-        _ redefinicaoDeSenha: RedefinicaoDeSenhaRepository = RedefinicaoDeSenhaSystem()
-    ) {
+    init(_ controladorDeErros: ControladorDeErros, _ validadorDeDados: ValidacoesDeDadosDoUsuario) {
         self.controladorDeErros = controladorDeErros
         self.validadorDeDados = validadorDeDados
-        self.redefinicaoDeSenha = redefinicaoDeSenha
     }
     
     // MARK: - Buscar usuario
@@ -42,6 +36,7 @@ class RecuperacaoDeSenhaController {
         _ email: String,
         _ verificadorDeDadosCadastrados: VerificadorDeDadosCadastradosRepository
     ) -> Bool {
+        
         let emailEstaVazio = self.validadorDeDados.emailDoUsuarioEstaVazio(email)
         
         if emailEstaVazio {
@@ -59,7 +54,13 @@ class RecuperacaoDeSenhaController {
     }
     
     // MARK: - Redefinir senha
-    public func alterarSenha(email: String?, senha: String?, repeticaoSenha: String?) -> Bool {
+    public func alterarSenha(
+        email: String?,
+        senha: String?,
+        repeticaoSenha: String?,
+        redefinicaoDeSenha: RedefinicaoDeSenhaRepository
+    ) -> Bool
+    {
         guard let senha = senha,
               let repeticaoSenha = repeticaoSenha,
               let email = email
@@ -75,7 +76,7 @@ class RecuperacaoDeSenhaController {
             return false
         }
         
-        if !self.redefinicaoDeSenha.redefinirSenha(email: email, senha: senha) {
+        if !redefinicaoDeSenha.redefinirSenha(email: email, senha: senha) {
             self.controladorDeErros.adicionarErro(erro: .erro_ao_salvar_nova_senha)
             return false
         }

@@ -36,10 +36,24 @@ class PersonagemController {
     ) -> Bool
     {
         guard let idUsuario = buscaDadosDoUsuario.getIdDoUsuario(nickName: nickNameDoUsuario) else { return false }
-                
+        
         let personagemFoiSalvo = adicionaAosFavoritos.salvarComoFavorito(personagem, idUsuario: idUsuario)
         
         return personagemFoiSalvo
+    }
+    
+    public func verificaSePersonagemJaEstaFavoritado(
+        personagem: Personagem,
+        nickName: String,
+        verificadorDePersonagensSalvosPorUsuario: VerificadorDePersonagensJaAdicionadosAUmUsuarioRepository
+    ) -> Bool {
+        
+        let personagemJaEstaFavoritado = verificadorDePersonagensSalvosPorUsuario.verificaSePersonagemJaEstaFavoritadoPeloUsuario(
+            personagem: personagem,
+            nickNameDeUsuario: nickName
+        )
+        
+        return personagemJaEstaFavoritado
     }
     
     public func removerPersonagemDosFavoritos(

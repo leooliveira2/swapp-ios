@@ -18,7 +18,6 @@ class PersonagemViewController: UIViewController {
     // MARK: - Atributos
     private var animacao: Animacao?
     private var personagem: Personagem?
-    private var personagemJaEstaFavoritado: Bool = false
     
     // MARK: - View life cycle
     override func viewDidLoad() {
@@ -42,17 +41,22 @@ class PersonagemViewController: UIViewController {
         
         self.animacao = Animacao(view: self.personagemView)
         
-//        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else { print("Erro ao abrir banco aqui oh"); return }
+//        // SÓ PRA RESETAR OS PERSONAGENS
+//        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite")
+//            else
+//        {
 //
-//        Crud().deleteTodosOsPersonagensPorId(id: 2, instanciaDoBanco: instanciaDoBanco)
-        
+//            return
+//        }
+//
+//        Crud().deleteTodosOsPersonagensPorId(id: 8, instanciaDoBanco: instanciaDoBanco)
     }
     
     // MARK: - Actions
     @objc private func acaoBotaoGerarPersonagem(_ sender: UIButton) -> Void {
         guard let animacao = self.animacao else { return }
         
-        self.personagemJaEstaFavoritado = false
+        let alertas = Alerta(viewController: self)
         
         self.personagemView.execucaoQuandoOBotaoAdicionarAosFavoritosForDesmarcado()
         
@@ -66,20 +70,32 @@ class PersonagemViewController: UIViewController {
         
         personagemController.gerarPersonagem(requisicoesSWAPI: requisicoesSWAPI) { personagem in
             self.personagem = personagem
+            let dadosPersonagem = personagem.getListaComDadosDoPersonagem()
+            self.adicionaOsDadosDoPersonagemAsLinhasDaTableView(dadosPersonagem)
+            animacao.pararAnimacao()
             
-            guard let nickNameDoUsuario = UserDefaults.standard.string(forKey: "user_id") else { return }
+            guard let nickNameDoUsuario = UserDefaults.standard.string(forKey: "user_id") else {
+                alertas.criaAlerta(titulo: "Desculpe", mensagem: "No momento não é possível utilizar a funcionalidade favoritos")
+                return
+            }
             
-            let jaEstaFavoritado = self.verificaSePersonagemJaEstaFavoritado(personagem: personagem, nickName: nickNameDoUsuario)
+            guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite")
+                else
+            {
+                alertas.criaAlerta(mensagem: "Erro interno! Favor tentar novamente!")
+                return
+            }
+            
+            let jaEstaFavoritado = self.verificaSePersonagemJaEstaFavoritado(
+                personagem: personagem,
+                nickName: nickNameDoUsuario,
+                instanciaDoBanco: instanciaDoBanco
+            )
             
             if jaEstaFavoritado {
-                self.personagemJaEstaFavoritado = true
                 self.personagemView.execucaoQuandoUmPersonagemForAdicionadoAosFavoritos()
             }
             
-            let dadosPersonagem = personagem.getListaComDadosDoPersonagem()
-            self.adicionaOsDadosDoPersonagemAsLinhasDaTableView(dadosPersonagem)
-            print(dadosPersonagem)
-            animacao.pararAnimacao()
         } fracasso: {
             let alerta = Alerta(viewController: self)
             self.retornaViewPraEstadoInicialEmCasoDeErroAoBuscarPersonagem(alerta)
@@ -90,17 +106,32 @@ class PersonagemViewController: UIViewController {
     @objc private func acaoBotaoAdicionarAosFavoritos(_ sender: UIButton) -> Void {
         let alerta = Alerta(viewController: self)
         
-        let personagemController = PersonagemController()
+        guard let personagem = self.personagem else {
+            alerta.criaAlerta(mensagem: "Erro interno! Favor tentar novamente!")
+            return
+        }
         
-        guard let personagem = self.personagem else { print("ERRRRRrRO"); return }
+        guard let nickNameDoUsuario = UserDefaults.standard.string(forKey: "user_id") else {
+            alerta.criaAlerta(mensagem: "Erro interno! Favor tentar novamente!")
+            return
+        }
         
-        guard let nickNameDoUsuario = UserDefaults.standard.string(forKey: "user_id") else { return }
-        
-        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else { print("Erro ao abrir banco aqui oh"); return }
+        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else {
+            alerta.criaAlerta(mensagem: "Erro interno! Favor tentar novamente!")
+            return
+        }
         
         let buscadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
         
-        if self.personagemJaEstaFavoritado {
+        let personagemJaEstaFavoritado = self.verificaSePersonagemJaEstaFavoritado(
+            personagem: personagem,
+            nickName: nickNameDoUsuario,
+            instanciaDoBanco: instanciaDoBanco
+        )
+        
+        let personagemController = PersonagemController()
+        
+        if personagemJaEstaFavoritado {
             let removePersonagemDosFavoritos = RemovePersonagemDosFavoritosSQLite(
                 buscadorDeDadosDoUsuario: buscadorDeDadosDoUsuario,
                 instanciaDoBanco: instanciaDoBanco
@@ -113,14 +144,19 @@ class PersonagemViewController: UIViewController {
                 removePersonagemDosFavoritos: removePersonagemDosFavoritos
             )
             
-            if personagemFoiRemovido {
-                alerta.criaAlerta(titulo: "Sucesso", mensagem: "\(personagem.getNomePersonagem()) foi removido com sucesso de seus favoritos")
-                self.personagemView.execucaoQuandoOBotaoAdicionarAosFavoritosForDesmarcado()
-                self.personagemJaEstaFavoritado = false
+            if !personagemFoiRemovido {
+                alerta.criaAlerta(mensagem: "Erro ao remover personagem!")
                 return
             }
             
-            alerta.criaAlerta(mensagem: "Erro ao remover personagem!")
+            alerta.criaAlerta(
+                titulo: "Sucesso",
+                mensagem: "\(personagem.getNomePersonagem()) foi removido com sucesso de seus favoritos"
+            )
+            
+            self.personagemView.execucaoQuandoOBotaoAdicionarAosFavoritosForDesmarcado()
+            return
+        
         }
         
         let adicionaAosFavoritos = SalvarPersonagemFavoritoSQLite(instanciaDoBanco: instanciaDoBanco)
@@ -132,31 +168,41 @@ class PersonagemViewController: UIViewController {
             nickNameDoUsuario: nickNameDoUsuario
         )
         
-        if personagemFoiSalvo {
-            alerta.criaAlerta(titulo: "Sucesso", mensagem: "Personagem adicionado aos favoritos")
-            
-            print("----------------------------")
-            Crud().exibirTodosOsDadosDosPersonagens(db: instanciaDoBanco)
-            Crud().exibeTodosOsUsuariosSalvos(instanciaDoBanco: instanciaDoBanco)
-            print("----------------------------")
-            
-            self.personagemView.execucaoQuandoUmPersonagemForAdicionadoAosFavoritos()
-            self.personagemJaEstaFavoritado = true
-            
+        if !personagemFoiSalvo {
+            alerta.criaAlerta(mensagem: "Erro ao favoritar personagem!")
+            return
         }
         
+        alerta.criaAlerta(titulo: "Sucesso", mensagem: "Personagem adicionado aos favoritos")
+        
+        print("----------------------------")
+        Crud().exibirTodosOsDadosDosPersonagens(db: instanciaDoBanco)
+        Crud().exibeTodosOsUsuariosSalvos(instanciaDoBanco: instanciaDoBanco)
+        print("----------------------------")
+        
+        self.personagemView.execucaoQuandoUmPersonagemForAdicionadoAosFavoritos()
     }
     
-    private func verificaSePersonagemJaEstaFavoritado(personagem: Personagem, nickName: String) -> Bool {
-        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else { print("Erro ao abrir banco aqui oh"); return false }
+    private func verificaSePersonagemJaEstaFavoritado(
+        personagem: Personagem,
+        nickName: String,
+        instanciaDoBanco: OpaquePointer
+    ) -> Bool
+    {
+        let personagemController = PersonagemController()
         
         let buscadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
-
-        let verificadorDePersonagensSalvosPorUsuario = VerificadorDePersonagensJaAdicionadosAUmUsuarioSQLite(buscadorDeDadosDoUsuario: buscadorDeDadosDoUsuario, instanciaDoBanco: instanciaDoBanco)
         
-        let personagemJaEstaFavoritado = verificadorDePersonagensSalvosPorUsuario.verificaSePersonagemJaEstaFavoritadoPeloUsuario(personagem: personagem, nickNameDeUsuario: nickName)
+        let verificadorDePersonagensSalvosPorUsuario = VerificadorDePersonagensJaAdicionadosAUmUsuarioSQLite(
+            buscadorDeDadosDoUsuario: buscadorDeDadosDoUsuario,
+            instanciaDoBanco: instanciaDoBanco
+        )
         
-        print(personagemJaEstaFavoritado)
+        let personagemJaEstaFavoritado = personagemController.verificaSePersonagemJaEstaFavoritado(
+            personagem: personagem,
+            nickName: nickName,
+            verificadorDePersonagensSalvosPorUsuario: verificadorDePersonagensSalvosPorUsuario
+        )
         
         return personagemJaEstaFavoritado
     }

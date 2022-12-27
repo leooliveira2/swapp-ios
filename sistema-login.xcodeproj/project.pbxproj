@@ -186,15 +186,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C5252555291C44F5002508F5 /* o q fazer */ = {
-			isa = PBXGroup;
-			children = (
-				C569E5E7293FBD300040885A /* Repository */,
-				C55BFA69291ACA7B0049C539 /* Model */,
-			);
-			path = "o q fazer";
-			sourceTree = "<group>";
-		};
 		C5493F4D29539A7D00BD0399 /* Modulos */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,6 +338,9 @@
 		C5493F5D29539C4300BD0399 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C5BF833F295B5FA300F0A9D3 /* RemovePersonagemDosFavoritosRepository.swift */,
+				C5BF833D295B553900F0A9D3 /* VerificadorDePersonagensJaAdicionadosAUmUsuarioRepository.swift */,
+				C54E698B295A11070089F936 /* SalvarPersonagemFavoritoRepository.swift */,
 				C5143CE5292FE54800918975 /* Personagem.swift */,
 			);
 			path = Model;
@@ -442,6 +436,7 @@
 		C5493F6829539D6B00BD0399 /* Perfil */ = {
 			isa = PBXGroup;
 			children = (
+				C5BF8341295B7E1200F0A9D3 /* Model */,
 				C569C11D2954B7530033ED19 /* Controller */,
 				C5493F6929539D7400BD0399 /* View */,
 			);
@@ -512,6 +507,8 @@
 		C5493F702953A2E000BD0399 /* System */ = {
 			isa = PBXGroup;
 			children = (
+				C55BFA75291AD51A0049C539 /* Erros.swift */,
+				C55BFA6F291AD2000049C539 /* ControladorDeErros.swift */,
 				C580E2F32956135800DF9B8D /* DBManager.swift */,
 				C5C3455B291D860300E3097A /* UsuariosDadosStatic.swift */,
 			);
@@ -545,7 +542,6 @@
 				C5493F6E2953A12D00BD0399 /* UI */,
 				C5493F6B2953A0A500BD0399 /* Core */,
 				C5493F4D29539A7D00BD0399 /* Modulos */,
-				C5252555291C44F5002508F5 /* o q fazer */,
 				C550F8652919644D00FC2EF2 /* AppDelegate.swift */,
 				C550F8672919644D00FC2EF2 /* SceneDelegate.swift */,
 				C550F86E2919644E00FC2EF2 /* Assets.xcassets */,
@@ -555,32 +551,12 @@
 			path = "sistema-login";
 			sourceTree = "<group>";
 		};
-		C55BFA69291ACA7B0049C539 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				C55BFA6F291AD2000049C539 /* ControladorDeErros.swift */,
-				C55BFA75291AD51A0049C539 /* Erros.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		C569C11D2954B7530033ED19 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				C569C11E2954B7640033ED19 /* PerfilController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		C569E5E7293FBD300040885A /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-				C587194D2947A52A00F6EDC7 /* RecuperaDadosDoUsuarioRepository.swift */,
-				C54E698B295A11070089F936 /* SalvarPersonagemFavoritoRepository.swift */,
-				C5BF833D295B553900F0A9D3 /* VerificadorDePersonagensJaAdicionadosAUmUsuarioRepository.swift */,
-				C5BF833F295B5FA300F0A9D3 /* RemovePersonagemDosFavoritosRepository.swift */,
-			);
-			path = Repository;
 			sourceTree = "<group>";
 		};
 		C59A52292950EA7D00D145DD /* Controllers */ = {
@@ -640,6 +616,14 @@
 				C523C6D5294CD3930012077A /* ValidadorDeLoginSystemMock.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		C5BF8341295B7E1200F0A9D3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C587194D2947A52A00F6EDC7 /* RecuperaDadosDoUsuarioRepository.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

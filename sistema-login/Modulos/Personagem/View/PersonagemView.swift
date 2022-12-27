@@ -103,7 +103,10 @@ class PersonagemView: UIView {
     public func exibeComponentesCaracteristicasDoPersonagem() -> Void {
         self.addSubview(self.labelPersonagem)
         self.addSubview(self.dadosPersonagemTableView)
-        self.adicionarAosFavoritosButton.addSubview(self.estrelaDoBotaoAdicionarAosFavoritosImageView)
+        
+        self.adicionarAosFavoritosButton.addSubview(
+            self.estrelaDoBotaoAdicionarAosFavoritosImageView
+        )
         self.addSubview(self.adicionarAosFavoritosButton)
     
         NSLayoutConstraint.activate([

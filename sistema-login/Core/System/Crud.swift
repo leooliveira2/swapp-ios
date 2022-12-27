@@ -130,4 +130,24 @@ class Crud {
         
     }
     
+    public func deleteTodosOsPersonagensPorId(id: Int, instanciaDoBanco: OpaquePointer) -> Void {
+        let deleteStatementString = "DELETE FROM personagens_favoritos;"
+        var deleteStatement: OpaquePointer? = nil
+
+        if sqlite3_prepare_v2(instanciaDoBanco, deleteStatementString, -1, &deleteStatement, nil) != SQLITE_OK {
+            print("Erro ao ler dados do banco!")
+            return
+        }
+        
+        
+        if sqlite3_step(deleteStatement) != SQLITE_DONE {
+            print("Não foi possivel deletar os personagens")
+            sqlite3_finalize(deleteStatement)
+            return
+        }
+        
+        print("Sucesso ao deletar personagens")
+        sqlite3_finalize(deleteStatement)
+    }
+    
 }

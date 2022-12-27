@@ -152,6 +152,14 @@ class PersonagemView: UIView {
         ])
     }
     
+    public func execucaoQuandoUmPersonagemForAdicionadoAosFavoritos() -> Void {
+        self.adicionarAosFavoritosButton.backgroundColor = .blue
+    }
+    
+    public func execucaoQuandoOBotaoAdicionarAosFavoritosForDesmarcado() -> Void {
+        self.adicionarAosFavoritosButton.backgroundColor = .white
+    }
+    
     // MARK: - Configs constraints
     private func configsConstraints() -> Void {
         self.addSubview(self.backgroundImageView)

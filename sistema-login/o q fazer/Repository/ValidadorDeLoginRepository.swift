@@ -50,7 +50,7 @@ class ValidadorDeLoginSQLite: ValidadorDeLoginRepository {
     
     // MARK: - Funcoes
     func validarLogin(email: String, senha: String) -> Bool {
-        let selectStatementString = "SELECT email FROM Usuarios WHERE email = ? AND senha = ?;"
+        let selectStatementString = "SELECT email FROM usuarios WHERE email = ? AND senha = ?;"
         var selectStatement: OpaquePointer? = nil
         
         if sqlite3_prepare_v2(self.instanciaDoBanco, selectStatementString, -1, &selectStatement, nil) != SQLITE_OK {

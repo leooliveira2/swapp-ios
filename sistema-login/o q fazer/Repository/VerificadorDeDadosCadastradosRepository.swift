@@ -62,7 +62,7 @@ class VerificadorDeDadosCadastradosSQLite: VerificadorDeDadosCadastradosReposito
     
     // MARK: - Funcoes
     func verificaSeNickNameJaEstaCadastrado(_ nickName: String) -> Bool {
-        let selectStatementString = "SELECT nickName FROM Usuarios WHERE nickName = ?;"
+        let selectStatementString = "SELECT nickName FROM usuarios WHERE nickName = ?;"
         var selectStatement: OpaquePointer? = nil
         
         if sqlite3_prepare_v2(self.instanciaDoBanco, selectStatementString, -1, &selectStatement, nil) != SQLITE_OK {
@@ -87,7 +87,7 @@ class VerificadorDeDadosCadastradosSQLite: VerificadorDeDadosCadastradosReposito
     }
     
     func verificaSeEmailJaEstaCadastrado(_ email: String) -> Bool {
-        let selectStatementString = "SELECT email FROM Usuarios WHERE email = ?;"
+        let selectStatementString = "SELECT email FROM usuarios WHERE email = ?;"
         var selectStatement: OpaquePointer? = nil
         
         if sqlite3_prepare_v2(self.instanciaDoBanco, selectStatementString, -1, &selectStatement, nil) != SQLITE_OK {

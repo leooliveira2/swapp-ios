@@ -9,13 +9,8 @@ import UIKit
 
 class PersonagemController {
     
-    private var requisicoesSWAPI: RequisicoesStarWarsAPI
-    
-    init(requisicoesSWAPI: RequisicoesStarWarsAPI) {
-        self.requisicoesSWAPI = requisicoesSWAPI
-    }
-    
     public func gerarPersonagem(
+        requisicoesSWAPI: RequisicoesStarWarsAPI,
         sucesso: @escaping(_ personagem: Personagem) -> Void,
         fracasso: @escaping() -> Void
     ) -> Void
@@ -31,5 +26,35 @@ class PersonagemController {
     private func gerarIdAleatorio() -> Int {
         let numero = Int(arc4random_uniform(83))
         return numero
+    }
+    
+    public func adicionarPersonagemAosFavoritos(
+        _ personagem: Personagem,
+        adicionaAosFavoritos: SalvarPersonagemFavoritoRepository,
+        buscaDadosDoUsuario: RecuperaDadosDoUsuarioRepository,
+        nickNameDoUsuario: String
+    ) -> Bool
+    {
+        guard let idUsuario = buscaDadosDoUsuario.getIdDoUsuario(nickName: nickNameDoUsuario) else { return false }
+                
+        let personagemFoiSalvo = adicionaAosFavoritos.salvarComoFavorito(personagem, idUsuario: idUsuario)
+        
+        return personagemFoiSalvo
+    }
+    
+    public func removerPersonagemDosFavoritos(
+        personagem: Personagem,
+        nickNameDoUsuario: String,
+        buscadorDeDadosDoUsuario: RecuperaDadosDoUsuarioRepository,
+        removePersonagemDosFavoritos: RemovePersonagemDosFavoritosRepository
+    ) -> Bool {
+        guard let idDoUsuario = buscadorDeDadosDoUsuario.getIdDoUsuario(nickName: nickNameDoUsuario) else { return false }
+        
+        let personagemFoiRemovido = removePersonagemDosFavoritos.remover(
+            personagem: personagem,
+            idDoUsuario: idDoUsuario
+        )
+            
+        return personagemFoiRemovido
     }
 }

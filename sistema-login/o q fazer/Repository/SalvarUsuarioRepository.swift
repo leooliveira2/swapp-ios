@@ -43,7 +43,7 @@ class SalvarUsuarioSQLite: SalvarUsuarioRepository {
     
     // MARK: - Funcoes
     func salvar(_ usuario: Usuario) -> Bool {
-        let insertStatementString = "INSERT INTO Usuarios(nickName, nomeCompleto, email, senha) VALUES (?, ?, ?, ?);"
+        let insertStatementString = "INSERT INTO usuarios(nickName, nomeCompleto, email, senha) VALUES (?, ?, ?, ?);"
         var insertStatement: OpaquePointer? = nil
         
         if sqlite3_prepare_v2(self.instanciaDoBanco, insertStatementString, -1, &insertStatement, nil) != SQLITE_OK {

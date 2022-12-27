@@ -63,6 +63,8 @@
 		C5BCB748294BB542002B9C62 /* SalvarUsuarioSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BCB747294BB542002B9C62 /* SalvarUsuarioSystemTests.swift */; };
 		C5BCB74A294BB7F7002B9C62 /* VerificadorDeDadosCadastradosSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BCB749294BB7F7002B9C62 /* VerificadorDeDadosCadastradosSystemTests.swift */; };
 		C5BDB914294A49AC007DD78D /* SalvarUsuarioSystemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BDB913294A49AC007DD78D /* SalvarUsuarioSystemMock.swift */; };
+		C5BF833E295B553900F0A9D3 /* VerificadorDePersonagensJaAdicionadosAUmUsuarioRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF833D295B553900F0A9D3 /* VerificadorDePersonagensJaAdicionadosAUmUsuarioRepository.swift */; };
+		C5BF8340295B5FA300F0A9D3 /* RemovePersonagemDosFavoritosRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF833F295B5FA300F0A9D3 /* RemovePersonagemDosFavoritosRepository.swift */; };
 		C5C3455A291D7F9B00E3097A /* CriacaoDeContaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C34559291D7F9B00E3097A /* CriacaoDeContaController.swift */; };
 		C5C3455C291D860300E3097A /* UsuariosDadosStatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C3455B291D860300E3097A /* UsuariosDadosStatic.swift */; };
 		C5C3455F291D907A00E3097A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C3455E291D907A00E3097A /* LoginController.swift */; };
@@ -140,6 +142,8 @@
 		C5BCB747294BB542002B9C62 /* SalvarUsuarioSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalvarUsuarioSystemTests.swift; sourceTree = "<group>"; };
 		C5BCB749294BB7F7002B9C62 /* VerificadorDeDadosCadastradosSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificadorDeDadosCadastradosSystemTests.swift; sourceTree = "<group>"; };
 		C5BDB913294A49AC007DD78D /* SalvarUsuarioSystemMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalvarUsuarioSystemMock.swift; sourceTree = "<group>"; };
+		C5BF833D295B553900F0A9D3 /* VerificadorDePersonagensJaAdicionadosAUmUsuarioRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificadorDePersonagensJaAdicionadosAUmUsuarioRepository.swift; sourceTree = "<group>"; };
+		C5BF833F295B5FA300F0A9D3 /* RemovePersonagemDosFavoritosRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemovePersonagemDosFavoritosRepository.swift; sourceTree = "<group>"; };
 		C5C34559291D7F9B00E3097A /* CriacaoDeContaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContaController.swift; sourceTree = "<group>"; };
 		C5C3455B291D860300E3097A /* UsuariosDadosStatic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuariosDadosStatic.swift; sourceTree = "<group>"; };
 		C5C3455E291D907A00E3097A /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -582,6 +586,8 @@
 				C569E5EB293FDABD0040885A /* ValidadorDeLoginRepository.swift */,
 				C587194D2947A52A00F6EDC7 /* RecuperaDadosDoUsuarioRepository.swift */,
 				C54E698B295A11070089F936 /* SalvarPersonagemFavoritoRepository.swift */,
+				C5BF833D295B553900F0A9D3 /* VerificadorDePersonagensJaAdicionadosAUmUsuarioRepository.swift */,
+				C5BF833F295B5FA300F0A9D3 /* RemovePersonagemDosFavoritosRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -798,6 +804,7 @@
 				C5BDB914294A49AC007DD78D /* SalvarUsuarioSystemMock.swift in Sources */,
 				C50E6427292D56E100D8047C /* RecuperacaoDeSenhaViewController.swift in Sources */,
 				C5143CE8292FE6A600918975 /* RequisicoesStarWarsAPI.swift in Sources */,
+				C5BF833E295B553900F0A9D3 /* VerificadorDePersonagensJaAdicionadosAUmUsuarioRepository.swift in Sources */,
 				C572B053293936BB00BE9D00 /* RedefinicaoDeSenhaRepository.swift in Sources */,
 				C5143CE6292FE54800918975 /* Personagem.swift in Sources */,
 				C5143CEA2930041600918975 /* PlanetaView.swift in Sources */,
@@ -808,6 +815,7 @@
 				C550F87D2919650D00FC2EF2 /* LoginView.swift in Sources */,
 				C50E6429292D572200D8047C /* RecuperacaoDeSenhaView.swift in Sources */,
 				C58D4095292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift in Sources */,
+				C5BF8340295B5FA300F0A9D3 /* RemovePersonagemDosFavoritosRepository.swift in Sources */,
 				C58D40A1292EBBDF00A1C6BC /* PersonagemView.swift in Sources */,
 				C569E5EC293FDABD0040885A /* ValidadorDeLoginRepository.swift in Sources */,
 				C55BFA6B291ACABB0049C539 /* Usuario.swift in Sources */,

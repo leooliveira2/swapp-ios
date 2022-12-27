@@ -10,11 +10,11 @@ import UIKit
 protocol RecuperaDadosDoUsuarioRepository {
     
     func getNickNameDoUsuario(email: String) -> String?
+    func getIdDoUsuario(nickName: String) -> Int?
     
 }
 
 class RecuperaDadosDoUsuarioSystem: RecuperaDadosDoUsuarioRepository {
-    
     private let usuariosArmazenamento: UsuariosDadosStatic
     
     init(usuariosArmazenamento: UsuariosDadosStatic? = nil) {
@@ -30,6 +30,10 @@ class RecuperaDadosDoUsuarioSystem: RecuperaDadosDoUsuarioRepository {
             }
         }
         
+        return nil
+    }
+    
+    func getIdDoUsuario(nickName: String) -> Int? {
         return nil
     }
     
@@ -49,7 +53,7 @@ class RecuperaDadosDoUsuarioSQLite: RecuperaDadosDoUsuarioRepository {
     
     // MARK: - Funcoes
     func getNickNameDoUsuario(email: String) -> String? {
-        let selectStatementString = "SELECT nickName FROM Usuarios WHERE email = ?;"
+        let selectStatementString = "SELECT nickName FROM usuarios WHERE email = ?;"
         var selectStatement: OpaquePointer? = nil
         
         if sqlite3_prepare_v2(self.instanciaDoBanco, selectStatementString, -1, &selectStatement, nil) != SQLITE_OK {
@@ -70,5 +74,26 @@ class RecuperaDadosDoUsuarioSQLite: RecuperaDadosDoUsuarioRepository {
         return nil
     }
     
+    func getIdDoUsuario(nickName: String) -> Int? {
+        let selectStatementString = "SELECT id FROM usuarios WHERE nickName = ?;"
+        var selectStatement: OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(self.instanciaDoBanco, selectStatementString, -1, &selectStatement, nil) != SQLITE_OK {
+            print("Erro ao ler dados do banco!")
+            return nil
+        }
+        
+        sqlite3_bind_text(selectStatement, 1, (nickName as NSString).utf8String, -1, nil)
+    
+        if sqlite3_step(selectStatement) == SQLITE_ROW {
+            let idVindoDoBanco = sqlite3_column_int(selectStatement, 0)
+            
+            sqlite3_finalize(selectStatement)
+            return Int(idVindoDoBanco)
+        }
+        
+        sqlite3_finalize(selectStatement)
+        return nil
+    }
     
 }

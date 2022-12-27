@@ -50,7 +50,7 @@ class RedefinicaoDeSenhaSQLite: RedefinicaoDeSenhaRepository {
     
     // MARK: - Funcoes
     func redefinirSenha(email: String, senha: String) -> Bool {
-        let updateStatementString = "UPDATE Usuarios SET senha = ? WHERE email = ?;"
+        let updateStatementString = "UPDATE usuarios SET senha = ? WHERE email = ?;"
         var updateStatement: OpaquePointer? = nil
         
         if sqlite3_prepare_v2(self.instanciaDoBanco, updateStatementString, -1, &updateStatement, nil) != SQLITE_OK {

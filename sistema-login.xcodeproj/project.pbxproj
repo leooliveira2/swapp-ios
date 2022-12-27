@@ -233,6 +233,7 @@
 		C5493F4F29539A9B00BD0399 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C569E5EB293FDABD0040885A /* ValidadorDeLoginRepository.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -582,7 +583,6 @@
 				C572B052293936BB00BE9D00 /* RedefinicaoDeSenhaRepository.swift */,
 				C572B054293937D700BE9D00 /* SalvarUsuarioRepository.swift */,
 				C569E5E3293FB9030040885A /* VerificadorDeDadosCadastradosRepository.swift */,
-				C569E5EB293FDABD0040885A /* ValidadorDeLoginRepository.swift */,
 				C587194D2947A52A00F6EDC7 /* RecuperaDadosDoUsuarioRepository.swift */,
 				C54E698B295A11070089F936 /* SalvarPersonagemFavoritoRepository.swift */,
 				C5BF833D295B553900F0A9D3 /* VerificadorDePersonagensJaAdicionadosAUmUsuarioRepository.swift */,

@@ -67,6 +67,25 @@ class Crud {
         sqlite3_finalize(deleteStatement)
         
     }
+    
+    public func deleteTodosOsUsuarios(instanciaDoBanco: OpaquePointer) -> Void {
+        let deleteStatementString = "DELETE FROM usuarios;"
+        var deleteStatement: OpaquePointer? = nil
+
+        if sqlite3_prepare_v2(instanciaDoBanco, deleteStatementString, -1, &deleteStatement, nil) != SQLITE_OK {
+            print("Erro ao ler dados do banco!")
+            return
+        }
+        
+        if sqlite3_step(deleteStatement) != SQLITE_DONE {
+            print("Não foi possivel deletar os usuarios")
+            sqlite3_finalize(deleteStatement)
+            return
+        }
+        
+        print("Sucesso ao deletar usuarios")
+        sqlite3_finalize(deleteStatement)
+    }
 
     public func exibirTodosOsDadosDosPersonagens(db: OpaquePointer) -> Void {
         let queryStatementString = "SELECT * FROM personagens_favoritos"

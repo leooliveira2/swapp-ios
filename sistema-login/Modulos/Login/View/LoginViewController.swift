@@ -19,11 +19,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let usuarioEstaLogado = UserDefaults.standard.bool(forKey: "esta_logado")
-        
+        let usuarioEstaLogado = self.verificaSeUsuarioEstaLogado()
         if usuarioEstaLogado {
-            guard let navigationController = self.navigationController else { return }
-            navigationController.pushViewController(HomeTabBarController(), animated: true)
             return
         }
         
@@ -43,9 +40,7 @@ class LoginViewController: UIViewController {
         
         // Só pra exibir os users no terminal qnd o app iniciar a tela de login
         guard let db = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else { return }
-
         Crud().exibeTodosOsUsuariosSalvos(instanciaDoBanco: db)
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -72,17 +67,14 @@ class LoginViewController: UIViewController {
     @objc private func realizarLogin(_ sender: UIButton) -> Void {
         let alertas = Alerta(viewController: self)
         
-        let controladorDeErros = ControladorDeErros()
-        
         guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else {
-            alertas.criaAlerta(mensagem: "Erro de conexão! Favor tentar novamente")
+            alertas.criaAlerta(mensagem: "Erro interno! Favor tentar novamente")
             return
         }
         
+        let controladorDeErros = ControladorDeErros()
         let validadorDeLogin = ValidadorDeLoginSQLite(instanciaDoBanco: instanciaDoBanco)
-        
         let validadorDeUsuario = ValidacoesDeDadosDoUsuario(controladorDeErros)
-        
         let recuperaDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
         
         let controlador = LoginController(
@@ -103,7 +95,6 @@ class LoginViewController: UIViewController {
                 alertas.criaAlerta(mensagem: listaDeErros[0].rawValue)
                 return
             }
-            
         }
        
         guard let navigationController = self.navigationController else {
@@ -113,6 +104,19 @@ class LoginViewController: UIViewController {
         
         let homeTabBarController = HomeTabBarController()
         navigationController.pushViewController(homeTabBarController, animated: true)
+    }
+    
+    // MARK: - Funcoes
+    private func verificaSeUsuarioEstaLogado() -> Bool {
+        let usuarioEstaLogado = UserDefaults.standard.bool(forKey: "esta_logado")
+        
+        if usuarioEstaLogado {
+            guard let navigationController = self.navigationController else { return false }
+            navigationController.pushViewController(HomeTabBarController(), animated: true)
+            return true
+        }
+        
+        return false
     }
 
 }

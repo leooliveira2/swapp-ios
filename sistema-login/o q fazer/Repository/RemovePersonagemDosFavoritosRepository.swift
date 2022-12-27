@@ -29,7 +29,7 @@ class RemovePersonagemDosFavoritosSQLite: RemovePersonagemDosFavoritosRepository
         var deleteStatement: OpaquePointer? = nil
         
         if sqlite3_prepare_v2(self.instanciaDoBanco, deleteStatementString, -1, &deleteStatement, nil) != SQLITE_OK {
-            print("Erro ao ler dados do banco!")
+            print("Erro ao fazer o prepare dos dados em RemovePersonagemDosFavoritosSQLite!")
             return false
         }
         
@@ -37,7 +37,7 @@ class RemovePersonagemDosFavoritosSQLite: RemovePersonagemDosFavoritosRepository
         sqlite3_bind_text(deleteStatement, 2, (personagem.getNomePersonagem() as NSString).utf8String, -1, nil)
     
         if sqlite3_step(deleteStatement) != SQLITE_DONE {
-            print("Erro ao deletar personagem")
+            print("Erro ao deletar personagem em RemovePersonagemDosFavoritosSQLite!")
             sqlite3_finalize(deleteStatement)
             return false
         }
@@ -46,8 +46,6 @@ class RemovePersonagemDosFavoritosSQLite: RemovePersonagemDosFavoritosRepository
         sqlite3_finalize(deleteStatement)
         return true
         
-        
     }
-    
     
 }

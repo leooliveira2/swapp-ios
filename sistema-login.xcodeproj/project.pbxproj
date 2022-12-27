@@ -515,7 +515,6 @@
 		C5493F702953A2E000BD0399 /* System */ = {
 			isa = PBXGroup;
 			children = (
-				C51992B8295644F1000F874A /* Crud.swift */,
 				C580E2F32956135800DF9B8D /* DBManager.swift */,
 				C5C3455B291D860300E3097A /* UsuariosDadosStatic.swift */,
 			);
@@ -605,6 +604,7 @@
 		C5AABD5D2956301300AFEE5E /* estudo */ = {
 			isa = PBXGroup;
 			children = (
+				C51992B8295644F1000F874A /* Crud.swift */,
 				C5AABD5E2956303200AFEE5E /* DB.txt */,
 			);
 			path = estudo;

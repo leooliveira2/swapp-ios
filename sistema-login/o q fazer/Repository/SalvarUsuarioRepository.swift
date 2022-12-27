@@ -47,7 +47,7 @@ class SalvarUsuarioSQLite: SalvarUsuarioRepository {
         var insertStatement: OpaquePointer? = nil
         
         if sqlite3_prepare_v2(self.instanciaDoBanco, insertStatementString, -1, &insertStatement, nil) != SQLITE_OK {
-            print("Erro ao preparar o insert")
+            print("Erro ao fazer o prepare dos dados em SalvarUsuarioSQLite!")
             return false
         }
         
@@ -57,12 +57,11 @@ class SalvarUsuarioSQLite: SalvarUsuarioRepository {
         sqlite3_bind_text(insertStatement, 4, (usuario.getSenhaDoUsuario() as NSString).utf8String, -1, nil)
         
         if sqlite3_step(insertStatement) != SQLITE_DONE {
-            print("Erro ao fazer insercao!")
+            print("Erro ao fazer insercao em SalvarUsuarioSQLite!")
             sqlite3_finalize(insertStatement)
             return false
         }
         
-        print("Insercao feita com sucesso!")
         sqlite3_finalize(insertStatement)
         return true
     }

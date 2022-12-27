@@ -66,24 +66,26 @@ class VerificadorDeDadosCadastradosSQLite: VerificadorDeDadosCadastradosReposito
         var selectStatement: OpaquePointer? = nil
         
         if sqlite3_prepare_v2(self.instanciaDoBanco, selectStatementString, -1, &selectStatement, nil) != SQLITE_OK {
-            print("Erro ao ler dados do banco!")
+            print("Erro ao fazer o prepare dos dados em VerificadorDeDadosCadastradosSQLite!")
             return false
         }
         
         sqlite3_bind_text(selectStatement, 1, (nickName as NSString).utf8String, -1, nil)
     
-        if sqlite3_step(selectStatement) == SQLITE_ROW {
-            let nickNameVindoDoBanco = String(describing: String(cString: sqlite3_column_text(selectStatement, 0)))
-            
-            if nickNameVindoDoBanco == nickName {
-                sqlite3_finalize(selectStatement)
-                return true
-            }
-            
+        if sqlite3_step(selectStatement) != SQLITE_ROW {
+            sqlite3_finalize(selectStatement)
+            return false
         }
         
+        let nickNameVindoDoBanco = String(describing: String(cString: sqlite3_column_text(selectStatement, 0)))
+        
         sqlite3_finalize(selectStatement)
-        return false
+        
+        if nickNameVindoDoBanco != nickName {
+            return false
+        }
+        
+        return true
     }
     
     func verificaSeEmailJaEstaCadastrado(_ email: String) -> Bool {
@@ -91,24 +93,26 @@ class VerificadorDeDadosCadastradosSQLite: VerificadorDeDadosCadastradosReposito
         var selectStatement: OpaquePointer? = nil
         
         if sqlite3_prepare_v2(self.instanciaDoBanco, selectStatementString, -1, &selectStatement, nil) != SQLITE_OK {
-            print("Erro ao ler dados do banco!")
+            print("Erro ao fazer o prepare dos dados em VerificadorDeDadosCadastradosSQLite!")
             return false
         }
         
         sqlite3_bind_text(selectStatement, 1, (email as NSString).utf8String, -1, nil)
     
-        if sqlite3_step(selectStatement) == SQLITE_ROW {
-            let emailVindoDoBanco = String(describing: String(cString: sqlite3_column_text(selectStatement, 0)))
-            
-            if emailVindoDoBanco == email {
-                sqlite3_finalize(selectStatement)
-                return true
-            }
-            
+        if sqlite3_step(selectStatement) != SQLITE_ROW {
+            sqlite3_finalize(selectStatement)
+            return false
         }
         
+        let emailVindoDoBanco = String(describing: String(cString: sqlite3_column_text(selectStatement, 0)))
+        
         sqlite3_finalize(selectStatement)
-        return false
+        
+        if emailVindoDoBanco != email {
+            return false
+        }
+        
+        return true
     }
     
 }

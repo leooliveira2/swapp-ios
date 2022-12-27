@@ -54,22 +54,20 @@ class RedefinicaoDeSenhaSQLite: RedefinicaoDeSenhaRepository {
         var updateStatement: OpaquePointer? = nil
         
         if sqlite3_prepare_v2(self.instanciaDoBanco, updateStatementString, -1, &updateStatement, nil) != SQLITE_OK {
-            print("Erro ao ler dados do banco!")
+            print("Erro ao fazer o prepare dos dados em RedefinicaoDeSenhaSQLite!")
             return false
         }
         
         sqlite3_bind_text(updateStatement, 1, (senha as NSString).utf8String, -1, nil)
         sqlite3_bind_text(updateStatement, 2, (email as NSString).utf8String, -1, nil)
     
-        if sqlite3_step(updateStatement) == SQLITE_DONE {
-
+        if sqlite3_step(updateStatement) != SQLITE_DONE {
             sqlite3_finalize(updateStatement)
-            return true
+            return false
         }
         
         sqlite3_finalize(updateStatement)
-        return false
+        return true
     }
-    
     
 }

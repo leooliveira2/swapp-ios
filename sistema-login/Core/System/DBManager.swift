@@ -63,6 +63,7 @@ class DBManager {
     
 }
 
+// MARK: - Comandos que usei pra fazer o banco e as tabelas
 //guard let novoDb = DBManager().openDatabase(DBPath: "teste9.sqlite") else { return }
 //
 //DBManager().createTable(criarTabelaString: "CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT, nickName TEXT UNIQUE NOT NULL, nomeCompleto TEXT NOT NULL, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL);"

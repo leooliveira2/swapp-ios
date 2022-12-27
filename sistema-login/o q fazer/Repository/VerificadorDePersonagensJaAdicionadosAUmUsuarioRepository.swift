@@ -39,28 +39,26 @@ class VerificadorDePersonagensJaAdicionadosAUmUsuarioSQLite: VerificadorDePerson
         var selectStatement: OpaquePointer? = nil
         
         if sqlite3_prepare_v2(self.instanciaDoBanco, selectStatementString, -1, &selectStatement, nil) != SQLITE_OK {
-            print("Erro ao ler dados do banco!")
+            print("Erro ao fazer o prepare dos dados em VerificadorDePersonagensJaAdicionadosAUmUsuarioSQLite!")
             return false
         }
         
         sqlite3_bind_int(selectStatement, 1, Int32(idDoUsuario))
         sqlite3_bind_text(selectStatement, 2, (personagem.getNomePersonagem() as NSString).utf8String, -1, nil)
     
-        if sqlite3_step(selectStatement) == SQLITE_ROW {
-            let nomePersonagemVindoDoBanco = String(describing: String(cString: sqlite3_column_text(selectStatement, 0)))
-            
+        if sqlite3_step(selectStatement) != SQLITE_ROW {
             sqlite3_finalize(selectStatement)
-            
-            print(nomePersonagemVindoDoBanco)
-            
-            if nomePersonagemVindoDoBanco == personagem.getNomePersonagem() {
-                return true
-            }
-            
             return false
         }
         
+        let nomePersonagemVindoDoBanco = String(describing: String(cString: sqlite3_column_text(selectStatement, 0)))
+        
         sqlite3_finalize(selectStatement)
-        return false
+        
+        if nomePersonagemVindoDoBanco != personagem.getNomePersonagem() {
+            return false
+        }
+        
+        return true
     }
 }

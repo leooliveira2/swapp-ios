@@ -42,10 +42,9 @@ class PersonagemViewController: UIViewController {
         
         self.animacao = Animacao(view: self.personagemView)
         
-        // akmskamsakms
-        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else { print("Erro ao abrir banco aqui oh"); return }
-        
-        Crud().deleteTodosOsPersonagensPorId(id: 2, instanciaDoBanco: instanciaDoBanco)
+//        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else { print("Erro ao abrir banco aqui oh"); return }
+//
+//        Crud().deleteTodosOsPersonagensPorId(id: 2, instanciaDoBanco: instanciaDoBanco)
         
     }
     

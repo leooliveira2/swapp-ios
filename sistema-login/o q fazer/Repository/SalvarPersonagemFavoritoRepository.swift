@@ -31,7 +31,7 @@ class SalvarPersonagemFavoritoSQLite: SalvarPersonagemFavoritoRepository {
         var insertStatement: OpaquePointer? = nil
         
         if sqlite3_prepare_v2(self.instanciaDoBanco, insertStatementString, -1, &insertStatement, nil) != SQLITE_OK {
-            print("Erro ao preparar o insertche")
+            print("Erro ao fazer o prepare dos dados em SalvarPersonagemFavoritoSQLite!")
             return false
         }
         
@@ -44,12 +44,11 @@ class SalvarPersonagemFavoritoSQLite: SalvarPersonagemFavoritoRepository {
         sqlite3_bind_int(insertStatement, 7, Int32(idUsuario))
         
         if sqlite3_step(insertStatement) != SQLITE_DONE {
-            print("Erro ao fazer insercao!")
+            print("Erro ao fazer insercao em SalvarPersonagemFavoritoSQLite!")
             sqlite3_finalize(insertStatement)
             return false
         }
         
-        print("Insercao feita com sucesso!")
         sqlite3_finalize(insertStatement)
         return true
     }

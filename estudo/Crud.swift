@@ -8,6 +8,7 @@
 import UIKit
 import SQLite3
 
+// MARK: - Arquivo de testes
 class Crud {
 
     public func exibeTodosOsUsuariosSalvos(instanciaDoBanco: OpaquePointer) -> Void {

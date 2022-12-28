@@ -87,6 +87,8 @@ extension NaveViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = UITableViewCell()
         cell.backgroundColor = .lightGray
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        cell.textLabel?.numberOfLines = 4
                 
         return cell
     }

@@ -40,16 +40,7 @@ class PersonagemViewController: UIViewController {
         self.personagemView.getDadosPersonagemTableView().dataSource = self
         
         self.animacao = Animacao(view: self.personagemView)
-        
-//        // SÓ PRA RESETAR OS PERSONAGENS
-//        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite")
-//            else
-//        {
-//
-//            return
-//        }
-//
-//        Crud().deleteTodosOsPersonagensPorId(id: 8, instanciaDoBanco: instanciaDoBanco)
+
     }
     
     // MARK: - Actions

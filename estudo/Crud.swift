@@ -170,4 +170,45 @@ class Crud {
         sqlite3_finalize(deleteStatement)
     }
     
+    public func exibirTodosOsDadosDosPlanetas(db: OpaquePointer) -> Void {
+        let queryStatementString = "SELECT * FROM planetas_favoritos"
+        var queryStatement: OpaquePointer? = nil
+
+        var planetas: [Any] = []
+
+        if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) != SQLITE_OK {
+            print("Erro ao ler dados do banco!")
+            return
+        } else {
+            while sqlite3_step(queryStatement) == SQLITE_ROW {
+                let id = sqlite3_column_int(queryStatement, 0)
+                let nome = String(describing: String(cString: sqlite3_column_text(queryStatement, 1)))
+                let diametro = String(describing: String(cString: sqlite3_column_text(queryStatement, 2)))
+                let clima = String(describing: String(cString: sqlite3_column_text(queryStatement, 3)))
+                let gravidade = String(describing: String(cString: sqlite3_column_text(queryStatement, 4)))
+                let terreno = String(describing: String(cString: sqlite3_column_text(queryStatement, 5)))
+                let populacao = String(describing: String(cString: sqlite3_column_text(queryStatement, 6)))
+                let id_usuario = sqlite3_column_int(queryStatement, 7)
+                
+                var listaProvisoria: [Any] = []
+                listaProvisoria.append(id)
+                listaProvisoria.append(nome)
+                listaProvisoria.append(diametro)
+                listaProvisoria.append(clima)
+                listaProvisoria.append(gravidade)
+                listaProvisoria.append(terreno)
+                listaProvisoria.append(populacao)
+                listaProvisoria.append(id_usuario)
+
+                planetas.append(listaProvisoria)
+            }
+        }
+
+        sqlite3_finalize(queryStatement)
+
+        for planeta in planetas {
+            print(planeta)
+        }
+    }
+    
 }

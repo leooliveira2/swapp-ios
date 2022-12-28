@@ -60,6 +60,22 @@ class PlanetaView: UIView {
         return tableView
     }()
     
+    private lazy var adicionarAosFavoritosButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 10
+        return button
+    }()
+    
+    private lazy var estrelaDoBotaoAdicionarAosFavoritosImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        let image = UIImage(systemName: "star")
+        imageView.image = image
+        return imageView
+    }()
+    
     // MARK: - Inicializadores
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -79,23 +95,51 @@ class PlanetaView: UIView {
         return self.dadosPlanetaTableView
     }
     
+    public func getAdicionarAosFavoritosButton() -> UIButton {
+        return self.adicionarAosFavoritosButton
+    }
+    
     // MARK: - Execucoes quando algo acontecer na tela
     public func exibeComponentesCaracteristicasDoPlaneta() -> Void {
         self.addSubview(self.labelPlaneta)
         self.addSubview(self.dadosPlanetaTableView)
         
+        self.adicionarAosFavoritosButton.addSubview(
+            self.estrelaDoBotaoAdicionarAosFavoritosImageView
+        )
+        self.addSubview(self.adicionarAosFavoritosButton)
+        
         NSLayoutConstraint.activate([
             self.labelPlaneta.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 100),
-            self.labelPlaneta.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
-            self.labelPlaneta.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
+            self.labelPlaneta.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             
             self.dadosPlanetaTableView.topAnchor.constraint(equalTo: self.labelPlaneta.bottomAnchor, constant: 10),
             self.dadosPlanetaTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
             self.dadosPlanetaTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
             self.dadosPlanetaTableView.heightAnchor.constraint(equalToConstant: self.dadosPlanetaTableView.contentSize.height),
+            
+            self.estrelaDoBotaoAdicionarAosFavoritosImageView.centerYAnchor.constraint(equalTo: self.adicionarAosFavoritosButton.centerYAnchor),
+            self.estrelaDoBotaoAdicionarAosFavoritosImageView.centerXAnchor.constraint(equalTo: self.adicionarAosFavoritosButton.centerXAnchor),
+            self.estrelaDoBotaoAdicionarAosFavoritosImageView.heightAnchor.constraint(equalToConstant: 30),
+            self.estrelaDoBotaoAdicionarAosFavoritosImageView.widthAnchor.constraint(equalToConstant: 35),
+        
+            self.adicionarAosFavoritosButton.centerYAnchor.constraint(equalTo: self.labelPlaneta.centerYAnchor),
+            self.adicionarAosFavoritosButton.leadingAnchor.constraint(equalTo: self.labelPlaneta.trailingAnchor, constant: 10),
+            self.adicionarAosFavoritosButton.heightAnchor.constraint(equalToConstant: 40),
+            self.adicionarAosFavoritosButton.widthAnchor.constraint(equalToConstant: 40)
         ])
         
         self.atualizaConstraintDoBotaoGerarPlanetaPraBaixoDaTabelaDePlaneta()
+    }
+    
+    private func atualizaConstraintDoBotaoGerarPlanetaPraBaixoDaTabelaDePlaneta() -> Void {
+        self.removeConstraint(self.botaoTopAnchor)
+        
+        self.botaoTopAnchor = self.gerarPlanetaButton.topAnchor.constraint(equalTo: self.dadosPlanetaTableView.bottomAnchor, constant: 30)
+        
+        NSLayoutConstraint.activate([
+            self.botaoTopAnchor
+        ])
     }
     
     public func retornaComponentesDaViewPraEstadoInicial() -> Void {
@@ -110,16 +154,13 @@ class PlanetaView: UIView {
         ])
     }
     
-    private func atualizaConstraintDoBotaoGerarPlanetaPraBaixoDaTabelaDePlaneta() -> Void {
-        self.removeConstraint(self.botaoTopAnchor)
-        
-        self.botaoTopAnchor = self.gerarPlanetaButton.topAnchor.constraint(equalTo: self.dadosPlanetaTableView.bottomAnchor, constant: 30)
-        
-        NSLayoutConstraint.activate([
-            self.botaoTopAnchor
-        ])
+    public func execucaoQuandoUmPlanetaForAdicionadoAosFavoritos() -> Void {
+        self.adicionarAosFavoritosButton.backgroundColor = .blue
     }
     
+    public func execucaoQuandoOBotaoAdicionarAosFavoritosForDesmarcado() -> Void {
+        self.adicionarAosFavoritosButton.backgroundColor = .white
+    }
     
     // MARK: - Configs constraints
     private func configsConstraints() -> Void {

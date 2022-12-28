@@ -132,6 +132,16 @@ class PersonagemView: UIView {
         self.atualizaConstraintDoBotaoGerarPersonagemPraBaixoDaTabelaDePersonagem()
     }
     
+    private func atualizaConstraintDoBotaoGerarPersonagemPraBaixoDaTabelaDePersonagem() -> Void {
+        self.removeConstraint(self.botaoTopAnchor)
+        
+        self.botaoTopAnchor = self.gerarPersonagemButton.topAnchor.constraint(equalTo: self.dadosPersonagemTableView.bottomAnchor, constant: 30)
+        
+        NSLayoutConstraint.activate([
+            self.botaoTopAnchor
+        ])
+    }
+    
     public func retornaComponentesDaViewPraEstadoInicial() -> Void {
         self.removeConstraint(self.botaoTopAnchor)
         self.labelPersonagem.removeFromSuperview()
@@ -139,16 +149,6 @@ class PersonagemView: UIView {
         self.adicionarAosFavoritosButton.removeFromSuperview()
         
         self.botaoTopAnchor = self.gerarPersonagemButton.topAnchor.constraint(equalTo: self.centerYAnchor)
-        
-        NSLayoutConstraint.activate([
-            self.botaoTopAnchor
-        ])
-    }
-    
-    private func atualizaConstraintDoBotaoGerarPersonagemPraBaixoDaTabelaDePersonagem() -> Void {
-        self.removeConstraint(self.botaoTopAnchor)
-        
-        self.botaoTopAnchor = self.gerarPersonagemButton.topAnchor.constraint(equalTo: self.dadosPersonagemTableView.bottomAnchor, constant: 30)
         
         NSLayoutConstraint.activate([
             self.botaoTopAnchor

@@ -40,12 +40,6 @@ class NaveViewController: UIViewController {
         self.naveView.getDadosNaveTableView().dataSource = self
         
         self.animacao = Animacao(view: self.naveView)
-        
-        guard let db = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else {return}
-        
-        DBManager().createTable(criarTabelaString: "CREATE TABLE IF NOT EXISTS naves_favoritas (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, modelo TEXT NOT NULL, fabricante TEXT NOT NULL, custoEmCreditos TEXT NOT NULL, comprimento TEXT NOT NULL, passageiros TEXT NOT NULL, id_usuario INTEGER NOT NULL, CONSTRAINT fk_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE);", instanciaDoBanco: db)
-
-        
     }
     
     // MARK: - Actions

@@ -23,7 +23,14 @@ class PerfilViewController: UIViewController {
         self.perfilView.getNickUsuarioLabel().text = self.getNickNameDoUsuario()
         
         self.perfilView.getBotaoSairButton().addTarget(self, action: #selector(botaoSairFoiClicado(_: )), for: .touchUpInside)
-
+        
+        guard let navigationController = self.navigationController else { return }
+        
+        if navigationController.viewControllers.count > 1 {
+            navigationController.viewControllers.removeFirst()
+        }
+        
+        print(navigationController.viewControllers)
     }
     
     // MARK: - Funcoes

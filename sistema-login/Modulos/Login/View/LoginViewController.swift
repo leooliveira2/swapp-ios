@@ -24,6 +24,12 @@ class LoginViewController: UIViewController {
             return
         }
         
+        guard let navigationController = self.navigationController else { return }
+        
+        if navigationController.viewControllers.count > 1 {
+            navigationController.viewControllers.removeFirst()
+        }
+        
         self.view = self.loginView
         
         self.loginView.getBotaoDeEntrar().addTarget(
@@ -41,6 +47,8 @@ class LoginViewController: UIViewController {
         // Só pra exibir os users no terminal qnd o app iniciar a tela de login
         guard let db = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else { return }
         Crud().exibeTodosOsUsuariosSalvos(instanciaDoBanco: db)
+        
+        print(self.navigationController?.viewControllers)
     }
 
     override func viewWillAppear(_ animated: Bool) {

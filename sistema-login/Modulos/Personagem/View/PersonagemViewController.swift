@@ -40,7 +40,6 @@ class PersonagemViewController: UIViewController {
         self.personagemView.getDadosPersonagemTableView().dataSource = self
         
         self.animacao = Animacao(view: self.personagemView)
-
     }
     
     // MARK: - Actions

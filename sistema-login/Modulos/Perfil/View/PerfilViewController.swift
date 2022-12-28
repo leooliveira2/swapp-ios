@@ -58,6 +58,24 @@ class PerfilViewController: UIViewController {
         
         return nickNameDoUsuario
     }
+    
+    // MARK: - Funcoes
+    private func redirecionaParaViewEscolhidaNasOpcoesTableView(indiceClicado: Int) -> Void {
+        if indiceClicado == 0 {
+            self.navigationController?.pushViewController(PersonagensFavoritosViewController(), animated: true)
+            return
+        }
+        
+        if indiceClicado == 1 {
+            self.navigationController?.pushViewController(PlanetasFavoritosViewController(), animated: true)
+            return
+        }
+        
+        if indiceClicado == 2 {
+            self.navigationController?.pushViewController(NavesFavoritasViewController(), animated: true)
+            return
+        }
+    }
         
 }
 
@@ -78,7 +96,17 @@ extension PerfilViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = self.conteudoCelulasOpcoesTableView[indexPath.row]
         cell.textLabel?.textColor = .white
         
+//        var config = UIListContentConfiguration.cell()
+//        config.text = ""
+//        config.secondaryText = ""
+//        config.image = UIImage
+//        cell.contentConfiguration = config
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.redirecionaParaViewEscolhidaNasOpcoesTableView(indiceClicado: indexPath.row)
     }
     
 }

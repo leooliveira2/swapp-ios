@@ -57,6 +57,7 @@ class PersonagemView: UIView {
         tableView.layer.borderWidth = 2
         tableView.layer.borderColor = UIColor.white.cgColor
         tableView.isUserInteractionEnabled = false
+        tableView.tintColor = .black
         return tableView
     }()
     

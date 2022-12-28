@@ -9,16 +9,26 @@ import UIKit
 
 class PerfilViewController: UIViewController {
 
-    // MARK: - Atributos
+    // MARK: - View
     private lazy var perfilView: PerfilView = {
         let view = PerfilView()
         return view
     }()
     
+    // MARK: - Atributos
+    private let conteudoCelulasOpcoesTableView: [String] = [
+        "Personagens favoritos",
+        "Planetas favoritos",
+        "Naves favoritas"
+    ]
+    
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = self.perfilView
+        
+        self.perfilView.getOpcoesTableView().delegate = self
+        self.perfilView.getOpcoesTableView().dataSource = self
         
         self.perfilView.getNickUsuarioLabel().text = self.getNickNameDoUsuario()
         
@@ -29,11 +39,9 @@ class PerfilViewController: UIViewController {
         if navigationController.viewControllers.count > 1 {
             navigationController.viewControllers.removeFirst()
         }
-        
-        print(navigationController.viewControllers)
     }
     
-    // MARK: - Funcoes
+    // MARK: - Actions
     @objc private func botaoSairFoiClicado(_ sender: UIButton) -> Void {
         
         let perfilController = PerfilController()
@@ -50,5 +58,27 @@ class PerfilViewController: UIViewController {
         
         return nickNameDoUsuario
     }
+        
+}
 
+// MARK: - Extensoes
+extension PerfilViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = UITableViewCell()
+        cell.backgroundColor = .black
+        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        cell.textLabel?.numberOfLines = 2
+        
+        cell.textLabel?.text = self.conteudoCelulasOpcoesTableView[indexPath.row]
+        cell.textLabel?.textColor = .white
+        
+        return cell
+    }
+    
 }

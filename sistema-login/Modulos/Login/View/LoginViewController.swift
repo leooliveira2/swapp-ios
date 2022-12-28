@@ -24,12 +24,6 @@ class LoginViewController: UIViewController {
             return
         }
         
-        guard let navigationController = self.navigationController else { return }
-        
-        if navigationController.viewControllers.count > 1 {
-            navigationController.viewControllers.removeFirst()
-        }
-        
         self.view = self.loginView
         
         self.loginView.getBotaoDeEntrar().addTarget(
@@ -43,6 +37,12 @@ class LoginViewController: UIViewController {
         )
         
         self.loginView.getBotaoRecuperarSenha().addTarget(self, action: #selector(redirecionarParaTelaDeRecuperacaoDeSenha(_:)), for: .touchUpInside)
+        
+        guard let navigationController = self.navigationController else { return }
+        
+        if navigationController.viewControllers.count > 1 {
+            navigationController.viewControllers.removeFirst()
+        }
         
         // Só pra exibir os users no terminal qnd o app iniciar a tela de login
         guard let db = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else { return }

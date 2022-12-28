@@ -40,6 +40,22 @@ class PerfilView: UIView {
         return label
     }()
     
+    private lazy var opcoesTableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.layer.cornerRadius = 15
+        tableView.layer.borderColor = UIColor.white.cgColor
+        tableView.backgroundColor = .black
+        tableView.isScrollEnabled = false
+        tableView.separatorStyle = .singleLine
+        tableView.separatorColor = .white
+        tableView.separatorInset = .zero
+        tableView.isUserInteractionEnabled = true
+        tableView.layer.borderWidth = 3
+        tableView.rowHeight = 60
+        return tableView
+    }()
+    
     private lazy var botaoSairButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -70,6 +86,10 @@ class PerfilView: UIView {
         return self.nickUsuarioLabel
     }
     
+    public func getOpcoesTableView() -> UITableView {
+        return self.opcoesTableView
+    }
+    
     public func getBotaoSairButton() -> UIButton {
         return self.botaoSairButton
     }
@@ -79,6 +99,7 @@ class PerfilView: UIView {
         self.addSubview(self.perfilLabel)
         self.addSubview(self.fotoDePerfilImageView)
         self.addSubview(self.nickUsuarioLabel)
+        self.addSubview(self.opcoesTableView)
         self.addSubview(self.botaoSairButton)
         
         NSLayoutConstraint.activate([
@@ -92,6 +113,11 @@ class PerfilView: UIView {
             
             self.nickUsuarioLabel.topAnchor.constraint(equalTo: self.fotoDePerfilImageView.bottomAnchor, constant: 5),
             self.nickUsuarioLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            
+            self.opcoesTableView.topAnchor.constraint(equalTo: self.nickUsuarioLabel.bottomAnchor, constant: 30),
+            self.opcoesTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            self.opcoesTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            self.opcoesTableView.heightAnchor.constraint(equalToConstant: 180),
             
             self.botaoSairButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -50),
             self.botaoSairButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)

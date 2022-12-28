@@ -8,10 +8,16 @@
 import UIKit
 
 class PersonagensFavoritosViewController: UIViewController {
+    
+    // MARK: - View
+    private lazy var personagensFavoritosView: PersonagensFavoritosView = {
+        let view = PersonagensFavoritosView()
+        return view
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .blue
+        self.view = self.personagensFavoritosView
         
     }
     

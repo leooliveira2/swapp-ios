@@ -67,6 +67,7 @@
 		C59A522B2950EA8C00D145DD /* RecuperacaoDeSenhaControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59A522A2950EA8C00D145DD /* RecuperacaoDeSenhaControllerTests.swift */; };
 		C59A522D2950EACD00D145DD /* CriacaoDeContaControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59A522C2950EACD00D145DD /* CriacaoDeContaControllerTests.swift */; };
 		C59A522F2950EAF400D145DD /* LoginControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59A522E2950EAF400D145DD /* LoginControllerTests.swift */; };
+		C5A7F6F4295CE14C0070F64E /* PersonagensFavoritosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A7F6F3295CE14C0070F64E /* PersonagensFavoritosView.swift */; };
 		C5B5E74D2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B5E74C2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift */; };
 		C5BCB746294BA55F002B9C62 /* RedefinicaoDeSenhaSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BCB745294BA55F002B9C62 /* RedefinicaoDeSenhaSystemTests.swift */; };
 		C5BCB748294BB542002B9C62 /* SalvarUsuarioSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BCB747294BB542002B9C62 /* SalvarUsuarioSystemTests.swift */; };
@@ -153,6 +154,7 @@
 		C59A522A2950EA8C00D145DD /* RecuperacaoDeSenhaControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperacaoDeSenhaControllerTests.swift; sourceTree = "<group>"; };
 		C59A522C2950EACD00D145DD /* CriacaoDeContaControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoDeContaControllerTests.swift; sourceTree = "<group>"; };
 		C59A522E2950EAF400D145DD /* LoginControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginControllerTests.swift; sourceTree = "<group>"; };
+		C5A7F6F3295CE14C0070F64E /* PersonagensFavoritosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonagensFavoritosView.swift; sourceTree = "<group>"; };
 		C5AABD5E2956303200AFEE5E /* DB.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = DB.txt; sourceTree = "<group>"; };
 		C5B5E7432948ED42001F87AE /* sistema-loginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sistema-loginTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B5E74C2948EDDB001F87AE /* ValidacoesDeDadosDoUsuarioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidacoesDeDadosDoUsuarioTests.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				C5416870295CDC820041908D /* PersonagensFavoritosViewController.swift */,
+				C5A7F6F3295CE14C0070F64E /* PersonagensFavoritosView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -869,6 +872,7 @@
 				C550F87D2919650D00FC2EF2 /* LoginView.swift in Sources */,
 				C50E6429292D572200D8047C /* RecuperacaoDeSenhaView.swift in Sources */,
 				C5416865295CAA5A0041908D /* SalvarPlanetaFavoritoRepository.swift in Sources */,
+				C5A7F6F4295CE14C0070F64E /* PersonagensFavoritosView.swift in Sources */,
 				C58D4095292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift in Sources */,
 				C5BF8340295B5FA300F0A9D3 /* RemovePersonagemDosFavoritosRepository.swift in Sources */,
 				C58D40A1292EBBDF00A1C6BC /* PersonagemView.swift in Sources */,

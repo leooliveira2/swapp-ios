@@ -17,6 +17,7 @@ class NaveViewController: UIViewController {
 
     // MARK: - Atributos
     private var animacao: Animacao?
+    private var nave: Nave?
     
     // MARK: - View life cycle
     override func viewDidLoad() {
@@ -29,10 +30,21 @@ class NaveViewController: UIViewController {
             for: .touchUpInside
         )
         
+        self.naveView.getAdicionarAosFavoritosButton().addTarget(
+            self,
+            action: #selector(acaoBotaoAdicionarAosFavoritos(_:)),
+            for: .touchUpInside
+        )
+        
         self.naveView.getDadosNaveTableView().delegate = self
         self.naveView.getDadosNaveTableView().dataSource = self
         
         self.animacao = Animacao(view: self.naveView)
+        
+        guard let db = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else {return}
+        
+        DBManager().createTable(criarTabelaString: "CREATE TABLE IF NOT EXISTS naves_favoritas (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, modelo TEXT NOT NULL, fabricante TEXT NOT NULL, custoEmCreditos TEXT NOT NULL, comprimento TEXT NOT NULL, passageiros TEXT NOT NULL, id_usuario INTEGER NOT NULL, CONSTRAINT fk_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE);", instanciaDoBanco: db)
+
         
     }
     
@@ -40,25 +52,155 @@ class NaveViewController: UIViewController {
     @objc private func acaoBotaoGerarNave(_ sender: UIButton) -> Void {
         guard let animacao = self.animacao else { return }
         
+        let alertas = Alerta(viewController: self)
+        
+        self.naveView.execucaoQuandoOBotaoAdicionarAosFavoritosForDesmarcado()
+        
         self.naveView.exibeComponentesCaracteristicasDaNave()
         
         animacao.iniciarAnimacao()
         
-        let requisicoesSWAPI = RequisicoesStarWarsAPI()
-    
-        let naveController = NaveController(requisicoesSWAPI: requisicoesSWAPI)
+        let naveController = NaveController()
         
-        naveController.gerarNave { nave in
+        let requisicoesSWAPI = RequisicoesStarWarsAPI()
+        
+        naveController.gerarNave(requisicoesSWAPI: requisicoesSWAPI) { nave in
+            self.nave = nave
             let dadosNave = nave.getListaComDadosDaNave()
             self.adicionaOsDadosDaNaveAsLinhasDaTableView(dadosNave)
-            print(dadosNave)
             animacao.pararAnimacao()
+            
+            guard let nickNameDoUsuario = UserDefaults.standard.string(forKey: "user_id") else {
+                alertas.criaAlerta(titulo: "Desculpe", mensagem: "No momento não é possível utilizar a funcionalidade favoritos")
+                return
+            }
+            
+            guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite")
+                else
+            {
+                alertas.criaAlerta(mensagem: "Erro interno! Favor tentar novamente!")
+                return
+            }
+            
+            let jaEstaFavoritado = self.verificaSeNaveJaEstaFavoritada(
+                nave: nave,
+                nickName: nickNameDoUsuario,
+                instanciaDoBanco: instanciaDoBanco
+            )
+            
+            if jaEstaFavoritado {
+                self.naveView.execucaoQuandoUmaNaveForAdicionadaAosFavoritos()
+            }
+            
         } fracasso: {
             let alerta = Alerta(viewController: self)
             self.retornaViewPraEstadoInicialEmCasoDeErroAoBuscarNave(alerta)
             animacao.pararAnimacao()
         }
-
+    }
+    
+    @objc private func acaoBotaoAdicionarAosFavoritos(_ sender: UIButton) -> Void {
+        let alerta = Alerta(viewController: self)
+        
+        guard let nave = self.nave else {
+            alerta.criaAlerta(mensagem: "Erro interno! Favor tentar novamente!")
+            return
+        }
+        
+        guard let nickNameDoUsuario = UserDefaults.standard.string(forKey: "user_id") else {
+            alerta.criaAlerta(mensagem: "Erro interno! Favor tentar novamente!")
+            return
+        }
+        
+        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else {
+            alerta.criaAlerta(mensagem: "Erro interno! Favor tentar novamente!")
+            return
+        }
+        
+        let buscadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
+        
+        let naveJaEstaFavoritada = self.verificaSeNaveJaEstaFavoritada(
+            nave: nave,
+            nickName: nickNameDoUsuario,
+            instanciaDoBanco: instanciaDoBanco
+        )
+        
+        let naveController = NaveController()
+        
+        if naveJaEstaFavoritada {
+            let removeNaveDosFavoritos = RemoveNaveDosFavoritosSQLite(
+                buscadorDeDadosDoUsuario: buscadorDeDadosDoUsuario,
+                instanciaDoBanco: instanciaDoBanco
+            )
+            
+            let naveFoiRemovida = naveController.removerNaveDosFavoritos(
+                nave: nave,
+                nickNameDoUsuario: nickNameDoUsuario,
+                buscadorDeDadosDoUsuario: buscadorDeDadosDoUsuario,
+                removeNaveDosFavoritos: removeNaveDosFavoritos
+            )
+            
+            if !naveFoiRemovida {
+                alerta.criaAlerta(mensagem: "Erro ao remover nave!")
+                return
+            }
+            
+            alerta.criaAlerta(
+                titulo: "Sucesso",
+                mensagem: "\(nave.getNome()) foi removido com sucesso de seus favoritos"
+            )
+            
+            self.naveView.execucaoQuandoOBotaoAdicionarAosFavoritosForDesmarcado()
+            return
+        
+        }
+        
+        let adicionaAosFavoritos = SalvarNaveFavoritaSQLite(instanciaDoBanco: instanciaDoBanco)
+        
+        let naveFoiSalva = naveController.adicionarNaveAosFavoritos(
+            nave,
+            adicionaAosFavoritos: adicionaAosFavoritos,
+            buscaDadosDoUsuario: buscadorDeDadosDoUsuario,
+            nickNameDoUsuario: nickNameDoUsuario
+        )
+        
+        if !naveFoiSalva {
+            alerta.criaAlerta(mensagem: "Erro ao favoritar nave!")
+            return
+        }
+        
+        alerta.criaAlerta(titulo: "Sucesso", mensagem: "Nave adicionada aos favoritos")
+        
+        print("----------------------------")
+        Crud().exibirTodosOsDadosDasNaves(db: instanciaDoBanco)
+        Crud().exibeTodosOsUsuariosSalvos(instanciaDoBanco: instanciaDoBanco)
+        print("----------------------------")
+        
+        self.naveView.execucaoQuandoUmaNaveForAdicionadaAosFavoritos()
+    }
+    
+    private func verificaSeNaveJaEstaFavoritada(
+        nave: Nave,
+        nickName: String,
+        instanciaDoBanco: OpaquePointer
+    ) -> Bool
+    {
+        let naveController = NaveController()
+        
+        let buscadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
+        
+        let verificadorDeNavesSalvasPorUsuario = VerificadorDeNavesJaAdicionadasAUmUsuarioSQLite(
+            buscadorDeDadosDoUsuario: buscadorDeDadosDoUsuario,
+            instanciaDoBanco: instanciaDoBanco
+        )
+        
+        let naveJaEstaFavoritada = naveController.verificaSeNaveJaEstaFavoritada(
+            nave: nave,
+            nickName: nickName,
+            verificadorDeNavesSalvasPorUsuario: verificadorDeNavesSalvasPorUsuario
+        )
+        
+        return naveJaEstaFavoritada
     }
     
     // MARK: - Funcoes

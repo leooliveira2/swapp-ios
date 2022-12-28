@@ -60,6 +60,22 @@ class NaveView: UIView {
         return tableView
     }()
     
+    private lazy var adicionarAosFavoritosButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 10
+        return button
+    }()
+    
+    private lazy var estrelaDoBotaoAdicionarAosFavoritosImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        let image = UIImage(systemName: "star")
+        imageView.image = image
+        return imageView
+    }()
+    
     // MARK: - Inicializadores
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -79,35 +95,41 @@ class NaveView: UIView {
         return self.dadosNaveTableView
     }
     
+    public func getAdicionarAosFavoritosButton() -> UIButton {
+        return self.adicionarAosFavoritosButton
+    }
+    
     // MARK: - Execucoes quando algo acontecer na tela
     public func exibeComponentesCaracteristicasDaNave() -> Void {
         self.addSubview(self.labelNave)
         self.addSubview(self.dadosNaveTableView)
         
+        self.adicionarAosFavoritosButton.addSubview(
+            self.estrelaDoBotaoAdicionarAosFavoritosImageView
+        )
+        self.addSubview(self.adicionarAosFavoritosButton)
+        
         NSLayoutConstraint.activate([
             self.labelNave.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 100),
-            self.labelNave.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
-            self.labelNave.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
+            self.labelNave.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             
             self.dadosNaveTableView.topAnchor.constraint(equalTo: self.labelNave.bottomAnchor, constant: 10),
             self.dadosNaveTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
             self.dadosNaveTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
             self.dadosNaveTableView.heightAnchor.constraint(equalToConstant: self.dadosNaveTableView.contentSize.height),
+            
+            self.estrelaDoBotaoAdicionarAosFavoritosImageView.centerYAnchor.constraint(equalTo: self.adicionarAosFavoritosButton.centerYAnchor),
+            self.estrelaDoBotaoAdicionarAosFavoritosImageView.centerXAnchor.constraint(equalTo: self.adicionarAosFavoritosButton.centerXAnchor),
+            self.estrelaDoBotaoAdicionarAosFavoritosImageView.heightAnchor.constraint(equalToConstant: 30),
+            self.estrelaDoBotaoAdicionarAosFavoritosImageView.widthAnchor.constraint(equalToConstant: 35),
+        
+            self.adicionarAosFavoritosButton.centerYAnchor.constraint(equalTo: self.labelNave.centerYAnchor),
+            self.adicionarAosFavoritosButton.leadingAnchor.constraint(equalTo: self.labelNave.trailingAnchor, constant: 10),
+            self.adicionarAosFavoritosButton.heightAnchor.constraint(equalToConstant: 40),
+            self.adicionarAosFavoritosButton.widthAnchor.constraint(equalToConstant: 40)
         ])
         
         self.atualizaConstraintDoBotaoGerarNavePraBaixoDaTabelaDeNave()
-    }
-    
-    public func retornaComponentesDaViewPraEstadoInicial() -> Void {
-        self.removeConstraint(self.botaoTopAnchor)
-        self.labelNave.removeFromSuperview()
-        self.dadosNaveTableView.removeFromSuperview()
-        
-        self.botaoTopAnchor = self.gerarNaveButton.topAnchor.constraint(equalTo: self.centerYAnchor)
-        
-        NSLayoutConstraint.activate([
-            self.botaoTopAnchor
-        ])
     }
     
     private func atualizaConstraintDoBotaoGerarNavePraBaixoDaTabelaDeNave() -> Void {
@@ -118,6 +140,27 @@ class NaveView: UIView {
         NSLayoutConstraint.activate([
             self.botaoTopAnchor
         ])
+    }
+    
+    public func retornaComponentesDaViewPraEstadoInicial() -> Void {
+        self.removeConstraint(self.botaoTopAnchor)
+        self.labelNave.removeFromSuperview()
+        self.dadosNaveTableView.removeFromSuperview()
+        self.adicionarAosFavoritosButton.removeFromSuperview()
+        
+        self.botaoTopAnchor = self.gerarNaveButton.topAnchor.constraint(equalTo: self.centerYAnchor)
+        
+        NSLayoutConstraint.activate([
+            self.botaoTopAnchor
+        ])
+    }
+    
+    public func execucaoQuandoUmaNaveForAdicionadaAosFavoritos() -> Void {
+        self.adicionarAosFavoritosButton.backgroundColor = .blue
+    }
+    
+    public func execucaoQuandoOBotaoAdicionarAosFavoritosForDesmarcado() -> Void {
+        self.adicionarAosFavoritosButton.backgroundColor = .white
     }
     
     // MARK: - Config Constraints

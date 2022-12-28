@@ -211,4 +211,45 @@ class Crud {
         }
     }
     
+    public func exibirTodosOsDadosDasNaves(db: OpaquePointer) -> Void {
+        let queryStatementString = "SELECT * FROM naves_favoritas"
+        var queryStatement: OpaquePointer? = nil
+
+        var naves: [Any] = []
+
+        if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) != SQLITE_OK {
+            print("Erro ao ler dados do banco!")
+            return
+        } else {
+            while sqlite3_step(queryStatement) == SQLITE_ROW {
+                let id = sqlite3_column_int(queryStatement, 0)
+                let nome = String(describing: String(cString: sqlite3_column_text(queryStatement, 1)))
+                let modelo = String(describing: String(cString: sqlite3_column_text(queryStatement, 2)))
+                let fabricante = String(describing: String(cString: sqlite3_column_text(queryStatement, 3)))
+                let custoEmCreditos = String(describing: String(cString: sqlite3_column_text(queryStatement, 4)))
+                let comprimento = String(describing: String(cString: sqlite3_column_text(queryStatement, 5)))
+                let passageiros = String(describing: String(cString: sqlite3_column_text(queryStatement, 6)))
+                let id_usuario = sqlite3_column_int(queryStatement, 7)
+                
+                var listaProvisoria: [Any] = []
+                listaProvisoria.append(id)
+                listaProvisoria.append(nome)
+                listaProvisoria.append(modelo)
+                listaProvisoria.append(fabricante)
+                listaProvisoria.append(custoEmCreditos)
+                listaProvisoria.append(comprimento)
+                listaProvisoria.append(passageiros)
+                listaProvisoria.append(id_usuario)
+
+                naves.append(listaProvisoria)
+            }
+        }
+
+        sqlite3_finalize(queryStatement)
+
+        for nave in naves {
+            print(nave)
+        }
+    }
+    
 }

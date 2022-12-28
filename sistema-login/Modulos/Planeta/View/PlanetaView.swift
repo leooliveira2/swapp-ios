@@ -146,6 +146,7 @@ class PlanetaView: UIView {
         self.removeConstraint(self.botaoTopAnchor)
         self.labelPlaneta.removeFromSuperview()
         self.dadosPlanetaTableView.removeFromSuperview()
+        self.adicionarAosFavoritosButton.removeFromSuperview()
         
         self.botaoTopAnchor = self.gerarPlanetaButton.topAnchor.constraint(equalTo: self.centerYAnchor)
         

@@ -9,13 +9,8 @@ import UIKit
 
 class NaveController {
     
-    private var requisicoesSWAPI: RequisicoesStarWarsAPI
-    
-    init(requisicoesSWAPI: RequisicoesStarWarsAPI) {
-        self.requisicoesSWAPI = requisicoesSWAPI
-    }
-    
     public func gerarNave(
+        requisicoesSWAPI: RequisicoesStarWarsAPI,
         sucesso: @escaping(_ nave: Nave) -> Void,
         fracasso: @escaping() -> Void
     ) -> Void
@@ -31,5 +26,49 @@ class NaveController {
     private func gerarIdAleatorio() -> Int {
         let numero = Int(arc4random_uniform(41))
         return numero
+    }
+    
+    public func adicionarNaveAosFavoritos(
+        _ nave: Nave,
+        adicionaAosFavoritos: SalvarNaveFavoritaRepository,
+        buscaDadosDoUsuario: RecuperaDadosDoUsuarioRepository,
+        nickNameDoUsuario: String
+    ) -> Bool
+    {
+        guard let idUsuario = buscaDadosDoUsuario.getIdDoUsuario(nickName: nickNameDoUsuario) else { return false }
+        
+        let naveFoiSalva = adicionaAosFavoritos.salvarComoFavorito(nave, idUsuario: idUsuario)
+        
+        return naveFoiSalva
+    }
+    
+    public func verificaSeNaveJaEstaFavoritada(
+        nave: Nave,
+        nickName: String,
+        verificadorDeNavesSalvasPorUsuario: VerificadorDeNavesJaAdicionadasAUmUsuarioRepository
+    ) -> Bool {
+        
+        let naveJaEstaFavoritada = verificadorDeNavesSalvasPorUsuario.verificaSeNaveJaEstaFavoritadaPeloUsuario(
+            nave: nave,
+            nickNameDeUsuario: nickName
+        )
+        
+        return naveJaEstaFavoritada
+    }
+    
+    public func removerNaveDosFavoritos(
+        nave: Nave,
+        nickNameDoUsuario: String,
+        buscadorDeDadosDoUsuario: RecuperaDadosDoUsuarioRepository,
+        removeNaveDosFavoritos: RemoveNaveDosFavoritosRepository
+    ) -> Bool {
+        guard let idDoUsuario = buscadorDeDadosDoUsuario.getIdDoUsuario(nickName: nickNameDoUsuario) else { return false }
+        
+        let naveFoiRemovida = removeNaveDosFavoritos.remover(
+            nave: nave,
+            idDoUsuario: idDoUsuario
+        )
+            
+        return naveFoiRemovida
     }
 }

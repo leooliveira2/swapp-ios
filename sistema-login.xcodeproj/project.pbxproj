@@ -19,6 +19,8 @@
 		C51992B9295644F1000F874A /* Crud.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51992B8295644F1000F874A /* Crud.swift */; };
 		C523C6D4294CD1A90012077A /* VerificadorDeDadosCadastradosSystemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C523C6D3294CD1A90012077A /* VerificadorDeDadosCadastradosSystemMock.swift */; };
 		C523C6D6294CD3930012077A /* ValidadorDeLoginSystemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C523C6D5294CD3930012077A /* ValidadorDeLoginSystemMock.swift */; };
+		C53C09AD295DFAF100E33F76 /* PersonagensFavoritosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53C09AC295DFAF100E33F76 /* PersonagensFavoritosController.swift */; };
+		C53C09B1295DFBC200E33F76 /* BuscadorDePersonagensFavoritosRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53C09B0295DFBC200E33F76 /* BuscadorDePersonagensFavoritosRepository.swift */; };
 		C5416865295CAA5A0041908D /* SalvarPlanetaFavoritoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5416864295CAA5A0041908D /* SalvarPlanetaFavoritoRepository.swift */; };
 		C5416867295CAB7E0041908D /* VerificadorDePlanetasJaAdicionadosAUmUsuarioRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5416866295CAB7E0041908D /* VerificadorDePlanetasJaAdicionadosAUmUsuarioRepository.swift */; };
 		C5416869295CAC2E0041908D /* RemovePlanetaDosFavoritosRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5416868295CAC2E0041908D /* RemovePlanetaDosFavoritosRepository.swift */; };
@@ -104,6 +106,8 @@
 		C51992B8295644F1000F874A /* Crud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crud.swift; sourceTree = "<group>"; };
 		C523C6D3294CD1A90012077A /* VerificadorDeDadosCadastradosSystemMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificadorDeDadosCadastradosSystemMock.swift; sourceTree = "<group>"; };
 		C523C6D5294CD3930012077A /* ValidadorDeLoginSystemMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidadorDeLoginSystemMock.swift; sourceTree = "<group>"; };
+		C53C09AC295DFAF100E33F76 /* PersonagensFavoritosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonagensFavoritosController.swift; sourceTree = "<group>"; };
+		C53C09B0295DFBC200E33F76 /* BuscadorDePersonagensFavoritosRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscadorDePersonagensFavoritosRepository.swift; sourceTree = "<group>"; };
 		C5416864295CAA5A0041908D /* SalvarPlanetaFavoritoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalvarPlanetaFavoritoRepository.swift; sourceTree = "<group>"; };
 		C5416866295CAB7E0041908D /* VerificadorDePlanetasJaAdicionadosAUmUsuarioRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificadorDePlanetasJaAdicionadosAUmUsuarioRepository.swift; sourceTree = "<group>"; };
 		C5416868295CAC2E0041908D /* RemovePlanetaDosFavoritosRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemovePlanetaDosFavoritosRepository.swift; sourceTree = "<group>"; };
@@ -206,9 +210,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C53C09AB295DFADD00E33F76 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C53C09AC295DFAF100E33F76 /* PersonagensFavoritosController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C53C09AF295DFB9400E33F76 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C53C09B0295DFBC200E33F76 /* BuscadorDePersonagensFavoritosRepository.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		C5416872295CDC8F0041908D /* PersonagensFavoritos */ = {
 			isa = PBXGroup;
 			children = (
+				C53C09AF295DFB9400E33F76 /* Model */,
+				C53C09AB295DFADD00E33F76 /* Controller */,
 				C5416873295CDC9A0041908D /* View */,
 			);
 			path = PersonagensFavoritos;
@@ -885,6 +907,7 @@
 				C587194E2947A52A00F6EDC7 /* RecuperaDadosDoUsuarioRepository.swift in Sources */,
 				C5C3455C291D860300E3097A /* UsuariosDadosStatic.swift in Sources */,
 				C550F8662919644D00FC2EF2 /* AppDelegate.swift in Sources */,
+				C53C09AD295DFAF100E33F76 /* PersonagensFavoritosController.swift in Sources */,
 				C516FA85294A66570034E7EF /* RedefinicaoDeSenhaSystemMock.swift in Sources */,
 				C550F8682919644D00FC2EF2 /* SceneDelegate.swift in Sources */,
 				C55BFA68291AB6890049C539 /* CriacaoDeContaView.swift in Sources */,
@@ -906,6 +929,7 @@
 				C5C3455F291D907A00E3097A /* LoginController.swift in Sources */,
 				C51992B9295644F1000F874A /* Crud.swift in Sources */,
 				C5143CEC2930078C00918975 /* NaveView.swift in Sources */,
+				C53C09B1295DFBC200E33F76 /* BuscadorDePersonagensFavoritosRepository.swift in Sources */,
 				C580E2F42956135800DF9B8D /* DBManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

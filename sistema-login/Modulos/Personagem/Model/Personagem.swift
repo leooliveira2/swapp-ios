@@ -10,12 +10,12 @@ import UIKit
 class Personagem: Codable {
     
     // MARK: - Atributos
-    public var name: String = ""
-    public var height: String = ""
-    public var mass: String = ""
-    public var eye_color: String = ""
-    public var birth_year: String = ""
-    public var gender: String = ""
+    private var name: String = ""
+    private var height: String = ""
+    private var mass: String = ""
+    private var eye_color: String = ""
+    private var birth_year: String = ""
+    private var gender: String = ""
     
     // MARK: - Getters
     public func getNomePersonagem() -> String {
@@ -40,6 +40,31 @@ class Personagem: Codable {
     
     public func getGeneroPersonagem() -> String {
         return self.gender
+    }
+    
+    // MARK: - Setters
+    public func setNome(_ nome: String) -> Void {
+        self.name = nome
+    }
+    
+    public func setAltura(_ altura: String) -> Void {
+        self.height = altura
+    }
+    
+    public func setPeso(_ peso: String) -> Void {
+        self.mass = peso
+    }
+    
+    public func setCorDosOlhos(_ corDosOlhos: String) -> Void {
+        self.eye_color = corDosOlhos
+    }
+    
+    public func setAnoNascimento(_ anoNascimento: String) -> Void {
+        self.birth_year = anoNascimento
+    }
+    
+    public func setGenero(_ genero: String) -> Void {
+        self.gender = genero
     }
     
     // MARK: - Funcoes

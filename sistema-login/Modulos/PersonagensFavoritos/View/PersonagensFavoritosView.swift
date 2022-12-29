@@ -10,13 +10,6 @@ import UIKit
 class PersonagensFavoritosView: UIView {
 
     // MARK: - Componentes
-    private lazy var backgroundImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "SpaceImage")
-        return imageView
-    }()
-    
     private lazy var semPersonagemLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -24,40 +17,52 @@ class PersonagensFavoritosView: UIView {
         label.font = UIFont.boldSystemFont(ofSize: 26)
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.backgroundColor = .lightGray
+        label.backgroundColor = .black
         label.layer.cornerRadius = 20
         label.layer.borderWidth = 1
-        label.layer.borderColor = UIColor.black.cgColor
+        label.layer.borderColor = UIColor.lightGray.cgColor
         label.clipsToBounds = true
+        label.textColor = .white
         return label
+    }()
+    
+    private lazy var personagensFavoritosLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Personagens favoritos"
+        label.font = UIFont.boldSystemFont(ofSize: 22)
+        label.textAlignment = .center
+        label.backgroundColor = .white
+        return label
+    }()
+    
+    private lazy var listaDePersonagensTableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .white
+        tableView.separatorStyle = .singleLine
+        tableView.separatorInset = .zero
+        return tableView
     }()
     
     // MARK: - Inicializadores
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        self.configComponentes()
-        
-        self.configComponentesQuandoNaoHouverPersonagens()
+        self.backgroundColor = .white
+        self.safeAreaLayoutGuide.owningView?.backgroundColor = .systemBlue
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Config componentes
-    private func configComponentes() -> Void {
-        self.addSubview(self.backgroundImage)
-        
-        NSLayoutConstraint.activate([
-            self.backgroundImage.topAnchor.constraint(equalTo: self.topAnchor),
-            self.backgroundImage.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.backgroundImage.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.backgroundImage.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-        ])
+    // MARK: - Funcoes
+    public func getListaDePersonagensTableView() -> UITableView {
+        return self.listaDePersonagensTableView
     }
     
-    private func configComponentesQuandoNaoHouverPersonagens() -> Void {
+    // MARK: - Config componentes
+    public func configComponentesQuandoNaoHouverPersonagens() -> Void {
         self.addSubview(self.semPersonagemLabel)
         
         NSLayoutConstraint.activate([
@@ -65,7 +70,22 @@ class PersonagensFavoritosView: UIView {
             self.semPersonagemLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.semPersonagemLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             self.semPersonagemLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
+        ])
+    }
+    
+    public func configComponentesComListaDePersonagens() -> Void {
+        self.addSubview(self.personagensFavoritosLabel)
+        self.addSubview(self.listaDePersonagensTableView)
         
+        NSLayoutConstraint.activate([
+            self.personagensFavoritosLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            self.personagensFavoritosLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.personagensFavoritosLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            
+            self.listaDePersonagensTableView.topAnchor.constraint(equalTo: self.personagensFavoritosLabel.bottomAnchor),
+            self.listaDePersonagensTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.listaDePersonagensTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            self.listaDePersonagensTableView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }

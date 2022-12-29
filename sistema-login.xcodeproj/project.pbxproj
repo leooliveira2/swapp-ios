@@ -24,6 +24,9 @@
 		C53C09B3295E0C6B00E33F76 /* PlanetasFavoritosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53C09B2295E0C6B00E33F76 /* PlanetasFavoritosView.swift */; };
 		C53C09B7295E0D0E00E33F76 /* PlanetasFavoritosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53C09B6295E0D0E00E33F76 /* PlanetasFavoritosController.swift */; };
 		C53C09B9295E0D6900E33F76 /* BuscadorDePlanetasFavoritosRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53C09B8295E0D6900E33F76 /* BuscadorDePlanetasFavoritosRepository.swift */; };
+		C53C09BB295E130C00E33F76 /* NavesFavoritasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53C09BA295E130C00E33F76 /* NavesFavoritasView.swift */; };
+		C53C09BF295E13F900E33F76 /* BuscadorDeNavesFavoritasRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53C09BE295E13F900E33F76 /* BuscadorDeNavesFavoritasRepository.swift */; };
+		C53C09C1295E152B00E33F76 /* NavesFavoritasController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53C09C0295E152B00E33F76 /* NavesFavoritasController.swift */; };
 		C5416865295CAA5A0041908D /* SalvarPlanetaFavoritoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5416864295CAA5A0041908D /* SalvarPlanetaFavoritoRepository.swift */; };
 		C5416867295CAB7E0041908D /* VerificadorDePlanetasJaAdicionadosAUmUsuarioRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5416866295CAB7E0041908D /* VerificadorDePlanetasJaAdicionadosAUmUsuarioRepository.swift */; };
 		C5416869295CAC2E0041908D /* RemovePlanetaDosFavoritosRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5416868295CAC2E0041908D /* RemovePlanetaDosFavoritosRepository.swift */; };
@@ -114,6 +117,9 @@
 		C53C09B2295E0C6B00E33F76 /* PlanetasFavoritosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetasFavoritosView.swift; sourceTree = "<group>"; };
 		C53C09B6295E0D0E00E33F76 /* PlanetasFavoritosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetasFavoritosController.swift; sourceTree = "<group>"; };
 		C53C09B8295E0D6900E33F76 /* BuscadorDePlanetasFavoritosRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscadorDePlanetasFavoritosRepository.swift; sourceTree = "<group>"; };
+		C53C09BA295E130C00E33F76 /* NavesFavoritasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavesFavoritasView.swift; sourceTree = "<group>"; };
+		C53C09BE295E13F900E33F76 /* BuscadorDeNavesFavoritasRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscadorDeNavesFavoritasRepository.swift; sourceTree = "<group>"; };
+		C53C09C0295E152B00E33F76 /* NavesFavoritasController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavesFavoritasController.swift; sourceTree = "<group>"; };
 		C5416864295CAA5A0041908D /* SalvarPlanetaFavoritoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalvarPlanetaFavoritoRepository.swift; sourceTree = "<group>"; };
 		C5416866295CAB7E0041908D /* VerificadorDePlanetasJaAdicionadosAUmUsuarioRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificadorDePlanetasJaAdicionadosAUmUsuarioRepository.swift; sourceTree = "<group>"; };
 		C5416868295CAC2E0041908D /* RemovePlanetaDosFavoritosRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemovePlanetaDosFavoritosRepository.swift; sourceTree = "<group>"; };
@@ -248,6 +254,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C53C09BC295E138200E33F76 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C53C09C0295E152B00E33F76 /* NavesFavoritasController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C53C09BD295E138800E33F76 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C53C09BE295E13F900E33F76 /* BuscadorDeNavesFavoritasRepository.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		C5416872295CDC8F0041908D /* PersonagensFavoritos */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +311,8 @@
 		C5416878295CDD850041908D /* NavesFavoritas */ = {
 			isa = PBXGroup;
 			children = (
+				C53C09BD295E138800E33F76 /* Model */,
+				C53C09BC295E138200E33F76 /* Controller */,
 				C5416879295CDD8D0041908D /* View */,
 			);
 			path = NavesFavoritas;
@@ -298,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				C541687A295CDD9B0041908D /* NavesFavoritasViewController.swift */,
+				C53C09BA295E130C00E33F76 /* NavesFavoritasView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -902,12 +927,15 @@
 				C57BD860293A733900092FA9 /* PerfilView.swift in Sources */,
 				C5C3455A291D7F9B00E3097A /* CriacaoDeContaController.swift in Sources */,
 				C541686D295CB81D0041908D /* VerificadorDeNavesJaAdicionadasAUmUsuarioRepository.swift in Sources */,
+				C53C09C1295E152B00E33F76 /* NavesFavoritasController.swift in Sources */,
 				C56022E8293A9822006D99E8 /* Planeta.swift in Sources */,
 				C5BDB914294A49AC007DD78D /* SalvarUsuarioSystemMock.swift in Sources */,
 				C50E6427292D56E100D8047C /* RecuperacaoDeSenhaViewController.swift in Sources */,
 				C541686F295CB8BA0041908D /* SalvarNaveFavoritaRepository.swift in Sources */,
 				C5143CE8292FE6A600918975 /* RequisicoesStarWarsAPI.swift in Sources */,
 				C5BF833E295B553900F0A9D3 /* VerificadorDePersonagensJaAdicionadosAUmUsuarioRepository.swift in Sources */,
+				C53C09BF295E13F900E33F76 /* BuscadorDeNavesFavoritasRepository.swift in Sources */,
+				C53C09BB295E130C00E33F76 /* NavesFavoritasView.swift in Sources */,
 				C572B053293936BB00BE9D00 /* RedefinicaoDeSenhaRepository.swift in Sources */,
 				C5143CE6292FE54800918975 /* Personagem.swift in Sources */,
 				C5143CEA2930041600918975 /* PlanetaView.swift in Sources */,

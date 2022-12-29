@@ -54,5 +54,30 @@ class Nave: Codable {
         
         return caracteristicasDaNave
     }
+    
+    // MARK: - Setters
+    public func setNome(_ nome: String) -> Void {
+        self.name = nome
+    }
+    
+    public func setModelo(_ modelo: String) -> Void {
+        self.model = modelo
+    }
+    
+    public func setFabricante(_ fabricante: String) -> Void {
+        self.manufacturer = fabricante
+    }
+    
+    public func setCustoEmCreditos(_ custoEmCreditos: String) -> Void {
+        self.cost_in_credits = custoEmCreditos
+    }
+    
+    public func setComprimento(_ comprimento: String) -> Void {
+        self.length = comprimento
+    }
+    
+    public func setPassageiros(_ passageiros: String) -> Void {
+        self.passengers = passageiros
+    }
 
 }

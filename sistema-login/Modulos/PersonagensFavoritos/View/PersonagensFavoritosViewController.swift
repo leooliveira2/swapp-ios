@@ -95,4 +95,18 @@ extension PersonagensFavoritosViewController: UITableViewDelegate, UITableViewDa
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let alertas = Alerta(viewController: self)
+        
+        let personagem = self.listaDePersonagensFavoritos[indexPath.row]
+        
+        let mensagem = "\nAltura: \(personagem.getAlturaPersonagem())" +
+                        "\nPeso: \(personagem.getPesoPersonagem())" +
+                        "\nCor dos olhos: \(personagem.getCorDosOlhosPersonagem())" +
+                        "\nAno de nascimento: \(personagem.getAnoNascimentoPersonagem())" +
+                        "\nGenero: \(personagem.getGeneroPersonagem())"
+
+        alertas.criaAlerta(titulo: personagem.getNomePersonagem(), mensagem: mensagem)
+    }
+    
 }

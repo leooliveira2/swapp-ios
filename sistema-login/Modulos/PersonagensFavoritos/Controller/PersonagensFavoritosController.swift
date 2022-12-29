@@ -31,4 +31,18 @@ class PersonagensFavoritosController {
         
         return listaDePersonagensFavoritos
     }
+    
+    public func removePersonagemDosFavoritosDoUsuario(
+        personagem: Personagem,
+        nickNameDoUsuario: String,
+        buscadorDeDadosDoUsuario: RecuperaDadosDoUsuarioRepository,
+        removePersonagemFavorito: RemovePersonagemDosFavoritosRepository
+    ) -> Bool {
+        guard let idDoUsuario = buscadorDeDadosDoUsuario.getIdDoUsuario(nickName: nickNameDoUsuario) else { return false }
+        
+        let personagemFoiRemovido = removePersonagemFavorito.remover(personagem: personagem, idDoUsuario: idDoUsuario)
+        
+        return personagemFoiRemovido
+        
+    }
 }

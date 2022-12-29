@@ -80,9 +80,53 @@ class PersonagensFavoritosViewController: UIViewController {
         
         self.personagensFavoritosView.configComponentesComListaDePersonagens()
     }
+    
+    private func acoesQuandoOBotaoRemoverPersonagemForClicado(
+        personagem: Personagem,
+        indice: IndexPath
+    ) -> Void
+    {
+        let alertas = Alerta(viewController: self)
+        
+        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else { return }
+        
+        guard let nickNameDoUsuario = UserDefaults.standard.string(forKey: "user_id") else {
+            alertas.criaAlerta(mensagem: "Erro ao remover personagem")
+            return
+        }
+        
+        let buscadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
+        
+        let removePersonagemFavorito = RemovePersonagemDosFavoritosSQLite(instanciaDoBanco: instanciaDoBanco)
+        
+        let personagensFavoritosController = PersonagensFavoritosController(
+            instanciaDoBanco: instanciaDoBanco
+        )
+        
+        let personagemFoiRemovido = personagensFavoritosController.removePersonagemDosFavoritosDoUsuario(
+            personagem: personagem,
+            nickNameDoUsuario: nickNameDoUsuario,
+            buscadorDeDadosDoUsuario: buscadorDeDadosDoUsuario,
+            removePersonagemFavorito: removePersonagemFavorito
+        )
+        
+        if !personagemFoiRemovido {
+            alertas.criaAlerta(mensagem: "Erro ao remover personagem")
+            return
+        }
+        
+        self.listaDePersonagensFavoritos.remove(at: indice.row)
+        self.personagensFavoritosView.getListaDePersonagensTableView().reloadData()
+        
+        if self.listaDePersonagensFavoritos.count == 0 {
+            self.personagensFavoritosView.configComponentesQuandoNaoHouverPersonagens()
+        }
+
+    }
 
 }
 
+// MARK: - Extensoes
 extension PersonagensFavoritosViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.listaDePersonagensFavoritos.count
@@ -106,7 +150,15 @@ extension PersonagensFavoritosViewController: UITableViewDelegate, UITableViewDa
                         "\n\nAno de nascimento: \(personagem.getAnoNascimentoPersonagem())" +
                         "\n\nGênero: \(personagem.getGeneroPersonagem())"
 
-        alertas.criaAlerta(titulo: personagem.getNomePersonagem(), mensagem: mensagem)
+        alertas.criaAlertaPersonalizadoExibicaoDeFavoritos(
+            titulo: personagem.getNomePersonagem(),
+            mensagem: mensagem,
+            handler: { _ in
+                self.acoesQuandoOBotaoRemoverPersonagemForClicado(
+                    personagem: personagem,
+                    indice: indexPath
+                )
+            }
+        )
     }
-    
 }

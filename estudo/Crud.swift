@@ -256,29 +256,12 @@ class Crud {
 
 
 // MARK: - Comandos que usei pra fazer o banco e as tabelas
-
-//guard let novoDb = DBManager().openDatabase(DBPath: "teste9.sqlite") else { return }
 //
-//DBManager().createTable(criarTabelaString: "CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT, nickName TEXT UNIQUE NOT NULL, nomeCompleto TEXT NOT NULL, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL);"
-//                        , instanciaDoBanco: novoDb)
+//let tabelaUsuariosFoiCriada = DBManager().createTable(criarTabelaString: "CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT, nickName TEXT UNIQUE NOT NULL, nomeCompleto TEXT NOT NULL, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL);"
+//                        , instanciaDoBanco: db)
 //
-//DBManager().createTable(criarTabelaString: "CREATE TABLE IF NOT EXISTS personagens_favoritos (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, altura TEXT NOT NULL, peso TEXT NOT NULL, corDosOlhos TEXT NOT NULL, anoNascimento TEXT NOT NULL, genero TEXT NOT NULL, id_usuario INTEGER NOT NULL, CONSTRAINT fk_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE);", instanciaDoBanco: novoDb)
+//let tabelaPersonagensFavoritosFoiCriada = DBManager().createTable(criarTabelaString: "CREATE TABLE IF NOT EXISTS personagens_favoritos (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, altura TEXT NOT NULL, peso TEXT NOT NULL, corDosOlhos TEXT NOT NULL, anoNascimento TEXT NOT NULL, genero TEXT NOT NULL, id_usuario INTEGER NOT NULL, CONSTRAINT fk_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE);", instanciaDoBanco: db)
 //
-//let salvaUsuario = SalvarUsuarioSQLite(instanciaDoBanco: novoDb)
-//salvaUsuario.salvar(Usuario(nickName: "Leonardo", nomeCompleto: "Leonardo", email: "Email@email.com", senha: "senha", repeticaoDeSenha: "senha"))
+//let tabelaPlanetasFavoritosFoiCriada = DBManager().createTable(criarTabelaString: "CREATE TABLE IF NOT EXISTS planetas_favoritos (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, diametro TEXT NOT NULL, clima TEXT NOT NULL, gravidade TEXT NOT NULL, terreno TEXT NOT NULL, populacao TEXT NOT NULL, id_usuario INTEGER NOT NULL, CONSTRAINT fk_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE);", instanciaDoBanco: db)
 //
-//let salvaPersonagemComoFavorito = SalvarPersonagemFavoritoSQLite(instanciaDoBanco: novoDb)
-//
-//let personagem = Personagem()
-//personagem.name = "Luke Skywalker"
-//personagem.height = "171"
-//personagem.mass = "77"
-//personagem.eye_color = "blue"
-//personagem.birth_year = "19BBY"
-//personagem.gender = "male"
-//
-//salvaPersonagemComoFavorito.salvarComoFavorito(personagem, idUsuario: 1)
-//
-//guard let db = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else { return }
-//
-//DBManager().createTable(criarTabelaString: "CREATE TABLE IF NOT EXISTS planetas_favoritos (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, diametro TEXT NOT NULL, clima TEXT NOT NULL, gravidade TEXT NOT NULL, terreno TEXT NOT NULL, populacao TEXT NOT NULL, id_usuario INTEGER NOT NULL, CONSTRAINT fk_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE);", instanciaDoBanco: db)
+//let tabelaNavesFavoritasFoiCriada = DBManager().createTable(criarTabelaString: "CREATE TABLE IF NOT EXISTS naves_favoritas (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, modelo TEXT NOT NULL, fabricante TEXT NOT NULL, custoEmCreditos TEXT NOT NULL, comprimento TEXT NOT NULL, passageiros TEXT NOT NULL, id_usuario INTEGER NOT NULL, CONSTRAINT fk_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE);", instanciaDoBanco: db)

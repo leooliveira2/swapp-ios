@@ -25,4 +25,21 @@ class Alerta: NSObject {
         
         self.vC.present(alerta, animated: true, completion: nil)
     }
+    
+    public func criaAlertaPersonalizadoExibicaoDeFavoritos(
+        titulo: String,
+        mensagem: String,
+        handler: @escaping (UIAlertAction) -> Void
+    ) -> Void
+    {
+        let alerta = UIAlertController(title: titulo, message: mensagem, preferredStyle: .alert)
+        
+        let acaoContinuar = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        let acaoRemover = UIAlertAction(title: "Remover", style: .destructive, handler: handler)
+        
+        alerta.addAction(acaoContinuar)
+        alerta.addAction(acaoRemover)
+        
+        self.vC.present(alerta, animated: true, completion: nil)
+    }
 }

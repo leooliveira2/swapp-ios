@@ -63,6 +63,8 @@ class PersonagensFavoritosView: UIView {
     
     // MARK: - Config componentes
     public func configComponentesQuandoNaoHouverPersonagens() -> Void {
+        self.personagensFavoritosLabel.removeFromSuperview()
+        self.listaDePersonagensTableView.removeFromSuperview()
         self.addSubview(self.semPersonagemLabel)
         
         NSLayoutConstraint.activate([

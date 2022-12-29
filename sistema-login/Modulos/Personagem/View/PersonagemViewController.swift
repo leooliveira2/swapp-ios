@@ -123,7 +123,6 @@ class PersonagemViewController: UIViewController {
         
         if personagemJaEstaFavoritado {
             let removePersonagemDosFavoritos = RemovePersonagemDosFavoritosSQLite(
-                buscadorDeDadosDoUsuario: buscadorDeDadosDoUsuario,
                 instanciaDoBanco: instanciaDoBanco
             )
             

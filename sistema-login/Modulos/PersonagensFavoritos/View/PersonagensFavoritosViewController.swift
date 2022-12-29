@@ -101,10 +101,10 @@ extension PersonagensFavoritosViewController: UITableViewDelegate, UITableViewDa
         let personagem = self.listaDePersonagensFavoritos[indexPath.row]
         
         let mensagem = "\nAltura: \(personagem.getAlturaPersonagem())" +
-                        "\nPeso: \(personagem.getPesoPersonagem())" +
-                        "\nCor dos olhos: \(personagem.getCorDosOlhosPersonagem())" +
-                        "\nAno de nascimento: \(personagem.getAnoNascimentoPersonagem())" +
-                        "\nGenero: \(personagem.getGeneroPersonagem())"
+                        "\n\nPeso: \(personagem.getPesoPersonagem())" +
+                        "\n\nCor dos olhos: \(personagem.getCorDosOlhosPersonagem())" +
+                        "\n\nAno de nascimento: \(personagem.getAnoNascimentoPersonagem())" +
+                        "\n\nGênero: \(personagem.getGeneroPersonagem())"
 
         alertas.criaAlerta(titulo: personagem.getNomePersonagem(), mensagem: mensagem)
     }

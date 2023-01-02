@@ -124,7 +124,6 @@ class PlanetaViewController: UIViewController {
         
         if planetaJaEstaFavoritado {
             let removePlanetaDosFavoritos = RemovePlanetaDosFavoritosSQLite(
-                buscadorDeDadosDoUsuario: buscadorDeDadosDoUsuario,
                 instanciaDoBanco: instanciaDoBanco
             )
             

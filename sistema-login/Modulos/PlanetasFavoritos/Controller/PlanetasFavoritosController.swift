@@ -31,5 +31,19 @@ class PlanetasFavoritosController {
         
         return listaDePlanetasFavoritos
     }
+    
+    public func removePlanetaDosFavoritosDoUsuario(
+        planeta: Planeta,
+        nickNameDoUsuario: String,
+        buscadorDeDadosDoUsuario: RecuperaDadosDoUsuarioRepository,
+        removePlanetaFavorito: RemovePlanetaDosFavoritosRepository
+    ) -> Bool {
+        guard let idDoUsuario = buscadorDeDadosDoUsuario.getIdDoUsuario(nickName: nickNameDoUsuario) else { return false }
+        
+        let planetaFoiRemovido = removePlanetaFavorito.remover(planeta: planeta, idDoUsuario: idDoUsuario)
+        
+        return planetaFoiRemovido
+        
+    }
 
 }

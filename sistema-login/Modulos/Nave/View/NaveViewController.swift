@@ -123,7 +123,6 @@ class NaveViewController: UIViewController {
         
         if naveJaEstaFavoritada {
             let removeNaveDosFavoritos = RemoveNaveDosFavoritosSQLite(
-                buscadorDeDadosDoUsuario: buscadorDeDadosDoUsuario,
                 instanciaDoBanco: instanciaDoBanco
             )
             

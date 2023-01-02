@@ -80,9 +80,53 @@ class NavesFavoritasViewController: UIViewController {
         
         self.navesFavoritasView.configComponentesComListaDeNaves()
     }
+    
+    private func acoesQuandoOBotaoRemoverNaveForClicado(
+        nave: Nave,
+        indice: IndexPath
+    ) -> Void
+    {
+        let alertas = Alerta(viewController: self)
+        
+        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else { return }
+        
+        guard let nickNameDoUsuario = UserDefaults.standard.string(forKey: "user_id") else {
+            alertas.criaAlerta(mensagem: "Erro ao remover nave")
+            return
+        }
+        
+        let buscadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
+        
+        let removeNaveFavorita = RemoveNaveDosFavoritosSQLite(instanciaDoBanco: instanciaDoBanco)
+        
+        let navesFavoritasController = NavesFavoritasController(
+            instanciaDoBanco: instanciaDoBanco
+        )
+        
+        let naveFoiRemovida = navesFavoritasController.removeNaveDosFavoritosDoUsuario(
+            nave: nave,
+            nickNameDoUsuario: nickNameDoUsuario,
+            buscadorDeDadosDoUsuario: buscadorDeDadosDoUsuario,
+            removeNaveFavorita: removeNaveFavorita
+        )
+        
+        if !naveFoiRemovida {
+            alertas.criaAlerta(mensagem: "Erro ao remover nave")
+            return
+        }
+        
+        self.listaDeNavesFavoritas.remove(at: indice.row)
+        self.navesFavoritasView.getListaDeNavesTableView().reloadData()
+        
+        if self.listaDeNavesFavoritas.count == 0 {
+            self.navesFavoritasView.configComponentesQuandoNaoHouverNaves()
+        }
+
+    }
 
 }
 
+// MARK: - Extensoes
 extension NavesFavoritasViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.listaDeNavesFavoritas.count
@@ -106,7 +150,16 @@ extension NavesFavoritasViewController: UITableViewDelegate, UITableViewDataSour
                         "\n\nComprimento: \(nave.getComprimento())" +
                         "\n\nPassageiros: \(nave.getPassageiros())"
 
-        alertas.criaAlerta(titulo: nave.getNome(), mensagem: mensagem)
+        alertas.criaAlertaPersonalizadoExibicaoDeFavoritos(
+            titulo: nave.getNome(),
+            mensagem: mensagem,
+            handler: { _ in
+                self.acoesQuandoOBotaoRemoverNaveForClicado(
+                    nave: nave,
+                    indice: indexPath
+                )
+            }
+        )
     }
     
 }

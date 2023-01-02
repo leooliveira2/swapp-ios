@@ -15,12 +15,10 @@ protocol RemoveNaveDosFavoritosRepository {
 import SQLite3
 
 class RemoveNaveDosFavoritosSQLite: RemoveNaveDosFavoritosRepository {
-    
-    private let buscadorDeDadosDoUsuario: RecuperaDadosDoUsuarioRepository
+
     private let instanciaDoBanco: OpaquePointer
     
-    init(buscadorDeDadosDoUsuario: RecuperaDadosDoUsuarioRepository, instanciaDoBanco: OpaquePointer) {
-        self.buscadorDeDadosDoUsuario = buscadorDeDadosDoUsuario
+    init(instanciaDoBanco: OpaquePointer) {
         self.instanciaDoBanco = instanciaDoBanco
     }
 

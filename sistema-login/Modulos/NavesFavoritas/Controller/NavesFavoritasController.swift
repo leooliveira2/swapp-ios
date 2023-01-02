@@ -32,4 +32,18 @@ class NavesFavoritasController {
         return listaDeNavesFavoritas
     }
     
+    public func removeNaveDosFavoritosDoUsuario(
+        nave: Nave,
+        nickNameDoUsuario: String,
+        buscadorDeDadosDoUsuario: RecuperaDadosDoUsuarioRepository,
+        removeNaveFavorita: RemoveNaveDosFavoritosRepository
+    ) -> Bool {
+        guard let idDoUsuario = buscadorDeDadosDoUsuario.getIdDoUsuario(nickName: nickNameDoUsuario) else { return false }
+        
+        let naveFoiRemovida = removeNaveFavorita.remover(nave: nave, idDoUsuario: idDoUsuario)
+        
+        return naveFoiRemovida
+        
+    }
+    
 }

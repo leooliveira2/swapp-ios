@@ -44,17 +44,9 @@ class PerfilViewController: UIViewController {
             for: .touchUpInside
         )
         
-        guard let pathImagem =  UserDefaults.standard.string(forKey: "path_imagem_perfil_\(self.getNickNameDoUsuario())") else { print("hihi"); return }
+        guard let fotoDePerfil = self.recuperarFotoDePerfil() else { return }
         
-        guard let pathURL = URL(string: pathImagem) else { return }
-        
-        do {
-            let data = try Data(contentsOf: pathURL)
-            self.perfilView.getFotoDePerfilImageView().image = UIImage(data: data)
-            print("Foto de perfil atualizada com sucesso!")
-        } catch {
-            print(error.localizedDescription)
-        }
+        self.perfilView.getFotoDePerfilImageView().image = fotoDePerfil
         
         guard let navigationController = self.navigationController else { return }
         
@@ -75,12 +67,6 @@ class PerfilViewController: UIViewController {
         navigationController.pushViewController(LoginViewController(), animated: true)
     }
     
-    private func getNickNameDoUsuario() -> String {
-        guard let nickNameDoUsuario = UserDefaults.standard.string(forKey: "user_id") else { return "" }
-        
-        return nickNameDoUsuario
-    }
-    
     // MARK: - Funcoes
     private func redirecionaParaViewEscolhidaNasOpcoesTableView(indiceClicado: Int) -> Void {
         if indiceClicado == 0 {
@@ -97,6 +83,12 @@ class PerfilViewController: UIViewController {
             self.navigationController?.pushViewController(NavesFavoritasViewController(), animated: true)
             return
         }
+    }
+    
+    private func getNickNameDoUsuario() -> String {
+        guard let nickNameDoUsuario = UserDefaults.standard.string(forKey: "user_id") else { return "" }
+        
+        return nickNameDoUsuario
     }
     
     @objc func selecionarImagemDePerfil(_ sender: UIButton) -> Void {
@@ -119,6 +111,23 @@ class PerfilViewController: UIViewController {
     
     private func salvarPathDaImagem(pathImagem: String) -> Void {
         UserDefaults.standard.set(pathImagem, forKey: "path_imagem_perfil_\(self.getNickNameDoUsuario())")
+    }
+    
+    private func recuperarFotoDePerfil() -> UIImage? {
+        guard let pathImagem =  UserDefaults.standard.string(forKey: "path_imagem_perfil_\(self.getNickNameDoUsuario())") else { return nil }
+        
+        guard let pathURL = URL(string: pathImagem) else { return nil }
+        
+        do {
+            let data = try Data(contentsOf: pathURL)
+            let imagem = UIImage(data: data)
+            print("Foto de perfil atualizada com sucesso!")
+            return imagem
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+        
     }
     
 }

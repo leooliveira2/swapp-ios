@@ -42,7 +42,7 @@ class PlanetasFavoritosViewController: UIViewController {
     private func buscaPlanetasFavoritosDoUsuario() -> Void {
         let alertas = Alerta(viewController: self)
         
-        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados-de-usuarios.sqlite") else { return }
+        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados-usuarios.sqlite") else { return }
         
         guard let nickNameDoUsuario = UserDefaults.standard.string(forKey: "user_id") else {
             alertas.criaAlerta(mensagem: "Erro interno! Favor tentar novamente!")
@@ -88,7 +88,7 @@ class PlanetasFavoritosViewController: UIViewController {
     {
         let alertas = Alerta(viewController: self)
         
-        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados-de-usuarios.sqlite") else { return }
+        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados-usuarios.sqlite") else { return }
         
         guard let nickNameDoUsuario = UserDefaults.standard.string(forKey: "user_id") else {
             alertas.criaAlerta(mensagem: "Erro ao remover planeta")

@@ -22,11 +22,4 @@ class PerfilController {
             image(imagem, pathImagem)
         }
     }
-    
-    public func salvaFotoDePerfilDoUsuario(
-        pathImagem: URL,
-        nickNameDoUsuario: String
-    ) -> Bool {
-        return true
-    }
 }

@@ -45,7 +45,7 @@ class LoginViewController: UIViewController {
         }
         
         // Só pra exibir os users no terminal qnd o app iniciar a tela de login
-        guard let db = DBManager().openDatabase(DBPath: "dados-de-usuarios.sqlite") else { return }
+        guard let db = DBManager().openDatabase(DBPath: "dados-usuarios.sqlite") else { return }
         Crud().exibeTodosOsUsuariosSalvos(instanciaDoBanco: db)
         
         let tabelasForamCriadasCorretamente = self.criaTabelasNoBanco(db: db)
@@ -80,7 +80,7 @@ class LoginViewController: UIViewController {
     @objc private func realizarLogin(_ sender: UIButton) -> Void {
         let alertas = Alerta(viewController: self)
         
-        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados-de-usuarios.sqlite") else {
+        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados-usuarios.sqlite") else {
             alertas.criaAlerta(mensagem: "Erro interno! Favor tentar novamente")
             return
         }
@@ -134,7 +134,7 @@ class LoginViewController: UIViewController {
     
     private func criaTabelasNoBanco(db: OpaquePointer) -> Bool {
         
-        let tabelaUsuariosFoiCriada = DBManager().createTable(criarTabelaString: "CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT, fotoDePerfil TEXT, nickName TEXT UNIQUE NOT NULL, nomeCompleto TEXT NOT NULL, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL);"
+        let tabelaUsuariosFoiCriada = DBManager().createTable(criarTabelaString: "CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT, nickName TEXT UNIQUE NOT NULL, nomeCompleto TEXT NOT NULL, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL);"
                                 , instanciaDoBanco: db)
         
         let tabelaPersonagensFavoritosFoiCriada = DBManager().createTable(criarTabelaString: "CREATE TABLE IF NOT EXISTS personagens_favoritos (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, altura TEXT NOT NULL, peso TEXT NOT NULL, corDosOlhos TEXT NOT NULL, anoNascimento TEXT NOT NULL, genero TEXT NOT NULL, id_usuario INTEGER NOT NULL, CONSTRAINT fk_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE);", instanciaDoBanco: db)

@@ -33,7 +33,7 @@ class CriacaoDeContaViewController: UIViewController {
     @objc private func criacaoDeConta(_ sender: UIButton) -> Void {
         let alertas = Alerta(viewController: self)
         
-        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados-de-usuarios.sqlite") else {
+        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados-usuarios.sqlite") else {
             alertas.criaAlerta(mensagem: "Erro interno! Favor tentar novamente")
             return
         }

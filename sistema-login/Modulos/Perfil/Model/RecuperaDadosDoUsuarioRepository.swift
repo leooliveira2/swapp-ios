@@ -100,3 +100,4 @@ class RecuperaDadosDoUsuarioSQLite: RecuperaDadosDoUsuarioRepository {
     }
     
 }
+

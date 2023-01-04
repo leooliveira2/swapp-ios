@@ -27,6 +27,7 @@ class Crud {
                 let nomeCompleto = String(describing: String(cString: sqlite3_column_text(queryStatement, 2)))
                 let email = String(describing: String(cString: sqlite3_column_text(queryStatement, 3)))
                 let senha = String(describing: String(cString: sqlite3_column_text(queryStatement, 4)))
+                let imagemDePerfil = sqlite3_column_text(queryStatement, 5)
 
                 var listaProvisoria: [Any] = []
                 listaProvisoria.append(id)
@@ -34,6 +35,7 @@ class Crud {
                 listaProvisoria.append(nomeCompleto)
                 listaProvisoria.append(email)
                 listaProvisoria.append(senha)
+                listaProvisoria.append(imagemDePerfil)
 
                 usuarios.append(listaProvisoria)
             }

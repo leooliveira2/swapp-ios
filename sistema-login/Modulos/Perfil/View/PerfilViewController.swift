@@ -8,7 +8,7 @@
 import UIKit
 
 class PerfilViewController: UIViewController {
-
+    
     // MARK: - View
     private lazy var perfilView: PerfilView = {
         let view = PerfilView()
@@ -30,9 +30,31 @@ class PerfilViewController: UIViewController {
         self.perfilView.getOpcoesTableView().delegate = self
         self.perfilView.getOpcoesTableView().dataSource = self
         
+        self.perfilView.getBotaoAdicionarImagemAoPerfil().addTarget(
+            self,
+            action: #selector(selecionarImagemDePerfil(_:)),
+            for: .touchUpInside
+        )
+        
         self.perfilView.getNickUsuarioLabel().text = self.getNickNameDoUsuario()
         
-        self.perfilView.getBotaoSairButton().addTarget(self, action: #selector(botaoSairFoiClicado(_: )), for: .touchUpInside)
+        self.perfilView.getBotaoSairButton().addTarget(
+            self,
+            action: #selector(botaoSairFoiClicado(_: )),
+            for: .touchUpInside
+        )
+        
+        guard let pathImagem =  UserDefaults.standard.string(forKey: "path_imagem_perfil_\(self.getNickNameDoUsuario())") else { print("hihi"); return }
+        
+        guard let pathURL = URL(string: pathImagem) else { return }
+        
+        do {
+            let data = try Data(contentsOf: pathURL)
+            self.perfilView.getFotoDePerfilImageView().image = UIImage(data: data)
+            print("Foto de perfil atualizada com sucesso!")
+        } catch {
+            print(error.localizedDescription)
+        }
         
         guard let navigationController = self.navigationController else { return }
         
@@ -40,7 +62,7 @@ class PerfilViewController: UIViewController {
             navigationController.viewControllers.removeFirst()
         }
     }
-    
+        
     // MARK: - Actions
     @objc private func botaoSairFoiClicado(_ sender: UIButton) -> Void {
         
@@ -76,7 +98,29 @@ class PerfilViewController: UIViewController {
             return
         }
     }
+    
+    @objc func selecionarImagemDePerfil(_ sender: UIButton) -> Void {
+        let perfilController = PerfilController()
         
+        let selecionadorDeImagem = EscolherImagem(viewController: self)
+        perfilController.selecaoDeImagemDePerfilDoUsuario(
+            selecionadorDeImagem
+        ) { (imagem, pathImagem) in
+            
+            guard let fotoDePerfil = imagem else { print("ERRRRRRRO"); return }
+            guard let pathFotoDePerfil = pathImagem else { print("ERRRRRRO"); return }
+            
+            let pathString = pathFotoDePerfil.absoluteString
+
+            self.perfilView.getFotoDePerfilImageView().image = fotoDePerfil
+            self.salvarPathDaImagem(pathImagem: pathString)
+        }
+    }
+    
+    private func salvarPathDaImagem(pathImagem: String) -> Void {
+        UserDefaults.standard.set(pathImagem, forKey: "path_imagem_perfil_\(self.getNickNameDoUsuario())")
+    }
+    
 }
 
 // MARK: - Extensoes

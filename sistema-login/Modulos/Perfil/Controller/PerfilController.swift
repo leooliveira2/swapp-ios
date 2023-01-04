@@ -13,4 +13,20 @@ class PerfilController {
         UserDefaults.standard.set(false, forKey: "esta_logado")
         UserDefaults.standard.removeObject(forKey: "user_id")
     }
+    
+    public func selecaoDeImagemDePerfilDoUsuario(
+        _ selecionadorDeImagem: EscolherImagem,
+        _ image: @escaping(_ imagem: UIImage?, _ pathImagem: URL?) -> Void
+    ) -> Void {
+        selecionadorDeImagem.selecionarImagem() { (imagem, pathImagem) in
+            image(imagem, pathImagem)
+        }
+    }
+    
+    public func salvaFotoDePerfilDoUsuario(
+        pathImagem: URL,
+        nickNameDoUsuario: String
+    ) -> Bool {
+        return true
+    }
 }

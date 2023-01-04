@@ -62,12 +62,14 @@ class RedefinicaoDeSenhaSQLite: RedefinicaoDeSenhaRepository {
         sqlite3_bind_text(updateStatement, 2, (email as NSString).utf8String, -1, nil)
     
         if sqlite3_step(updateStatement) != SQLITE_DONE {
+            print("Erro ao alterar senha")
             sqlite3_finalize(updateStatement)
             return false
         }
         
         sqlite3_finalize(updateStatement)
         return true
+        
     }
     
 }

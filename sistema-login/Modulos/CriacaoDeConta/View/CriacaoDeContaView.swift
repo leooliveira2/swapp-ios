@@ -186,7 +186,7 @@ class CriacaoDeContaView: UIView {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         button.titleLabel?.textAlignment = .center
         button.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0), for: .normal)
-        button.backgroundColor = UIColor(red: 148/255, green: 0/255, blue: 211/255, alpha: 1.0)
+        button.backgroundColor = UIColor(red: 47/255, green: 79/255, blue: 79/255, alpha: 1.0)
         button.clipsToBounds = true
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1.5

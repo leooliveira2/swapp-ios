@@ -22,7 +22,7 @@ class PerfilView: UIView {
     private lazy var fotoDePerfilImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
         imageView.layer.cornerRadius = 50
         imageView.layer.borderWidth = 10
         imageView.layer.borderColor = UIColor.black.cgColor
@@ -30,6 +30,15 @@ class PerfilView: UIView {
         imageView.backgroundColor = .white
         imageView.image = UIImage(systemName: "person.circle.fill")
         return imageView
+    }()
+    
+    private lazy var botaoAdicionarImagemAoPerfil: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .black
+        button.layer.cornerRadius = 5
+        button.setImage(UIImage(systemName: "camera.fill"), for: .normal)
+        return button
     }()
     
     private lazy var nickUsuarioLabel: UILabel = {
@@ -82,6 +91,10 @@ class PerfilView: UIView {
         return self.fotoDePerfilImageView
     }
     
+    public func getBotaoAdicionarImagemAoPerfil() -> UIButton {
+        return self.botaoAdicionarImagemAoPerfil
+    }
+    
     public func getNickUsuarioLabel() -> UILabel {
         return self.nickUsuarioLabel
     }
@@ -98,6 +111,8 @@ class PerfilView: UIView {
     private func configsConstraints() -> Void {
         self.addSubview(self.perfilLabel)
         self.addSubview(self.fotoDePerfilImageView)
+//        self.fotoDePerfilImageView.addSubview(self.botaoAdicionarImagemAoPerfil)
+        self.addSubview(self.botaoAdicionarImagemAoPerfil)
         self.addSubview(self.nickUsuarioLabel)
         self.addSubview(self.opcoesTableView)
         self.addSubview(self.botaoSairButton)
@@ -110,7 +125,12 @@ class PerfilView: UIView {
             self.fotoDePerfilImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.fotoDePerfilImageView.widthAnchor.constraint(equalToConstant: 100),
             self.fotoDePerfilImageView.heightAnchor.constraint(equalToConstant: 100),
-            
+   
+            self.botaoAdicionarImagemAoPerfil.bottomAnchor.constraint(equalTo: self.fotoDePerfilImageView.bottomAnchor, constant: -10),
+            self.botaoAdicionarImagemAoPerfil.leadingAnchor.constraint(equalTo: self.fotoDePerfilImageView.trailingAnchor, constant: 10),
+            self.botaoAdicionarImagemAoPerfil.heightAnchor.constraint(equalToConstant: 40),
+            self.botaoAdicionarImagemAoPerfil.widthAnchor.constraint(equalToConstant: 40),
+
             self.nickUsuarioLabel.topAnchor.constraint(equalTo: self.fotoDePerfilImageView.bottomAnchor, constant: 5),
             self.nickUsuarioLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             

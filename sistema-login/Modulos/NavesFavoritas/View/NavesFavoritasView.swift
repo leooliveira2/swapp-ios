@@ -63,6 +63,8 @@ class NavesFavoritasView: UIView {
     
     // MARK: - Config componentes
     public func configComponentesQuandoNaoHouverNaves() -> Void {
+        self.navesFavoritasLabel.removeFromSuperview()
+        self.listaDeNavesTableView.removeFromSuperview()
         self.addSubview(self.semNaveLabel)
         
         NSLayoutConstraint.activate([

@@ -70,7 +70,7 @@ class PlanetaViewController: UIViewController {
                 return
             }
             
-            guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite")
+            guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados-de-usuarios.sqlite")
                 else
             {
                 alertas.criaAlerta(mensagem: "Erro interno! Favor tentar novamente!")
@@ -88,7 +88,6 @@ class PlanetaViewController: UIViewController {
             }
             
         } fracasso: {
-            let alerta = Alerta(viewController: self)
             self.retornaViewPraEstadoInicialEmCasoDeErroAoBuscarPlaneta(alertas)
             animacao.pararAnimacao()
         }
@@ -107,7 +106,7 @@ class PlanetaViewController: UIViewController {
             return
         }
         
-        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else {
+        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados-de-usuarios.sqlite") else {
             alerta.criaAlerta(mensagem: "Erro interno! Favor tentar novamente!")
             return
         }

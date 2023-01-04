@@ -69,7 +69,7 @@ class NaveViewController: UIViewController {
                 return
             }
             
-            guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite")
+            guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados-de-usuarios.sqlite")
                 else
             {
                 alertas.criaAlerta(mensagem: "Erro interno! Favor tentar novamente!")
@@ -106,7 +106,7 @@ class NaveViewController: UIViewController {
             return
         }
         
-        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados_usuarios.sqlite") else {
+        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados-de-usuarios.sqlite") else {
             alerta.criaAlerta(mensagem: "Erro interno! Favor tentar novamente!")
             return
         }

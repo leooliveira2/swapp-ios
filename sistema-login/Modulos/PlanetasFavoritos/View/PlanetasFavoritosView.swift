@@ -63,6 +63,8 @@ class PlanetasFavoritosView: UIView {
     
     // MARK: - Config componentes
     public func configComponentesQuandoNaoHouverPlanetas() -> Void {
+        self.planetasFavoritosLabel.removeFromSuperview()
+        self.listaDePlanetasTableView.removeFromSuperview()
         self.addSubview(self.semPlanetaLabel)
         
         NSLayoutConstraint.activate([

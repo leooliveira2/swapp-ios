@@ -14,6 +14,7 @@ final class LoginControllerTests: XCTestCase {
     private var controladorDeErros: ControladorDeErros!
     private var validadorDeLogin: ValidadorDeLoginSystemMock!
     private var validadorDeDadosDoUsuario: ValidacoesDeDadosDoUsuario!
+    private var recuperaDadosDoUsuario: RecuperaDadosDoUsuarioMock!
     
     private var loginController: LoginController!
 
@@ -22,8 +23,14 @@ final class LoginControllerTests: XCTestCase {
         self.controladorDeErros = ControladorDeErros()
         self.validadorDeLogin = ValidadorDeLoginSystemMock()
         self.validadorDeDadosDoUsuario = ValidacoesDeDadosDoUsuario(self.controladorDeErros)
+        self.recuperaDadosDoUsuario = RecuperaDadosDoUsuarioMock()
         
-        self.loginController = LoginController(self.controladorDeErros, self.validadorDeLogin, self.validadorDeDadosDoUsuario)
+        self.loginController = LoginController(
+            self.controladorDeErros,
+            self.validadorDeLogin,
+            self.validadorDeDadosDoUsuario,
+            self.recuperaDadosDoUsuario
+        )
     }
     
     // MARK: - Testes
@@ -87,6 +94,8 @@ final class LoginControllerTests: XCTestCase {
     func testEmailESenhaEstaoPreenchidosCorretamenteECadastroFoiEncontrado() {
         self.validadorDeLogin.retornoDaFuncaoValidarLogin = true
         
+        self.recuperaDadosDoUsuario.retornoDaFuncaoGetNickNameDoUsuario = "Apelido"
+        
         let loginFoiRealizado = self.loginController.fazerLogin(email: "email@email.com", senha: "123123123")
         
         let erros = self.controladorDeErros.getErros()
@@ -94,7 +103,7 @@ final class LoginControllerTests: XCTestCase {
         XCTAssertTrue(loginFoiRealizado)
         XCTAssertEqual(0, erros.count)
         XCTAssertTrue(((UserDefaults.standard.value(forKey: "esta_logado") as? Bool) != nil))
-        XCTAssertEqual("email@email.com", UserDefaults.standard.value(forKey: "user_id") as? String)
+        XCTAssertEqual("Apelido", UserDefaults.standard.value(forKey: "user_id") as? String)
         
         UserDefaults.standard.removeObject(forKey: "esta_logado")
         UserDefaults.standard.removeObject(forKey: "user_id")

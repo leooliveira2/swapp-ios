@@ -20,6 +20,7 @@
 		C523C6D4294CD1A90012077A /* VerificadorDeDadosCadastradosSystemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C523C6D3294CD1A90012077A /* VerificadorDeDadosCadastradosSystemMock.swift */; };
 		C523C6D6294CD3930012077A /* ValidadorDeLoginSystemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C523C6D5294CD3930012077A /* ValidadorDeLoginSystemMock.swift */; };
 		C52751562965EE1300A603F2 /* RecuperaDadosDoUsuarioRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52751552965EE1300A603F2 /* RecuperaDadosDoUsuarioRepository.swift */; };
+		C52751582965F4F100A603F2 /* RecuperaDadosDoUsuarioMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52751572965F4F100A603F2 /* RecuperaDadosDoUsuarioMock.swift */; };
 		C53C09AD295DFAF100E33F76 /* PersonagensFavoritosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53C09AC295DFAF100E33F76 /* PersonagensFavoritosController.swift */; };
 		C53C09B1295DFBC200E33F76 /* BuscadorDePersonagensFavoritosRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53C09B0295DFBC200E33F76 /* BuscadorDePersonagensFavoritosRepository.swift */; };
 		C53C09B3295E0C6B00E33F76 /* PlanetasFavoritosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53C09B2295E0C6B00E33F76 /* PlanetasFavoritosView.swift */; };
@@ -114,6 +115,7 @@
 		C523C6D3294CD1A90012077A /* VerificadorDeDadosCadastradosSystemMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificadorDeDadosCadastradosSystemMock.swift; sourceTree = "<group>"; };
 		C523C6D5294CD3930012077A /* ValidadorDeLoginSystemMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidadorDeLoginSystemMock.swift; sourceTree = "<group>"; };
 		C52751552965EE1300A603F2 /* RecuperaDadosDoUsuarioRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperaDadosDoUsuarioRepository.swift; sourceTree = "<group>"; };
+		C52751572965F4F100A603F2 /* RecuperaDadosDoUsuarioMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperaDadosDoUsuarioMock.swift; sourceTree = "<group>"; };
 		C53C09AC295DFAF100E33F76 /* PersonagensFavoritosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonagensFavoritosController.swift; sourceTree = "<group>"; };
 		C53C09B0295DFBC200E33F76 /* BuscadorDePersonagensFavoritosRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscadorDePersonagensFavoritosRepository.swift; sourceTree = "<group>"; };
 		C53C09B2295E0C6B00E33F76 /* PlanetasFavoritosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetasFavoritosView.swift; sourceTree = "<group>"; };
@@ -766,6 +768,7 @@
 				C516FA84294A66570034E7EF /* RedefinicaoDeSenhaSystemMock.swift */,
 				C523C6D3294CD1A90012077A /* VerificadorDeDadosCadastradosSystemMock.swift */,
 				C523C6D5294CD3930012077A /* ValidadorDeLoginSystemMock.swift */,
+				C52751572965F4F100A603F2 /* RecuperaDadosDoUsuarioMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -1006,6 +1009,7 @@
 				C55FF6AB29521B0E00103434 /* RecuperaDadosDoUsuarioSystemTests.swift in Sources */,
 				C5BCB74A294BB7F7002B9C62 /* VerificadorDeDadosCadastradosSystemTests.swift in Sources */,
 				C59A522D2950EACD00D145DD /* CriacaoDeContaControllerTests.swift in Sources */,
+				C52751582965F4F100A603F2 /* RecuperaDadosDoUsuarioMock.swift in Sources */,
 				C5BCB746294BA55F002B9C62 /* RedefinicaoDeSenhaSystemTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

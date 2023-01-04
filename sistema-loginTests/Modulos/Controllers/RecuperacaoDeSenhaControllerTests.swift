@@ -25,8 +25,7 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
         
         self.recuperacaoDeSenhaController = RecuperacaoDeSenhaController(
             self.controladorDeErros,
-            self.validadorDeDados,
-            self.redefinicaoDeSenha
+            self.validadorDeDados
         )
     }
     
@@ -100,7 +99,8 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
         let senhaPodeSerRedefinida = self.recuperacaoDeSenhaController.alterarSenha(
             email: nil,
             senha: nil,
-            repeticaoSenha: nil
+            repeticaoSenha: nil,
+            redefinicaoDeSenha: self.redefinicaoDeSenha
         )
         
         let erros = self.controladorDeErros.getErros()
@@ -114,19 +114,22 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
         let senhaPodeSerRedefinidaComEmailEstandoNulo = self.recuperacaoDeSenhaController.alterarSenha(
             email: nil,
             senha: "",
-            repeticaoSenha: ""
+            repeticaoSenha: "",
+            redefinicaoDeSenha: self.redefinicaoDeSenha
         )
         
         let senhaPodeSerRedefinidaComSenhaEstandoNula = self.recuperacaoDeSenhaController.alterarSenha(
             email: "",
             senha: nil,
-            repeticaoSenha: ""
+            repeticaoSenha: "",
+            redefinicaoDeSenha: self.redefinicaoDeSenha
         )
         
         let senhaPodeSerRedefinidaComRepeticaDeSenhaEstandoNula = self.recuperacaoDeSenhaController.alterarSenha(
             email: "",
             senha: "",
-            repeticaoSenha: nil
+            repeticaoSenha: nil,
+            redefinicaoDeSenha: self.redefinicaoDeSenha
         )
         
         let erros = self.controladorDeErros.getErros()
@@ -145,19 +148,22 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
         let senhaPodeSerAlteradaComSenhaDoUsuarioVazia = self.recuperacaoDeSenhaController.alterarSenha(
             email: "",
             senha: "",
-            repeticaoSenha: ""
+            repeticaoSenha: "",
+            redefinicaoDeSenha: self.redefinicaoDeSenha
         )
         
         let senhaPodeSerAlteradaComSenhaDoUsuarioContendoMenosDe8Caracteres = self.recuperacaoDeSenhaController.alterarSenha(
             email: "",
             senha: "1234567",
-            repeticaoSenha: "1234567"
+            repeticaoSenha: "1234567",
+            redefinicaoDeSenha: self.redefinicaoDeSenha
         )
         
         let senhaPodeSerAlteradaComSenhaDoUsuarioContendoMaisDe32Caracteres = self.recuperacaoDeSenhaController.alterarSenha(
             email: "",
             senha: "123456781234567812345678123456781",
-            repeticaoSenha: "123456781234567812345678123456781"
+            repeticaoSenha: "123456781234567812345678123456781",
+            redefinicaoDeSenha: self.redefinicaoDeSenha
         )
         
         let erros = self.controladorDeErros.getErros()
@@ -178,7 +184,8 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
         let senhaPodeSerAlteradaComSenhaDoUsuarioVazia = self.recuperacaoDeSenhaController.alterarSenha(
             email: "",
             senha: "",
-            repeticaoSenha: "123123123"
+            repeticaoSenha: "123123123",
+            redefinicaoDeSenha: self.redefinicaoDeSenha
         )
         
         let erros = self.controladorDeErros.getErros()
@@ -195,13 +202,15 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
         let senhaPodeSerAlteradaComRepeticaoDeSenhaDoUsuarioVazia = self.recuperacaoDeSenhaController.alterarSenha(
             email: "",
             senha: "123123123",
-            repeticaoSenha: ""
+            repeticaoSenha: "",
+            redefinicaoDeSenha: self.redefinicaoDeSenha
         )
         
         let senhaPodeSerAlteradaComRepeticaoDeSenhaDoUsuarioDiferenteDaSenha = self.recuperacaoDeSenhaController.alterarSenha(
             email: "",
             senha: "123123123",
-            repeticaoSenha: "321321321"
+            repeticaoSenha: "321321321",
+            redefinicaoDeSenha: self.redefinicaoDeSenha
         )
         
         let erros = self.controladorDeErros.getErros()
@@ -221,7 +230,8 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
         let senhaPodeSerRedefinida = self.recuperacaoDeSenhaController.alterarSenha(
             email: "email@email.com",
             senha: "12345678",
-            repeticaoSenha: "12345678"
+            repeticaoSenha: "12345678",
+            redefinicaoDeSenha: self.redefinicaoDeSenha
         )
         
         let erros = self.controladorDeErros.getErros()
@@ -237,7 +247,8 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
         let senhaPodeSerRedefinida = self.recuperacaoDeSenhaController.alterarSenha(
             email: "email@email.com",
             senha: "12345678",
-            repeticaoSenha: "12345678"
+            repeticaoSenha: "12345678",
+            redefinicaoDeSenha: self.redefinicaoDeSenha
         )
         
         let erros = self.controladorDeErros.getErros()

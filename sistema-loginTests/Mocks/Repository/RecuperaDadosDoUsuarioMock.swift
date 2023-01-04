@@ -6,12 +6,11 @@
 //
 
 import UIKit
-@testable import sistema_login
 
 class RecuperaDadosDoUsuarioMock: RecuperaDadosDoUsuarioRepository {
     
-    var retornoDaFuncaoGetNickNameDoUsuario: String?
-    var retornoDaFuncaoGetIdDoUsuario: Int?
+    var retornoDaFuncaoGetNickNameDoUsuario: String!
+    var retornoDaFuncaoGetIdDoUsuario: Int!
     
     func getNickNameDoUsuario(email: String) -> String? {
         return retornoDaFuncaoGetNickNameDoUsuario
@@ -20,6 +19,5 @@ class RecuperaDadosDoUsuarioMock: RecuperaDadosDoUsuarioRepository {
     func getIdDoUsuario(nickName: String) -> Int? {
         return retornoDaFuncaoGetIdDoUsuario
     }
-    
     
 }

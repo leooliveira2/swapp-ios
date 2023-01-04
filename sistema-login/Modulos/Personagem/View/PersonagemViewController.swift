@@ -183,14 +183,14 @@ class PersonagemViewController: UIViewController {
         let buscadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
         
         let verificadorDePersonagensSalvosPorUsuario = VerificadorDePersonagensJaAdicionadosAUmUsuarioSQLite(
-            buscadorDeDadosDoUsuario: buscadorDeDadosDoUsuario,
             instanciaDoBanco: instanciaDoBanco
         )
         
         let personagemJaEstaFavoritado = personagemController.verificaSePersonagemJaEstaFavoritado(
             personagem: personagem,
             nickName: nickName,
-            verificadorDePersonagensSalvosPorUsuario: verificadorDePersonagensSalvosPorUsuario
+            verificadorDePersonagensSalvosPorUsuario: verificadorDePersonagensSalvosPorUsuario,
+            buscadorDeDadosDoUsuario: buscadorDeDadosDoUsuario
         )
         
         return personagemJaEstaFavoritado

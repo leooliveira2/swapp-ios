@@ -10,7 +10,7 @@ import UIKit
 class PlanetaController {
     
     public func gerarPlaneta(
-        requisicoesSWAPI: RequisicoesStarWarsAPI,
+        requisicoesSWAPI: RequisicoesStarWarsAPIProtocol,
         sucesso: @escaping(_ planeta: Planeta) -> Void,
         fracasso: @escaping() -> Void
     ) -> Void

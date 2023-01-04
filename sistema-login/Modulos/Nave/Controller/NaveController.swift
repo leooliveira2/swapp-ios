@@ -10,7 +10,7 @@ import UIKit
 class NaveController {
     
     public func gerarNave(
-        requisicoesSWAPI: RequisicoesStarWarsAPI,
+        requisicoesSWAPI: RequisicoesStarWarsAPIProtocol,
         sucesso: @escaping(_ nave: Nave) -> Void,
         fracasso: @escaping() -> Void
     ) -> Void

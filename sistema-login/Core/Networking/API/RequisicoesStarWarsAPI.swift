@@ -8,7 +8,25 @@
 import UIKit
 import Alamofire
 
-class RequisicoesStarWarsAPI {
+protocol RequisicoesStarWarsAPIProtocol {
+    func fazRequisicaoPersonagem(
+        id: Int,
+        resultado: @escaping(_ personagem: Personagem?) -> Void
+    )
+    
+    func fazRequisicaoPlaneta(
+        id: Int,
+        resultado: @escaping(_ planeta: Planeta?) -> Void
+    )
+    
+    func fazRequisicaoNave(
+        id: Int,
+        resultado: @escaping(_ nave: Nave?) -> Void
+    )
+    
+}
+
+class RequisicoesStarWarsAPI: RequisicoesStarWarsAPIProtocol {
     
     func fazRequisicaoPersonagem(
         id: Int,

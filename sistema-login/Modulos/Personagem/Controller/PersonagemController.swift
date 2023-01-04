@@ -10,7 +10,7 @@ import UIKit
 class PersonagemController {
     
     public func gerarPersonagem(
-        requisicoesSWAPI: RequisicoesStarWarsAPI,
+        requisicoesSWAPI: RequisicoesStarWarsAPIProtocol,
         sucesso: @escaping(_ personagem: Personagem) -> Void,
         fracasso: @escaping() -> Void
     ) -> Void
@@ -45,12 +45,14 @@ class PersonagemController {
     public func verificaSePersonagemJaEstaFavoritado(
         personagem: Personagem,
         nickName: String,
-        verificadorDePersonagensSalvosPorUsuario: VerificadorDePersonagensJaAdicionadosAUmUsuarioRepository
+        verificadorDePersonagensSalvosPorUsuario: VerificadorDePersonagensJaAdicionadosAUmUsuarioRepository,
+        buscadorDeDadosDoUsuario: RecuperaDadosDoUsuarioRepository
     ) -> Bool {
+        guard let idDoUsuario = buscadorDeDadosDoUsuario.getIdDoUsuario(nickName: nickName) else { return false }
         
         let personagemJaEstaFavoritado = verificadorDePersonagensSalvosPorUsuario.verificaSePersonagemJaEstaFavoritadoPeloUsuario(
             personagem: personagem,
-            nickNameDeUsuario: nickName
+            idDoUsuario: idDoUsuario
         )
         
         return personagemJaEstaFavoritado

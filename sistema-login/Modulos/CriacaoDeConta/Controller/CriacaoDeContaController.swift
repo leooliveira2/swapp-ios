@@ -39,7 +39,9 @@ class CriacaoDeContaController {
               let senha = senha,
               let repeticaoDeSenha = repeticaoDeSenha
         else {
-            self.controladorDeErros.adicionarErro(erro: .erro_algum_dado_do_usuario_esta_nulo)
+            self.controladorDeErros.adicionarErro(
+                erro: Erros().erroAlgumDadoDoUsuarioEstaNulo()
+            )
             return false
         }
         
@@ -64,7 +66,9 @@ class CriacaoDeContaController {
         )
         
         if !self.salvarUsuario.salvar(usuario) {
-            self.controladorDeErros.adicionarErro(erro: .erro_ao_salvar_usuario)
+            self.controladorDeErros.adicionarErro(
+                erro: Erros().erroAoSalvarUsuario()
+            )
             return false
         }
         

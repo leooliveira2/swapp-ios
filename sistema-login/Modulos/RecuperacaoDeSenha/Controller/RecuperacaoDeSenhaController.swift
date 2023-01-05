@@ -23,7 +23,10 @@ class RecuperacaoDeSenhaController {
         verificadorDeDadosCadastrados: VerificadorDeDadosCadastradosRepository
     ) -> Bool {
         guard let email = email else {
-            self.controladorDeErros.adicionarErro(erro: .erro_algum_dado_do_usuario_esta_nulo)
+            self.controladorDeErros.adicionarErro(
+                erro: Erros().erroAlgumDadoDoUsuarioEstaNulo()
+            )
+            
             return false
         }
         
@@ -46,7 +49,9 @@ class RecuperacaoDeSenhaController {
         let emailExiste = verificadorDeDadosCadastrados.verificaSeEmailJaEstaCadastrado(email)
         
         if !emailExiste {
-            self.controladorDeErros.adicionarErro(erro: .erro_email_nao_encontrado)
+            self.controladorDeErros.adicionarErro(
+                erro: Erros().erroEmailNaoEncontrado()
+            )
             return false
         }
         
@@ -66,7 +71,10 @@ class RecuperacaoDeSenhaController {
               let email = email
         else
         {
-            self.controladorDeErros.adicionarErro(erro: .erro_algum_dado_do_usuario_esta_nulo)
+            self.controladorDeErros.adicionarErro(
+                erro: Erros().erroAlgumDadoDoUsuarioEstaNulo()
+            )
+            
             return false
         }
         
@@ -77,7 +85,10 @@ class RecuperacaoDeSenhaController {
         }
         
         if !redefinicaoDeSenha.redefinirSenha(email: email, senha: senha) {
-            self.controladorDeErros.adicionarErro(erro: .erro_ao_salvar_nova_senha)
+            self.controladorDeErros.adicionarErro(
+                erro: Erros().erroAoSalvarNovaSenha()
+            )
+            
             return false
         }
         

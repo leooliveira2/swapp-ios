@@ -31,7 +31,9 @@ class LoginController {
         guard let email,
               let senha else
         {
-            self.controladorDeErros.adicionarErro(erro: .erro_algum_dado_do_usuario_esta_nulo)
+            self.controladorDeErros.adicionarErro(
+                erro: Erros().erroAlgumDadoDoUsuarioEstaNulo()
+            )
             return false
         }
         

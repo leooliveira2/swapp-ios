@@ -16,7 +16,7 @@ class EscolherImagem: NSObject {
     private var alerta = UIAlertController(
         title: "Escolha uma opção",
         message: nil,
-        preferredStyle: .actionSheet
+        preferredStyle: .alert
     )
     
     private var retornoSelecionador : ((UIImage, URL) -> ())?;
@@ -54,7 +54,7 @@ class EscolherImagem: NSObject {
         self.alerta.addAction(galeria)
         self.alerta.addAction(cancelar)
 
-//      alerta.popoverPresentationController?.sourceView = self.viewController!.view
+        self.alerta.popoverPresentationController?.sourceView = self.viewController.view
         self.viewController.present(alerta, animated: true, completion: nil)
         
     }
@@ -130,3 +130,4 @@ extension EscolherImagem: UIImagePickerControllerDelegate,
         self.retornoSelecionador?(image, pathImagem)
     }
 }
+

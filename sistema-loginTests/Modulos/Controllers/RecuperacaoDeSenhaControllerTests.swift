@@ -42,7 +42,7 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
         
         XCTAssertFalse(cadastroFoiEncontrado)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[0])
+        XCTAssertEqual(Erros().erroAlgumDadoDoUsuarioEstaNulo(), erros[0])
     }
     
     func testEmailEstaVazio() {
@@ -59,7 +59,7 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
         
         XCTAssertFalse(cadastroFoiEncontrado)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_email_vazio, erros[0])
+        XCTAssertEqual(Erros().erroEmailVazio(), erros[0])
     }
     
     func testEmailEstaPreenchidoCorretamenteECadastroFoiEncontrado() {
@@ -92,7 +92,7 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
         
         XCTAssertFalse(cadastroFoiEncontrado)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_email_nao_encontrado, erros[0])
+        XCTAssertEqual(Erros().erroEmailNaoEncontrado(), erros[0])
     }
     
     func testEmailSenhaERecuperaSenhaEstaoNulos() {
@@ -107,7 +107,7 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
         
         XCTAssertFalse(senhaPodeSerRedefinida)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[0])
+        XCTAssertEqual(Erros().erroAlgumDadoDoUsuarioEstaNulo(), erros[0])
     }
     
     func testAlgumDadoDoUsuarioEstaNulo() {
@@ -139,9 +139,9 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
         XCTAssertFalse(senhaPodeSerRedefinidaComRepeticaDeSenhaEstandoNula)
         
         XCTAssertEqual(3, erros.count)
-        XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[0])
-        XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[1])
-        XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[2])
+        XCTAssertEqual(Erros().erroAlgumDadoDoUsuarioEstaNulo(), erros[0])
+        XCTAssertEqual(Erros().erroAlgumDadoDoUsuarioEstaNulo(), erros[1])
+        XCTAssertEqual(Erros().erroAlgumDadoDoUsuarioEstaNulo(), erros[2])
     }
     
     func testCenariosEmQueASenhaEInvalida() {
@@ -174,10 +174,10 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
         
         XCTAssertEqual(4, erros.count)
         
-        XCTAssertEqual(.erro_senha_vazia, erros[0])
-        XCTAssertEqual(.erro_repeticao_de_senha_vazio, erros[1])
-        XCTAssertEqual(.erro_senha_tem_menos_de_8_caracteres, erros[2])
-        XCTAssertEqual(.erro_senha_tem_mais_de_32_caracteres, erros[3])
+        XCTAssertEqual(Erros().erroSenhaVazia(), erros[0])
+        XCTAssertEqual(Erros().erroRepeticaoDeSenhaVazio(), erros[1])
+        XCTAssertEqual(Erros().erroSenhaTemMenosDe8Caracteres(), erros[2])
+        XCTAssertEqual(Erros().erroSenhaTemMaisDe32Caracteres(), erros[3])
     }
     
     func testCenarioExtraSenhaInvalida() {
@@ -194,8 +194,8 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
         
         XCTAssertEqual(2, erros.count)
         
-        XCTAssertEqual(.erro_senha_vazia, erros[0])
-        XCTAssertEqual(.erro_repeticao_de_senha_e_senha_sao_diferentes, erros[1])
+        XCTAssertEqual(Erros().erroSenhaVazia(), erros[0])
+        XCTAssertEqual(Erros().erroRepeticaoDeSenhaESenhaSaoDiferentes(), erros[1])
     }
     
     func testCenariosEmQueARepeticaoDeSenhaEInvalida() {
@@ -220,8 +220,8 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
         
         XCTAssertEqual(2, erros.count)
         
-        XCTAssertEqual(.erro_repeticao_de_senha_vazio, erros[0])
-        XCTAssertEqual(.erro_repeticao_de_senha_e_senha_sao_diferentes, erros[1])
+        XCTAssertEqual(Erros().erroRepeticaoDeSenhaVazio(), erros[0])
+        XCTAssertEqual(Erros().erroRepeticaoDeSenhaESenhaSaoDiferentes(), erros[1])
     }
     
     func testSenhaERepeticaoDeSenhaSaoValidosMasOcorreuUmErroAoSalvarANovaSenha() {
@@ -238,7 +238,7 @@ final class RecuperacaoDeSenhaControllerTests: XCTestCase {
         
         XCTAssertFalse(senhaPodeSerRedefinida)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_ao_salvar_nova_senha, erros[0])
+        XCTAssertEqual(Erros().erroAoSalvarNovaSenha(), erros[0])
     }
     
     func testSenhaERepeticaoDeSenhaSaoValidosENovaSenhaFoiSalvaComSucesso() {

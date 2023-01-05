@@ -44,7 +44,7 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         
         XCTAssertTrue(nickNameDoUsuarioEstaVazio)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_nick_de_usuario_vazio, erros[0])
+        XCTAssertEqual(Erros().erroNickDeUsuarioVazio(), erros[0])
     }
     
     func testVerificaSeNickNameDoUsuarioTemMenosDe5Caracteres() {
@@ -54,7 +54,7 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         
         XCTAssertTrue(nickNameDoUsuarioTemMenosDe5Caracteres)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_nick_de_usuario_tem_menos_de_5_caracteres, erros[0])
+        XCTAssertEqual(Erros().erroNickDeUsuarioTemMenosDe5Caracteres(), erros[0])
     }
     
     func testVerificaSeNickNameDoUsuarioTemMaisDe32Caracteres() {
@@ -66,7 +66,7 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         
         XCTAssertTrue(nickNameDoUsuarioTemMaisDe32Caracteres)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_nick_de_usuario_nao_pode_ter_mais_de_32_caracteres, erros[0])
+        XCTAssertEqual(Erros().erroNickDeUsuarioNaoPodeTerMaisDe32Caracteres(), erros[0])
     }
 
     func testVerificaSeNickNameDoUsuarioNaoEUmAlfaNumerico() {
@@ -76,7 +76,7 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         
         XCTAssertTrue(nickNameDoUsuarioNaoEUmAlfaNumerico)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_nick_de_usuario_nao_e_um_alfanumerico, erros[0])
+        XCTAssertEqual(Erros().erroNickDeUsuarioNaoEUmAlfanumerico(), erros[0])
     }
     
     func testVerificaSeNickNameDoUsuarioJaEstaSalvoSystem() {
@@ -90,7 +90,7 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         
         XCTAssertTrue(nickNameDoUsuarioJaEstaSalvo)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_nick_de_usuario_ja_esta_cadastrado, erros[0])
+        XCTAssertEqual(Erros().erroNickDeUsuarioJaEstaCadastrado(), erros[0])
     }
     
     func testVerificaSeNickNameDoUsuarioNaoEstaSalvoSystem() {
@@ -127,7 +127,7 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         
         XCTAssertTrue(nomeCompletoDoUsuarioEstaVazio)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_nome_completo_vazio, erros[0])
+        XCTAssertEqual(Erros().erroNomeCompletoVazio(), erros[0])
     }
     
     func testVerificaSeNomeCompletoDoUsuarioContemCaracteresInvalidos() {
@@ -137,7 +137,7 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         
         XCTAssertTrue(nomeCompletoDoUsuarioContemCaracteresInvalidos)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_nome_completo_so_pode_conter_letras_e_espacos, erros[0])
+        XCTAssertEqual(Erros().erroNomeCompletoSoPodeConterLetrasEEspacos(), erros[0])
     }
     
     func testVerificaSeNomeCompletoDoUsuarioTemMaisDe130Caracteres() {
@@ -149,7 +149,7 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         
         XCTAssertTrue(nomeCompletoTemMaisDe130Caracteres)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_nome_completo_nao_pode_ter_mais_de_130_caracteres, erros[0])
+        XCTAssertEqual(Erros().erroNomeCompletoNaoPodeTerMaisDe130Caracteres(), erros[0])
     }
     
     // MARK: - Testes email
@@ -176,7 +176,7 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         
         XCTAssertTrue(emailEstaVazio)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_email_vazio, erros[0])
+        XCTAssertEqual(Erros().erroEmailVazio(), erros[0])
     }
     
     func testVerificaSeFormatoDoEmailDoUsuarioEInvalido() {
@@ -186,7 +186,7 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         
         XCTAssertTrue(emailEInvalido)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_email_invalido, erros[0])
+        XCTAssertEqual(Erros().erroEmailInvalido(), erros[0])
     }
     
     func testVerificaSeEmailDoUsuarioTemMaisDe150Caracteres() {
@@ -199,7 +199,7 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         
         XCTAssertTrue(emailTemMaisDe150Caracteres)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_email_tem_mais_de_150_caracteres, erros[0])
+        XCTAssertEqual(Erros().erroEmailTemMaisDe150Caracteres(), erros[0])
     }
     
     func testVerificaEmailDoUsuarioJaEstaSalvoSystem() {
@@ -213,7 +213,7 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         
         XCTAssertTrue(emailDoUsuarioJaEstaSalvo)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_email_ja_esta_cadastrado, erros[0])
+        XCTAssertEqual(Erros().erroEmailJaEstaCadastrado(), erros[0])
     }
     
     func testVerificaSeEmailDoUsuarioNaoEstaSalvoSystem() {
@@ -250,7 +250,7 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         
         XCTAssertTrue(senhaEstaVazia)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_senha_vazia, erros[0])
+        XCTAssertEqual(Erros().erroSenhaVazia(), erros[0])
     }
     
     func testVerificaSeSenhaDoUsuarioTemMenosQue8Caracteres() {
@@ -260,7 +260,7 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         
         XCTAssertTrue(senhaTemMenosQue8Caracteres)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_senha_tem_menos_de_8_caracteres, erros[0])
+        XCTAssertEqual(Erros().erroSenhaTemMenosDe8Caracteres(), erros[0])
     }
     
     func testVerificaSeSenhaDoUsuarioTemMaisQue32Caracteres() {
@@ -272,7 +272,7 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         
         XCTAssertTrue(senhaTemMaisQue32Caracteres)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_senha_tem_mais_de_32_caracteres, erros[0])
+        XCTAssertEqual(Erros().erroSenhaTemMaisDe32Caracteres(), erros[0])
     }
     
     // MARK: - Testes da repeticao de senha
@@ -298,7 +298,7 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         
         XCTAssertTrue(repeticaoDeSenhaEstaVazia)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_repeticao_de_senha_vazio, erros[0])
+        XCTAssertEqual(Erros().erroRepeticaoDeSenhaVazio(), erros[0])
     }
     
     func testVerificaSeRepeticaoDeSenhaDoUsuarioEDiferenteDaSenha() {
@@ -308,7 +308,7 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         
         XCTAssertTrue(repeticaoDaSenhaEDiferenteDaSenha)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_repeticao_de_senha_e_senha_sao_diferentes, erros[0])
+        XCTAssertEqual(Erros().erroRepeticaoDeSenhaESenhaSaoDiferentes(), erros[0])
     }
     
     func testLoginNaoPodeSerRealizadoPoisCadastroNaoExisteStaticClass() {
@@ -319,7 +319,7 @@ final class ValidacoesDeDadosDoUsuarioTests: XCTestCase {
         let erros = self.controladorDeErros.getErros()
         
         XCTAssertFalse(loginPodeSerRealizado)
-        XCTAssertEqual(.erro_cadastro_nao_encontrado, erros[0])
+        XCTAssertEqual(Erros().erroCadastroNaoEncontrado(), erros[0])
     }
     
     func testLoginPodeSerRealizadoStaticClass() {

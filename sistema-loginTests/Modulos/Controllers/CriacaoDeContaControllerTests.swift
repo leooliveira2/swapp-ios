@@ -47,7 +47,7 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         
         XCTAssertFalse(contaPodeSerCriada)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[0])
+        XCTAssertEqual(Erros().erroAlgumDadoDoUsuarioEstaNulo(), erros[0])
     }
     
     func testAlgumDadoDoUsuarioEstaNulo() {
@@ -100,11 +100,11 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         XCTAssertFalse(repeticaoDeSenhaEstaNula)
         
         XCTAssertEqual(5, erros.count)
-        XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[0])
-        XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[1])
-        XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[2])
-        XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[3])
-        XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[4])
+        XCTAssertEqual(Erros().erroAlgumDadoDoUsuarioEstaNulo(), erros[0])
+        XCTAssertEqual(Erros().erroAlgumDadoDoUsuarioEstaNulo(), erros[1])
+        XCTAssertEqual(Erros().erroAlgumDadoDoUsuarioEstaNulo(), erros[2])
+        XCTAssertEqual(Erros().erroAlgumDadoDoUsuarioEstaNulo(), erros[3])
+        XCTAssertEqual(Erros().erroAlgumDadoDoUsuarioEstaNulo(), erros[4])
     }
     
     func testCenariosEmQueONickNameEInvalido() {
@@ -162,11 +162,11 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         
         XCTAssertEqual(5, erros.count)
         
-        XCTAssertEqual(.erro_nick_de_usuario_vazio, erros[0])
-        XCTAssertEqual(.erro_nick_de_usuario_tem_menos_de_5_caracteres, erros[1])
-        XCTAssertEqual(.erro_nick_de_usuario_nao_pode_ter_mais_de_32_caracteres, erros[2])
-        XCTAssertEqual(.erro_nick_de_usuario_nao_e_um_alfanumerico, erros[3])
-        XCTAssertEqual(.erro_nick_de_usuario_ja_esta_cadastrado, erros[4])
+        XCTAssertEqual(Erros().erroNickDeUsuarioVazio(), erros[0])
+        XCTAssertEqual(Erros().erroNickDeUsuarioTemMenosDe5Caracteres(), erros[1])
+        XCTAssertEqual(Erros().erroNickDeUsuarioNaoPodeTerMaisDe32Caracteres(), erros[2])
+        XCTAssertEqual(Erros().erroNickDeUsuarioNaoEUmAlfanumerico(), erros[3])
+        XCTAssertEqual(Erros().erroNickDeUsuarioJaEstaCadastrado(), erros[4])
     }
     
     func testCenariosEmQueONomeCompletoEInvalido() {
@@ -207,9 +207,9 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         
         XCTAssertEqual(3, erros.count)
         
-        XCTAssertEqual(.erro_nome_completo_vazio, erros[0])
-        XCTAssertEqual(.erro_nome_completo_so_pode_conter_letras_e_espacos, erros[1])
-        XCTAssertEqual(.erro_nome_completo_nao_pode_ter_mais_de_130_caracteres, erros[2])
+        XCTAssertEqual(Erros().erroNomeCompletoVazio(), erros[0])
+        XCTAssertEqual(Erros().erroNomeCompletoSoPodeConterLetrasEEspacos(), erros[1])
+        XCTAssertEqual(Erros().erroNomeCompletoNaoPodeTerMaisDe130Caracteres(), erros[2])
     }
     
     func testCenariosEmQueOEmailEInvalido() {
@@ -262,10 +262,10 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         
         XCTAssertEqual(4, erros.count)
         
-        XCTAssertEqual(.erro_email_vazio, erros[0])
-        XCTAssertEqual(.erro_email_invalido, erros[1])
-        XCTAssertEqual(.erro_email_tem_mais_de_150_caracteres, erros[2])
-        XCTAssertEqual(.erro_email_ja_esta_cadastrado, erros[3])
+        XCTAssertEqual(Erros().erroEmailVazio(), erros[0])
+        XCTAssertEqual(Erros().erroEmailInvalido(), erros[1])
+        XCTAssertEqual(Erros().erroEmailTemMaisDe150Caracteres(), erros[2])
+        XCTAssertEqual(Erros().erroEmailJaEstaCadastrado(), erros[3])
     }
     
     func testCenariosEmQueASenhaEInvalida() {
@@ -304,10 +304,10 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         
         XCTAssertEqual(4, erros.count)
         
-        XCTAssertEqual(.erro_senha_vazia, erros[0])
-        XCTAssertEqual(.erro_repeticao_de_senha_vazio, erros[1])
-        XCTAssertEqual(.erro_senha_tem_menos_de_8_caracteres, erros[2])
-        XCTAssertEqual(.erro_senha_tem_mais_de_32_caracteres, erros[3])
+        XCTAssertEqual(Erros().erroSenhaVazia(), erros[0])
+        XCTAssertEqual(Erros().erroRepeticaoDeSenhaVazio(), erros[1])
+        XCTAssertEqual(Erros().erroSenhaTemMenosDe8Caracteres(), erros[2])
+        XCTAssertEqual(Erros().erroSenhaTemMaisDe32Caracteres(), erros[3])
     }
     
     func testCenarioExtraSenhaInvalida() {
@@ -328,8 +328,8 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         
         XCTAssertEqual(2, erros.count)
         
-        XCTAssertEqual(.erro_senha_vazia, erros[0])
-        XCTAssertEqual(.erro_repeticao_de_senha_e_senha_sao_diferentes, erros[1])
+        XCTAssertEqual(Erros().erroSenhaVazia(), erros[0])
+        XCTAssertEqual(Erros().erroRepeticaoDeSenhaESenhaSaoDiferentes(), erros[1])
     }
     
     func testCenariosEmQueARepeticaoDeSenhaEInvalida() {
@@ -359,8 +359,8 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         
         XCTAssertEqual(2, erros.count)
         
-        XCTAssertEqual(.erro_repeticao_de_senha_vazio, erros[0])
-        XCTAssertEqual(.erro_repeticao_de_senha_e_senha_sao_diferentes, erros[1])
+        XCTAssertEqual(Erros().erroRepeticaoDeSenhaVazio(), erros[0])
+        XCTAssertEqual(Erros().erroRepeticaoDeSenhaESenhaSaoDiferentes(), erros[1])
     }
     
     func testUsuarioTemDadosValidosMasUmaFalhaOcorreAoTentarSalvar() {
@@ -380,7 +380,7 @@ final class CriacaoDeContaControllerTests: XCTestCase {
         
         XCTAssertFalse(contaPodeSerCriada)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_ao_salvar_usuario, erros[0])
+        XCTAssertEqual(Erros().erroAoSalvarUsuario(), erros[0])
     }
     
     func testUsuarioTemDadosValidosEFoiSalvoComSucesso() {

@@ -41,7 +41,7 @@ final class LoginControllerTests: XCTestCase {
         
         XCTAssertFalse(loginFoiRealizado)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[0])
+        XCTAssertEqual(Erros().erroAlgumDadoDoUsuarioEstaNulo(), erros[0])
         
     }
     
@@ -56,8 +56,8 @@ final class LoginControllerTests: XCTestCase {
         XCTAssertFalse(loginPodeSerRealizadoComSenhaNula)
         
         XCTAssertEqual(2, erros.count)
-        XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[0])
-        XCTAssertEqual(.erro_algum_dado_do_usuario_esta_nulo, erros[1])
+        XCTAssertEqual(Erros().erroAlgumDadoDoUsuarioEstaNulo(), erros[0])
+        XCTAssertEqual(Erros().erroAlgumDadoDoUsuarioEstaNulo(), erros[1])
     }
     
     func testEmailESenhaEstaoVazios() {
@@ -67,8 +67,8 @@ final class LoginControllerTests: XCTestCase {
         
         XCTAssertFalse(loginFoiRealizado)
         XCTAssertEqual(2, erros.count)
-        XCTAssertEqual(.erro_email_vazio, erros[0])
-        XCTAssertEqual(.erro_senha_vazia, erros[1])
+        XCTAssertEqual(Erros().erroEmailVazio(), erros[0])
+        XCTAssertEqual(Erros().erroSenhaVazia(), erros[1])
     }
     
     func testSomenteEmailEstaVazio() {
@@ -78,7 +78,7 @@ final class LoginControllerTests: XCTestCase {
         
         XCTAssertFalse(loginFoiRealizado)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_email_vazio, erros[0])
+        XCTAssertEqual(Erros().erroEmailVazio(), erros[0])
     }
     
     func testSomenteSenhaEstaVazia() {
@@ -88,7 +88,7 @@ final class LoginControllerTests: XCTestCase {
         
         XCTAssertFalse(loginFoiRealizado)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_senha_vazia, erros[0])
+        XCTAssertEqual(Erros().erroSenhaVazia(), erros[0])
     }
     
     func testEmailESenhaEstaoPreenchidosCorretamenteECadastroFoiEncontrado() {
@@ -118,7 +118,7 @@ final class LoginControllerTests: XCTestCase {
         
         XCTAssertFalse(loginFoiRealizado)
         XCTAssertEqual(1, erros.count)
-        XCTAssertEqual(.erro_cadastro_nao_encontrado, erros[0])
+        XCTAssertEqual(Erros().erroCadastroNaoEncontrado(), erros[0])
     }
 
 }

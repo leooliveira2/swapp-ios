@@ -27,7 +27,7 @@ class PersonagensFavoritosController {
             return nil
         }
         
-        let listaDePersonagensFavoritos = buscadorDePersonagensFavoritos.buscarTodosOsPersonagens(idUsuario: idUsuario)
+        guard let listaDePersonagensFavoritos = buscadorDePersonagensFavoritos.buscarTodosOsPersonagens(idUsuario: idUsuario) else { return nil }
         
         return listaDePersonagensFavoritos
     }

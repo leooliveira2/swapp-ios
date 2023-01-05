@@ -27,7 +27,8 @@ class NavesFavoritasController {
             return nil
         }
         
-        let listaDeNavesFavoritas = buscadorDeNavesFavoritas.buscarTodasAsNaves(idUsuario: idUsuario)
+        guard let listaDeNavesFavoritas = buscadorDeNavesFavoritas.buscarTodasAsNaves(
+            idUsuario: idUsuario) else { return nil }
         
         return listaDeNavesFavoritas
     }

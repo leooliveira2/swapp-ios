@@ -55,6 +55,8 @@
 		C546940B29674B6600DF1F91 /* BuscadorDePersonagensFavoritosMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C546940A29674B6600DF1F91 /* BuscadorDePersonagensFavoritosMock.swift */; };
 		C54694192967518300DF1F91 /* BuscadorDePlanetasFavoritosMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54694182967518300DF1F91 /* BuscadorDePlanetasFavoritosMock.swift */; };
 		C546941B296751C900DF1F91 /* PlanetasFavoritosControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C546941A296751C900DF1F91 /* PlanetasFavoritosControllerTests.swift */; };
+		C546941E2967544700DF1F91 /* BuscadorDeNavesFavoritasMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C546941D2967544700DF1F91 /* BuscadorDeNavesFavoritasMock.swift */; };
+		C54694202967554400DF1F91 /* NavesFavoritasControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C546941F2967554400DF1F91 /* NavesFavoritasControllerTests.swift */; };
 		C54D2E7E2963488E00862665 /* EscolherImagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D2E7D2963488E00862665 /* EscolherImagem.swift */; };
 		C54E698C295A11070089F936 /* SalvarPersonagemFavoritoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54E698B295A11070089F936 /* SalvarPersonagemFavoritoRepository.swift */; };
 		C550F8662919644D00FC2EF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550F8652919644D00FC2EF2 /* AppDelegate.swift */; };
@@ -167,6 +169,8 @@
 		C546940A29674B6600DF1F91 /* BuscadorDePersonagensFavoritosMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscadorDePersonagensFavoritosMock.swift; sourceTree = "<group>"; };
 		C54694182967518300DF1F91 /* BuscadorDePlanetasFavoritosMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscadorDePlanetasFavoritosMock.swift; sourceTree = "<group>"; };
 		C546941A296751C900DF1F91 /* PlanetasFavoritosControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetasFavoritosControllerTests.swift; sourceTree = "<group>"; };
+		C546941D2967544700DF1F91 /* BuscadorDeNavesFavoritasMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscadorDeNavesFavoritasMock.swift; sourceTree = "<group>"; };
+		C546941F2967554400DF1F91 /* NavesFavoritasControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavesFavoritasControllerTests.swift; sourceTree = "<group>"; };
 		C54D2E7D2963488E00862665 /* EscolherImagem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EscolherImagem.swift; sourceTree = "<group>"; };
 		C54E698B295A11070089F936 /* SalvarPersonagemFavoritoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalvarPersonagemFavoritoRepository.swift; sourceTree = "<group>"; };
 		C550F8622919644D00FC2EF2 /* sistema-login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sistema-login.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -263,6 +267,7 @@
 		C527515D2965FC4400A603F2 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				C546941C2967542300DF1F91 /* NavesFavoritas */,
 				C54694172967517300DF1F91 /* PlanetasFavoritos */,
 				C546941329674C6800DF1F91 /* PersonagensFavoritos */,
 				C546941229674C4900DF1F91 /* Nave */,
@@ -466,6 +471,14 @@
 				C54694182967518300DF1F91 /* BuscadorDePlanetasFavoritosMock.swift */,
 			);
 			path = PlanetasFavoritos;
+			sourceTree = "<group>";
+		};
+		C546941C2967542300DF1F91 /* NavesFavoritas */ = {
+			isa = PBXGroup;
+			children = (
+				C546941D2967544700DF1F91 /* BuscadorDeNavesFavoritasMock.swift */,
+			);
+			path = NavesFavoritas;
 			sourceTree = "<group>";
 		};
 		C5493F4D29539A7D00BD0399 /* Modulos */ = {
@@ -861,6 +874,7 @@
 				C54693FE2967372100DF1F91 /* NaveControllerTests.swift */,
 				C54694062967430500DF1F91 /* PersonagensFavoritosControllerTests.swift */,
 				C546941A296751C900DF1F91 /* PlanetasFavoritosControllerTests.swift */,
+				C546941F2967554400DF1F91 /* NavesFavoritasControllerTests.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1163,8 +1177,10 @@
 				C5BCB74A294BB7F7002B9C62 /* VerificadorDeDadosCadastradosSystemTests.swift in Sources */,
 				C527516529660FD500A603F2 /* RemovePersonagemDosFavoritosMock.swift in Sources */,
 				C59A522D2950EACD00D145DD /* CriacaoDeContaControllerTests.swift in Sources */,
+				C546941E2967544700DF1F91 /* BuscadorDeNavesFavoritasMock.swift in Sources */,
 				C527515C2965FC1700A603F2 /* RequisicoesStarWarsAPIMock.swift in Sources */,
 				C527515A2965FA2900A603F2 /* PersonagemControllerTests.swift in Sources */,
+				C54694202967554400DF1F91 /* NavesFavoritasControllerTests.swift in Sources */,
 				C5BCB746294BA55F002B9C62 /* RedefinicaoDeSenhaSystemTests.swift in Sources */,
 				C54693FB2967326300DF1F91 /* VerificadorDePlanetasJaAdicionadosAUmUsuarioMock.swift in Sources */,
 			);

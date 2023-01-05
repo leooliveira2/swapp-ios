@@ -45,12 +45,15 @@ class NaveController {
     public func verificaSeNaveJaEstaFavoritada(
         nave: Nave,
         nickName: String,
-        verificadorDeNavesSalvasPorUsuario: VerificadorDeNavesJaAdicionadasAUmUsuarioRepository
+        verificadorDeNavesSalvasPorUsuario: VerificadorDeNavesJaAdicionadasAUmUsuarioRepository,
+        buscadorDeDadosDoUsuario: RecuperaDadosDoUsuarioRepository
     ) -> Bool {
+        
+        guard let idDoUsuario = buscadorDeDadosDoUsuario.getIdDoUsuario(nickName: nickName) else { return false }
         
         let naveJaEstaFavoritada = verificadorDeNavesSalvasPorUsuario.verificaSeNaveJaEstaFavoritadaPeloUsuario(
             nave: nave,
-            nickNameDeUsuario: nickName
+            idDoUsuario: idDoUsuario
         )
         
         return naveJaEstaFavoritada

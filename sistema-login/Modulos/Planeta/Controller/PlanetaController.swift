@@ -45,12 +45,15 @@ class PlanetaController {
     public func verificaSePlanetaJaEstaFavoritado(
         planeta: Planeta,
         nickName: String,
-        verificadorDePlanetasSalvosPorUsuario: VerificadorDePlanetasJaAdicionadosAUmUsuarioRepository
+        verificadorDePlanetasSalvosPorUsuario: VerificadorDePlanetasJaAdicionadosAUmUsuarioRepository,
+        buscadorDeDadosDoUsuario: RecuperaDadosDoUsuarioRepository
     ) -> Bool {
+        
+        guard let idDoUsuario = buscadorDeDadosDoUsuario.getIdDoUsuario(nickName: nickName) else { return false }
         
         let planetaJaEstaFavoritado = verificadorDePlanetasSalvosPorUsuario.verificaSePlanetaJaEstaFavoritadoPeloUsuario(
             planeta: planeta,
-            nickNameDeUsuario: nickName
+            idDoUsuario: idDoUsuario
         )
         
         return planetaJaEstaFavoritado

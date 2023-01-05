@@ -80,8 +80,8 @@ final class PersonagemControllerTests: XCTestCase {
     }
     
     func testIDDoUsuarioFoiEncontradoMasPersonagemNaoFoiSalvo() {
-        adicionaAosFavoritos.retornoDaFuncaoSalvarComoFavorito = false
-        buscaDadosDoUsuario.retornoDaFuncaoGetIdDoUsuario = 1
+        self.adicionaAosFavoritos.retornoDaFuncaoSalvarComoFavorito = false
+        self.buscaDadosDoUsuario.retornoDaFuncaoGetIdDoUsuario = 1
         
         let personagemFoiFavoritado = self.personagemController.adicionarPersonagemAosFavoritos(
             self.personagemTeste,

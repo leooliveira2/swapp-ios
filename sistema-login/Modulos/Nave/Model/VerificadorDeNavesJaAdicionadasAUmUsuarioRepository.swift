@@ -11,7 +11,7 @@ protocol VerificadorDeNavesJaAdicionadasAUmUsuarioRepository {
 
     func verificaSeNaveJaEstaFavoritadaPeloUsuario(
         nave: Nave,
-        nickNameDeUsuario: String
+        idDoUsuario: Int
     ) -> Bool
     
 }
@@ -20,20 +20,17 @@ import SQLite3
 
 class VerificadorDeNavesJaAdicionadasAUmUsuarioSQLite: VerificadorDeNavesJaAdicionadasAUmUsuarioRepository {
     
-    private let buscadorDeDadosDoUsuario: RecuperaDadosDoUsuarioRepository
     private let instanciaDoBanco: OpaquePointer
     
-    init(buscadorDeDadosDoUsuario: RecuperaDadosDoUsuarioRepository, instanciaDoBanco: OpaquePointer) {
-        self.buscadorDeDadosDoUsuario = buscadorDeDadosDoUsuario
+    init(instanciaDoBanco: OpaquePointer) {
         self.instanciaDoBanco = instanciaDoBanco
     }
     
     public func verificaSeNaveJaEstaFavoritadaPeloUsuario(
         nave: Nave,
-        nickNameDeUsuario: String
+        idDoUsuario: Int
     ) -> Bool
     {
-        guard let idDoUsuario = self.buscadorDeDadosDoUsuario.getIdDoUsuario(nickName: nickNameDeUsuario) else { return false }
         
         let selectStatementString = "SELECT nome FROM naves_favoritas WHERE id_usuario = ? AND nome = ?;"
         var selectStatement: OpaquePointer? = nil

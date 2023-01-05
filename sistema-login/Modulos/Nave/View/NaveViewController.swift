@@ -183,14 +183,14 @@ class NaveViewController: UIViewController {
         let buscadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
         
         let verificadorDeNavesSalvasPorUsuario = VerificadorDeNavesJaAdicionadasAUmUsuarioSQLite(
-            buscadorDeDadosDoUsuario: buscadorDeDadosDoUsuario,
             instanciaDoBanco: instanciaDoBanco
         )
         
         let naveJaEstaFavoritada = naveController.verificaSeNaveJaEstaFavoritada(
             nave: nave,
             nickName: nickName,
-            verificadorDeNavesSalvasPorUsuario: verificadorDeNavesSalvasPorUsuario
+            verificadorDeNavesSalvasPorUsuario: verificadorDeNavesSalvasPorUsuario,
+            buscadorDeDadosDoUsuario: buscadorDeDadosDoUsuario
         )
         
         return naveJaEstaFavoritada

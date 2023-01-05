@@ -183,14 +183,14 @@ class PlanetaViewController: UIViewController {
         let buscadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
         
         let verificadorDePlanetasSalvosPorUsuario = VerificadorDePlanetasJaAdicionadosAUmUsuarioSQLite(
-            buscadorDeDadosDoUsuario: buscadorDeDadosDoUsuario,
             instanciaDoBanco: instanciaDoBanco
         )
         
         let planetaJaEstaFavoritado = planetaController.verificaSePlanetaJaEstaFavoritado(
             planeta: planeta,
             nickName: nickName,
-            verificadorDePlanetasSalvosPorUsuario: verificadorDePlanetasSalvosPorUsuario
+            verificadorDePlanetasSalvosPorUsuario: verificadorDePlanetasSalvosPorUsuario,
+            buscadorDeDadosDoUsuario: buscadorDeDadosDoUsuario
         )
         
         return planetaJaEstaFavoritado

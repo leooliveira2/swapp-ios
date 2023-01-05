@@ -11,7 +11,7 @@ protocol VerificadorDePlanetasJaAdicionadosAUmUsuarioRepository {
 
     func verificaSePlanetaJaEstaFavoritadoPeloUsuario(
         planeta: Planeta,
-        nickNameDeUsuario: String
+        idDoUsuario: Int
     ) -> Bool
     
 }
@@ -20,21 +20,17 @@ import SQLite3
 
 class VerificadorDePlanetasJaAdicionadosAUmUsuarioSQLite: VerificadorDePlanetasJaAdicionadosAUmUsuarioRepository {
     
-    private let buscadorDeDadosDoUsuario: RecuperaDadosDoUsuarioRepository
     private let instanciaDoBanco: OpaquePointer
     
-    init(buscadorDeDadosDoUsuario: RecuperaDadosDoUsuarioRepository, instanciaDoBanco: OpaquePointer) {
-        self.buscadorDeDadosDoUsuario = buscadorDeDadosDoUsuario
+    init(instanciaDoBanco: OpaquePointer) {
         self.instanciaDoBanco = instanciaDoBanco
     }
     
     public func verificaSePlanetaJaEstaFavoritadoPeloUsuario(
         planeta: Planeta,
-        nickNameDeUsuario: String
+        idDoUsuario: Int
     ) -> Bool
     {
-        guard let idDoUsuario = self.buscadorDeDadosDoUsuario.getIdDoUsuario(nickName: nickNameDeUsuario) else { return false }
-        
         let selectStatementString = "SELECT nome FROM planetas_favoritos WHERE id_usuario = ? AND nome = ?;"
         var selectStatement: OpaquePointer? = nil
         

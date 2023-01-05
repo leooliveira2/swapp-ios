@@ -27,7 +27,8 @@ class PlanetasFavoritosController {
             return nil
         }
         
-        let listaDePlanetasFavoritos = buscadorDePlanetasFavoritos.buscarTodosOsPlanetas(idUsuario: idUsuario)
+        guard let listaDePlanetasFavoritos = buscadorDePlanetasFavoritos.buscarTodosOsPlanetas(
+            idUsuario: idUsuario) else { return nil }
         
         return listaDePlanetasFavoritos
     }

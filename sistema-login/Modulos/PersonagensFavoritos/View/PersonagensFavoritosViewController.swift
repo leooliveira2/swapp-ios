@@ -12,6 +12,18 @@ class PersonagensFavoritosViewController: UIViewController {
     // MARK: - Atributos
     private var listaDePersonagensFavoritos: [Personagem] = []
     
+    private let instanciaDoBanco: OpaquePointer
+    
+    // MARK: - Inicializadores
+    init(instanciaDoBanco: OpaquePointer) {
+        self.instanciaDoBanco = instanciaDoBanco
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - View
     private lazy var personagensFavoritosView: PersonagensFavoritosView = {
         let view = PersonagensFavoritosView()
@@ -42,22 +54,22 @@ class PersonagensFavoritosViewController: UIViewController {
     private func buscaPersonagensFavoritosDoUsuario() -> Void {
         let alertas = Alerta(viewController: self)
         
-        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados-usuarios.sqlite") else { return }
-        
         guard let nickNameDoUsuario = UserDefaults.standard.string(forKey: "user_id") else {
             alertas.criaAlerta(mensagem: "Erro interno! Favor tentar novamente!")
             return
         }
         
         let personagensFavoritosController = PersonagensFavoritosController(
-            instanciaDoBanco: instanciaDoBanco
+            instanciaDoBanco: self.instanciaDoBanco
         )
         
         let buscadorDePersonagensFavoritos = BuscadorDePersonagensFavoritosSQLite(
-            instanciaDoBanco: instanciaDoBanco
+            instanciaDoBanco: self.instanciaDoBanco
         )
         
-        let buscaDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
+        let buscaDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(
+            instanciaDoBanco: self.instanciaDoBanco
+        )
         
         guard let listaDePersonagens = personagensFavoritosController.buscaTodosOsPersonagensFavoritosDoUsuario(
             nickNameUsuario: nickNameDoUsuario,
@@ -87,20 +99,22 @@ class PersonagensFavoritosViewController: UIViewController {
     ) -> Void
     {
         let alertas = Alerta(viewController: self)
-        
-        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados-usuarios.sqlite") else { return }
-        
+    
         guard let nickNameDoUsuario = UserDefaults.standard.string(forKey: "user_id") else {
             alertas.criaAlerta(mensagem: "Erro ao remover personagem")
             return
         }
         
-        let buscadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
+        let buscadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(
+            instanciaDoBanco: self.instanciaDoBanco
+        )
         
-        let removePersonagemFavorito = RemovePersonagemDosFavoritosSQLite(instanciaDoBanco: instanciaDoBanco)
+        let removePersonagemFavorito = RemovePersonagemDosFavoritosSQLite(
+            instanciaDoBanco: self.instanciaDoBanco
+        )
         
         let personagensFavoritosController = PersonagensFavoritosController(
-            instanciaDoBanco: instanciaDoBanco
+            instanciaDoBanco: self.instanciaDoBanco
         )
         
         let personagemFoiRemovido = personagensFavoritosController.removePersonagemDosFavoritosDoUsuario(

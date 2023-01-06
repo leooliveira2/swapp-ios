@@ -10,6 +10,7 @@ import UIKit
 class HomeTabBarController: UITabBarController {
     
     override func viewDidLoad() {
+        self.view.backgroundColor = .white
         self.setupTabBarController()
     }
     
@@ -18,10 +19,25 @@ class HomeTabBarController: UITabBarController {
     }
     
     private func setupTabBarController() -> Void {
-        let tela01 = PersonagemViewController()
-        let tela02 = PlanetaViewController()
-        let tela03 = NaveViewController()
-        let tela04 = PerfilViewController()
+        guard let instanciaDoBanco = DBManager().openDatabase(
+            DBPath: "dados-usuarios.sqlite"
+        ) else
+        {
+            Alerta(viewController: self).criaAlertaSemAction(
+                mensagem: "Ocorreu um problema interno! Tente entrar novamente"
+            )
+            
+            let seconds = 3.0
+            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                self.navigationController?.popViewController(animated: true)
+            }
+            return
+        }
+        
+        let tela01 = PersonagemViewController(instanciaDoBanco: instanciaDoBanco)
+        let tela02 = PlanetaViewController(instanciaDoBanco: instanciaDoBanco)
+        let tela03 = NaveViewController(instanciaDoBanco: instanciaDoBanco)
+        let tela04 = PerfilViewController(instanciaDoBanco: instanciaDoBanco)
         
         self.setViewControllers([tela01, tela02, tela03, tela04], animated: false)
         

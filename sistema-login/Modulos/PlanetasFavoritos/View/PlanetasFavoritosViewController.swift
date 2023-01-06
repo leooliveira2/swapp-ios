@@ -12,6 +12,18 @@ class PlanetasFavoritosViewController: UIViewController {
     // MARK: - Atributos
     private var listaDePlanetasFavoritos: [Planeta] = []
     
+    private let instanciaDoBanco: OpaquePointer
+    
+    // MARK: - Inicializadores
+    init(instanciaDoBanco: OpaquePointer) {
+        self.instanciaDoBanco = instanciaDoBanco
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - View
     private lazy var planetasFavoritosView: PlanetasFavoritosView = {
         let view = PlanetasFavoritosView()
@@ -41,23 +53,23 @@ class PlanetasFavoritosViewController: UIViewController {
     // MARK: - Funcoes
     private func buscaPlanetasFavoritosDoUsuario() -> Void {
         let alertas = Alerta(viewController: self)
-        
-        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados-usuarios.sqlite") else { return }
-        
+    
         guard let nickNameDoUsuario = UserDefaults.standard.string(forKey: "user_id") else {
             alertas.criaAlerta(mensagem: "Erro interno! Favor tentar novamente!")
             return
         }
         
         let planetasFavoritosController = PlanetasFavoritosController(
-            instanciaDoBanco: instanciaDoBanco
+            instanciaDoBanco: self.instanciaDoBanco
         )
         
         let buscadorDePlanetasFavoritos = BuscadorDePlanetasFavoritosSQLite(
-            instanciaDoBanco: instanciaDoBanco
+            instanciaDoBanco: self.instanciaDoBanco
         )
         
-        let buscaDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
+        let buscaDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(
+            instanciaDoBanco: self.instanciaDoBanco
+        )
         
         guard let listaDePlanetas = planetasFavoritosController.buscaTodosOsPlanetasFavoritosDoUsuario(
             nickNameUsuario: nickNameDoUsuario,
@@ -88,21 +100,21 @@ class PlanetasFavoritosViewController: UIViewController {
     {
         let alertas = Alerta(viewController: self)
         
-        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados-usuarios.sqlite") else { return }
-        
         guard let nickNameDoUsuario = UserDefaults.standard.string(forKey: "user_id") else {
             alertas.criaAlerta(mensagem: "Erro ao remover planeta")
             return
         }
         
-        let buscadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
+        let buscadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(
+            instanciaDoBanco: self.instanciaDoBanco
+        )
         
         let removePlanetaFavorito = RemovePlanetaDosFavoritosSQLite(
-            instanciaDoBanco: instanciaDoBanco
+            instanciaDoBanco: self.instanciaDoBanco
         )
         
         let planetasFavoritosController = PlanetasFavoritosController(
-            instanciaDoBanco: instanciaDoBanco
+            instanciaDoBanco: self.instanciaDoBanco
         )
         
         let planetaFoiRemovido = planetasFavoritosController.removePlanetaDosFavoritosDoUsuario(

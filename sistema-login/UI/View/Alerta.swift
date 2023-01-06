@@ -42,4 +42,12 @@ class Alerta: NSObject {
         
         self.vC.present(alerta, animated: true, completion: nil)
     }
+    
+    public func criaAlertaSemAction(
+        _ titulo: String = "Erro", mensagem: String
+    ) -> Void
+    {
+        let alerta = UIAlertController(title: titulo, message: mensagem, preferredStyle: .alert)
+        self.vC.present(alerta, animated: true, completion: nil)
+    }
 }

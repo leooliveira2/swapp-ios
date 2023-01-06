@@ -22,6 +22,18 @@ class PerfilViewController: UIViewController {
         "Naves favoritas"
     ]
     
+    private let instanciaDoBanco: OpaquePointer
+    
+    // MARK: - Inicializadores
+    init(instanciaDoBanco: OpaquePointer) {
+        self.instanciaDoBanco = instanciaDoBanco
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,17 +82,26 @@ class PerfilViewController: UIViewController {
     // MARK: - Funcoes
     private func redirecionaParaViewEscolhidaNasOpcoesTableView(indiceClicado: Int) -> Void {
         if indiceClicado == 0 {
-            self.navigationController?.pushViewController(PersonagensFavoritosViewController(), animated: true)
+            self.navigationController?.pushViewController(
+                PersonagensFavoritosViewController(instanciaDoBanco: self.instanciaDoBanco),
+                animated: true
+            )
             return
         }
         
         if indiceClicado == 1 {
-            self.navigationController?.pushViewController(PlanetasFavoritosViewController(), animated: true)
+            self.navigationController?.pushViewController(
+                PlanetasFavoritosViewController(instanciaDoBanco: self.instanciaDoBanco),
+                animated: true
+            )
             return
         }
         
         if indiceClicado == 2 {
-            self.navigationController?.pushViewController(NavesFavoritasViewController(), animated: true)
+            self.navigationController?.pushViewController(
+                NavesFavoritasViewController(instanciaDoBanco: self.instanciaDoBanco),
+                animated: true
+            )
             return
         }
     }

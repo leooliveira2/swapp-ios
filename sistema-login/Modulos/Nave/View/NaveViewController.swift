@@ -19,6 +19,18 @@ class NaveViewController: UIViewController {
     private var animacao: Animacao?
     private var nave: Nave?
     
+    private let instanciaDoBanco: OpaquePointer
+    
+    // MARK: - Inicializadores
+    init(instanciaDoBanco: OpaquePointer) {
+        self.instanciaDoBanco = instanciaDoBanco
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,17 +81,9 @@ class NaveViewController: UIViewController {
                 return
             }
             
-            guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados-usuarios.sqlite")
-                else
-            {
-                alertas.criaAlerta(mensagem: "Erro interno! Favor tentar novamente!")
-                return
-            }
-            
             let jaEstaFavoritado = self.verificaSeNaveJaEstaFavoritada(
                 nave: nave,
-                nickName: nickNameDoUsuario,
-                instanciaDoBanco: instanciaDoBanco
+                nickName: nickNameDoUsuario
             )
             
             if jaEstaFavoritado {
@@ -106,24 +110,20 @@ class NaveViewController: UIViewController {
             return
         }
         
-        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados-usuarios.sqlite") else {
-            alerta.criaAlerta(mensagem: "Erro interno! Favor tentar novamente!")
-            return
-        }
-        
-        let buscadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
+        let buscadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(
+            instanciaDoBanco: self.instanciaDoBanco
+        )
         
         let naveJaEstaFavoritada = self.verificaSeNaveJaEstaFavoritada(
             nave: nave,
-            nickName: nickNameDoUsuario,
-            instanciaDoBanco: instanciaDoBanco
+            nickName: nickNameDoUsuario
         )
         
         let naveController = NaveController()
         
         if naveJaEstaFavoritada {
             let removeNaveDosFavoritos = RemoveNaveDosFavoritosSQLite(
-                instanciaDoBanco: instanciaDoBanco
+                instanciaDoBanco: self.instanciaDoBanco
             )
             
             let naveFoiRemovida = naveController.removerNaveDosFavoritos(
@@ -148,7 +148,9 @@ class NaveViewController: UIViewController {
         
         }
         
-        let adicionaAosFavoritos = SalvarNaveFavoritaSQLite(instanciaDoBanco: instanciaDoBanco)
+        let adicionaAosFavoritos = SalvarNaveFavoritaSQLite(
+            instanciaDoBanco: self.instanciaDoBanco
+        )
         
         let naveFoiSalva = naveController.adicionarNaveAosFavoritos(
             nave,
@@ -165,8 +167,8 @@ class NaveViewController: UIViewController {
         alerta.criaAlerta(titulo: "Sucesso", mensagem: "Nave adicionada aos favoritos")
         
         print("----------------------------")
-        Crud().exibirTodosOsDadosDasNaves(db: instanciaDoBanco)
-        Crud().exibeTodosOsUsuariosSalvos(instanciaDoBanco: instanciaDoBanco)
+        Crud().exibirTodosOsDadosDasNaves(db: self.instanciaDoBanco)
+        Crud().exibeTodosOsUsuariosSalvos(instanciaDoBanco: self.instanciaDoBanco)
         print("----------------------------")
         
         self.naveView.execucaoQuandoUmaNaveForAdicionadaAosFavoritos()
@@ -174,16 +176,17 @@ class NaveViewController: UIViewController {
     
     private func verificaSeNaveJaEstaFavoritada(
         nave: Nave,
-        nickName: String,
-        instanciaDoBanco: OpaquePointer
+        nickName: String
     ) -> Bool
     {
         let naveController = NaveController()
         
-        let buscadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
+        let buscadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(
+            instanciaDoBanco: self.instanciaDoBanco
+        )
         
         let verificadorDeNavesSalvasPorUsuario = VerificadorDeNavesJaAdicionadasAUmUsuarioSQLite(
-            instanciaDoBanco: instanciaDoBanco
+            instanciaDoBanco: self.instanciaDoBanco
         )
         
         let naveJaEstaFavoritada = naveController.verificaSeNaveJaEstaFavoritada(

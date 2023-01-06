@@ -12,6 +12,18 @@ class NavesFavoritasViewController: UIViewController {
     // MARK: - Atributos
     private var listaDeNavesFavoritas: [Nave] = []
     
+    private let instanciaDoBanco: OpaquePointer
+    
+    // MARK: - Inicializadores
+    init(instanciaDoBanco: OpaquePointer) {
+        self.instanciaDoBanco = instanciaDoBanco
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - View
     private lazy var navesFavoritasView: NavesFavoritasView = {
         let view = NavesFavoritasView()
@@ -42,22 +54,22 @@ class NavesFavoritasViewController: UIViewController {
     private func buscaNavesFavoritasDoUsuario() -> Void {
         let alertas = Alerta(viewController: self)
         
-        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados-usuarios.sqlite") else { return }
-        
         guard let nickNameDoUsuario = UserDefaults.standard.string(forKey: "user_id") else {
             alertas.criaAlerta(mensagem: "Erro interno! Favor tentar novamente!")
             return
         }
         
         let navesFavoritasController = NavesFavoritasController(
-            instanciaDoBanco: instanciaDoBanco
+            instanciaDoBanco: self.instanciaDoBanco
         )
         
         let buscadorDeNavesFavoritas = BuscadorDeNavesFavoritasSQLite(
-            instanciaDoBanco: instanciaDoBanco
+            instanciaDoBanco: self.instanciaDoBanco
         )
         
-        let buscaDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
+        let buscaDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(
+            instanciaDoBanco: self.instanciaDoBanco
+        )
         
         guard let listaDeNaves = navesFavoritasController.buscaTodasAsNavesFavoritasDoUsuario(
             nickNameUsuario: nickNameDoUsuario,
@@ -88,19 +100,21 @@ class NavesFavoritasViewController: UIViewController {
     {
         let alertas = Alerta(viewController: self)
         
-        guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados-usuarios.sqlite") else { return }
-        
         guard let nickNameDoUsuario = UserDefaults.standard.string(forKey: "user_id") else {
             alertas.criaAlerta(mensagem: "Erro ao remover nave")
             return
         }
         
-        let buscadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
+        let buscadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(
+            instanciaDoBanco: self.instanciaDoBanco
+        )
         
-        let removeNaveFavorita = RemoveNaveDosFavoritosSQLite(instanciaDoBanco: instanciaDoBanco)
+        let removeNaveFavorita = RemoveNaveDosFavoritosSQLite(
+            instanciaDoBanco: self.instanciaDoBanco
+        )
         
         let navesFavoritasController = NavesFavoritasController(
-            instanciaDoBanco: instanciaDoBanco
+            instanciaDoBanco: self.instanciaDoBanco
         )
         
         let naveFoiRemovida = navesFavoritasController.removeNaveDosFavoritosDoUsuario(

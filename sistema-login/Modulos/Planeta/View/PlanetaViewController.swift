@@ -19,6 +19,18 @@ class PlanetaViewController: UIViewController {
     private var animacao: Animacao?
     private var planeta: Planeta?
     
+    private let instanciaDoBanco: OpaquePointer
+    
+    // MARK: - Inicializadores
+    init(instanciaDoBanco: OpaquePointer) {
+        self.instanciaDoBanco = instanciaDoBanco
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,17 +82,9 @@ class PlanetaViewController: UIViewController {
                 return
             }
             
-            guard let instanciaDoBanco = DBManager().openDatabase(DBPath: "dados-usuarios.sqlite")
-                else
-            {
-                alertas.criaAlerta(mensagem: "Erro interno! Favor tentar novamente!")
-                return
-            }
-            
             let jaEstaFavoritado = self.verificaSePlanetaJaEstaFavoritado(
                 planeta: planeta,
-                nickName: nickNameDoUsuario,
-                instanciaDoBanco: instanciaDoBanco
+                nickName: nickNameDoUsuario
             )
             
             if jaEstaFavoritado {
@@ -111,12 +115,13 @@ class PlanetaViewController: UIViewController {
             return
         }
         
-        let buscadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
+        let buscadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(
+            instanciaDoBanco: self.instanciaDoBanco
+        )
         
         let planetaJaEstaFavoritado = self.verificaSePlanetaJaEstaFavoritado(
             planeta: planeta,
-            nickName: nickNameDoUsuario,
-            instanciaDoBanco: instanciaDoBanco
+            nickName: nickNameDoUsuario
         )
         
         let planetaController = PlanetaController()
@@ -148,7 +153,9 @@ class PlanetaViewController: UIViewController {
         
         }
         
-        let adicionaAosFavoritos = SalvarPlanetaFavoritoSQLite(instanciaDoBanco: instanciaDoBanco)
+        let adicionaAosFavoritos = SalvarPlanetaFavoritoSQLite(
+            instanciaDoBanco: self.instanciaDoBanco
+        )
         
         let planetaFoiSalvo = planetaController.adicionarPlanetaAosFavoritos(
             planeta,
@@ -165,8 +172,8 @@ class PlanetaViewController: UIViewController {
         alerta.criaAlerta(titulo: "Sucesso", mensagem: "Planeta adicionado aos favoritos")
         
         print("----------------------------")
-        Crud().exibirTodosOsDadosDosPlanetas(db: instanciaDoBanco)
-        Crud().exibeTodosOsUsuariosSalvos(instanciaDoBanco: instanciaDoBanco)
+        Crud().exibirTodosOsDadosDosPlanetas(db: self.instanciaDoBanco)
+        Crud().exibeTodosOsUsuariosSalvos(instanciaDoBanco: self.instanciaDoBanco)
         print("----------------------------")
         
         self.planetaView.execucaoQuandoUmPlanetaForAdicionadoAosFavoritos()
@@ -174,16 +181,17 @@ class PlanetaViewController: UIViewController {
     
     private func verificaSePlanetaJaEstaFavoritado(
         planeta: Planeta,
-        nickName: String,
-        instanciaDoBanco: OpaquePointer
+        nickName: String
     ) -> Bool
     {
         let planetaController = PlanetaController()
         
-        let buscadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(instanciaDoBanco: instanciaDoBanco)
+        let buscadorDeDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(
+            instanciaDoBanco: self.instanciaDoBanco
+        )
         
         let verificadorDePlanetasSalvosPorUsuario = VerificadorDePlanetasJaAdicionadosAUmUsuarioSQLite(
-            instanciaDoBanco: instanciaDoBanco
+            instanciaDoBanco: self.instanciaDoBanco
         )
         
         let planetaJaEstaFavoritado = planetaController.verificaSePlanetaJaEstaFavoritado(

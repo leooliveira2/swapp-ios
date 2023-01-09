@@ -56,6 +56,12 @@ class PerfilViewController: UIViewController {
             for: .touchUpInside
         )
         
+        self.perfilView.getApagarContaButton().addTarget(
+            self,
+            action: #selector(acoesQuandoOBotaoApagarContaForClicado(_:)),
+            for: .touchUpInside
+        )
+        
         guard let fotoDePerfil = self.recuperarFotoDePerfil() else { return }
         
         self.perfilView.getFotoDePerfilImageView().image = fotoDePerfil
@@ -77,6 +83,21 @@ class PerfilViewController: UIViewController {
         guard let navigationController = self.navigationController else { return }
         
         navigationController.pushViewController(LoginViewController(), animated: true)
+    }
+    
+    @objc private func acoesQuandoOBotaoApagarContaForClicado(_ sender: UIButton) -> Void {
+        let alertas = Alerta(viewController: self)
+        
+        let perfilController = PerfilController()
+        
+        alertas.criaAlertaPersonalizadoParaExclusao(
+            titulo: "Excluir conta",
+            mensagem: "Deseja mesmo excluir sua conta?",
+            "Cancelar",
+            "Excluir"
+        ) { _ in
+            self.apagarConta(perfilController: perfilController, alertas: alertas)
+        }
     }
     
     // MARK: - Funcoes
@@ -106,8 +127,8 @@ class PerfilViewController: UIViewController {
         }
     }
     
-    private func getNickNameDoUsuario() -> String {
-        guard let nickNameDoUsuario = UserDefaults.standard.string(forKey: "user_id") else { return "" }
+    private func getNickNameDoUsuario() -> String? {
+        guard let nickNameDoUsuario = UserDefaults.standard.string(forKey: "user_id") else { return nil }
         
         return nickNameDoUsuario
     }
@@ -131,11 +152,15 @@ class PerfilViewController: UIViewController {
     }
     
     private func salvarPathDaImagem(pathImagem: String) -> Void {
-        UserDefaults.standard.set(pathImagem, forKey: "path_imagem_perfil_\(self.getNickNameDoUsuario())")
+        guard let nickNameUsuario = self.getNickNameDoUsuario() else { return }
+        
+        UserDefaults.standard.set(pathImagem, forKey: "path_imagem_perfil_\(nickNameUsuario)")
     }
     
     private func recuperarFotoDePerfil() -> UIImage? {
-        guard let pathImagem =  UserDefaults.standard.string(forKey: "path_imagem_perfil_\(self.getNickNameDoUsuario())") else { return nil }
+        guard let nickNameUsuario = self.getNickNameDoUsuario() else { return nil }
+        
+        guard let pathImagem =  UserDefaults.standard.string(forKey: "path_imagem_perfil_\(nickNameUsuario)") else { return nil }
         
         guard let pathURL = URL(string: pathImagem) else { return nil }
         
@@ -149,6 +174,40 @@ class PerfilViewController: UIViewController {
             return nil
         }
         
+    }
+    
+    private func apagarConta(perfilController: PerfilController, alertas: Alerta) -> Void {
+        guard let nickNameUsuario = self.getNickNameDoUsuario() else { return }
+        let removeUsuarioDoSistema = RemoveUsuarioSQLite(
+            instanciaDoBanco: self.instanciaDoBanco
+        )
+        let buscaDadosDoUsuario = RecuperaDadosDoUsuarioSQLite(
+            instanciaDoBanco: self.instanciaDoBanco
+        )
+        
+        let contaFoiRemovida = perfilController.apagarConta(
+            nickNameUsuario: nickNameUsuario,
+            removeUsuarioDoSistema: removeUsuarioDoSistema,
+            buscaDadosDoUsuario: buscaDadosDoUsuario
+        )
+        
+        if !contaFoiRemovida {
+            alertas.criaAlerta(mensagem: "Erro ao apagar sua conta!")
+            return
+        }
+        
+        perfilController.removeOsDadosDeLoginDoUsuario()
+        
+        guard let navigationController = self.navigationController else {
+            alertas.criaAlerta(
+                titulo: "Sucesso",
+                mensagem: "Conta excluída com sucesso"
+            )
+            
+            return
+        }
+        
+        navigationController.pushViewController(LoginViewController(), animated: true)
     }
     
 }

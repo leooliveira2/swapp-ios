@@ -88,6 +88,7 @@
 		C57BD860293A733900092FA9 /* PerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57BD85F293A733900092FA9 /* PerfilView.swift */; };
 		C580E2F42956135800DF9B8D /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C580E2F32956135800DF9B8D /* DBManager.swift */; };
 		C581A7B529313FB30092DF05 /* PersonagemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C581A7B429313FB30092DF05 /* PersonagemController.swift */; };
+		C581B09B2968B03E00A674ED /* RemoveUsuarioRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C581B09A2968B03E00A674ED /* RemoveUsuarioRepository.swift */; };
 		C58D4095292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D4094292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift */; };
 		C58D409B292EB46F00A1C6BC /* PersonagemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D409A292EB46F00A1C6BC /* PersonagemViewController.swift */; };
 		C58D409D292EB49700A1C6BC /* NaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D409C292EB49700A1C6BC /* NaveViewController.swift */; };
@@ -204,6 +205,7 @@
 		C57BD85F293A733900092FA9 /* PerfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilView.swift; sourceTree = "<group>"; };
 		C580E2F32956135800DF9B8D /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		C581A7B429313FB30092DF05 /* PersonagemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonagemController.swift; sourceTree = "<group>"; };
+		C581B09A2968B03E00A674ED /* RemoveUsuarioRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveUsuarioRepository.swift; sourceTree = "<group>"; };
 		C58D4094292E8D6300A1C6BC /* RecuperacaoDeSenhaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperacaoDeSenhaController.swift; sourceTree = "<group>"; };
 		C58D409A292EB46F00A1C6BC /* PersonagemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonagemViewController.swift; sourceTree = "<group>"; };
 		C58D409C292EB49700A1C6BC /* NaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaveViewController.swift; sourceTree = "<group>"; };
@@ -931,6 +933,7 @@
 			children = (
 				C54D2E7D2963488E00862665 /* EscolherImagem.swift */,
 				C52751552965EE1300A603F2 /* RecuperaDadosDoUsuarioRepository.swift */,
+				C581B09A2968B03E00A674ED /* RemoveUsuarioRepository.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1117,6 +1120,7 @@
 				C55BFA6B291ACABB0049C539 /* Usuario.swift in Sources */,
 				C5416871295CDC820041908D /* PersonagensFavoritosViewController.swift in Sources */,
 				C541687B295CDD9B0041908D /* NavesFavoritasViewController.swift in Sources */,
+				C581B09B2968B03E00A674ED /* RemoveUsuarioRepository.swift in Sources */,
 				C541686B295CB78B0041908D /* RemoveNaveDosFavoritosRepository.swift in Sources */,
 				C58D409D292EB49700A1C6BC /* NaveViewController.swift in Sources */,
 				C5C3455C291D860300E3097A /* UsuariosDadosStatic.swift in Sources */,

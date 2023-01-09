@@ -22,4 +22,18 @@ class PerfilController {
             image(imagem, pathImagem)
         }
     }
+    
+    public func apagarConta(
+        nickNameUsuario: String,
+        removeUsuarioDoSistema: RemoveUsuarioRepository,
+        buscaDadosDoUsuario: RecuperaDadosDoUsuarioRepository
+    ) -> Bool {
+        guard let idDoUsuario = buscaDadosDoUsuario.getIdDoUsuario(nickName: nickNameUsuario) else {
+            return false
+        }
+        
+        let usuarioFoiRemovido = removeUsuarioDoSistema.remover(idUsuario: idDoUsuario)
+        
+        return usuarioFoiRemovido
+    }
 }

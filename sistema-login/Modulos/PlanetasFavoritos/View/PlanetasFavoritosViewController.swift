@@ -163,7 +163,7 @@ extension PlanetasFavoritosViewController: UITableViewDelegate, UITableViewDataS
                        "\n\nTerreno: \(planeta.getTerreno())" +
                        "\n\nPopulação: \(planeta.getPopulacao())"
 
-        alertas.criaAlertaPersonalizadoExibicaoDeFavoritos(
+        alertas.criaAlertaPersonalizadoParaExclusao(
             titulo: planeta.getNome(),
             mensagem: mensagem,
             handler: { _ in

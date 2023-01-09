@@ -26,16 +26,18 @@ class Alerta: NSObject {
         self.vC.present(alerta, animated: true, completion: nil)
     }
     
-    public func criaAlertaPersonalizadoExibicaoDeFavoritos(
+    public func criaAlertaPersonalizadoParaExclusao(
         titulo: String,
         mensagem: String,
+        _ tituloActionContinuar: String = "Ok",
+        _ tituloActionRemover: String = "Remover",
         handler: @escaping (UIAlertAction) -> Void
     ) -> Void
     {
         let alerta = UIAlertController(title: titulo, message: mensagem, preferredStyle: .alert)
         
-        let acaoContinuar = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-        let acaoRemover = UIAlertAction(title: "Remover", style: .destructive, handler: handler)
+        let acaoContinuar = UIAlertAction(title: tituloActionContinuar, style: .cancel, handler: nil)
+        let acaoRemover = UIAlertAction(title: tituloActionRemover, style: .destructive, handler: handler)
         
         alerta.addAction(acaoContinuar)
         alerta.addAction(acaoRemover)
@@ -50,4 +52,5 @@ class Alerta: NSObject {
         let alerta = UIAlertController(title: titulo, message: mensagem, preferredStyle: .alert)
         self.vC.present(alerta, animated: true, completion: nil)
     }
+
 }

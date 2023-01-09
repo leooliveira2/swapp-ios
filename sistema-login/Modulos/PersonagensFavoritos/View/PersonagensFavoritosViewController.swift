@@ -164,7 +164,7 @@ extension PersonagensFavoritosViewController: UITableViewDelegate, UITableViewDa
                         "\n\nAno de nascimento: \(personagem.getAnoNascimentoPersonagem())" +
                         "\n\nGênero: \(personagem.getGeneroPersonagem())"
 
-        alertas.criaAlertaPersonalizadoExibicaoDeFavoritos(
+        alertas.criaAlertaPersonalizadoParaExclusao(
             titulo: personagem.getNomePersonagem(),
             mensagem: mensagem,
             handler: { _ in

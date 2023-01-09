@@ -164,7 +164,7 @@ extension NavesFavoritasViewController: UITableViewDelegate, UITableViewDataSour
                         "\n\nComprimento: \(nave.getComprimento())" +
                         "\n\nPassageiros: \(nave.getPassageiros())"
 
-        alertas.criaAlertaPersonalizadoExibicaoDeFavoritos(
+        alertas.criaAlertaPersonalizadoParaExclusao(
             titulo: nave.getNome(),
             mensagem: mensagem,
             handler: { _ in

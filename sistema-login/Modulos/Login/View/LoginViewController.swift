@@ -156,3 +156,9 @@ class LoginViewController: UIViewController {
     }
 
 }
+
+extension LoginViewController {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.loginView.endEditing(true)
+    }
+}

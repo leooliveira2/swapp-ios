@@ -77,3 +77,9 @@ class CriacaoDeContaViewController: UIViewController {
     }
 
 }
+
+extension CriacaoDeContaViewController {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.criacaoDeContaView.endEditing(true)
+    }
+}

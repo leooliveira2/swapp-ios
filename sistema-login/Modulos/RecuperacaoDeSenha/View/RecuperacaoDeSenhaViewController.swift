@@ -115,3 +115,9 @@ class RecuperacaoDeSenhaViewController: UIViewController {
         navigationController.popViewController(animated: true)
     }
 }
+
+extension RecuperacaoDeSenhaViewController {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.recuperacaoDeSenhaView.endEditing(true)
+    }
+}

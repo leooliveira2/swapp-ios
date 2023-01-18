@@ -11,16 +11,13 @@ import SQLite3
 class DBManager {
     
     public func openDatabase(DBPath: String) -> OpaquePointer? {
-//        let filePath = "/Users/leonardoleite/Desktop/Projetos/login-IOS/MeuBanco/\(DBPath)"
 
         let filePath = try! FileManager.default.url(
-            for: .documentDirectory,
+            for: .applicationSupportDirectory,
             in: .userDomainMask,
             appropriateFor: nil,
-            create: false
-        ).appendingPathExtension(DBPath)
-        
-//        print(filePath.relativePath)
+            create: true
+        ).appendingPathComponent(DBPath)
         
         var db: OpaquePointer?
         
@@ -62,3 +59,4 @@ class DBManager {
     }
     
 }
+

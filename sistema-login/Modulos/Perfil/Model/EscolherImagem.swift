@@ -120,14 +120,13 @@ extension EscolherImagem: UIImagePickerControllerDelegate,
             fatalError("Esperava-se uma imagem, mas foi dado o seguinte: \(info)")
         }
         
-        guard let pathImagem = info[.imageURL] as? URL else {
-            fatalError("Esperava-se um path, mas foi dado o seguinte: \(info)")
-        }
+//        guard let pathImagem = info[.imageURL] as? URL else {
+////            fatalError("Esperava-se um path, mas foi dado o seguinte: \(info)")
+//        }
         
-        print(pathImagem)
+        let pathImagem = URL(string: "Alo")!
         
         //Retorna o callback da função principal
         self.retornoSelecionador?(image, pathImagem)
     }
 }
-

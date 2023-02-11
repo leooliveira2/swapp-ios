@@ -1,2 +1,3 @@
-.DS_Store
-sistema-login/Views/RecuperarSenha/
+sistema-login.xcodeproj/
+sistema-login.xcworkspace/
+Pods/
